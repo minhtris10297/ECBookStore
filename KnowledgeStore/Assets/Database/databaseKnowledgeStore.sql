@@ -19,14 +19,14 @@ CREATE TABLE LoaiBia(
 	LoaiBia nvarchar(100) not null
 )
 
--- 6 Nha XB
+--  Nha XB --
 CREATE TABLE NhaXuatBan(
 	NhaXuatBanID int identity (1,1) not null primary key,
 	TenNXB nvarchar(100) not null,
 	DiaChi nvarchar(50) not null,
 )
 GO
--- 1 Sách
+--  Sách --
 CREATE TABLE Sach(
 	SachID int identity (1,1) not null primary key,
 	MaSach varchar(100) not null,
@@ -43,7 +43,7 @@ CREATE TABLE GioiTinh(
 	GioiTinhID int identity (1,1) not null primary key,
 	TenGioiTinh nvarchar(50)
 )
--- 12 Merchant
+--  Merchant --
 CREATE TABLE Merchant(
 	MerchantID int identity (1,1) not null primary key,
 	Email nvarchar(100) not null,
@@ -55,7 +55,7 @@ CREATE TABLE Merchant(
 )
 GO
 
--- 2 
+-- Kho sach merchant--
 CREATE TABLE KhoSachMerchant(
 	KhoSachMerchantID int identity (1,1) not null primary key,
 	SachID int foreign key references Sach(SachID),
@@ -67,7 +67,7 @@ CREATE TABLE KhoSachMerchant(
 )
 GO
 
--- 9 Customer
+--  Customer --
 CREATE TABLE Customer(
 	CustomerID int identity (1,1) not null primary key,
 	Email nvarchar(100) not null,
@@ -79,12 +79,13 @@ CREATE TABLE Customer(
 )
 GO
 
+--Tinh Trang Don Hang--
 CREATE TABLE TinhTrangDonHang(
 	TinhTrangDonHangID int identity (1,1) not null primary key,
 	TenTinhTrangDonHang nvarchar(100)
 )
 
--- 3 Đơn Hàng 
+-- Don Hang-- 
 CREATE TABLE DonHang(
 	DonHangID int identity (1,1) not null primary key,
 	CustomerID int foreign key references Customer(CustomerID),
@@ -95,7 +96,7 @@ CREATE TABLE DonHang(
 )
 GO
 
--- 4 Chi Tiet Don hang
+--  Chi Tiet Don hang --
 CREATE TABLE ChiTietDonHang(
 	ChiTietDonHangID int identity (1,1) not null primary key,
 	DonHangID int foreign key references DonHang(DonHangID) not null,
@@ -106,7 +107,7 @@ CREATE TABLE ChiTietDonHang(
 )
 GO
 
--- 11 Danh Gia Cus
+--  Danh Gia Cus --
 CREATE TABLE DanhGiaCus(
 	DanhGiaCusID int identity (1,1) not null primary key,
 	CustomerID int foreign key references Customer(CustomerID) not null,
@@ -119,8 +120,8 @@ GO
 CREATE TABLE DanhGiaMer(
 	DanhGiaMerID int identity (1,1) not null primary key,
 	MerchantID int foreign key references Merchant(MerchantID),
-	MaCus int,
-	SoSao int,
+	CustomerID int foreign key references Customer(CustomerID) not null,
+	SoSao float,
 )
 GO
 
@@ -140,15 +141,6 @@ CREATE TABLE LSMer(
 	MaMer int not null,
 	MaDH int not null,
 	TongTien money,
-)
-GO
-
--- 13 Danh Gia Mer
-CREATE TABLE DGMer(
-	MaDGM int identity (1,1) not null primary key,
-	MaMer int,
-	MaCus int,
-	SoSao int,
 )
 GO
 
