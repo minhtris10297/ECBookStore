@@ -14,12 +14,13 @@ CREATE TABLE TheLoai(
 )
 GO
 
+--Loại Bìa--
 CREATE TABLE LoaiBia(
 	LoaiBiaID int identity (1,1) not null primary key,
 	LoaiBia nvarchar(100) not null
 )
 
---  Nha XB --
+--  Nhà Xuất Bản --
 CREATE TABLE NhaXuatBan(
 	NhaXuatBanID int identity (1,1) not null primary key,
 	TenNXB nvarchar(100) not null,
@@ -34,6 +35,7 @@ CREATE TABLE Sach(
 	TacGia nvarchar(50) not null,
 	NhaXuatBan int foreign key references NhaXuatBan(NhaXuatBanID) not null,
 	NgayXuatBan datetime not null,
+	SoTrang int not null,
 	LoaiBiaID int foreign key references LoaiBia(LoaiBiaID),
 	TheLoaiID int foreign key references TheLoai(TheLoaiID) not null
 )
@@ -55,12 +57,13 @@ CREATE TABLE Merchant(
 )
 GO
 
--- Kho sach merchant--
-CREATE TABLE KhoSachMerchant(
+-- chi tiet sach merchant--
+CREATE TABLE ChiTietSachMerchant(
 	KhoSachMerchantID int identity (1,1) not null primary key,
 	SachID int foreign key references Sach(SachID),
 	MerchantID int foreign key references Merchant(MerchantID),
 	DonGia money not null,
+	GiaKhuyenMai money null,
 	SoLuong int not null,
 	NgayTao DateTime not null,
 	TrangThai bit Default 1, -- 1 là hoạt động, deactive nó thì sẽ thành 0
@@ -73,6 +76,7 @@ CREATE TABLE Customer(
 	Email nvarchar(100) not null,
 	HoTen nvarchar(100) not null,
 	DiaChi nvarchar(100) not null,
+	MatKhauMaHoa varchar(256) not null,
 	GioiTinhID int foreign key references GioiTinh(GioiTinhID) not null,
 	DanhGia int,
 	TrangThai bit Default 1, -- 1 là hoạt động, deactive nó thì sẽ thành 0
@@ -91,8 +95,9 @@ CREATE TABLE DonHang(
 	CustomerID int foreign key references Customer(CustomerID),
 	MerchantID int foreign key references Merchant(MerchantID),
 	NgayXuat Datetime,
-	TinhTrangDonHangID int foreign key references TinhTrangDonHang(TinhTrangDonHangID) not null,
-	DiaChi nvarchar(100)
+	TongTien money not null,
+	DiaChi nvarchar(100),
+	TinhTrangDonHangID int foreign key references TinhTrangDonHang(TinhTrangDonHangID) not null
 )
 GO
 
@@ -108,7 +113,7 @@ CREATE TABLE ChiTietDonHang(
 GO
 
 --  Danh Gia Cus --
-CREATE TABLE DanhGiaCus(
+CREATE TABLE DanhGiaCuaCustomer(
 	DanhGiaCusID int identity (1,1) not null primary key,
 	CustomerID int foreign key references Customer(CustomerID) not null,
 	DonHangID int foreign key references DonHang(DonHangID) not null,
@@ -117,9 +122,9 @@ CREATE TABLE DanhGiaCus(
 GO
 
 -- 13 Danh Gia Mer
-CREATE TABLE DanhGiaMer(
+CREATE TABLE DanhGiaCuaMerchant(
 	DanhGiaMerID int identity (1,1) not null primary key,
-	MerchantID int foreign key references Merchant(MerchantID),
+	MerchantID int foreign key references Merchant(MerchantID) not null,
 	CustomerID int foreign key references Customer(CustomerID) not null,
 	SoSao float,
 )
@@ -127,19 +132,19 @@ GO
 
 
 --10 Lich Su Customer
-CREATE TABLE LSCus(
-	MaLSCus int identity (1,1) not null primary key,
-	MaCus int not null,
-	MaDH int not null,
+CREATE TABLE LichSuCus(
+	LichSuCusID int identity (1,1) not null primary key,
+	CustomerID int foreign key references Customer(CustomerID) not null,
+	DonHangID int foreign key references DonHang(DonHangID) not null,
 	TongTien money,
 )
 GO
 
 -- 13 Lich Su Merchant
-CREATE TABLE LSMer(
-	MaLSMer int identity (1,1) not null primary key,
-	MaMer int not null,
-	MaDH int not null,
+CREATE TABLE LichSuMer(
+	LichSuMerID int identity (1,1) not null primary key,
+	MerchantID int foreign key references Merchant(MerchantID) not null,
+	DonHangID int foreign key references DonHang(DonHangID) not null,
 	TongTien money,
 )
 GO

@@ -147,6 +147,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1044,6 +1045,7 @@
     <Content Include="Assets\Customer\cozastore\__MACOSX\cozastore\vendor\slick\fonts\._slick.eot" />
     <Content Include="Assets\Customer\cozastore\__MACOSX\cozastore\vendor\slick\fonts\._slick.ttf" />
     <Content Include="Assets\Customer\cozastore\__MACOSX\cozastore\vendor\slick\fonts\._slick.woff" />
+    <Content Include="Areas\Admin\Views\web.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1072,6 +1074,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Assets\Admin\" />
     <Folder Include="Assets\Merchant\" />
     <Folder Include="Models\" />
