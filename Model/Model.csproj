@@ -51,91 +51,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dao\UserDao.cs" />
-    <Compile Include="EntityFramework\Admin.cs">
-      <DependentUpon>KnowledgeStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\BaiDang.cs">
-      <DependentUpon>KnowledgeStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\ChiTietDonHang.cs">
-      <DependentUpon>KnowledgeStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\ChiTietSachMerchant.cs">
-      <DependentUpon>KnowledgeStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\CTBaiDang.cs">
-      <DependentUpon>KnowledgeStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\Customer.cs">
-      <DependentUpon>KnowledgeStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\DanhGiaCuaCustomer.cs">
-      <DependentUpon>KnowledgeStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\DanhGiaCuaMerchant.cs">
-      <DependentUpon>KnowledgeStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\DonHang.cs">
-      <DependentUpon>KnowledgeStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\GioiTinh.cs">
-      <DependentUpon>KnowledgeStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\KnowledgeStore.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KnowledgeStore.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\KnowledgeStore.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KnowledgeStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\KnowledgeStore.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KnowledgeStore.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\LichSuCu.cs">
-      <DependentUpon>KnowledgeStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\LichSuMer.cs">
-      <DependentUpon>KnowledgeStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\LoaiBia.cs">
-      <DependentUpon>KnowledgeStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\Merchant.cs">
-      <DependentUpon>KnowledgeStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\NangTin.cs">
-      <DependentUpon>KnowledgeStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\NhaXuatBan.cs">
-      <DependentUpon>KnowledgeStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\Sach.cs">
-      <DependentUpon>KnowledgeStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\TheLoai.cs">
-      <DependentUpon>KnowledgeStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\TinhTrangDonHang.cs">
-      <DependentUpon>KnowledgeStore.tt</DependentUpon>
-    </Compile>
+    <Compile Include="EntityFramework\Admin.cs" />
+    <Compile Include="EntityFramework\BaiDang.cs" />
+    <Compile Include="EntityFramework\ChiTietDonHang.cs" />
+    <Compile Include="EntityFramework\ChiTietSachMerchant.cs" />
+    <Compile Include="EntityFramework\CTBaiDang.cs" />
+    <Compile Include="EntityFramework\Customer.cs" />
+    <Compile Include="EntityFramework\DanhGiaCuaCustomer.cs" />
+    <Compile Include="EntityFramework\DanhGiaCuaMerchant.cs" />
+    <Compile Include="EntityFramework\DonHang.cs" />
+    <Compile Include="EntityFramework\GioiTinh.cs" />
+    <Compile Include="EntityFramework\KnowledgeStoreContext.cs" />
+    <Compile Include="EntityFramework\LichSuCu.cs" />
+    <Compile Include="EntityFramework\LichSuMer.cs" />
+    <Compile Include="EntityFramework\LoaiBia.cs" />
+    <Compile Include="EntityFramework\Merchant.cs" />
+    <Compile Include="EntityFramework\NangTin.cs" />
+    <Compile Include="EntityFramework\NhaXuatBan.cs" />
+    <Compile Include="EntityFramework\Sach.cs" />
+    <Compile Include="EntityFramework\TheLoai.cs" />
+    <Compile Include="EntityFramework\TinhTrangDonHang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\AuthenticationEmail.cs" />
     <Compile Include="ViewModel\LoginModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="EntityFramework\KnowledgeStore.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>KnowledgeStore.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="EntityFramework\KnowledgeStore.edmx.diagram">
-      <DependentUpon>KnowledgeStore.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -146,19 +87,6 @@
       <Project>{ec760982-1cd5-4365-a191-395d78a8a9b7}</Project>
       <Name>Common</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Content Include="EntityFramework\KnowledgeStore.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>KnowledgeStore.edmx</DependentUpon>
-      <LastGenOutput>KnowledgeStore.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="EntityFramework\KnowledgeStore.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>KnowledgeStore.edmx</DependentUpon>
-      <LastGenOutput>KnowledgeStore.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

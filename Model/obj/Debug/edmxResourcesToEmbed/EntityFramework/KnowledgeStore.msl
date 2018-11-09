@@ -64,11 +64,11 @@
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="HoTen" ColumnName="HoTen" />
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
           <ScalarProperty Name="MatKhauMaHoa" ColumnName="MatKhauMaHoa" />
           <ScalarProperty Name="GioiTinhID" ColumnName="GioiTinhID" />
           <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
           <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

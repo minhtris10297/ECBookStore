@@ -63,11 +63,11 @@
     <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="SoDienThoai" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="MatKhauMaHoa" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="GioiTinhID" Type="Int32" Nullable="false" />
     <Property Name="DanhGia" Type="Int32" />
     <Property Name="TrangThai" Type="Boolean" Nullable="false" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="GioiTinh" Relationship="Self.FK__Customer__GioiTi__4BAC3F29" FromRole="Customer" ToRole="GioiTinh" />
     <NavigationProperty Name="DanhGiaCuaCustomers" Relationship="Self.FK__DanhGiaCu__Custo__59FA5E80" FromRole="Customer" ToRole="DanhGiaCuaCustomer" />
     <NavigationProperty Name="DanhGiaCuaMerchants" Relationship="Self.FK__DanhGiaCu__Custo__5EBF139D" FromRole="Customer" ToRole="DanhGiaCuaMerchant" />

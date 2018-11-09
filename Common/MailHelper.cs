@@ -21,15 +21,10 @@ namespace Common
             var smtpPort = ConfigurationManager.AppSettings["SMTPPort"].ToString();
 
             bool enabledSsl = bool.Parse(ConfigurationManager.AppSettings["EnabledSSL"].ToString());
-
-            string body = System.IO.File.ReadAllText(HttpContext.Current.Server.MapPath("/Assets/admin/pages/sendmailform/authenticationform.html"));
-            StringBuilder sbBody = new StringBuilder(body);
-            sbBody.Replace("@ViewBag.AutenticationCode", content);
-            sbBody.Replace("@ViewBag.MonthYear", System.DateTime.Now.ToShortDateString());
             MailMessage message = new MailMessage(new MailAddress(fromEmailAddress, fromEmailDisplayName), new MailAddress(toEmail));
             message.Subject = subject;
             message.IsBodyHtml = true;
-            message.Body = sbBody.ToString();
+            message.Body = "<p>Mã xác thực của bạn: <b style=\"color: red\">"+content+"</b>.</p>";
 
             var client = new SmtpClient();
             client.Credentials = new NetworkCredential(fromEmailAddress, fromEmailPassword);

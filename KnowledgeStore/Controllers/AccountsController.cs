@@ -13,7 +13,7 @@ namespace KnowledgeStore.Controllers
 {
     public class AccountsController : Controller
     {
-        KnowledgeStoreEntities db = new KnowledgeStoreEntities();
+        KnowledgeStoreContext db = new KnowledgeStoreContext();
         public ActionResult Login()
         {
             return View();
@@ -58,15 +58,37 @@ namespace KnowledgeStore.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "CustomerID,Email,HoTen,DiaChi,MatKhauMaHoa,GioiTinhID,SoDienThoai")] Customer customer)
+        public ActionResult Register([Bind(Include = "CustomerID,Email,HoTen,DiaChi,MatKhauMaHoa,GioiTinhID,SoDienThoai")] Customer customer,string AuthenticationCode)
         {
-            customer.TrangThai = true;
-            return View();
-        }
-        public ActionResult Logout()
-        {
-            Session[CommonConstants.USER_SESSION] = null;
-            return RedirectToAction("Index", "Home");
+            var authenticationEmail = (AuthenticationEmail)Session[CommonConstants.AUTHENTICATIONEMAIL_SESSION];
+
+            if (ModelState.IsValid & authenticationEmail!=null)
+            {
+                if (customer.Email == authenticationEmail.Email & authenticationEmail.AuthenticationCode == AuthenticationCode)
+                {
+
+                    customer.MatKhauMaHoa = Encryptor.SHA256Encrypt(customer.MatKhauMaHoa);
+                    customer.TrangThai = true;
+                    db.Customers.Add(customer);
+                    db.SaveChanges();
+
+                    var userSession = new UserLogin();
+                    userSession.UserName = customer.HoTen;
+                    userSession.Email = customer.Email;
+                    Session[CommonConstants.USER_SESSION] = null;
+                    Session[CommonConstants.USER_SESSION] = userSession;
+
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.GioiTinhID = new SelectList(db.GioiTinhs, "GioiTinhID", "TenGioiTinh");
+                    ModelState.AddModelError("", "Mã xác thực không hợp lệ");
+                    return View(customer);
+                }
+            }
+            ViewBag.GioiTinhID = new SelectList(db.GioiTinhs, "GioiTinhID", "TenGioiTinh");
+            return View(customer);
         }
         public JsonResult GetAuthenticationInEmail(string Email)
         {
@@ -79,14 +101,19 @@ namespace KnowledgeStore.Controllers
                 AuthenticationEmail authenticationEmail = new AuthenticationEmail();
                 authenticationEmail.Email = Email;
                 authenticationEmail.AuthenticationCode = authCode.ToString();
-                Session["AUTHENTICATIONEMAIL_SESSION"] = authenticationEmail;
+                Session[CommonConstants.AUTHENTICATIONEMAIL_SESSION] = authenticationEmail;
 
-                MailHelper.SendMailAuthentication(Email, "Ma xac thuc tu Trung Store", authCode.ToString());
+                MailHelper.SendMailAuthentication(Email, "Mã xác thực từ Knowledge Store", authCode.ToString());
 
                 return Json(new { status = true });
             }
             else
                 return Json(new { status = false });
+        }
+        public ActionResult Logout()
+        {
+            Session[CommonConstants.USER_SESSION] = null;
+            return RedirectToAction("Index", "Home");
         }
         protected override void Dispose(bool disposing)
         {

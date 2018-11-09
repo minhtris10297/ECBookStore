@@ -10,7 +10,7 @@ namespace Model.Dao
 {
     public class UserDao
     {
-        KnowledgeStoreEntities db = new KnowledgeStoreEntities();
+        KnowledgeStoreContext db = new KnowledgeStoreContext();
         public int Login(string email, string passWord)
         {
             var result = db.Customers.SingleOrDefault(x => x.Email == email);

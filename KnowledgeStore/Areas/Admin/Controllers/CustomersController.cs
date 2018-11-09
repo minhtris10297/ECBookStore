@@ -12,7 +12,7 @@ namespace KnowledgeStore.Areas.Admin.Controllers
 {
     public class CustomersController : Controller
     {
-        private KnowledgeStoreEntities db = new KnowledgeStoreEntities();
+        private KnowledgeStoreContext db = new KnowledgeStoreContext();
 
         // GET: Admin/Customers
         public ActionResult Index()
