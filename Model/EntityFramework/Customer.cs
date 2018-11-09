@@ -27,11 +27,11 @@ namespace Model.EntityFramework
         public string Email { get; set; }
         public string HoTen { get; set; }
         public string DiaChi { get; set; }
+        public string SoDienThoai { get; set; }
         public string MatKhauMaHoa { get; set; }
         public int GioiTinhID { get; set; }
         public Nullable<int> DanhGia { get; set; }
         public bool TrangThai { get; set; }
-        public string SoDienThoai { get; set; }
     
         public virtual GioiTinh GioiTinh { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

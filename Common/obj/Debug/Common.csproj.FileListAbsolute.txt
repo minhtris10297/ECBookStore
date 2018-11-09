@@ -3,3 +3,8 @@ E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Common\bin\Debug\Comm
 E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Common\bin\Debug\Common.pdb
 E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Common\obj\Debug\Common.dll
 E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Common\obj\Debug\Common.pdb
+D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\Common\bin\Debug\Common.dll
+D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\Common\bin\Debug\Common.pdb
+D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\Common\obj\Debug\Common.dll
+D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\Common\obj\Debug\Common.pdb

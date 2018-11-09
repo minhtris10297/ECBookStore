@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f2e388bb905f400ba8163973ee9fa730" Name="Diagram1">
+      <Diagram DiagramId="cfe33231c6234264a04693564e9d53c3" Name="Diagram1">
         <EntityTypeShape EntityType="KnowledgeStoreModel.Admin" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="KnowledgeStoreModel.BaiDang" Width="1.5" PointX="2.75" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="KnowledgeStoreModel.ChiTietDonHang" Width="1.5" PointX="10.5" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KnowledgeStoreModel.ChiTietSachMerchant" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeStoreModel.ChiTietSachMerchant" Width="1.5" PointX="5.25" PointY="16.375" IsExpanded="true" />
         <EntityTypeShape EntityType="KnowledgeStoreModel.CTBaiDang" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="KnowledgeStoreModel.Customer" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KnowledgeStoreModel.DanhGiaCuaCustomer" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />

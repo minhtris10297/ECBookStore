@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="KnowledgeStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="KnowledgeStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="MaTaiKhoan" />
@@ -64,11 +64,11 @@
           <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="HoTen" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SoDienThoai" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="MatKhauMaHoa" Type="varchar" MaxLength="256" Nullable="false" />
           <Property Name="GioiTinhID" Type="int" Nullable="false" />
           <Property Name="DanhGia" Type="int" />
           <Property Name="TrangThai" Type="bit" Nullable="false" />
-          <Property Name="SoDienThoai" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="DanhGiaCuaCustomer">
           <Key>
@@ -529,7 +529,8 @@
             <End Role="Sach" EntitySet="Sach" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KnowledgeStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -596,6 +597,7 @@
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SoDienThoai" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MatKhauMaHoa" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="GioiTinhID" Type="Int32" Nullable="false" />
           <Property Name="DanhGia" Type="Int32" />
@@ -605,7 +607,6 @@
           <NavigationProperty Name="DanhGiaCuaMerchants" Relationship="Self.FK__DanhGiaCu__Custo__5EBF139D" FromRole="Customer" ToRole="DanhGiaCuaMerchant" />
           <NavigationProperty Name="DonHangs" Relationship="Self.FK__DonHang__Custome__5165187F" FromRole="Customer" ToRole="DonHang" />
           <NavigationProperty Name="LichSuCus" Relationship="Self.FK__LichSuCus__Custo__619B8048" FromRole="Customer" ToRole="LichSuCus" />
-          <Property Name="SoDienThoai" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="DanhGiaCuaCustomer">
           <Key>
@@ -1162,11 +1163,11 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="KnowledgeStoreModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="HoTen" ColumnName="HoTen" />
                 <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
                 <ScalarProperty Name="MatKhauMaHoa" ColumnName="MatKhauMaHoa" />
                 <ScalarProperty Name="GioiTinhID" ColumnName="GioiTinhID" />
                 <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />

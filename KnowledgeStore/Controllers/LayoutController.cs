@@ -12,7 +12,7 @@ namespace KnowledgeStore.Controllers
         // GET: Layout
         public ActionResult TopbarUserDisplay()
         {
-            var sessionUser = (UserLogin)Session["USER_SESSION"];
+            var sessionUser = (UserLogin)Session[CommonConstants.USER_SESSION];
             if (sessionUser != null)
             {
                 ViewBag.DisplayUserName = sessionUser.UserName;

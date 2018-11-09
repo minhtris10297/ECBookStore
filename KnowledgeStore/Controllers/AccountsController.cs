@@ -1,4 +1,5 @@
-﻿using KnowledgeStore.Common;
+﻿using Common;
+using KnowledgeStore.Common;
 using Model.Dao;
 using Model.EntityFramework;
 using Model.ViewModel;
@@ -52,6 +53,14 @@ namespace KnowledgeStore.Controllers
         }
         public ActionResult Register()
         {
+            ViewBag.GioiTinhID = new SelectList(db.GioiTinhs, "GioiTinhID", "TenGioiTinh");
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register([Bind(Include = "CustomerID,Email,HoTen,DiaChi,MatKhauMaHoa,GioiTinhID,SoDienThoai")] Customer customer)
+        {
+            customer.TrangThai = true;
             return View();
         }
         public ActionResult Logout()
@@ -59,7 +68,26 @@ namespace KnowledgeStore.Controllers
             Session[CommonConstants.USER_SESSION] = null;
             return RedirectToAction("Index", "Home");
         }
+        public JsonResult GetAuthenticationInEmail(string Email)
+        {
+            var findThisEmail = db.Customers.Where(m => m.Email == Email).Select(m => m.Email).FirstOrDefault();
 
+            if (findThisEmail == null)
+            {
+                Session[CommonConstants.AUTHENTICATIONEMAIL_SESSION] = null;
+                int authCode = new Random().Next(1000, 9999);
+                AuthenticationEmail authenticationEmail = new AuthenticationEmail();
+                authenticationEmail.Email = Email;
+                authenticationEmail.AuthenticationCode = authCode.ToString();
+                Session["AUTHENTICATIONEMAIL_SESSION"] = authenticationEmail;
+
+                MailHelper.SendMailAuthentication(Email, "Ma xac thuc tu Trung Store", authCode.ToString());
+
+                return Json(new { status = true });
+            }
+            else
+                return Json(new { status = false });
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

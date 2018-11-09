@@ -63,6 +63,7 @@
     <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="MatKhauMaHoa" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="GioiTinhID" Type="Int32" Nullable="false" />
     <Property Name="DanhGia" Type="Int32" />
@@ -72,7 +73,6 @@
     <NavigationProperty Name="DanhGiaCuaMerchants" Relationship="Self.FK__DanhGiaCu__Custo__5EBF139D" FromRole="Customer" ToRole="DanhGiaCuaMerchant" />
     <NavigationProperty Name="DonHangs" Relationship="Self.FK__DonHang__Custome__5165187F" FromRole="Customer" ToRole="DonHang" />
     <NavigationProperty Name="LichSuCus" Relationship="Self.FK__LichSuCus__Custo__619B8048" FromRole="Customer" ToRole="LichSuCus" />
-    <Property Name="SoDienThoai" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="DanhGiaCuaCustomer">
     <Key>

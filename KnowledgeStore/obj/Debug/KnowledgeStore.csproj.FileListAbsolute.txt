@@ -189,3 +189,12 @@ E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\KnowledgeStore\bin\Mo
 E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\KnowledgeStore\bin\Model.dll.config
 E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\KnowledgeStore\bin\EntityFramework.xml
 E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\KnowledgeStore\bin\EntityFramework.SqlServer.xml
+D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\KnowledgeStore\bin\Common.dll
+D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\KnowledgeStore\bin\EntityFramework.dll
+D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\KnowledgeStore\bin\EntityFramework.SqlServer.dll
+D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\KnowledgeStore\bin\Model.dll
+D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\KnowledgeStore\bin\Common.pdb
+D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\KnowledgeStore\bin\Model.pdb
+D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\KnowledgeStore\bin\Model.dll.config
+D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\KnowledgeStore\bin\EntityFramework.xml
+D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\KnowledgeStore\bin\EntityFramework.SqlServer.xml
