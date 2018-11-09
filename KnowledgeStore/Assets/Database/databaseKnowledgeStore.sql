@@ -76,6 +76,7 @@ CREATE TABLE Customer(
 	Email nvarchar(100) not null,
 	HoTen nvarchar(100) not null,
 	DiaChi nvarchar(100) not null,
+	SoDienThoai varchar(20) not null,
 	MatKhauMaHoa varchar(256) not null,
 	GioiTinhID int foreign key references GioiTinh(GioiTinhID) not null,
 	DanhGia int,

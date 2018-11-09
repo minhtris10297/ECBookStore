@@ -31,6 +31,7 @@ namespace Model.EntityFramework
         public int GioiTinhID { get; set; }
         public Nullable<int> DanhGia { get; set; }
         public bool TrangThai { get; set; }
+        public string SoDienThoai { get; set; }
     
         public virtual GioiTinh GioiTinh { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

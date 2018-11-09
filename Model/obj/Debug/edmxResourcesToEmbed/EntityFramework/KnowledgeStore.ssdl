@@ -63,6 +63,7 @@
     <Property Name="GioiTinhID" Type="int" Nullable="false" />
     <Property Name="DanhGia" Type="int" />
     <Property Name="TrangThai" Type="bit" Nullable="false" />
+    <Property Name="SoDienThoai" Type="varchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="DanhGiaCuaCustomer">
     <Key>

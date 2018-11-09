@@ -72,6 +72,7 @@
     <NavigationProperty Name="DanhGiaCuaMerchants" Relationship="Self.FK__DanhGiaCu__Custo__5EBF139D" FromRole="Customer" ToRole="DanhGiaCuaMerchant" />
     <NavigationProperty Name="DonHangs" Relationship="Self.FK__DonHang__Custome__5165187F" FromRole="Customer" ToRole="DonHang" />
     <NavigationProperty Name="LichSuCus" Relationship="Self.FK__LichSuCus__Custo__619B8048" FromRole="Customer" ToRole="LichSuCus" />
+    <Property Name="SoDienThoai" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="DanhGiaCuaCustomer">
     <Key>

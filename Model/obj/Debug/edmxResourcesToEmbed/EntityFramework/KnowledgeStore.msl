@@ -60,6 +60,7 @@
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="KnowledgeStoreModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="HoTen" ColumnName="HoTen" />
