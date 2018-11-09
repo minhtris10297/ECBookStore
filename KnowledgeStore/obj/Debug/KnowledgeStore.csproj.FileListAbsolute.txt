@@ -180,3 +180,12 @@ D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\KnowledgeStore\obj\Debug\Knowl
 D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\KnowledgeStore\obj\Debug\KnowledgeStore.csproj.CopyComplete
 D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\KnowledgeStore\obj\Debug\KnowledgeStore.dll
 D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\KnowledgeStore\obj\Debug\KnowledgeStore.pdb
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\KnowledgeStore\bin\Common.dll
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\KnowledgeStore\bin\EntityFramework.dll
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\KnowledgeStore\bin\EntityFramework.SqlServer.dll
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\KnowledgeStore\bin\Model.dll
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\KnowledgeStore\bin\Common.pdb
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\KnowledgeStore\bin\Model.pdb
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\KnowledgeStore\bin\Model.dll.config
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\KnowledgeStore\bin\EntityFramework.xml
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\KnowledgeStore\bin\EntityFramework.SqlServer.xml

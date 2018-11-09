@@ -1,4 +1,5 @@
-﻿
+﻿@model Model.ViewModel.LoginModel
+
 @{
     Layout = null;
 }
@@ -21,6 +22,7 @@
     <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/assets/css/misc-pages.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900,300">
 </head>
+
 <body class="simple-page">
     <div id="back-to-home">
         <a href="index.html" class="btn btn-outline btn-default"><i class="fa fa-home animated zoomIn"></i></a>
@@ -34,12 +36,18 @@
         </div><!-- logo -->
         <div class="simple-page-form animated flipInY" id="login-form">
             <h4 class="form-title m-b-xl text-center">Sign In With Your Infinity Account</h4>
-            <form action="#">
+            @using (Html.BeginForm("Login", "Accounts", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
                 <div class="form-group">
-                    <input id="sign-in-email" type="email" class="form-control" placeholder="Email">
+                    @*<input id="sign-in-email" type="email" class="form-control" placeholder="Email">*@
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "email", @placeholder = "Email" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
-                    <input id="sign-in-password" type="password" class="form-control" placeholder="Password">
+                    @*<input id="sign-in-password" type="password" class="form-control" placeholder="Password">*@
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Password" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group m-b-xl">
                     <div class="checkbox checkbox-primary">
@@ -47,8 +55,10 @@
                         <label for="keep_me_logged_in">Keep me signed in</label>
                     </div>
                 </div>
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
                 <input type="submit" class="btn btn-primary" value="SING IN">
-            </form>
+            }
+
         </div><!-- #login-form -->
         <div class="simple-page-footer">
             <p><a href="password-forget.html">FORGOT YOUR PASSWORD ?</a></p>

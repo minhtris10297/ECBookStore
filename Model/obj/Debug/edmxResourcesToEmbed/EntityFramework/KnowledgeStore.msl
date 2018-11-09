@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KnowledgeStoreModelStoreContainer" CdmEntityContainer="KnowledgeStoreEntities">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="KnowledgeStoreModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="MaTaiKhoan" ColumnName="MaTaiKhoan" />
+          <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="TenHienThi" ColumnName="TenHienThi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BaiDangs">
+      <EntityTypeMapping TypeName="KnowledgeStoreModel.BaiDang">
+        <MappingFragment StoreEntitySet="BaiDang">
+          <ScalarProperty Name="MaBaiDang" ColumnName="MaBaiDang" />
+          <ScalarProperty Name="MaMer" ColumnName="MaMer" />
+          <ScalarProperty Name="ViTri" ColumnName="ViTri" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietDonHangs">
+      <EntityTypeMapping TypeName="KnowledgeStoreModel.ChiTietDonHang">
+        <MappingFragment StoreEntitySet="ChiTietDonHang">
+          <ScalarProperty Name="ChiTietDonHangID" ColumnName="ChiTietDonHangID" />
+          <ScalarProperty Name="DonHangID" ColumnName="DonHangID" />
+          <ScalarProperty Name="SachID" ColumnName="SachID" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietSachMerchants">
+      <EntityTypeMapping TypeName="KnowledgeStoreModel.ChiTietSachMerchant">
+        <MappingFragment StoreEntitySet="ChiTietSachMerchant">
+          <ScalarProperty Name="KhoSachMerchantID" ColumnName="KhoSachMerchantID" />
+          <ScalarProperty Name="SachID" ColumnName="SachID" />
+          <ScalarProperty Name="MerchantID" ColumnName="MerchantID" />
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+          <ScalarProperty Name="GiaKhuyenMai" ColumnName="GiaKhuyenMai" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTBaiDangs">
+      <EntityTypeMapping TypeName="KnowledgeStoreModel.CTBaiDang">
+        <MappingFragment StoreEntitySet="CTBaiDang">
+          <ScalarProperty Name="MaCTBD" ColumnName="MaCTBD" />
+          <ScalarProperty Name="MaBaiDang" ColumnName="MaBaiDang" />
+          <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="KnowledgeStoreModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="MatKhauMaHoa" ColumnName="MatKhauMaHoa" />
+          <ScalarProperty Name="GioiTinhID" ColumnName="GioiTinhID" />
+          <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DanhGiaCuaCustomers">
+      <EntityTypeMapping TypeName="KnowledgeStoreModel.DanhGiaCuaCustomer">
+        <MappingFragment StoreEntitySet="DanhGiaCuaCustomer">
+          <ScalarProperty Name="DanhGiaCusID" ColumnName="DanhGiaCusID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="DonHangID" ColumnName="DonHangID" />
+          <ScalarProperty Name="SoSao" ColumnName="SoSao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DanhGiaCuaMerchants">
+      <EntityTypeMapping TypeName="KnowledgeStoreModel.DanhGiaCuaMerchant">
+        <MappingFragment StoreEntitySet="DanhGiaCuaMerchant">
+          <ScalarProperty Name="DanhGiaMerID" ColumnName="DanhGiaMerID" />
+          <ScalarProperty Name="MerchantID" ColumnName="MerchantID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="SoSao" ColumnName="SoSao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DonHangs">
+      <EntityTypeMapping TypeName="KnowledgeStoreModel.DonHang">
+        <MappingFragment StoreEntitySet="DonHang">
+          <ScalarProperty Name="DonHangID" ColumnName="DonHangID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="MerchantID" ColumnName="MerchantID" />
+          <ScalarProperty Name="NgayXuat" ColumnName="NgayXuat" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="TinhTrangDonHangID" ColumnName="TinhTrangDonHangID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GioiTinhs">
+      <EntityTypeMapping TypeName="KnowledgeStoreModel.GioiTinh">
+        <MappingFragment StoreEntitySet="GioiTinh">
+          <ScalarProperty Name="GioiTinhID" ColumnName="GioiTinhID" />
+          <ScalarProperty Name="TenGioiTinh" ColumnName="TenGioiTinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LichSuCus">
+      <EntityTypeMapping TypeName="KnowledgeStoreModel.LichSuCu">
+        <MappingFragment StoreEntitySet="LichSuCus">
+          <ScalarProperty Name="LichSuCusID" ColumnName="LichSuCusID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="DonHangID" ColumnName="DonHangID" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LichSuMers">
+      <EntityTypeMapping TypeName="KnowledgeStoreModel.LichSuMer">
+        <MappingFragment StoreEntitySet="LichSuMer">
+          <ScalarProperty Name="LichSuMerID" ColumnName="LichSuMerID" />
+          <ScalarProperty Name="MerchantID" ColumnName="MerchantID" />
+          <ScalarProperty Name="DonHangID" ColumnName="DonHangID" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoaiBias">
+      <EntityTypeMapping TypeName="KnowledgeStoreModel.LoaiBia">
+        <MappingFragment StoreEntitySet="LoaiBia">
+          <ScalarProperty Name="LoaiBiaID" ColumnName="LoaiBiaID" />
+          <ScalarProperty Name="LoaiBia1" ColumnName="LoaiBia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Merchants">
+      <EntityTypeMapping TypeName="KnowledgeStoreModel.Merchant">
+        <MappingFragment StoreEntitySet="Merchant">
+          <ScalarProperty Name="MerchantID" ColumnName="MerchantID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="DiemTichLuy" ColumnName="DiemTichLuy" />
+          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NangTins">
+      <EntityTypeMapping TypeName="KnowledgeStoreModel.NangTin">
+        <MappingFragment StoreEntitySet="NangTin">
+          <ScalarProperty Name="MaLuotNang" ColumnName="MaLuotNang" />
+          <ScalarProperty Name="MaBaiDang" ColumnName="MaBaiDang" />
+          <ScalarProperty Name="MaMer" ColumnName="MaMer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhaXuatBans">
+      <EntityTypeMapping TypeName="KnowledgeStoreModel.NhaXuatBan">
+        <MappingFragment StoreEntitySet="NhaXuatBan">
+          <ScalarProperty Name="NhaXuatBanID" ColumnName="NhaXuatBanID" />
+          <ScalarProperty Name="TenNXB" ColumnName="TenNXB" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Saches">
+      <EntityTypeMapping TypeName="KnowledgeStoreModel.Sach">
+        <MappingFragment StoreEntitySet="Sach">
+          <ScalarProperty Name="SachID" ColumnName="SachID" />
+          <ScalarProperty Name="MaSach" ColumnName="MaSach" />
+          <ScalarProperty Name="TenSach" ColumnName="TenSach" />
+          <ScalarProperty Name="TacGia" ColumnName="TacGia" />
+          <ScalarProperty Name="NhaXuatBanID" ColumnName="NhaXuatBanID" />
+          <ScalarProperty Name="NgayXuatBan" ColumnName="NgayXuatBan" />
+          <ScalarProperty Name="SoTrang" ColumnName="SoTrang" />
+          <ScalarProperty Name="LoaiBiaID" ColumnName="LoaiBiaID" />
+          <ScalarProperty Name="TheLoaiID" ColumnName="TheLoaiID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TheLoais">
+      <EntityTypeMapping TypeName="KnowledgeStoreModel.TheLoai">
+        <MappingFragment StoreEntitySet="TheLoai">
+          <ScalarProperty Name="TheLoaiID" ColumnName="TheLoaiID" />
+          <ScalarProperty Name="TenTheLoai" ColumnName="TenTheLoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TinhTrangDonHangs">
+      <EntityTypeMapping TypeName="KnowledgeStoreModel.TinhTrangDonHang">
+        <MappingFragment StoreEntitySet="TinhTrangDonHang">
+          <ScalarProperty Name="TinhTrangDonHangID" ColumnName="TinhTrangDonHangID" />
+          <ScalarProperty Name="TenTinhTrangDonHang" ColumnName="TenTinhTrangDonHang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

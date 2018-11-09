@@ -1,0 +1,5 @@
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Common\bin\Debug\Common.dll
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Common\bin\Debug\Common.pdb
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Common\obj\Debug\Common.dll
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Common\obj\Debug\Common.pdb

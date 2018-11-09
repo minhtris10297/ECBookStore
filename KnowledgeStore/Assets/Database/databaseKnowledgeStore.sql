@@ -1,16 +1,16 @@
 ﻿USE master
-IF EXISTS(SELECT * FROM sys.databases WHERE name='ProjectBookStore')
-DROP DATABASE ProjectBookStore
-CREATE DATABASE ProjectBookStore
+IF EXISTS(SELECT * FROM sys.databases WHERE name='KnowledgeStore')
+DROP DATABASE KnowledgeStore
+CREATE DATABASE KnowledgeStore
 GO
 
-USE ProjectBookStore
+USE KnowledgeStore
 GO
 
 --Thể loại--
 CREATE TABLE TheLoai(
 	TheLoaiID int identity (1,1) not null primary key,
-	TenTheLoai nvarchar(100)
+	TenTheLoai nvarchar(100) not null
 )
 GO
 
@@ -33,7 +33,7 @@ CREATE TABLE Sach(
 	MaSach varchar(100) not null,
 	TenSach nvarchar(50) not null,
 	TacGia nvarchar(50) not null,
-	NhaXuatBan int foreign key references NhaXuatBan(NhaXuatBanID) not null,
+	NhaXuatBanID int foreign key references NhaXuatBan(NhaXuatBanID) not null,
 	NgayXuatBan datetime not null,
 	SoTrang int not null,
 	LoaiBiaID int foreign key references LoaiBia(LoaiBiaID),
@@ -43,7 +43,7 @@ GO
 -- GioiTinh --
 CREATE TABLE GioiTinh(
 	GioiTinhID int identity (1,1) not null primary key,
-	TenGioiTinh nvarchar(50)
+	TenGioiTinh nvarchar(50) not null
 )
 --  Merchant --
 CREATE TABLE Merchant(
@@ -66,7 +66,7 @@ CREATE TABLE ChiTietSachMerchant(
 	GiaKhuyenMai money null,
 	SoLuong int not null,
 	NgayTao DateTime not null,
-	TrangThai bit Default 1, -- 1 là hoạt động, deactive nó thì sẽ thành 0
+	TrangThai bit Default 1 not null, -- 1 là hoạt động, deactive nó thì sẽ thành 0
 )
 GO
 
@@ -79,7 +79,7 @@ CREATE TABLE Customer(
 	MatKhauMaHoa varchar(256) not null,
 	GioiTinhID int foreign key references GioiTinh(GioiTinhID) not null,
 	DanhGia int,
-	TrangThai bit Default 1, -- 1 là hoạt động, deactive nó thì sẽ thành 0
+	TrangThai bit Default 1 not null, -- 1 là hoạt động, deactive nó thì sẽ thành 0
 )
 GO
 
@@ -117,7 +117,7 @@ CREATE TABLE DanhGiaCuaCustomer(
 	DanhGiaCusID int identity (1,1) not null primary key,
 	CustomerID int foreign key references Customer(CustomerID) not null,
 	DonHangID int foreign key references DonHang(DonHangID) not null,
-	SoSao float,
+	SoSao float not null,
 )
 GO
 
@@ -126,7 +126,7 @@ CREATE TABLE DanhGiaCuaMerchant(
 	DanhGiaMerID int identity (1,1) not null primary key,
 	MerchantID int foreign key references Merchant(MerchantID) not null,
 	CustomerID int foreign key references Customer(CustomerID) not null,
-	SoSao float,
+	SoSao float not null,
 )
 GO
 

@@ -1,0 +1,14 @@
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Model\obj\Debug\Model.csprojAssemblyReference.cache
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Model\bin\Debug\Model.dll.config
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Model\bin\Debug\Model.dll
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Model\bin\Debug\Model.pdb
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Model\bin\Debug\Common.dll
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Model\bin\Debug\EntityFramework.dll
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Model\bin\Debug\Common.pdb
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Model\bin\Debug\EntityFramework.xml
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Model\obj\Debug\Model.csproj.CopyComplete
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Model\obj\Debug\Model.dll
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\Model\obj\Debug\Model.pdb

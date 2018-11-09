@@ -1,0 +1,1329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="KnowledgeStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="MaTaiKhoan" />
+          </Key>
+          <Property Name="MaTaiKhoan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenDangNhap" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MatKhau" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenHienThi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BaiDang">
+          <Key>
+            <PropertyRef Name="MaBaiDang" />
+          </Key>
+          <Property Name="MaBaiDang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaMer" Type="int" />
+          <Property Name="ViTri" Type="int" />
+        </EntityType>
+        <EntityType Name="ChiTietDonHang">
+          <Key>
+            <PropertyRef Name="ChiTietDonHangID" />
+          </Key>
+          <Property Name="ChiTietDonHangID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DonHangID" Type="int" Nullable="false" />
+          <Property Name="SachID" Type="int" Nullable="false" />
+          <Property Name="SoLuong" Type="int" Nullable="false" />
+          <Property Name="ThanhTien" Type="money" Nullable="false" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ChiTietSachMerchant">
+          <Key>
+            <PropertyRef Name="KhoSachMerchantID" />
+          </Key>
+          <Property Name="KhoSachMerchantID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SachID" Type="int" />
+          <Property Name="MerchantID" Type="int" />
+          <Property Name="DonGia" Type="money" Nullable="false" />
+          <Property Name="GiaKhuyenMai" Type="money" />
+          <Property Name="SoLuong" Type="int" Nullable="false" />
+          <Property Name="NgayTao" Type="datetime" Nullable="false" />
+          <Property Name="TrangThai" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CTBaiDang">
+          <Key>
+            <PropertyRef Name="MaCTBD" />
+          </Key>
+          <Property Name="MaCTBD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaBaiDang" Type="int" />
+          <Property Name="TieuDe" Type="nvarchar" MaxLength="50" />
+          <Property Name="HinhAnh" Type="varchar" MaxLength="100" />
+          <Property Name="NoiDung" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MatKhauMaHoa" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="GioiTinhID" Type="int" Nullable="false" />
+          <Property Name="DanhGia" Type="int" />
+          <Property Name="TrangThai" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DanhGiaCuaCustomer">
+          <Key>
+            <PropertyRef Name="DanhGiaCusID" />
+          </Key>
+          <Property Name="DanhGiaCusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="DonHangID" Type="int" Nullable="false" />
+          <Property Name="SoSao" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DanhGiaCuaMerchant">
+          <Key>
+            <PropertyRef Name="DanhGiaMerID" />
+          </Key>
+          <Property Name="DanhGiaMerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MerchantID" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="SoSao" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DonHang">
+          <Key>
+            <PropertyRef Name="DonHangID" />
+          </Key>
+          <Property Name="DonHangID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="MerchantID" Type="int" />
+          <Property Name="NgayXuat" Type="datetime" />
+          <Property Name="TongTien" Type="money" Nullable="false" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+          <Property Name="TinhTrangDonHangID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GioiTinh">
+          <Key>
+            <PropertyRef Name="GioiTinhID" />
+          </Key>
+          <Property Name="GioiTinhID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenGioiTinh" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LichSuCus">
+          <Key>
+            <PropertyRef Name="LichSuCusID" />
+          </Key>
+          <Property Name="LichSuCusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="DonHangID" Type="int" Nullable="false" />
+          <Property Name="TongTien" Type="money" />
+        </EntityType>
+        <EntityType Name="LichSuMer">
+          <Key>
+            <PropertyRef Name="LichSuMerID" />
+          </Key>
+          <Property Name="LichSuMerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MerchantID" Type="int" Nullable="false" />
+          <Property Name="DonHangID" Type="int" Nullable="false" />
+          <Property Name="TongTien" Type="money" />
+        </EntityType>
+        <EntityType Name="LoaiBia">
+          <Key>
+            <PropertyRef Name="LoaiBiaID" />
+          </Key>
+          <Property Name="LoaiBiaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoaiBia" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Merchant">
+          <Key>
+            <PropertyRef Name="MerchantID" />
+          </Key>
+          <Property Name="MerchantID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="GioiTinh" Type="int" Nullable="false" />
+          <Property Name="DiemTichLuy" Type="int" Nullable="false" />
+          <Property Name="NgayTao" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NangTin">
+          <Key>
+            <PropertyRef Name="MaLuotNang" />
+          </Key>
+          <Property Name="MaLuotNang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaBaiDang" Type="int" Nullable="false" />
+          <Property Name="MaMer" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NhaXuatBan">
+          <Key>
+            <PropertyRef Name="NhaXuatBanID" />
+          </Key>
+          <Property Name="NhaXuatBanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenNXB" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sach">
+          <Key>
+            <PropertyRef Name="SachID" />
+          </Key>
+          <Property Name="SachID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaSach" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TenSach" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TacGia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NhaXuatBanID" Type="int" Nullable="false" />
+          <Property Name="NgayXuatBan" Type="datetime" Nullable="false" />
+          <Property Name="SoTrang" Type="int" Nullable="false" />
+          <Property Name="LoaiBiaID" Type="int" />
+          <Property Name="TheLoaiID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TheLoai">
+          <Key>
+            <PropertyRef Name="TheLoaiID" />
+          </Key>
+          <Property Name="TheLoaiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenTheLoai" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TinhTrangDonHang">
+          <Key>
+            <PropertyRef Name="TinhTrangDonHangID" />
+          </Key>
+          <Property Name="TinhTrangDonHangID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenTinhTrangDonHang" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__ChiTietDo__DonHa__5629CD9C">
+          <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
+          <End Role="ChiTietDonHang" Type="Self.ChiTietDonHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonHang">
+              <PropertyRef Name="DonHangID" />
+            </Principal>
+            <Dependent Role="ChiTietDonHang">
+              <PropertyRef Name="DonHangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietDo__SachI__571DF1D5">
+          <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
+          <End Role="ChiTietDonHang" Type="Self.ChiTietDonHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sach">
+              <PropertyRef Name="SachID" />
+            </Principal>
+            <Dependent Role="ChiTietDonHang">
+              <PropertyRef Name="SachID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietSa__Merch__47DBAE45">
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="0..1" />
+          <End Role="ChiTietSachMerchant" Type="Self.ChiTietSachMerchant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Merchant">
+              <PropertyRef Name="MerchantID" />
+            </Principal>
+            <Dependent Role="ChiTietSachMerchant">
+              <PropertyRef Name="MerchantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietSa__SachI__46E78A0C">
+          <End Role="Sach" Type="Self.Sach" Multiplicity="0..1" />
+          <End Role="ChiTietSachMerchant" Type="Self.ChiTietSachMerchant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sach">
+              <PropertyRef Name="SachID" />
+            </Principal>
+            <Dependent Role="ChiTietSachMerchant">
+              <PropertyRef Name="SachID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customer__GioiTi__4BAC3F29">
+          <End Role="GioiTinh" Type="Self.GioiTinh" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GioiTinh">
+              <PropertyRef Name="GioiTinhID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="GioiTinhID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DanhGiaCu__Custo__59FA5E80">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="DanhGiaCuaCustomer" Type="Self.DanhGiaCuaCustomer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="DanhGiaCuaCustomer">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DanhGiaCu__Custo__5EBF139D">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="DanhGiaCuaMerchant" Type="Self.DanhGiaCuaMerchant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="DanhGiaCuaMerchant">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DanhGiaCu__DonHa__5AEE82B9">
+          <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
+          <End Role="DanhGiaCuaCustomer" Type="Self.DanhGiaCuaCustomer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonHang">
+              <PropertyRef Name="DonHangID" />
+            </Principal>
+            <Dependent Role="DanhGiaCuaCustomer">
+              <PropertyRef Name="DonHangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DanhGiaCu__Merch__5DCAEF64">
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="1" />
+          <End Role="DanhGiaCuaMerchant" Type="Self.DanhGiaCuaMerchant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Merchant">
+              <PropertyRef Name="MerchantID" />
+            </Principal>
+            <Dependent Role="DanhGiaCuaMerchant">
+              <PropertyRef Name="MerchantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DonHang__Custome__5165187F">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="DonHang">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DonHang__Merchan__52593CB8">
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="0..1" />
+          <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Merchant">
+              <PropertyRef Name="MerchantID" />
+            </Principal>
+            <Dependent Role="DonHang">
+              <PropertyRef Name="MerchantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DonHang__TinhTra__534D60F1">
+          <End Role="TinhTrangDonHang" Type="Self.TinhTrangDonHang" Multiplicity="1" />
+          <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TinhTrangDonHang">
+              <PropertyRef Name="TinhTrangDonHangID" />
+            </Principal>
+            <Dependent Role="DonHang">
+              <PropertyRef Name="TinhTrangDonHangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LichSuCus__Custo__619B8048">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="LichSuCus" Type="Self.LichSuCus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="LichSuCus">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LichSuCus__DonHa__628FA481">
+          <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
+          <End Role="LichSuCus" Type="Self.LichSuCus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonHang">
+              <PropertyRef Name="DonHangID" />
+            </Principal>
+            <Dependent Role="LichSuCus">
+              <PropertyRef Name="DonHangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LichSuMer__DonHa__66603565">
+          <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
+          <End Role="LichSuMer" Type="Self.LichSuMer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonHang">
+              <PropertyRef Name="DonHangID" />
+            </Principal>
+            <Dependent Role="LichSuMer">
+              <PropertyRef Name="DonHangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LichSuMer__Merch__656C112C">
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="1" />
+          <End Role="LichSuMer" Type="Self.LichSuMer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Merchant">
+              <PropertyRef Name="MerchantID" />
+            </Principal>
+            <Dependent Role="LichSuMer">
+              <PropertyRef Name="MerchantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Merchant__GioiTi__440B1D61">
+          <End Role="GioiTinh" Type="Self.GioiTinh" Multiplicity="1" />
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GioiTinh">
+              <PropertyRef Name="GioiTinhID" />
+            </Principal>
+            <Dependent Role="Merchant">
+              <PropertyRef Name="GioiTinh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sach__LoaiBiaID__3E52440B">
+          <End Role="LoaiBia" Type="Self.LoaiBia" Multiplicity="0..1" />
+          <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiBia">
+              <PropertyRef Name="LoaiBiaID" />
+            </Principal>
+            <Dependent Role="Sach">
+              <PropertyRef Name="LoaiBiaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sach__NhaXuatBan__3D5E1FD2">
+          <End Role="NhaXuatBan" Type="Self.NhaXuatBan" Multiplicity="1" />
+          <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhaXuatBan">
+              <PropertyRef Name="NhaXuatBanID" />
+            </Principal>
+            <Dependent Role="Sach">
+              <PropertyRef Name="NhaXuatBanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sach__TheLoaiID__3F466844">
+          <End Role="TheLoai" Type="Self.TheLoai" Multiplicity="1" />
+          <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheLoai">
+              <PropertyRef Name="TheLoaiID" />
+            </Principal>
+            <Dependent Role="Sach">
+              <PropertyRef Name="TheLoaiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KnowledgeStoreModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BaiDang" EntityType="Self.BaiDang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChiTietDonHang" EntityType="Self.ChiTietDonHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChiTietSachMerchant" EntityType="Self.ChiTietSachMerchant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CTBaiDang" EntityType="Self.CTBaiDang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DanhGiaCuaCustomer" EntityType="Self.DanhGiaCuaCustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DanhGiaCuaMerchant" EntityType="Self.DanhGiaCuaMerchant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DonHang" EntityType="Self.DonHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GioiTinh" EntityType="Self.GioiTinh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LichSuCus" EntityType="Self.LichSuCus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LichSuMer" EntityType="Self.LichSuMer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiBia" EntityType="Self.LoaiBia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Merchant" EntityType="Self.Merchant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NangTin" EntityType="Self.NangTin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhaXuatBan" EntityType="Self.NhaXuatBan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sach" EntityType="Self.Sach" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TheLoai" EntityType="Self.TheLoai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TinhTrangDonHang" EntityType="Self.TinhTrangDonHang" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ChiTietDo__DonHa__5629CD9C" Association="Self.FK__ChiTietDo__DonHa__5629CD9C">
+            <End Role="DonHang" EntitySet="DonHang" />
+            <End Role="ChiTietDonHang" EntitySet="ChiTietDonHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietDo__SachI__571DF1D5" Association="Self.FK__ChiTietDo__SachI__571DF1D5">
+            <End Role="Sach" EntitySet="Sach" />
+            <End Role="ChiTietDonHang" EntitySet="ChiTietDonHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietSa__Merch__47DBAE45" Association="Self.FK__ChiTietSa__Merch__47DBAE45">
+            <End Role="Merchant" EntitySet="Merchant" />
+            <End Role="ChiTietSachMerchant" EntitySet="ChiTietSachMerchant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietSa__SachI__46E78A0C" Association="Self.FK__ChiTietSa__SachI__46E78A0C">
+            <End Role="Sach" EntitySet="Sach" />
+            <End Role="ChiTietSachMerchant" EntitySet="ChiTietSachMerchant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__GioiTi__4BAC3F29" Association="Self.FK__Customer__GioiTi__4BAC3F29">
+            <End Role="GioiTinh" EntitySet="GioiTinh" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DanhGiaCu__Custo__59FA5E80" Association="Self.FK__DanhGiaCu__Custo__59FA5E80">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="DanhGiaCuaCustomer" EntitySet="DanhGiaCuaCustomer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DanhGiaCu__Custo__5EBF139D" Association="Self.FK__DanhGiaCu__Custo__5EBF139D">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="DanhGiaCuaMerchant" EntitySet="DanhGiaCuaMerchant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DanhGiaCu__DonHa__5AEE82B9" Association="Self.FK__DanhGiaCu__DonHa__5AEE82B9">
+            <End Role="DonHang" EntitySet="DonHang" />
+            <End Role="DanhGiaCuaCustomer" EntitySet="DanhGiaCuaCustomer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DanhGiaCu__Merch__5DCAEF64" Association="Self.FK__DanhGiaCu__Merch__5DCAEF64">
+            <End Role="Merchant" EntitySet="Merchant" />
+            <End Role="DanhGiaCuaMerchant" EntitySet="DanhGiaCuaMerchant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DonHang__Custome__5165187F" Association="Self.FK__DonHang__Custome__5165187F">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="DonHang" EntitySet="DonHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DonHang__Merchan__52593CB8" Association="Self.FK__DonHang__Merchan__52593CB8">
+            <End Role="Merchant" EntitySet="Merchant" />
+            <End Role="DonHang" EntitySet="DonHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DonHang__TinhTra__534D60F1" Association="Self.FK__DonHang__TinhTra__534D60F1">
+            <End Role="TinhTrangDonHang" EntitySet="TinhTrangDonHang" />
+            <End Role="DonHang" EntitySet="DonHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LichSuCus__Custo__619B8048" Association="Self.FK__LichSuCus__Custo__619B8048">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="LichSuCus" EntitySet="LichSuCus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LichSuCus__DonHa__628FA481" Association="Self.FK__LichSuCus__DonHa__628FA481">
+            <End Role="DonHang" EntitySet="DonHang" />
+            <End Role="LichSuCus" EntitySet="LichSuCus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LichSuMer__DonHa__66603565" Association="Self.FK__LichSuMer__DonHa__66603565">
+            <End Role="DonHang" EntitySet="DonHang" />
+            <End Role="LichSuMer" EntitySet="LichSuMer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LichSuMer__Merch__656C112C" Association="Self.FK__LichSuMer__Merch__656C112C">
+            <End Role="Merchant" EntitySet="Merchant" />
+            <End Role="LichSuMer" EntitySet="LichSuMer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Merchant__GioiTi__440B1D61" Association="Self.FK__Merchant__GioiTi__440B1D61">
+            <End Role="GioiTinh" EntitySet="GioiTinh" />
+            <End Role="Merchant" EntitySet="Merchant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sach__LoaiBiaID__3E52440B" Association="Self.FK__Sach__LoaiBiaID__3E52440B">
+            <End Role="LoaiBia" EntitySet="LoaiBia" />
+            <End Role="Sach" EntitySet="Sach" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sach__NhaXuatBan__3D5E1FD2" Association="Self.FK__Sach__NhaXuatBan__3D5E1FD2">
+            <End Role="NhaXuatBan" EntitySet="NhaXuatBan" />
+            <End Role="Sach" EntitySet="Sach" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sach__TheLoaiID__3F466844" Association="Self.FK__Sach__TheLoaiID__3F466844">
+            <End Role="TheLoai" EntitySet="TheLoai" />
+            <End Role="Sach" EntitySet="Sach" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KnowledgeStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="MaTaiKhoan" />
+          </Key>
+          <Property Name="MaTaiKhoan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenHienThi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BaiDang">
+          <Key>
+            <PropertyRef Name="MaBaiDang" />
+          </Key>
+          <Property Name="MaBaiDang" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaMer" Type="Int32" />
+          <Property Name="ViTri" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ChiTietDonHang">
+          <Key>
+            <PropertyRef Name="ChiTietDonHangID" />
+          </Key>
+          <Property Name="ChiTietDonHangID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DonHangID" Type="Int32" Nullable="false" />
+          <Property Name="SachID" Type="Int32" Nullable="false" />
+          <Property Name="SoLuong" Type="Int32" Nullable="false" />
+          <Property Name="ThanhTien" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DonHang" Relationship="Self.FK__ChiTietDo__DonHa__5629CD9C" FromRole="ChiTietDonHang" ToRole="DonHang" />
+          <NavigationProperty Name="Sach" Relationship="Self.FK__ChiTietDo__SachI__571DF1D5" FromRole="ChiTietDonHang" ToRole="Sach" />
+        </EntityType>
+        <EntityType Name="ChiTietSachMerchant">
+          <Key>
+            <PropertyRef Name="KhoSachMerchantID" />
+          </Key>
+          <Property Name="KhoSachMerchantID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SachID" Type="Int32" />
+          <Property Name="MerchantID" Type="Int32" />
+          <Property Name="DonGia" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="GiaKhuyenMai" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SoLuong" Type="Int32" Nullable="false" />
+          <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TrangThai" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Merchant" Relationship="Self.FK__ChiTietSa__Merch__47DBAE45" FromRole="ChiTietSachMerchant" ToRole="Merchant" />
+          <NavigationProperty Name="Sach" Relationship="Self.FK__ChiTietSa__SachI__46E78A0C" FromRole="ChiTietSachMerchant" ToRole="Sach" />
+        </EntityType>
+        <EntityType Name="CTBaiDang">
+          <Key>
+            <PropertyRef Name="MaCTBD" />
+          </Key>
+          <Property Name="MaCTBD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaBaiDang" Type="Int32" />
+          <Property Name="TieuDe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HinhAnh" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NoiDung" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MatKhauMaHoa" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GioiTinhID" Type="Int32" Nullable="false" />
+          <Property Name="DanhGia" Type="Int32" />
+          <Property Name="TrangThai" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="GioiTinh" Relationship="Self.FK__Customer__GioiTi__4BAC3F29" FromRole="Customer" ToRole="GioiTinh" />
+          <NavigationProperty Name="DanhGiaCuaCustomers" Relationship="Self.FK__DanhGiaCu__Custo__59FA5E80" FromRole="Customer" ToRole="DanhGiaCuaCustomer" />
+          <NavigationProperty Name="DanhGiaCuaMerchants" Relationship="Self.FK__DanhGiaCu__Custo__5EBF139D" FromRole="Customer" ToRole="DanhGiaCuaMerchant" />
+          <NavigationProperty Name="DonHangs" Relationship="Self.FK__DonHang__Custome__5165187F" FromRole="Customer" ToRole="DonHang" />
+          <NavigationProperty Name="LichSuCus" Relationship="Self.FK__LichSuCus__Custo__619B8048" FromRole="Customer" ToRole="LichSuCus" />
+        </EntityType>
+        <EntityType Name="DanhGiaCuaCustomer">
+          <Key>
+            <PropertyRef Name="DanhGiaCusID" />
+          </Key>
+          <Property Name="DanhGiaCusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="DonHangID" Type="Int32" Nullable="false" />
+          <Property Name="SoSao" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__DanhGiaCu__Custo__59FA5E80" FromRole="DanhGiaCuaCustomer" ToRole="Customer" />
+          <NavigationProperty Name="DonHang" Relationship="Self.FK__DanhGiaCu__DonHa__5AEE82B9" FromRole="DanhGiaCuaCustomer" ToRole="DonHang" />
+        </EntityType>
+        <EntityType Name="DanhGiaCuaMerchant">
+          <Key>
+            <PropertyRef Name="DanhGiaMerID" />
+          </Key>
+          <Property Name="DanhGiaMerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MerchantID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="SoSao" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__DanhGiaCu__Custo__5EBF139D" FromRole="DanhGiaCuaMerchant" ToRole="Customer" />
+          <NavigationProperty Name="Merchant" Relationship="Self.FK__DanhGiaCu__Merch__5DCAEF64" FromRole="DanhGiaCuaMerchant" ToRole="Merchant" />
+        </EntityType>
+        <EntityType Name="DonHang">
+          <Key>
+            <PropertyRef Name="DonHangID" />
+          </Key>
+          <Property Name="DonHangID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="MerchantID" Type="Int32" />
+          <Property Name="NgayXuat" Type="DateTime" Precision="3" />
+          <Property Name="TongTien" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TinhTrangDonHangID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ChiTietDonHangs" Relationship="Self.FK__ChiTietDo__DonHa__5629CD9C" FromRole="DonHang" ToRole="ChiTietDonHang" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__DonHang__Custome__5165187F" FromRole="DonHang" ToRole="Customer" />
+          <NavigationProperty Name="DanhGiaCuaCustomers" Relationship="Self.FK__DanhGiaCu__DonHa__5AEE82B9" FromRole="DonHang" ToRole="DanhGiaCuaCustomer" />
+          <NavigationProperty Name="Merchant" Relationship="Self.FK__DonHang__Merchan__52593CB8" FromRole="DonHang" ToRole="Merchant" />
+          <NavigationProperty Name="TinhTrangDonHang" Relationship="Self.FK__DonHang__TinhTra__534D60F1" FromRole="DonHang" ToRole="TinhTrangDonHang" />
+          <NavigationProperty Name="LichSuCus" Relationship="Self.FK__LichSuCus__DonHa__628FA481" FromRole="DonHang" ToRole="LichSuCus" />
+          <NavigationProperty Name="LichSuMers" Relationship="Self.FK__LichSuMer__DonHa__66603565" FromRole="DonHang" ToRole="LichSuMer" />
+        </EntityType>
+        <EntityType Name="GioiTinh">
+          <Key>
+            <PropertyRef Name="GioiTinhID" />
+          </Key>
+          <Property Name="GioiTinhID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenGioiTinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__GioiTi__4BAC3F29" FromRole="GioiTinh" ToRole="Customer" />
+          <NavigationProperty Name="Merchants" Relationship="Self.FK__Merchant__GioiTi__440B1D61" FromRole="GioiTinh" ToRole="Merchant" />
+        </EntityType>
+        <EntityType Name="LichSuCu">
+          <Key>
+            <PropertyRef Name="LichSuCusID" />
+          </Key>
+          <Property Name="LichSuCusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="DonHangID" Type="Int32" Nullable="false" />
+          <Property Name="TongTien" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__LichSuCus__Custo__619B8048" FromRole="LichSuCus" ToRole="Customer" />
+          <NavigationProperty Name="DonHang" Relationship="Self.FK__LichSuCus__DonHa__628FA481" FromRole="LichSuCus" ToRole="DonHang" />
+        </EntityType>
+        <EntityType Name="LichSuMer">
+          <Key>
+            <PropertyRef Name="LichSuMerID" />
+          </Key>
+          <Property Name="LichSuMerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MerchantID" Type="Int32" Nullable="false" />
+          <Property Name="DonHangID" Type="Int32" Nullable="false" />
+          <Property Name="TongTien" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="DonHang" Relationship="Self.FK__LichSuMer__DonHa__66603565" FromRole="LichSuMer" ToRole="DonHang" />
+          <NavigationProperty Name="Merchant" Relationship="Self.FK__LichSuMer__Merch__656C112C" FromRole="LichSuMer" ToRole="Merchant" />
+        </EntityType>
+        <EntityType Name="LoaiBia">
+          <Key>
+            <PropertyRef Name="LoaiBiaID" />
+          </Key>
+          <Property Name="LoaiBiaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoaiBia1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Saches" Relationship="Self.FK__Sach__LoaiBiaID__3E52440B" FromRole="LoaiBia" ToRole="Sach" />
+        </EntityType>
+        <EntityType Name="Merchant">
+          <Key>
+            <PropertyRef Name="MerchantID" />
+          </Key>
+          <Property Name="MerchantID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GioiTinh" Type="Int32" Nullable="false" />
+          <Property Name="DiemTichLuy" Type="Int32" Nullable="false" />
+          <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ChiTietSachMerchants" Relationship="Self.FK__ChiTietSa__Merch__47DBAE45" FromRole="Merchant" ToRole="ChiTietSachMerchant" />
+          <NavigationProperty Name="DanhGiaCuaMerchants" Relationship="Self.FK__DanhGiaCu__Merch__5DCAEF64" FromRole="Merchant" ToRole="DanhGiaCuaMerchant" />
+          <NavigationProperty Name="DonHangs" Relationship="Self.FK__DonHang__Merchan__52593CB8" FromRole="Merchant" ToRole="DonHang" />
+          <NavigationProperty Name="GioiTinh1" Relationship="Self.FK__Merchant__GioiTi__440B1D61" FromRole="Merchant" ToRole="GioiTinh" />
+          <NavigationProperty Name="LichSuMers" Relationship="Self.FK__LichSuMer__Merch__656C112C" FromRole="Merchant" ToRole="LichSuMer" />
+        </EntityType>
+        <EntityType Name="NangTin">
+          <Key>
+            <PropertyRef Name="MaLuotNang" />
+          </Key>
+          <Property Name="MaLuotNang" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaBaiDang" Type="Int32" Nullable="false" />
+          <Property Name="MaMer" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NhaXuatBan">
+          <Key>
+            <PropertyRef Name="NhaXuatBanID" />
+          </Key>
+          <Property Name="NhaXuatBanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenNXB" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Saches" Relationship="Self.FK__Sach__NhaXuatBan__3D5E1FD2" FromRole="NhaXuatBan" ToRole="Sach" />
+        </EntityType>
+        <EntityType Name="Sach">
+          <Key>
+            <PropertyRef Name="SachID" />
+          </Key>
+          <Property Name="SachID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaSach" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenSach" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TacGia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NhaXuatBanID" Type="Int32" Nullable="false" />
+          <Property Name="NgayXuatBan" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SoTrang" Type="Int32" Nullable="false" />
+          <Property Name="LoaiBiaID" Type="Int32" />
+          <Property Name="TheLoaiID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ChiTietDonHangs" Relationship="Self.FK__ChiTietDo__SachI__571DF1D5" FromRole="Sach" ToRole="ChiTietDonHang" />
+          <NavigationProperty Name="ChiTietSachMerchants" Relationship="Self.FK__ChiTietSa__SachI__46E78A0C" FromRole="Sach" ToRole="ChiTietSachMerchant" />
+          <NavigationProperty Name="LoaiBia" Relationship="Self.FK__Sach__LoaiBiaID__3E52440B" FromRole="Sach" ToRole="LoaiBia" />
+          <NavigationProperty Name="NhaXuatBan" Relationship="Self.FK__Sach__NhaXuatBan__3D5E1FD2" FromRole="Sach" ToRole="NhaXuatBan" />
+          <NavigationProperty Name="TheLoai" Relationship="Self.FK__Sach__TheLoaiID__3F466844" FromRole="Sach" ToRole="TheLoai" />
+        </EntityType>
+        <EntityType Name="TheLoai">
+          <Key>
+            <PropertyRef Name="TheLoaiID" />
+          </Key>
+          <Property Name="TheLoaiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenTheLoai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Saches" Relationship="Self.FK__Sach__TheLoaiID__3F466844" FromRole="TheLoai" ToRole="Sach" />
+        </EntityType>
+        <EntityType Name="TinhTrangDonHang">
+          <Key>
+            <PropertyRef Name="TinhTrangDonHangID" />
+          </Key>
+          <Property Name="TinhTrangDonHangID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenTinhTrangDonHang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DonHangs" Relationship="Self.FK__DonHang__TinhTra__534D60F1" FromRole="TinhTrangDonHang" ToRole="DonHang" />
+        </EntityType>
+        <Association Name="FK__ChiTietDo__DonHa__5629CD9C">
+          <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
+          <End Role="ChiTietDonHang" Type="Self.ChiTietDonHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonHang">
+              <PropertyRef Name="DonHangID" />
+            </Principal>
+            <Dependent Role="ChiTietDonHang">
+              <PropertyRef Name="DonHangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietDo__SachI__571DF1D5">
+          <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
+          <End Role="ChiTietDonHang" Type="Self.ChiTietDonHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sach">
+              <PropertyRef Name="SachID" />
+            </Principal>
+            <Dependent Role="ChiTietDonHang">
+              <PropertyRef Name="SachID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietSa__Merch__47DBAE45">
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="0..1" />
+          <End Role="ChiTietSachMerchant" Type="Self.ChiTietSachMerchant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Merchant">
+              <PropertyRef Name="MerchantID" />
+            </Principal>
+            <Dependent Role="ChiTietSachMerchant">
+              <PropertyRef Name="MerchantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietSa__SachI__46E78A0C">
+          <End Role="Sach" Type="Self.Sach" Multiplicity="0..1" />
+          <End Role="ChiTietSachMerchant" Type="Self.ChiTietSachMerchant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sach">
+              <PropertyRef Name="SachID" />
+            </Principal>
+            <Dependent Role="ChiTietSachMerchant">
+              <PropertyRef Name="SachID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customer__GioiTi__4BAC3F29">
+          <End Role="GioiTinh" Type="Self.GioiTinh" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GioiTinh">
+              <PropertyRef Name="GioiTinhID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="GioiTinhID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DanhGiaCu__Custo__59FA5E80">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="DanhGiaCuaCustomer" Type="Self.DanhGiaCuaCustomer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="DanhGiaCuaCustomer">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DanhGiaCu__Custo__5EBF139D">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="DanhGiaCuaMerchant" Type="Self.DanhGiaCuaMerchant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="DanhGiaCuaMerchant">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DonHang__Custome__5165187F">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="DonHang">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LichSuCus__Custo__619B8048">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="LichSuCus" Type="Self.LichSuCu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="LichSuCus">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DanhGiaCu__DonHa__5AEE82B9">
+          <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
+          <End Role="DanhGiaCuaCustomer" Type="Self.DanhGiaCuaCustomer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonHang">
+              <PropertyRef Name="DonHangID" />
+            </Principal>
+            <Dependent Role="DanhGiaCuaCustomer">
+              <PropertyRef Name="DonHangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DanhGiaCu__Merch__5DCAEF64">
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="1" />
+          <End Role="DanhGiaCuaMerchant" Type="Self.DanhGiaCuaMerchant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Merchant">
+              <PropertyRef Name="MerchantID" />
+            </Principal>
+            <Dependent Role="DanhGiaCuaMerchant">
+              <PropertyRef Name="MerchantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DonHang__Merchan__52593CB8">
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="0..1" />
+          <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Merchant">
+              <PropertyRef Name="MerchantID" />
+            </Principal>
+            <Dependent Role="DonHang">
+              <PropertyRef Name="MerchantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DonHang__TinhTra__534D60F1">
+          <End Role="TinhTrangDonHang" Type="Self.TinhTrangDonHang" Multiplicity="1" />
+          <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TinhTrangDonHang">
+              <PropertyRef Name="TinhTrangDonHangID" />
+            </Principal>
+            <Dependent Role="DonHang">
+              <PropertyRef Name="TinhTrangDonHangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LichSuCus__DonHa__628FA481">
+          <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
+          <End Role="LichSuCus" Type="Self.LichSuCu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonHang">
+              <PropertyRef Name="DonHangID" />
+            </Principal>
+            <Dependent Role="LichSuCus">
+              <PropertyRef Name="DonHangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LichSuMer__DonHa__66603565">
+          <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
+          <End Role="LichSuMer" Type="Self.LichSuMer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonHang">
+              <PropertyRef Name="DonHangID" />
+            </Principal>
+            <Dependent Role="LichSuMer">
+              <PropertyRef Name="DonHangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Merchant__GioiTi__440B1D61">
+          <End Role="GioiTinh" Type="Self.GioiTinh" Multiplicity="1" />
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GioiTinh">
+              <PropertyRef Name="GioiTinhID" />
+            </Principal>
+            <Dependent Role="Merchant">
+              <PropertyRef Name="GioiTinh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LichSuMer__Merch__656C112C">
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="1" />
+          <End Role="LichSuMer" Type="Self.LichSuMer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Merchant">
+              <PropertyRef Name="MerchantID" />
+            </Principal>
+            <Dependent Role="LichSuMer">
+              <PropertyRef Name="MerchantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sach__LoaiBiaID__3E52440B">
+          <End Role="LoaiBia" Type="Self.LoaiBia" Multiplicity="0..1" />
+          <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiBia">
+              <PropertyRef Name="LoaiBiaID" />
+            </Principal>
+            <Dependent Role="Sach">
+              <PropertyRef Name="LoaiBiaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sach__NhaXuatBan__3D5E1FD2">
+          <End Role="NhaXuatBan" Type="Self.NhaXuatBan" Multiplicity="1" />
+          <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhaXuatBan">
+              <PropertyRef Name="NhaXuatBanID" />
+            </Principal>
+            <Dependent Role="Sach">
+              <PropertyRef Name="NhaXuatBanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sach__TheLoaiID__3F466844">
+          <End Role="TheLoai" Type="Self.TheLoai" Multiplicity="1" />
+          <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheLoai">
+              <PropertyRef Name="TheLoaiID" />
+            </Principal>
+            <Dependent Role="Sach">
+              <PropertyRef Name="TheLoaiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KnowledgeStoreEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="BaiDangs" EntityType="Self.BaiDang" />
+          <EntitySet Name="ChiTietDonHangs" EntityType="Self.ChiTietDonHang" />
+          <EntitySet Name="ChiTietSachMerchants" EntityType="Self.ChiTietSachMerchant" />
+          <EntitySet Name="CTBaiDangs" EntityType="Self.CTBaiDang" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="DanhGiaCuaCustomers" EntityType="Self.DanhGiaCuaCustomer" />
+          <EntitySet Name="DanhGiaCuaMerchants" EntityType="Self.DanhGiaCuaMerchant" />
+          <EntitySet Name="DonHangs" EntityType="Self.DonHang" />
+          <EntitySet Name="GioiTinhs" EntityType="Self.GioiTinh" />
+          <EntitySet Name="LichSuCus" EntityType="Self.LichSuCu" />
+          <EntitySet Name="LichSuMers" EntityType="Self.LichSuMer" />
+          <EntitySet Name="LoaiBias" EntityType="Self.LoaiBia" />
+          <EntitySet Name="Merchants" EntityType="Self.Merchant" />
+          <EntitySet Name="NangTins" EntityType="Self.NangTin" />
+          <EntitySet Name="NhaXuatBans" EntityType="Self.NhaXuatBan" />
+          <EntitySet Name="Saches" EntityType="Self.Sach" />
+          <EntitySet Name="TheLoais" EntityType="Self.TheLoai" />
+          <EntitySet Name="TinhTrangDonHangs" EntityType="Self.TinhTrangDonHang" />
+          <AssociationSet Name="FK__ChiTietDo__DonHa__5629CD9C" Association="Self.FK__ChiTietDo__DonHa__5629CD9C">
+            <End Role="DonHang" EntitySet="DonHangs" />
+            <End Role="ChiTietDonHang" EntitySet="ChiTietDonHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietDo__SachI__571DF1D5" Association="Self.FK__ChiTietDo__SachI__571DF1D5">
+            <End Role="Sach" EntitySet="Saches" />
+            <End Role="ChiTietDonHang" EntitySet="ChiTietDonHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietSa__Merch__47DBAE45" Association="Self.FK__ChiTietSa__Merch__47DBAE45">
+            <End Role="Merchant" EntitySet="Merchants" />
+            <End Role="ChiTietSachMerchant" EntitySet="ChiTietSachMerchants" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietSa__SachI__46E78A0C" Association="Self.FK__ChiTietSa__SachI__46E78A0C">
+            <End Role="Sach" EntitySet="Saches" />
+            <End Role="ChiTietSachMerchant" EntitySet="ChiTietSachMerchants" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__GioiTi__4BAC3F29" Association="Self.FK__Customer__GioiTi__4BAC3F29">
+            <End Role="GioiTinh" EntitySet="GioiTinhs" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DanhGiaCu__Custo__59FA5E80" Association="Self.FK__DanhGiaCu__Custo__59FA5E80">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="DanhGiaCuaCustomer" EntitySet="DanhGiaCuaCustomers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DanhGiaCu__Custo__5EBF139D" Association="Self.FK__DanhGiaCu__Custo__5EBF139D">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="DanhGiaCuaMerchant" EntitySet="DanhGiaCuaMerchants" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DonHang__Custome__5165187F" Association="Self.FK__DonHang__Custome__5165187F">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="DonHang" EntitySet="DonHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LichSuCus__Custo__619B8048" Association="Self.FK__LichSuCus__Custo__619B8048">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="LichSuCus" EntitySet="LichSuCus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DanhGiaCu__DonHa__5AEE82B9" Association="Self.FK__DanhGiaCu__DonHa__5AEE82B9">
+            <End Role="DonHang" EntitySet="DonHangs" />
+            <End Role="DanhGiaCuaCustomer" EntitySet="DanhGiaCuaCustomers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DanhGiaCu__Merch__5DCAEF64" Association="Self.FK__DanhGiaCu__Merch__5DCAEF64">
+            <End Role="Merchant" EntitySet="Merchants" />
+            <End Role="DanhGiaCuaMerchant" EntitySet="DanhGiaCuaMerchants" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DonHang__Merchan__52593CB8" Association="Self.FK__DonHang__Merchan__52593CB8">
+            <End Role="Merchant" EntitySet="Merchants" />
+            <End Role="DonHang" EntitySet="DonHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DonHang__TinhTra__534D60F1" Association="Self.FK__DonHang__TinhTra__534D60F1">
+            <End Role="TinhTrangDonHang" EntitySet="TinhTrangDonHangs" />
+            <End Role="DonHang" EntitySet="DonHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LichSuCus__DonHa__628FA481" Association="Self.FK__LichSuCus__DonHa__628FA481">
+            <End Role="DonHang" EntitySet="DonHangs" />
+            <End Role="LichSuCus" EntitySet="LichSuCus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LichSuMer__DonHa__66603565" Association="Self.FK__LichSuMer__DonHa__66603565">
+            <End Role="DonHang" EntitySet="DonHangs" />
+            <End Role="LichSuMer" EntitySet="LichSuMers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Merchant__GioiTi__440B1D61" Association="Self.FK__Merchant__GioiTi__440B1D61">
+            <End Role="GioiTinh" EntitySet="GioiTinhs" />
+            <End Role="Merchant" EntitySet="Merchants" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LichSuMer__Merch__656C112C" Association="Self.FK__LichSuMer__Merch__656C112C">
+            <End Role="Merchant" EntitySet="Merchants" />
+            <End Role="LichSuMer" EntitySet="LichSuMers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sach__LoaiBiaID__3E52440B" Association="Self.FK__Sach__LoaiBiaID__3E52440B">
+            <End Role="LoaiBia" EntitySet="LoaiBias" />
+            <End Role="Sach" EntitySet="Saches" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sach__NhaXuatBan__3D5E1FD2" Association="Self.FK__Sach__NhaXuatBan__3D5E1FD2">
+            <End Role="NhaXuatBan" EntitySet="NhaXuatBans" />
+            <End Role="Sach" EntitySet="Saches" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sach__TheLoaiID__3F466844" Association="Self.FK__Sach__TheLoaiID__3F466844">
+            <End Role="TheLoai" EntitySet="TheLoais" />
+            <End Role="Sach" EntitySet="Saches" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KnowledgeStoreModelStoreContainer" CdmEntityContainer="KnowledgeStoreEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="KnowledgeStoreModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="MaTaiKhoan" ColumnName="MaTaiKhoan" />
+                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="TenHienThi" ColumnName="TenHienThi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BaiDangs">
+            <EntityTypeMapping TypeName="KnowledgeStoreModel.BaiDang">
+              <MappingFragment StoreEntitySet="BaiDang">
+                <ScalarProperty Name="MaBaiDang" ColumnName="MaBaiDang" />
+                <ScalarProperty Name="MaMer" ColumnName="MaMer" />
+                <ScalarProperty Name="ViTri" ColumnName="ViTri" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChiTietDonHangs">
+            <EntityTypeMapping TypeName="KnowledgeStoreModel.ChiTietDonHang">
+              <MappingFragment StoreEntitySet="ChiTietDonHang">
+                <ScalarProperty Name="ChiTietDonHangID" ColumnName="ChiTietDonHangID" />
+                <ScalarProperty Name="DonHangID" ColumnName="DonHangID" />
+                <ScalarProperty Name="SachID" ColumnName="SachID" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChiTietSachMerchants">
+            <EntityTypeMapping TypeName="KnowledgeStoreModel.ChiTietSachMerchant">
+              <MappingFragment StoreEntitySet="ChiTietSachMerchant">
+                <ScalarProperty Name="KhoSachMerchantID" ColumnName="KhoSachMerchantID" />
+                <ScalarProperty Name="SachID" ColumnName="SachID" />
+                <ScalarProperty Name="MerchantID" ColumnName="MerchantID" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+                <ScalarProperty Name="GiaKhuyenMai" ColumnName="GiaKhuyenMai" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CTBaiDangs">
+            <EntityTypeMapping TypeName="KnowledgeStoreModel.CTBaiDang">
+              <MappingFragment StoreEntitySet="CTBaiDang">
+                <ScalarProperty Name="MaCTBD" ColumnName="MaCTBD" />
+                <ScalarProperty Name="MaBaiDang" ColumnName="MaBaiDang" />
+                <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+                <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="KnowledgeStoreModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="MatKhauMaHoa" ColumnName="MatKhauMaHoa" />
+                <ScalarProperty Name="GioiTinhID" ColumnName="GioiTinhID" />
+                <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DanhGiaCuaCustomers">
+            <EntityTypeMapping TypeName="KnowledgeStoreModel.DanhGiaCuaCustomer">
+              <MappingFragment StoreEntitySet="DanhGiaCuaCustomer">
+                <ScalarProperty Name="DanhGiaCusID" ColumnName="DanhGiaCusID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="DonHangID" ColumnName="DonHangID" />
+                <ScalarProperty Name="SoSao" ColumnName="SoSao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DanhGiaCuaMerchants">
+            <EntityTypeMapping TypeName="KnowledgeStoreModel.DanhGiaCuaMerchant">
+              <MappingFragment StoreEntitySet="DanhGiaCuaMerchant">
+                <ScalarProperty Name="DanhGiaMerID" ColumnName="DanhGiaMerID" />
+                <ScalarProperty Name="MerchantID" ColumnName="MerchantID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="SoSao" ColumnName="SoSao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DonHangs">
+            <EntityTypeMapping TypeName="KnowledgeStoreModel.DonHang">
+              <MappingFragment StoreEntitySet="DonHang">
+                <ScalarProperty Name="DonHangID" ColumnName="DonHangID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="MerchantID" ColumnName="MerchantID" />
+                <ScalarProperty Name="NgayXuat" ColumnName="NgayXuat" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="TinhTrangDonHangID" ColumnName="TinhTrangDonHangID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GioiTinhs">
+            <EntityTypeMapping TypeName="KnowledgeStoreModel.GioiTinh">
+              <MappingFragment StoreEntitySet="GioiTinh">
+                <ScalarProperty Name="GioiTinhID" ColumnName="GioiTinhID" />
+                <ScalarProperty Name="TenGioiTinh" ColumnName="TenGioiTinh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LichSuCus">
+            <EntityTypeMapping TypeName="KnowledgeStoreModel.LichSuCu">
+              <MappingFragment StoreEntitySet="LichSuCus">
+                <ScalarProperty Name="LichSuCusID" ColumnName="LichSuCusID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="DonHangID" ColumnName="DonHangID" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LichSuMers">
+            <EntityTypeMapping TypeName="KnowledgeStoreModel.LichSuMer">
+              <MappingFragment StoreEntitySet="LichSuMer">
+                <ScalarProperty Name="LichSuMerID" ColumnName="LichSuMerID" />
+                <ScalarProperty Name="MerchantID" ColumnName="MerchantID" />
+                <ScalarProperty Name="DonHangID" ColumnName="DonHangID" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiBias">
+            <EntityTypeMapping TypeName="KnowledgeStoreModel.LoaiBia">
+              <MappingFragment StoreEntitySet="LoaiBia">
+                <ScalarProperty Name="LoaiBiaID" ColumnName="LoaiBiaID" />
+                <ScalarProperty Name="LoaiBia1" ColumnName="LoaiBia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Merchants">
+            <EntityTypeMapping TypeName="KnowledgeStoreModel.Merchant">
+              <MappingFragment StoreEntitySet="Merchant">
+                <ScalarProperty Name="MerchantID" ColumnName="MerchantID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="DiemTichLuy" ColumnName="DiemTichLuy" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NangTins">
+            <EntityTypeMapping TypeName="KnowledgeStoreModel.NangTin">
+              <MappingFragment StoreEntitySet="NangTin">
+                <ScalarProperty Name="MaLuotNang" ColumnName="MaLuotNang" />
+                <ScalarProperty Name="MaBaiDang" ColumnName="MaBaiDang" />
+                <ScalarProperty Name="MaMer" ColumnName="MaMer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhaXuatBans">
+            <EntityTypeMapping TypeName="KnowledgeStoreModel.NhaXuatBan">
+              <MappingFragment StoreEntitySet="NhaXuatBan">
+                <ScalarProperty Name="NhaXuatBanID" ColumnName="NhaXuatBanID" />
+                <ScalarProperty Name="TenNXB" ColumnName="TenNXB" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Saches">
+            <EntityTypeMapping TypeName="KnowledgeStoreModel.Sach">
+              <MappingFragment StoreEntitySet="Sach">
+                <ScalarProperty Name="SachID" ColumnName="SachID" />
+                <ScalarProperty Name="MaSach" ColumnName="MaSach" />
+                <ScalarProperty Name="TenSach" ColumnName="TenSach" />
+                <ScalarProperty Name="TacGia" ColumnName="TacGia" />
+                <ScalarProperty Name="NhaXuatBanID" ColumnName="NhaXuatBanID" />
+                <ScalarProperty Name="NgayXuatBan" ColumnName="NgayXuatBan" />
+                <ScalarProperty Name="SoTrang" ColumnName="SoTrang" />
+                <ScalarProperty Name="LoaiBiaID" ColumnName="LoaiBiaID" />
+                <ScalarProperty Name="TheLoaiID" ColumnName="TheLoaiID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TheLoais">
+            <EntityTypeMapping TypeName="KnowledgeStoreModel.TheLoai">
+              <MappingFragment StoreEntitySet="TheLoai">
+                <ScalarProperty Name="TheLoaiID" ColumnName="TheLoaiID" />
+                <ScalarProperty Name="TenTheLoai" ColumnName="TenTheLoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TinhTrangDonHangs">
+            <EntityTypeMapping TypeName="KnowledgeStoreModel.TinhTrangDonHang">
+              <MappingFragment StoreEntitySet="TinhTrangDonHang">
+                <ScalarProperty Name="TinhTrangDonHangID" ColumnName="TinhTrangDonHangID" />
+                <ScalarProperty Name="TenTinhTrangDonHang" ColumnName="TenTinhTrangDonHang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
