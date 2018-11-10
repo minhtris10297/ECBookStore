@@ -1,19 +1,22 @@
 ﻿using Common;
+using Facebook;
 using KnowledgeStore.Common;
 using Model.Dao;
 using Model.EntityFramework;
 using Model.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace KnowledgeStore.Controllers
 {
     public class AccountsController : Controller
     {
-        KnowledgeStoreContext db = new KnowledgeStoreContext();
+        KnowledgeStoreEntities db = new KnowledgeStoreEntities();
         public ActionResult Login()
         {
             return View();
@@ -114,6 +117,96 @@ namespace KnowledgeStore.Controllers
         {
             Session[CommonConstants.USER_SESSION] = null;
             return RedirectToAction("Index", "Home");
+        }
+
+
+        private Uri RedirectUri
+        {
+            get
+            {
+                var uriBuilder = new UriBuilder(Request.Url);
+                uriBuilder.Query = null;
+                uriBuilder.Fragment = null;
+                uriBuilder.Path = Url.Action("FacebookCallback");
+                return uriBuilder.Uri;
+            }
+        }
+
+        public ActionResult LoginFB()
+        {
+            var fb = new FacebookClient();
+            var loginUrl = fb.GetLoginUrl(new
+            {
+                client_id = ConfigurationManager.AppSettings["FbAppId"],
+                client_secrect = ConfigurationManager.AppSettings["FbAppSecret"],
+                redirect_uri = RedirectUri.AbsoluteUri,
+                response_type = "code",
+                scope = "email",
+            });
+            return Redirect(loginUrl.AbsoluteUri);
+        }
+
+        public ActionResult FacebookCallback(string code)
+        {
+            var fb = new FacebookClient();
+            dynamic result = fb.Post("oauth/access_token", new
+            {
+                client_id = ConfigurationManager.AppSettings["FbAppId"],
+                client_secret = ConfigurationManager.AppSettings["FbAppSecret"],
+                redirect_uri = RedirectUri.AbsoluteUri,
+                code = code
+            });
+            var accessToken = result.access_token;
+            if (!string.IsNullOrEmpty(accessToken))
+            {
+                fb.AccessToken = accessToken;
+                // Get the user's information, like email, first name, middle name etc
+                dynamic me = fb.Get("me?field=email,id,name");
+                string emailFB = me.email;
+                string nameFB = me.name;
+                string idFB = me.id;
+
+                //Create member account add database
+                var customerAccount = new Customer();
+                customerAccount.Email = emailFB;
+                customerAccount.HoTen = nameFB;
+                customerAccount.IDFacebook = idFB;
+
+                var resultInsertFb = new UserDao().InsertUserFb(customerAccount);
+
+                //Add Session to display view
+                UserLogin userLogin = new UserLogin();
+                userLogin.Email = customerAccount.Email;
+                userLogin.UserName = customerAccount.HoTen;
+
+                Session.Remove(CommonConstants.USER_SESSION);
+                Session.Add(CommonConstants.USER_SESSION, userLogin);
+
+            }
+            return Redirect("/");
+        }
+
+        public JsonResult LoginGoogle(string googleACModel)
+        {
+            var accountSocialsList = new JavaScriptSerializer().Deserialize<List<AccountSocial>>(googleACModel);
+            var accountSocials = accountSocialsList.FirstOrDefault();
+            var customerAccount = new Customer();
+            customerAccount.Email = accountSocials.Email;
+            customerAccount.HoTen = accountSocials.FullName;
+            customerAccount.IDGoogle = accountSocials.AccountId;
+            var resultInsertGg = new UserDao().InsertUserGg(customerAccount);
+
+            //Add Session to display view
+            UserLogin userLogin = new UserLogin();
+            userLogin.Email = customerAccount.Email;
+            userLogin.UserName = customerAccount.HoTen;
+
+            Session.Remove(CommonConstants.USER_SESSION);
+            Session.Add(CommonConstants.USER_SESSION, userLogin);
+
+
+
+            return Json(new { status = true });
         }
         protected override void Dispose(bool disposing)
         {

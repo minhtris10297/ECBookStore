@@ -64,11 +64,14 @@
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="HoTen" ColumnName="HoTen" />
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
           <ScalarProperty Name="MatKhauMaHoa" ColumnName="MatKhauMaHoa" />
+          <ScalarProperty Name="IDFacebook" ColumnName="IDFacebook" />
+          <ScalarProperty Name="IDGoogle" ColumnName="IDGoogle" />
+          <ScalarProperty Name="NgayDangKy" ColumnName="NgayDangKy" />
           <ScalarProperty Name="GioiTinhID" ColumnName="GioiTinhID" />
           <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
           <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -148,7 +151,7 @@
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="HoTen" ColumnName="HoTen" />
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="GioiTinhID" ColumnName="GioiTinhID" />
           <ScalarProperty Name="DiemTichLuy" ColumnName="DiemTichLuy" />
           <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
         </MappingFragment>

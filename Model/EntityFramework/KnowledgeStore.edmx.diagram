@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="00b42c0ff29b483aacc700a1881f88cd" Name="Diagram1">
+        <EntityTypeShape EntityType="KnowledgeStoreModel.Admin" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeStoreModel.BaiDang" Width="1.5" PointX="2.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeStoreModel.ChiTietDonHang" Width="1.5" PointX="10.5" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeStoreModel.ChiTietSachMerchant" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeStoreModel.CTBaiDang" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeStoreModel.Customer" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeStoreModel.DanhGiaCuaCustomer" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeStoreModel.DanhGiaCuaMerchant" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeStoreModel.DonHang" Width="1.5" PointX="8.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeStoreModel.GioiTinh" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeStoreModel.LichSuCu" Width="1.5" PointX="10.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeStoreModel.LichSuMer" Width="1.5" PointX="10.5" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeStoreModel.LoaiBia" Width="1.5" PointX="6" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeStoreModel.Merchant" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeStoreModel.NangTin" Width="1.5" PointX="2.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeStoreModel.NhaXuatBan" Width="1.5" PointX="6" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeStoreModel.Sach" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeStoreModel.TheLoai" Width="1.5" PointX="6" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowledgeStoreModel.TinhTrangDonHang" Width="1.5" PointX="6" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="KnowledgeStoreModel.FK__ChiTietDo__DonHa__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowledgeStoreModel.FK__ChiTietDo__SachI__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowledgeStoreModel.FK__ChiTietSa__Merch__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowledgeStoreModel.FK__ChiTietSa__SachI__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowledgeStoreModel.FK__Customer__GioiTi__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowledgeStoreModel.FK__DanhGiaCu__Custo__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowledgeStoreModel.FK__DanhGiaCu__Custo__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowledgeStoreModel.FK__DonHang__Custome__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowledgeStoreModel.FK__LichSuCus__Custo__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowledgeStoreModel.FK__DanhGiaCu__DonHa__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowledgeStoreModel.FK__DanhGiaCu__Merch__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowledgeStoreModel.FK__DonHang__Merchan__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowledgeStoreModel.FK__DonHang__TinhTra__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowledgeStoreModel.FK__LichSuCus__DonHa__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowledgeStoreModel.FK__LichSuMer__DonHa__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowledgeStoreModel.FK__Merchant__GioiTi__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowledgeStoreModel.FK__LichSuMer__Merch__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowledgeStoreModel.FK__Sach__LoaiBiaID__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowledgeStoreModel.FK__Sach__NhaXuatBan__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowledgeStoreModel.FK__Sach__TheLoaiID__3F466844" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -60,14 +60,17 @@
       <PropertyRef Name="CustomerID" />
     </Key>
     <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="MatKhauMaHoa" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="GioiTinhID" Type="Int32" Nullable="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MatKhauMaHoa" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="IDFacebook" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="IDGoogle" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="NgayDangKy" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="GioiTinhID" Type="Int32" />
     <Property Name="DanhGia" Type="Int32" />
     <Property Name="TrangThai" Type="Boolean" Nullable="false" />
-    <Property Name="SoDienThoai" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="GioiTinh" Relationship="Self.FK__Customer__GioiTi__4BAC3F29" FromRole="Customer" ToRole="GioiTinh" />
     <NavigationProperty Name="DanhGiaCuaCustomers" Relationship="Self.FK__DanhGiaCu__Custo__59FA5E80" FromRole="Customer" ToRole="DanhGiaCuaCustomer" />
     <NavigationProperty Name="DanhGiaCuaMerchants" Relationship="Self.FK__DanhGiaCu__Custo__5EBF139D" FromRole="Customer" ToRole="DanhGiaCuaMerchant" />
@@ -162,13 +165,13 @@
     <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="GioiTinh" Type="Int32" Nullable="false" />
+    <Property Name="GioiTinhID" Type="Int32" Nullable="false" />
     <Property Name="DiemTichLuy" Type="Int32" Nullable="false" />
     <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="ChiTietSachMerchants" Relationship="Self.FK__ChiTietSa__Merch__47DBAE45" FromRole="Merchant" ToRole="ChiTietSachMerchant" />
     <NavigationProperty Name="DanhGiaCuaMerchants" Relationship="Self.FK__DanhGiaCu__Merch__5DCAEF64" FromRole="Merchant" ToRole="DanhGiaCuaMerchant" />
     <NavigationProperty Name="DonHangs" Relationship="Self.FK__DonHang__Merchan__52593CB8" FromRole="Merchant" ToRole="DonHang" />
-    <NavigationProperty Name="GioiTinh1" Relationship="Self.FK__Merchant__GioiTi__440B1D61" FromRole="Merchant" ToRole="GioiTinh" />
+    <NavigationProperty Name="GioiTinh" Relationship="Self.FK__Merchant__GioiTi__440B1D61" FromRole="Merchant" ToRole="GioiTinh" />
     <NavigationProperty Name="LichSuMers" Relationship="Self.FK__LichSuMer__Merch__656C112C" FromRole="Merchant" ToRole="LichSuMer" />
   </EntityType>
   <EntityType Name="NangTin">
@@ -272,7 +275,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Customer__GioiTi__4BAC3F29">
-    <End Role="GioiTinh" Type="Self.GioiTinh" Multiplicity="1" />
+    <End Role="GioiTinh" Type="Self.GioiTinh" Multiplicity="0..1" />
     <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="GioiTinh">
@@ -411,7 +414,7 @@
         <PropertyRef Name="GioiTinhID" />
       </Principal>
       <Dependent Role="Merchant">
-        <PropertyRef Name="GioiTinh" />
+        <PropertyRef Name="GioiTinhID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

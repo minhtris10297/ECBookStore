@@ -10,7 +10,7 @@ namespace Model.Dao
 {
     public class UserDao
     {
-        KnowledgeStoreContext db = new KnowledgeStoreContext();
+        KnowledgeStoreEntities db = new KnowledgeStoreEntities();
         public int Login(string email, string passWord)
         {
             var result = db.Customers.SingleOrDefault(x => x.Email == email);
@@ -35,6 +35,62 @@ namespace Model.Dao
                         return -2;
                     }
                 }
+            }
+        }
+        public int InsertUserFb(Customer Customer)
+        {
+            var modelMb = db.Customers.SingleOrDefault(m => m.Email == Customer.Email || m.IDFacebook == Customer.IDFacebook);
+            if (modelMb == null)
+            {
+                Customer.NgayDangKy = System.DateTime.Now;
+                db.Customers.Add(Customer);
+                db.SaveChanges();
+                return Customer.CustomerID;
+            }
+            else
+            {
+                if (modelMb.IDFacebook == null)
+                {
+                    modelMb.IDFacebook = Customer.IDFacebook;
+                    db.SaveChanges();
+                    return modelMb.CustomerID;
+                }
+                else if (modelMb.Email == null)
+                {
+                    modelMb.Email = Customer.Email;
+                    db.SaveChanges();
+                    return modelMb.CustomerID ;
+                }
+                return 0;
+            }
+        }
+
+        public int InsertUserGg(Customer Customer)
+        {
+            var modelMb = db.Customers.Where(m => m.Email == Customer.Email || m.IDGoogle == Customer.IDGoogle).SingleOrDefault();
+            if (modelMb == null)
+            {
+                Customer.NgayDangKy = System.DateTime.Now;
+                db.Customers.Add(Customer);
+
+                db.SaveChanges();
+                return Customer.CustomerID;
+            }
+            else
+            {
+                if (modelMb.IDGoogle == null)
+                {
+                    modelMb.IDGoogle = Customer.IDGoogle;
+                    db.SaveChanges();
+                    return modelMb.CustomerID;
+                }
+                else if (modelMb.Email == null)
+                {
+                    modelMb.Email = Customer.Email;
+                    db.SaveChanges();
+                    return modelMb.CustomerID;
+                }
+                return 0;
             }
         }
     }

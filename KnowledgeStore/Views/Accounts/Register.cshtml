@@ -40,32 +40,32 @@
                 @Html.AntiForgeryToken()
                 <div class="form-group">
                     @*<input id="sign-up-name" type="text" class="form-control" placeholder="Họ Tên">*@
-                    @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Họ Tên" } })
+                    @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Họ Tên", required="required" } })
                     @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
                     @*<input id="sign-up-email" type="email" class="form-control" placeholder="Email">*@
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "email", @placeholder = "Email" } })
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "email", @placeholder = "Email", required = "required" } })
                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                     <span class="input-group-addon bootstrap-touchspin-postfix btn btn-default" id="btnGetAuthCode">Lấy mã xác thực</span>
                 </div>
                 <div class="form-group">
                     @*<input id="sign-up-name" type="password" class="form-control" placeholder="Mật Khẩu">*@
-                    @Html.EditorFor(model => model.MatKhauMaHoa, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Mật khẩu" } })
+                    @Html.EditorFor(model => model.MatKhauMaHoa, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Mật khẩu", required = "required" } })
                     @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
                     @*<input id="sign-up-name" type="number" class="form-control" placeholder="Số Điện Thoại">*@
-                    @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control", @type = "number", @placeholder = "Số điện thoại" } })
+                    @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control", @type = "number", @placeholder = "Số điện thoại", required = "required" } })
                     @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
                     @*<input id="sign-up-name" type="text" class="form-control" placeholder="Địa chỉ">*@
-                    @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Địa chỉ" } })
+                    @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Địa chỉ", required = "required" } })
                     @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
-                    @Html.DropDownList("GioiTinhID", null, htmlAttributes: new { @class = "form-control", @placeholder = "Giới tính" })
+                    @Html.DropDownList("GioiTinhID", null, htmlAttributes: new { @class = "form-control", @placeholder = "Giới tính", required = "required" })
                     @Html.ValidationMessageFor(model => model.GioiTinhID, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">

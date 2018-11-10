@@ -10,7 +10,13 @@
     <!--===============================================================================================-->
     <!--===============================================================================================-->
     @RenderSection("PluginCSS", true)
-    
+
+    <!-- google log -->
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="547525902851-15g618hh81o6flv5kp98e0qt889da5rk.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!---------------->
+
 </head>
 <body class="animsition">
 
@@ -139,82 +145,82 @@
         </div>
 
         @*<!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
 
-                <!-- Modal content-->
-                <div class="modal-content" style=" display: inherit;">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Đăng nhập và tạo tài khoản</h4>
-                    </div>
-                    <div class="modal-body">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="/Assets/Customer/cozastore/#login">Đăng nhập</a></li>
-                            <li><a data-toggle="tab" href="/Assets/Customer/cozastore/#register">Tạo tài khoản</a></li>
-                        </ul>
-                    </div>
-                    <div class="tab-content">
-                        <div id="login" class="tab-pane fade in active col-md-12">
-                            <h3>Đăng nhập</h3>
-                            <form action="#">
-                                <div class="form-group ">
-                                    <label for="email">Email:</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Nhập email" name="email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="pwd">Mật khẩu:</label>
-                                    <input type="password" class="form-control" id="pwd" placeholder="Nhập mật khẩu" name="pswd">
-                                </div>
-                                <div class="form-group form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="checkbox" name="remember"> Nhớ tài khoản
-                                    </label>
-                                    <a href="/Assets/Customer/cozastore/#">Quên mật khẩu?</a>
-                                </div>
-
-                                <button type="submit" class="btn btn-primary">Đăng nhập</button>
-                            </form>
+                    <!-- Modal content-->
+                    <div class="modal-content" style=" display: inherit;">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Đăng nhập và tạo tài khoản</h4>
                         </div>
-                        <div id="register" class="tab-pane fade col-md-12">
-                            <h3>Tạo tài khoản</h3>
-                            <form action="#">
-                                <div class="form-group">
-                                    <label for="username">Họ và tên:</label>
-                                    <input type="text" class="form-control" id="username" placeholder="Họ và tên" name="username">
-                                </div>
+                        <div class="modal-body">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="/Assets/Customer/cozastore/#login">Đăng nhập</a></li>
+                                <li><a data-toggle="tab" href="/Assets/Customer/cozastore/#register">Tạo tài khoản</a></li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div id="login" class="tab-pane fade in active col-md-12">
+                                <h3>Đăng nhập</h3>
+                                <form action="#">
+                                    <div class="form-group ">
+                                        <label for="email">Email:</label>
+                                        <input type="email" class="form-control" id="email" placeholder="Nhập email" name="email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Mật khẩu:</label>
+                                        <input type="password" class="form-control" id="pwd" placeholder="Nhập mật khẩu" name="pswd">
+                                    </div>
+                                    <div class="form-group form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" name="remember"> Nhớ tài khoản
+                                        </label>
+                                        <a href="/Assets/Customer/cozastore/#">Quên mật khẩu?</a>
+                                    </div>
 
-                                <div class="form-group">
-                                    <label for="email">Email:</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Nhập email" name="email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="pwd">Mật khẩu:</label>
-                                    <input type="password" class="form-control" id="pwd" placeholder="Nhập mật khẩu" name="pswd">
-                                </div>
-                                <div class="form-group">
-                                    <label for="confirmpwd">Nhập lại mật khẩu:</label>
-                                    <input type="password" class="form-control" id="confirmpwd" placeholder="Nhập lại mật khẩu" name="confirmpwd">
-                                </div>
-                                <div class="form-group">
-                                    <label for="confirmpwd">Số điện thoại:</label>
-                                    <input type="password" class="form-control" id="confirmpwd" placeholder="Số điện thoại" name="sdt">
-                                </div>
-                                <div class="form-group">
-                                    <label for="address">Địa chỉ:</label>
-                                    <input type="text" class="form-control" id="address" placeholder="Địa chỉ" name="address">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Tạo tài khoản</button>
-                            </form>
+                                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                                </form>
+                            </div>
+                            <div id="register" class="tab-pane fade col-md-12">
+                                <h3>Tạo tài khoản</h3>
+                                <form action="#">
+                                    <div class="form-group">
+                                        <label for="username">Họ và tên:</label>
+                                        <input type="text" class="form-control" id="username" placeholder="Họ và tên" name="username">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="email">Email:</label>
+                                        <input type="email" class="form-control" id="email" placeholder="Nhập email" name="email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Mật khẩu:</label>
+                                        <input type="password" class="form-control" id="pwd" placeholder="Nhập mật khẩu" name="pswd">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="confirmpwd">Nhập lại mật khẩu:</label>
+                                        <input type="password" class="form-control" id="confirmpwd" placeholder="Nhập lại mật khẩu" name="confirmpwd">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="confirmpwd">Số điện thoại:</label>
+                                        <input type="password" class="form-control" id="confirmpwd" placeholder="Số điện thoại" name="sdt">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="address">Địa chỉ:</label>
+                                        <input type="text" class="form-control" id="address" placeholder="Địa chỉ" name="address">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Tạo tài khoản</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                    </div>
+
                 </div>
-
-            </div>
-        </div>*@
+            </div>*@
 
     </header>
     <!-- Cart -->
@@ -611,6 +617,59 @@
         </div>
     </div>
     @RenderSection("PluginJS", true)
+
+    <script>
+        function onSignIn(googleUser) {
+            // Useful data for your client-side scripts:
+            var profile = googleUser.getBasicProfile();
+            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+            console.log('Full Name: ' + profile.getName());
+            console.log('Given Name: ' + profile.getGivenName());
+            console.log('Family Name: ' + profile.getFamilyName());
+            console.log("Image URL: " + profile.getImageUrl());
+            console.log("Email: " + profile.getEmail());
+
+            // The ID token you need to pass to your backend:
+            var id_token = googleUser.getAuthResponse().id_token;
+            console.log("ID Token: " + id_token);
+
+            var googleAC = [];
+            googleAC.push({
+                AccountId: profile.getId(),
+                FullName: profile.getName(),
+                Email: profile.getEmail(),
+                IdToken: googleUser.getAuthResponse().id_token
+            });
+            $.ajax({
+                url: 'Accounts/LoginGoogle',
+                data: { googleACModel: JSON.stringify(googleAC) },
+                dataType: 'json',
+                type: 'POST',
+                success: function (data) {
+                    if (data.status == true) {
+                        alert('Login Success');
+                        window.location.href = "/";
+                    }
+                }
+            });
+        }
+    </script>
+
+    <script>
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+            });
+        }
+
+        function onLoad() {
+            gapi.load('auth2', function () {
+                gapi.auth2.init();
+            });
+        }
+    </script>
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
 
 </body>
 </html>

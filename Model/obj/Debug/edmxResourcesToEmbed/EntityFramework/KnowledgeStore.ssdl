@@ -56,14 +56,17 @@
       <PropertyRef Name="CustomerID" />
     </Key>
     <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
     <Property Name="HoTen" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="MatKhauMaHoa" Type="varchar" MaxLength="256" Nullable="false" />
-    <Property Name="GioiTinhID" Type="int" Nullable="false" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+    <Property Name="SoDienThoai" Type="varchar" MaxLength="20" />
+    <Property Name="MatKhauMaHoa" Type="varchar" MaxLength="256" />
+    <Property Name="IDFacebook" Type="varchar" MaxLength="256" />
+    <Property Name="IDGoogle" Type="varchar" MaxLength="256" />
+    <Property Name="NgayDangKy" Type="datetime" Nullable="false" />
+    <Property Name="GioiTinhID" Type="int" />
     <Property Name="DanhGia" Type="int" />
     <Property Name="TrangThai" Type="bit" Nullable="false" />
-    <Property Name="SoDienThoai" Type="varchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="DanhGiaCuaCustomer">
     <Key>
@@ -135,7 +138,7 @@
     <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="HoTen" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="GioiTinh" Type="int" Nullable="false" />
+    <Property Name="GioiTinhID" Type="int" Nullable="false" />
     <Property Name="DiemTichLuy" Type="int" Nullable="false" />
     <Property Name="NgayTao" Type="datetime" Nullable="false" />
   </EntityType>
@@ -232,7 +235,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Customer__GioiTi__4BAC3F29">
-    <End Role="GioiTinh" Type="Self.GioiTinh" Multiplicity="1" />
+    <End Role="GioiTinh" Type="Self.GioiTinh" Multiplicity="0..1" />
     <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="GioiTinh">
@@ -383,7 +386,7 @@
         <PropertyRef Name="GioiTinhID" />
       </Principal>
       <Dependent Role="Merchant">
-        <PropertyRef Name="GioiTinh" />
+        <PropertyRef Name="GioiTinhID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

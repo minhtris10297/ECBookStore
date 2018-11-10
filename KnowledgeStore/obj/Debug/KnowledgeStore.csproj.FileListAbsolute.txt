@@ -198,3 +198,5 @@ D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\KnowledgeStore\bin\Model.pdb
 D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\KnowledgeStore\bin\Model.dll.config
 D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\KnowledgeStore\bin\EntityFramework.xml
 D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\KnowledgeStore\bin\EntityFramework.SqlServer.xml
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\KnowledgeStore\bin\Facebook.dll
+E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\KnowledgeStore\bin\Facebook.xml

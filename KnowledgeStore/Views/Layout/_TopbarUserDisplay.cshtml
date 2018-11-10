@@ -19,30 +19,31 @@
                     </a>
                 </li>
                 <li>
+                    <a href="/Accounts/LoginFB" style="padding:0 0">
+                        <div class="button" style="width: 220px;height: 40px;text-align: center;line-height: 40px;color: #000;background: #007ff0;border-radius: 4px;margin: 5px 0;">
 
-                    <button style="width: 220px;height: 40px;text-align: center;line-height: 40px;color: #000;background: #007ff0;border-radius: 4px;margin: 5px 0;">
-
-                        <span style="position: relative; display: inline-block;vertical-align: top;width: 20px;height: 40px;left: 0;color: #fff;border-right: 1px solid #45479d; margin-right: 5px;">
-                            <i class="fa fa-facebook">
-                            </i>
-                        </span>
-                        <span>
-                            Đăng nhập bằng Facebook
-                        </span>
-                    </button>
+                            <span style="position: relative; display: inline-block;vertical-align: top;width: 20px;height: 40px;left: 0;color: #fff;border-right: 1px solid #45479d; margin-right: 5px;">
+                                <i class="fa fa-facebook">
+                                </i>
+                            </span>
+                            <span>
+                                Đăng nhập bằng Facebook
+                            </span>
+                        </div>
+                    </a>
                 </li>
                 <li>
 
-                    <button style="width: 220px;height: 40px;text-align: center;line-height: 40px;color: #000;background: #df4a32;border-radius: 4px;margin: 5px 0;">
+                    <div class="g-signin2 button" data-onsuccess="onSignIn" style="width: 220px;height: 40px;text-align: center;line-height: 40px;color: #000;background: #007ff0;border-radius: 4px;margin: 5px 0;">
 
-                        <span style="position: relative; display: inline-block;vertical-align: top;width: 25px;height: 40px;left: 0;color: #fff;border-right: 1px solid #45479d; margin-right: 5px;">
-                            <i class="fa fa-google-plus">
+                        <span style="position: relative; display: inline-block;vertical-align: top;width: 20px;height: 40px;left: 0;color: #fff;border-right: 1px solid #45479d; margin-right: 5px;">
+                            <i class="fa fa-google">
                             </i>
                         </span>
                         <span>
                             Đăng nhập bằng Google
                         </span>
-                    </button>
+                    </div>
                 </li>
             </ul>
         </li>
@@ -62,7 +63,7 @@ else
                 <li><a href="/Assets/Customer/cozastore/#">Nhận xét sản phẩm đã mua</a></li>
                 <li><a href="/Assets/Customer/cozastore/#">Nhận xét của tôi</a></li>
                 <li><a href="/Assets/Customer/cozastore/#">Thông tin KnowledgeXu(2000xu)</a></li>
-                <li><a href="@Url.Action("Logout","Accounts")">Thoát tài khoản</a></li>
+                <li><a href="@Url.Action("Logout","Accounts")" onclick="signOut();">Thoát tài khoản</a></li>
             </ul>
         </li>
     </ul>

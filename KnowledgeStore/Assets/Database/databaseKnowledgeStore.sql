@@ -17,7 +17,7 @@ GO
 --Loại Bìa--
 CREATE TABLE LoaiBia(
 	LoaiBiaID int identity (1,1) not null primary key,
-	LoaiBia nvarchar(100) not null
+	TenLoaiBia nvarchar(100) not null
 )
 
 --  Nhà Xuất Bản --
@@ -51,7 +51,7 @@ CREATE TABLE Merchant(
 	Email nvarchar(100) not null,
 	HoTen nvarchar(100) not null,
 	DiaChi nvarchar(100) not null,
-	GioiTinh int foreign key references GioiTinh(GioiTinhID) not null,
+	GioiTinhID int foreign key references GioiTinh(GioiTinhID) not null,
 	DiemTichLuy int not null,
 	NgayTao DateTime not null,
 )
@@ -73,12 +73,15 @@ GO
 --  Customer --
 CREATE TABLE Customer(
 	CustomerID int identity (1,1) not null primary key,
-	Email nvarchar(100) not null,
+	Email nvarchar(100),
 	HoTen nvarchar(100) not null,
-	DiaChi nvarchar(100) not null,
-	SoDienThoai varchar(20) not null,
-	MatKhauMaHoa varchar(256) not null,
-	GioiTinhID int foreign key references GioiTinh(GioiTinhID) not null,
+	DiaChi nvarchar(100),
+	SoDienThoai varchar(20),
+	MatKhauMaHoa varchar(256),
+	IDFacebook varchar(256),
+	IDGoogle varchar(256),
+	NgayDangKy datetime not null,
+	GioiTinhID int foreign key references GioiTinh(GioiTinhID),
 	DanhGia int,
 	TrangThai bit Default 1 not null, -- 1 là hoạt động, deactive nó thì sẽ thành 0
 )
@@ -182,3 +185,4 @@ CREATE TABLE Admin(
 	MatKhau varchar(50) not null,
 	TenHienThi nvarchar(50) not null,
 )
+
