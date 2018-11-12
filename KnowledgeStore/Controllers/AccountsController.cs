@@ -72,6 +72,7 @@ namespace KnowledgeStore.Controllers
 
                     customer.MatKhauMaHoa = Encryptor.SHA256Encrypt(customer.MatKhauMaHoa);
                     customer.TrangThai = true;
+                    customer.NgayTao = System.DateTime.Now;
                     db.Customers.Add(customer);
                     db.SaveChanges();
 

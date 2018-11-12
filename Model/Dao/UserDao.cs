@@ -42,7 +42,7 @@ namespace Model.Dao
             var modelMb = db.Customers.SingleOrDefault(m => m.Email == Customer.Email || m.IDFacebook == Customer.IDFacebook);
             if (modelMb == null)
             {
-                Customer.NgayDangKy = System.DateTime.Now;
+                Customer.NgayTao = System.DateTime.Now;
                 db.Customers.Add(Customer);
                 db.SaveChanges();
                 return Customer.CustomerID;
@@ -70,7 +70,7 @@ namespace Model.Dao
             var modelMb = db.Customers.Where(m => m.Email == Customer.Email || m.IDGoogle == Customer.IDGoogle).SingleOrDefault();
             if (modelMb == null)
             {
-                Customer.NgayDangKy = System.DateTime.Now;
+                Customer.NgayTao = System.DateTime.Now;
                 db.Customers.Add(Customer);
 
                 db.SaveChanges();
