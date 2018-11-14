@@ -1,4 +1,5 @@
 ﻿using KnowledgeStore.Common;
+using Model.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,6 +11,7 @@ namespace KnowledgeStore.Controllers
 {
     public class LayoutController : Controller
     {
+        private const string CartSession = "CartSession";
         // GET: Layout
         public PartialViewResult TopbarUserDisplay()
         {
@@ -18,7 +20,19 @@ namespace KnowledgeStore.Controllers
             {
                 ViewBag.DisplayUserName = sessionUser.UserName;
             }
-            return PartialView("_TopbarUserDisplay");
+            return PartialView( );
         }
+
+        public PartialViewResult CartModalDisplay()
+        {
+            var cart = Session[CartSession];
+            var list = new List<CartItem>();
+            if (cart != null)
+            {
+                list = (List<CartItem>)cart;
+            }
+            return PartialView(list);
+        }
+
     }
 }

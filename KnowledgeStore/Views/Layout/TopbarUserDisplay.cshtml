@@ -1,0 +1,73 @@
+﻿@if (@ViewBag.DisplayUserName == null)
+{
+    <!-- Sub menu guest -->
+    <ul class="main-menu">
+        <li>
+            <a href="@Url.Action("Login","Accounts")" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11" data-notify="0">
+                <p style="font-size: 17px">Đăng nhập</p>
+            </a>
+            <ul class="sub-menu" style="text-align: center;width: auto; min-width: 240px;z-index: 15;list-style: none;margin: 0;padding: 4px 12px;border-radius: 0 0 3px 3px; -webkit-box-shadow: 0 6px 12px 0 rgba(0,0,0,.18);box-shadow: 0 6px 12px 0 rgba(0,0,0,.18);position: absolute;top: 50px;left: -50px;">
+
+                <li>
+                    <a style="width: 220px;height: 40px;text-align: center;line-height: 40px;color: #000;background: #fdd835;border-radius: 4px;margin: 5px 0;" type="button" class="btn btn-info btn-lg" @*data-toggle="modal" data-target="#myModal"*@ href="@Url.Action("Login","Accounts")">
+                        <p>Đăng Nhập</p>
+                    </a>
+                </li>
+                <li>
+                    <a style="width: 220px;height: 40px;text-align: center;line-height: 40px;color: #000;background: #fdd835;border-radius: 4px;margin: 5px 0;" type="button" class="btn btn-info btn-lg" @*data-toggle="modal" data-target="#myModal"*@ href="@Url.Action("Register","Accounts")">
+                        <p>Tạo tài khoản</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Accounts/LoginFB" style="padding:0 0">
+                        <div class="button" style="width: 220px;height: 40px;text-align: center;line-height: 40px;color: #000;background: #007ff0;border-radius: 4px;margin: 5px 0;">
+
+                            <span style="position: relative; display: inline-block;vertical-align: top;width: 20px;height: 40px;left: 0;color: #fff;border-right: 1px solid #45479d; margin-right: 5px;">
+                                <i class="fa fa-facebook">
+                                </i>
+                            </span>
+                            <span>
+                                Đăng nhập bằng Facebook
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+
+                    <div class="g-signin2 button" data-onsuccess="onSignIn" style="width: 220px;height: 40px;text-align: center;line-height: 40px;color: #000;background: #007ff0;border-radius: 4px;margin: 5px 0;">
+
+                        <span style="position: relative; display: inline-block;vertical-align: top;width: 20px;height: 40px;left: 0;color: #fff;border-right: 1px solid #45479d; margin-right: 5px;">
+                            <i class="fa fa-google">
+                            </i>
+                        </span>
+                        <span>
+                            Đăng nhập bằng Google
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+}
+else
+{
+    <!-- Sub menu customer -->
+    <ul class="main-menu">
+        <li>
+            <a href="/Assets/Customer/cozastore/#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11" data-notify="0">
+                <p style="font-size: 17px">Chào @ViewBag.DisplayUserName</p>
+            </a>
+            <ul class="sub-menu" style="text-align: center;width: auto; min-width: 240px;z-index: 15;list-style: none;margin: 0;padding: 4px 12px;border-radius: 0 0 3px 3px; -webkit-box-shadow: 0 6px 12px 0 rgba(0,0,0,.18);box-shadow: 0 6px 12px 0 rgba(0,0,0,.18);position: absolute;top: 50px;left: -50px;">
+                <li><a href="/Assets/Customer/cozastore/#">Tài khoản của tôi</a></li>
+                <li><a href="/Assets/Customer/cozastore/#">Đơn hàng của tôi</a></li>
+                <li><a href="/Assets/Customer/cozastore/#">Nhận xét sản phẩm đã mua</a></li>
+                <li><a href="/Assets/Customer/cozastore/#">Nhận xét của tôi</a></li>
+                <li><a href="/Assets/Customer/cozastore/#">Thông tin KnowledgeXu(2000xu)</a></li>
+                <li><a href="@Url.Action("Logout","Accounts")" onclick="signOut();">Thoát tài khoản</a></li>
+            </ul>
+        </li>
+    </ul>
+}
+
+
+
