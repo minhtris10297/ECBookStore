@@ -32,6 +32,7 @@ namespace Model.EntityFramework
         public virtual DbSet<NangTin> NangTins { get; set; }
         public virtual DbSet<NhaXuatBan> NhaXuatBans { get; set; }
         public virtual DbSet<Sach> Saches { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TheLoai> TheLoais { get; set; }
         public virtual DbSet<TinhTrangDonHang> TinhTrangDonHangs { get; set; }
 
@@ -152,6 +153,11 @@ namespace Model.EntityFramework
                 .Property(e => e.DuongDan)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<HinhAnh>()
+                .HasMany(e => e.Saches)
+                .WithOptional(e => e.HinhAnh)
+                .HasForeignKey(e => e.HinhAnhID);
+
             modelBuilder.Entity<LichSuCustomer>()
                 .Property(e => e.TongTien)
                 .HasPrecision(18, 0);
@@ -202,7 +208,22 @@ namespace Model.EntityFramework
                 .IsUnicode(false);
 
             modelBuilder.Entity<Sach>()
+                .Property(e => e.NangTinID)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Sach>()
                 .HasMany(e => e.ChiTietDonHangs)
+                .WithRequired(e => e.Sach)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Sach>()
+                .HasMany(e => e.HinhAnhs)
+                .WithRequired(e => e.Sach)
+                .HasForeignKey(e => e.SachID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Sach>()
+                .HasMany(e => e.NangTins)
                 .WithRequired(e => e.Sach)
                 .WillCascadeOnDelete(false);
 
