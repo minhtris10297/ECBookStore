@@ -40,3 +40,17 @@ D:\Projects\ProjectBookSt_N7\Model\bin\Debug\Common.pdb
 D:\Projects\ProjectBookSt_N7\Model\bin\Debug\EntityFramework.xml
 D:\Projects\ProjectBookSt_N7\Model\bin\Debug\EntityFramework.SqlServer.xml
 D:\Projects\ProjectBookSt_N7\Model\obj\Debug\Model.csproj.CopyComplete
+E:\HTTTDN\Model\bin\Debug\Model.dll.config
+E:\HTTTDN\Model\bin\Debug\Model.dll
+E:\HTTTDN\Model\bin\Debug\Model.pdb
+E:\HTTTDN\Model\bin\Debug\Common.dll
+E:\HTTTDN\Model\bin\Debug\EntityFramework.dll
+E:\HTTTDN\Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\HTTTDN\Model\bin\Debug\Common.pdb
+E:\HTTTDN\Model\bin\Debug\EntityFramework.xml
+E:\HTTTDN\Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\HTTTDN\Model\obj\Debug\Model.csprojAssemblyReference.cache
+E:\HTTTDN\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+E:\HTTTDN\Model\obj\Debug\Model.csproj.CopyComplete
+E:\HTTTDN\Model\obj\Debug\Model.dll
+E:\HTTTDN\Model\obj\Debug\Model.pdb
