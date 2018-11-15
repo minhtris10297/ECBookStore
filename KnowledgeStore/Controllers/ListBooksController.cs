@@ -15,20 +15,20 @@ namespace KnowledgeStore.Controllers
         public ActionResult Index(string id, int? page)
         {
             ViewBag.TypeID = id;
-            var listSach = new List<Sach>();
+            var listSach = db.Saches.ToList();
             if (id == "SachGiamGia")
             {
-                listSach = db.Saches.OrderBy(m => m.GiaKhuyenMai / m.GiaTien).OrderBy(m=>m.NangTins.Max(n=>n.NgayNang)).ToList();
+                listSach = db.Saches.OrderByDescending(m => m.GiaKhuyenMai / m.GiaTien).ToList();
             }
             else if(id == "SachMoiPhatHanh")
             {
-                listSach = db.Saches.OrderBy(m => m.NgayXuatBan).OrderBy(m => m.NangTins.Max(n => n.NgayNang)).ToList();
+                listSach = db.Saches.OrderByDescending(m => m.NgayXuatBan).ToList();
             }
             else if (id == "SachBanChay")
             {
-                listSach = db.Saches.OrderBy(m => m.NangTins.Max(n => n.NgayNang)).ToList();
+                listSach = db.Saches.OrderByDescending(m => m.NangTins.Max(n => n.NgayNang)).ToList();
             }
-            int pageSize = 20;
+            int pageSize = 12;
             int pageNumber = (page ?? 1);
             return View(listSach.ToPagedList(pageNumber, pageSize));
         }

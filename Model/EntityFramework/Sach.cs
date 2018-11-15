@@ -44,14 +44,7 @@ namespace Model.EntityFramework
 
         public decimal? GiaKhuyenMai { get; set; }
 
-        public int? HinhAnhID { get; set; }
-
-        [Column(TypeName = "text")]
         public string MoTa { get; set; }
-
-        [Required]
-        [StringLength(10)]
-        public string NangTinID { get; set; }
 
         public int? SoLuong { get; set; }
 
@@ -65,8 +58,6 @@ namespace Model.EntityFramework
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HinhAnh> HinhAnhs { get; set; }
-
-        public virtual HinhAnh HinhAnh { get; set; }
 
         public virtual LoaiBia LoaiBia { get; set; }
 

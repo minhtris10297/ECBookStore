@@ -1,0 +1,88 @@
+#form
+{
+	height: 440px;
+	width: 1000px;
+	margin-left: 50px;
+}
+#form1
+{
+	height: 440px;
+	width: 400px;
+	float: left;
+	margin-left: 20px;
+}
+#form2
+{
+	height: 440px;
+	width: 500px;
+	float: left;
+	margin-left: 80px;
+}
+#form2 input[type = email]
+{
+	margin : 15px 15px;
+	width: 350px;
+	height: 40px;
+
+}
+#form2 input[type = password]
+{
+	margin : 15px 15px;
+	width: 350px;
+	height: 40px;	
+}
+#form2 button
+{
+	margin : 15px 15px;
+	height: 40px;
+	width: 130px;
+}
+#form2 input[type = text]
+{
+	margin: 15px 15px;
+	width: 350px;
+	height: 40px;
+}
+
+
+
+
+#khung
+{
+	height: 350px;
+	width: 1000px;
+	margin-left: 50px;
+}
+#khung1
+{
+	height: 350px;
+	width: 400px;
+	float: left;
+	margin-left: 20px;
+}
+#khung2
+{
+	height: 350px;
+	width: 500px;
+	float: left;
+	margin-left: 80px;
+}
+#khung2 input[type = email]
+{
+	margin : 15px 15px;
+	width: 350px;
+	height: 40px;
+
+}
+#khung2 input[type = password]
+{
+	margin : 15px 15px;
+	width: 350px;
+	height: 40px;	
+}
+#khung2 button
+{
+	margin : 15px 15px;
+	height: 40px;
+	width: 130px;
+}
