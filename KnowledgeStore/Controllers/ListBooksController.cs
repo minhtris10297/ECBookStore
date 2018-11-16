@@ -32,5 +32,16 @@ namespace KnowledgeStore.Controllers
             int pageNumber = (page ?? 1);
             return View(listSach.ToPagedList(pageNumber, pageSize));
         }
+
+        public ActionResult BookDetail(int id)
+        {
+            var book = db.Saches.Find(id);
+            return View(book);
+        }
+
+        public PartialViewResult BookDetailModal()
+        {
+            return PartialView();
+        }
     }
 }

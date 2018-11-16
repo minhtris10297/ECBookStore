@@ -1680,20 +1680,20 @@
     <Content Include="Assets\Customer\cozastore\__MACOSX\cozastore\vendor\sweetalert\._sweetalert.min.js" />
     <Content Include="Assets\Database\databaseCu.sql" />
     <Content Include="Assets\Database\databaseVuUpdate.sql" />
-    <Content Include="Assets\Image\13\13_1.jpg" />
-    <Content Include="Assets\Image\14\14_1.jpg" />
-    <Content Include="Assets\Image\15\15_1.jpg" />
-    <Content Include="Assets\Image\16\16_1.jpg" />
-    <Content Include="Assets\Image\17\17_1.jpg" />
-    <Content Include="Assets\Image\19\19_1.jpg" />
-    <Content Include="Assets\Image\1\1_1.jpg" />
-    <Content Include="Assets\Image\20\20_1.jpg" />
-    <Content Include="Assets\Image\21\21_1.jpg" />
-    <Content Include="Assets\Image\2\2_1.jpg" />
-    <Content Include="Assets\Image\4\4_1.jpg" />
-    <Content Include="Assets\Image\7\7_1.jpg" />
-    <Content Include="Assets\Image\8\8_1.jpg" />
-    <Content Include="Assets\Image\9\9_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\13\13_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\14\14_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\15\15_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\16\16_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\17\17_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\19\19_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\1\1_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\20\20_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\21\21_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\2\2_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\4\4_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\7\7_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\8\8_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\9\9_1.jpg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -2335,6 +2335,9 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Layout\CartModalDisplay.cshtml" />
     <Content Include="Views\ListBooks\Index.cshtml" />
+    <Content Include="Views\ListBooks\BookDetail.cshtml" />
+    <Content Include="Views\Layout\CartIconDisplay.cshtml" />
+    <Content Include="Views\ListBooks\BookDetailModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

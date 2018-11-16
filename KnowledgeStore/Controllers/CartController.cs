@@ -23,6 +23,13 @@ namespace KnowledgeStore.Controllers
             {
                 list = (List<CartItem>)cart;
             }
+            decimal tamTinh = 0;
+            foreach(var item in list)
+            {
+                tamTinh += item.Quantity * item.Sach.GiaTien;
+            }
+            ViewBag.TamTinh = tamTinh.ToString("N0");
+            ViewBag.ThanhTien= tamTinh.ToString("N0");
             return View(list);
         }
 
@@ -35,7 +42,7 @@ namespace KnowledgeStore.Controllers
             });
         }
 
-        public JsonResult Delete(long id)
+        public JsonResult Delete(int id)
         {
             var sessionCart = (List<CartItem>)Session[CartSession];
             sessionCart.RemoveAll(x => x.Sach.SachID == id);
@@ -64,19 +71,19 @@ namespace KnowledgeStore.Controllers
                 status = true
             });
         }
-        public ActionResult AddItem(long sachId, int quantity)
+        public ActionResult AddItem(int id, int quantity)
         {
-            var product = db.Saches.Find(sachId);
+            var product = db.Saches.Find(id);
             var cart = Session[CartSession];
             if (cart != null)
             {
                 var list = (List<CartItem>)cart;
-                if (list.Exists(x => x.Sach.SachID == sachId))
+                if (list.Exists(x => x.Sach.SachID == id))
                 {
 
                     foreach (var item in list)
                     {
-                        if (item.Sach.SachID == sachId)
+                        if (item.Sach.SachID == id)
                         {
                             item.Quantity += quantity;
                         }
