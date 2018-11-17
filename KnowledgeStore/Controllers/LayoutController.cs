@@ -1,4 +1,5 @@
 ﻿using KnowledgeStore.Common;
+using Model.EntityFramework;
 using Model.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace KnowledgeStore.Controllers
     public class LayoutController : Controller
     {
         private const string CartSession = "CartSession";
+        KnowledgeStoreEntities db = new KnowledgeStoreEntities();
         // GET: Layout
         public PartialViewResult TopbarUserDisplay()
         {
@@ -66,6 +68,10 @@ namespace KnowledgeStore.Controllers
 
             return PartialView();
         }
-
+        public PartialViewResult TopbarTypeBookDisplay()
+        {
+            ViewBag.TheLoai = db.Saches.Select(m =>  m.TheLoai.TenTheLoai).Distinct();
+            return PartialView();
+        }
     }
 }

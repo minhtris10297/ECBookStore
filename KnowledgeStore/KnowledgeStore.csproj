@@ -2337,7 +2337,7 @@
     <Content Include="Views\ListBooks\Index.cshtml" />
     <Content Include="Views\ListBooks\BookDetail.cshtml" />
     <Content Include="Views\Layout\CartIconDisplay.cshtml" />
-    <Content Include="Views\ListBooks\BookDetailModal.cshtml" />
+    <Content Include="Views\Layout\TopbarTypeBookDisplay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

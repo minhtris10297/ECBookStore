@@ -326,3 +326,7 @@ E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\KnowledgeStore\bin\Pa
 E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\KnowledgeStore\bin\PagedList.Mvc.dll
 E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\KnowledgeStore\bin\PagedList.xml
 E:\ASP.NET MVC PROJECT\Project Book Store\ProjectBookSt_N7\KnowledgeStore\bin\PagedList.Mvc.xml
+D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\PagedList.dll
+D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\PagedList.Mvc.dll
+D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\PagedList.xml
+D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\PagedList.Mvc.xml

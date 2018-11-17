@@ -9,3 +9,9 @@ D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\Common\obj\Debug\Common.csproj
 D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\Common\obj\Debug\Common.dll
 D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\Common\obj\Debug\Common.pdb
 D:\Projects\He Thong TTDN - TMDT\ProjectBookSt_N7\Common\obj\Debug\Common.csprojAssemblyReference.cache
+D:\Projects\ProjectBookSt_N7\Common\bin\Debug\Common.dll
+D:\Projects\ProjectBookSt_N7\Common\bin\Debug\Common.pdb
+D:\Projects\ProjectBookSt_N7\Common\obj\Debug\Common.csprojAssemblyReference.cache
+D:\Projects\ProjectBookSt_N7\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+D:\Projects\ProjectBookSt_N7\Common\obj\Debug\Common.dll
+D:\Projects\ProjectBookSt_N7\Common\obj\Debug\Common.pdb
