@@ -572,21 +572,4 @@
     </script>
     <!--===============================================================================================-->
     <script src="/Assets/Customer/cozastore/js/main.js"></script>
-
-    <script>
-        $('#btnXemThem').off('click').on('click', function () {
-            $.ajax({
-                data: { res: },
-                url: '/Home/ViewMore',
-                dataType: 'json',
-                type: 'POST',
-                contentType: 'application/json; charset=utf-8',
-                success: function (res) {
-                    if (res.status == true) {
-                        window.location.href = "/Cart";
-                    }
-                }
-            })
-        });
-    </script>
 }

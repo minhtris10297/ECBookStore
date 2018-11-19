@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,10 @@ namespace KnowledgeStore.Controllers
 {
     public class HomeController : Controller
     {
+        KnowledgeStoreEntities db = new KnowledgeStoreEntities();
         public ActionResult Index()
         {
-            return View();
+            return View(db.Saches.ToList());
         }
 
         public ActionResult About()
