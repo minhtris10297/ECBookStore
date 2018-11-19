@@ -1,5 +1,6 @@
 ﻿@model PagedList.IPagedList<Model.EntityFramework.Sach>
 @using PagedList.Mvc;
+@using Common
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -231,7 +232,7 @@
                     <!-- Block2 -->
                     <div class="block2">
                         <div class="block2-pic hov-img0">
-                            <img src="~/Assets/Image/ImageBook/@item.SachID/@(item.SachID)_1.jpg" alt="IMG-PRODUCT" style="width: 270px; height: 200px">
+                            <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,1)" alt="IMG-PRODUCT" style="width: 270px; height: 200px">
 
                             <a href="/Assets/Customer/cozastore/#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" data-val="Sach@(item.SachID)">
                                 Xem nhanh
@@ -301,31 +302,31 @@
                                     <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
                                     <div class="slick3 gallery-lb">
-                                        <div class="item-slick3" data-thumb="/Assets/Image/ImageBook/@item.SachID/@(item.SachID)_1.jpg">
+                                        <div class="item-slick3" data-thumb="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,1)">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="/Assets/Image/ImageBook/@item.SachID/@(item.SachID)_1.jpg" alt="IMG-PRODUCT">
+                                                <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,1)" alt="IMG-PRODUCT">
 
-                                                <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/Assets/Image/ImageBook/@item.SachID/@(item.SachID)_1.jpg">
+                                                <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,1)">
                                                     <i class="fa fa-expand"></i>
                                                 </a>
                                             </div>
                                         </div>
 
-                                        <div class="item-slick3" data-thumb="/Assets/Customer/cozastore/images/product-detail-02.jpg">
+                                        <div class="item-slick3" data-thumb="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,2)">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="/Assets/Customer/cozastore/images/product-detail-02.jpg" alt="IMG-PRODUCT">
+                                                <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,2)" alt="IMG-PRODUCT">
 
-                                                <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/Assets/Customer/cozastore/images/product-detail-02.jpg">
+                                                <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,2)">
                                                     <i class="fa fa-expand"></i>
                                                 </a>
                                             </div>
                                         </div>
 
-                                        <div class="item-slick3" data-thumb="/Assets/Customer/cozastore/images/product-detail-03.jpg">
+                                        <div class="item-slick3" data-thumb="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,3)">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="/Assets/Customer/cozastore/images/product-detail-03.jpg" alt="IMG-PRODUCT">
+                                                <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,3)" alt="IMG-PRODUCT">
 
-                                                <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/Assets/Customer/cozastore/images/product-detail-03.jpg">
+                                                <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,3)">
                                                     <i class="fa fa-expand"></i>
                                                 </a>
                                             </div>
@@ -341,19 +342,26 @@
                                     @item.TenSach
                                 </h4>
 
-                                
-                                    @if (item.GiaKhuyenMai == null)
-                                    {
-                                        <span class="mtext-106 cl2">
-                                             @item.GiaTien.ToString("N0")
-                                        </span>
-                                    }
-                                    else
-                                    {
-                                        <span class="mtext-106 cl2">
-                                             @item.GiaKhuyenMai.GetValueOrDefault(0).ToString("N0")
-                                        </span>
-                                    }
+
+                                @if (item.GiaKhuyenMai == null)
+                                {
+                                    <span class="mtext-106 cl2">
+                                        @item.GiaTien.ToString("N0")
+                                    </span>
+
+                                }
+                                else
+                                {
+                                    <span class="mtext-106 cl2">
+                                        @item.GiaKhuyenMai.GetValueOrDefault(0).ToString("N0")
+                                    </span>
+                                    <p>
+                                        Tiết kiệm: <a style="color: red">@HtmlHelperExtensions.ConvertDecimaltoIntegerSalePrice(item.GiaKhuyenMai.GetValueOrDefault(0),item.GiaTien) %<a> @(item.GiaTien-item.GiaKhuyenMai) ₫
+                                    </p>
+                                    <p>
+                                        Giá thị trường: @item.GiaTien.ToString("N0") ₫
+                                    </p>
+                                }
 
 
                                 <p class="stext-102 cl3 p-t-23">
@@ -373,18 +381,27 @@
                                                         <i class="fs-16 zmdi zmdi-minus"></i>
                                                     </div>
 
-                                                    <input class="mtext-104 cl3 txt-center num-product" type="number" name="quantity" id="quantity" value="1">
+                                                    <input class="mtext-104 cl3 txt-center num-product" type="number" name="quantity" id="quantity" value="1" max="@item.SoLuong">
 
                                                     <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
                                                         <i class="fs-16 zmdi zmdi-plus"></i>
                                                     </div>
                                                 </div>
 
-                                                <button  class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" type="submit">
-                                                    Add to cart
-                                                </button>
+                                                if (item.SoLuong > 0)
+                                                {
+                                                    <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" type="submit">
+                                                        Chọn mua
+                                                    </button>
+                                                }
+                                                else
+                                                {
+                                                    <span class="btn-default">
+                                                        Hết hàng
+                                                    </span>
+                                                }
                                             }
-                                            </div>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -418,6 +435,7 @@
 
     }
 }
+
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 @section PluginCSS
 {
