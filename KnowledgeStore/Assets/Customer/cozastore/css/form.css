@@ -1,88 +1,42 @@
-#form
+#form input[ type = email]
 {
-	height: 440px;
-	width: 1000px;
-	margin-left: 50px;
-}
-#form1
-{
-	height: 440px;
+	padding: 10px 10px;
+	margin: 15px 0px 15px 15px;
+	box-sizing: border-box;
 	width: 400px;
-	float: left;
-	margin-left: 20px;
 }
-#form2
+#form input[ type = password]
 {
-	height: 440px;
-	width: 500px;
-	float: left;
-	margin-left: 80px;
-}
-#form2 input[type = email]
-{
-	margin : 15px 15px;
-	width: 350px;
-	height: 40px;
-
-}
-#form2 input[type = password]
-{
-	margin : 15px 15px;
-	width: 350px;
-	height: 40px;	
-}
-#form2 button
-{
-	margin : 15px 15px;
-	height: 40px;
-	width: 130px;
-}
-#form2 input[type = text]
-{
-	margin: 15px 15px;
-	width: 350px;
-	height: 40px;
-}
-
-
-
-
-#khung
-{
-	height: 350px;
-	width: 1000px;
-	margin-left: 50px;
-}
-#khung1
-{
-	height: 350px;
+	padding: 10px 10px;
+	margin: 15px 0px 15px 15px;
+	box-sizing: border-box;
 	width: 400px;
-	float: left;
-	margin-left: 20px;
 }
-#khung2
+#form button
 {
-	height: 350px;
-	width: 500px;
-	float: left;
-	margin-left: 80px;
+	padding: 10px 10px;
+	margin: 15px 0px 15px 15px;
+	box-sizing: border-box;
+	width: 150px;
 }
-#khung2 input[type = email]
+#form1 input[ type = text]
 {
-	margin : 15px 15px;
+	padding: 10px 10px;
+	margin: 15px 0px 15px 15px;
+	box-sizing: border-box;
 	width: 350px;
-	height: 40px;
-
 }
-#khung2 input[type = password]
+#form1 input[ type = email]
 {
-	margin : 15px 15px;
+	padding: 10px 10px;
+	margin: 15px 0px 15px 15px;
+	box-sizing: border-box;
 	width: 350px;
-	height: 40px;	
 }
-#khung2 button
+#form1 input[ type = password]
 {
-	margin : 15px 15px;
-	height: 40px;
-	width: 130px;
+	padding: 10px 10px;
+	margin: 15px 0px 15px 15px;
+	box-sizing: border-box;
+	width: 350px;
 }
