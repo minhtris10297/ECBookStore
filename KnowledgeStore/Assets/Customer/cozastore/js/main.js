@@ -267,11 +267,16 @@
     });
     
     /*==================================================================
-    [ Show modal1 ]*/
-    $('.js-show-modal1').on('click',function(e){
+    //[ Show modal1 ]*/
+    //$('.js-show-modal1').on('click',function(e){
+    //    e.preventDefault();
+    //    var idModal = $(this).data('val');
+    //    $('#'+idModal).addClass('show-modal1');
+    //});
+    $(document).on("click", '.js-show-modal1', function (e) {
         e.preventDefault();
         var idModal = $(this).data('val');
-        $('#'+idModal).addClass('show-modal1');
+        $('#' + idModal).addClass('show-modal1');
     });
 
     $('.js-hide-modal1').on('click',function(){

@@ -1,4 +1,5 @@
 ﻿using Model.EntityFramework;
+using Model.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,18 @@ namespace KnowledgeStore.Controllers
         public ActionResult Index()
         {
             return View(db.Saches.ToList());
+        }
+
+        public JsonResult ViewMore(int xPosition, int height)
+        {
+            var listSach = new List<BookHomeVM>();
+            var list = db.Saches.ToList();
+            for (int i = 0; i <= xPosition + 8; i++)
+            {
+                BookHomeVM bookHomeVM = new BookHomeVM() { SachID = list[i].SachID, TenSach = list[i].TenSach, TenTheLoai = list[i].TheLoai.TenTheLoai, GiaTien = list[i].GiaTien, GiaKhuyenMai = list[i].GiaKhuyenMai, MoTa = list[i].MoTa, TrangThai = list[i].TrangThai, SoLuong = list[i].SoLuong, TenCuaHang = list[i].Merchant.TenCuaHang };
+                listSach.Add(bookHomeVM);
+            }
+            return Json(new { data = listSach, position = xPosition + 8, heightStyle = height + 610, top = 0 }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult About()

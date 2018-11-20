@@ -36,6 +36,10 @@ namespace Model.EntityFramework
 
         public int GioiTinhID { get; set; }
 
+        [Required]
+        [StringLength(120)]
+        public string TenCuaHang { get; set; }
+
         public int SoLuongKIPXu { get; set; }
 
         public DateTime NgayTao { get; set; }
