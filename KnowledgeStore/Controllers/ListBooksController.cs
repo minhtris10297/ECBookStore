@@ -5,32 +5,74 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using Model.ViewModel;
 
 namespace KnowledgeStore.Controllers
 {
     public class ListBooksController : Controller
     {
         KnowledgeStoreEntities db = new KnowledgeStoreEntities();
+        private const string CartSession = "CartSession";
         // GET: ListBooks
-        public ActionResult Index(string id, int? page)
+        public ActionResult Index(string id, int? page,string theLoai)
         {
             ViewBag.TypeID = id;
-            var listSach = new List<Sach>();
-            if (id == "SachGiamGia")
+            var listSach = db.Saches.ToList();
+            if (id != null)
             {
-                listSach = db.Saches.OrderBy(m => m.GiaKhuyenMai / m.GiaTien).OrderBy(m=>m.NangTins.Max(n=>n.NgayNang)).ToList();
+                if (id == "SachGiamGia")
+                {
+                    listSach = db.Saches.OrderByDescending(m => m.GiaKhuyenMai / m.GiaTien).ToList();
+                }
+                else if (id == "SachMoiPhatHanh")
+                {
+                    listSach = db.Saches.OrderByDescending(m => m.NgayXuatBan).ToList();
+                }
+                else if (id == "SachBanChay")
+                {
+                    listSach = db.Saches.OrderByDescending(m => m.NangTins.Max(n => n.NgayNang)).ToList();
+                }
             }
-            else if(id == "SachMoiPhatHanh")
+            if (theLoai != null)
             {
-                listSach = db.Saches.OrderBy(m => m.NgayXuatBan).OrderBy(m => m.NangTins.Max(n => n.NgayNang)).ToList();
+                listSach = db.Saches.Where(m => m.TheLoai.TenTheLoai==theLoai).ToList();
             }
-            else if (id == "SachBanChay")
-            {
-                listSach = db.Saches.OrderBy(m => m.NangTins.Max(n => n.NgayNang)).ToList();
-            }
-            int pageSize = 20;
+            
+            int pageSize = 12;
             int pageNumber = (page ?? 1);
             return View(listSach.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult BookDetail(int id)
+        {
+            var book = db.Saches.Find(id);
+
+            var cart = Session[CartSession];
+            var list = new List<CartItem>();
+            if (cart != null)
+            {
+                list = (List<CartItem>)cart;
+                if (list.Exists(x => x.Sach.SachID == id))
+                {
+
+                    foreach (var item in list)
+                    {
+                        ViewBag.QuantityMax =book.SoLuong- item.Quantity;
+                    }
+                }
+                else
+                {
+                    ViewBag.QuantityMax = book.SoLuong;
+                }
+            }
+            else
+            {
+                ViewBag.QuantityMax = book.SoLuong;
+            }
+
+            
+
+            return View(book);
         }
     }
 }

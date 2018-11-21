@@ -34,7 +34,11 @@ namespace Model.EntityFramework
         [StringLength(100)]
         public string DiaChi { get; set; }
 
-        public int GioiTinh { get; set; }
+        public int GioiTinhID { get; set; }
+
+        [Required]
+        [StringLength(120)]
+        public string TenCuaHang { get; set; }
 
         public int SoLuongKIPXu { get; set; }
 
@@ -48,6 +52,8 @@ namespace Model.EntityFramework
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonHang> DonHangs { get; set; }
+
+        public virtual GioiTinh GioiTinh { get; set; }
 
         public virtual GioiTinh GioiTinh1 { get; set; }
 

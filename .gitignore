@@ -1,0 +1,13 @@
+
+.vs/config/applicationhost.config
+.vs/KnowledgeStore/v15/.suo
+.vs/KnowledgeStore/v15/Server/sqlite3/storage.ide-shm
+.vs/KnowledgeStore/v15/Server/sqlite3/storage.ide-wal
+KnowledgeStore/bin/KnowledgeStore.dll
+KnowledgeStore/bin/KnowledgeStore.pdb
+KnowledgeStore/obj/Debug/KnowledgeStore.csproj.CoreCompileInputs.cache
+KnowledgeStore/obj/Debug/KnowledgeStore.csprojAssemblyReference.cache
+KnowledgeStore/obj/Debug/KnowledgeStore.dll
+KnowledgeStore/obj/Debug/KnowledgeStore.pdb
+Model/obj/Debug/Model.csproj.CoreCompileInputs.cache
+Model/obj/Debug/Model.csprojAssemblyReference.cache

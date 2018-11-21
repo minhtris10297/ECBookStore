@@ -12,8 +12,8 @@
             $.each(listProduct, function (i, item) {
                 cartList.push({
                     Quantity: $(item).val(),
-                    Product: {
-                        ID: $(item).data('id')
+                    Sach: {
+                        SachID: $(item).data('id')
                     }
                 });
             });
@@ -25,7 +25,7 @@
                 type: 'POST',
                 success: function (res) {
                     if (res.status == true) {
-                        window.location.href = "/gio-hang";
+                        window.location.href = "/Cart";
                     }
                 }
             })
@@ -40,7 +40,7 @@
                 type: 'POST',
                 success: function (res) {
                     if (res.status == true) {
-                        window.location.href = "/gio-hang";
+                        window.location.href = "/Cart";
                     }
                 }
             })
@@ -55,7 +55,7 @@
                 type: 'POST',
                 success: function (res) {
                     if (res.status == true) {
-                        window.location.href = "/gio-hang";
+                        window.location.href = "/Cart";
                     }
                 }
             })

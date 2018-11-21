@@ -1,5 +1,6 @@
 ﻿@model PagedList.IPagedList<Model.EntityFramework.Sach>
 @using PagedList.Mvc;
+@using Common
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -224,397 +225,49 @@
         </div>
 
         <div class="row isotope-grid">
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="/Assets/Customer/cozastore/images/bookt1.jpg" alt="IMG-PRODUCT" style="width: 270px; height: 200px">
 
-                        <a href="/Assets/Customer/cozastore/#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Xem nhanh
-                        </a>
-                    </div>
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+                    <!-- Block2 -->
+                    <div class="block2">
+                        <div class="block2-pic hov-img0">
+                            <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,1)" alt="IMG-PRODUCT" style="width: 270px; height: 200px">
 
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="/Assets/Customer/cozastore/product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Con đường thoát hạn
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                100.000 đồng
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="/Assets/Customer/cozastore/#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="/Assets/Customer/cozastore/images/icons/icon-heart-01.png" alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/Assets/Customer/cozastore/images/icons/icon-heart-02.png" alt="ICON">
+                            <a href="/Assets/Customer/cozastore/#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" data-val="Sach@(item.SachID)" >
+                                Xem nhanh
                             </a>
                         </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="/Assets/Customer/cozastore/images/bookt2.jpg" alt="IMG-PRODUCT" style="width: 270px; height: 200px">
+                        <div class="block2-txt flex-w flex-t p-t-14">
+                            <div class="block2-txt-child1 flex-col-l ">
+                                <a href="@Url.Action("BookDetail","ListBooks",new { id=item.SachID})" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    @item.TenSach
+                                </a>
 
-                        <a href="/Assets/Customer/cozastore/#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Xem nhanh
-                        </a>
-                    </div>
+                                <span class="stext-105 cl3">
+                                    @item.GiaTien.ToString("N0") đồng
+                                </span>
+                            </div>
 
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="/Assets/Customer/cozastore/product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Thương nhau để đó
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                200.000 đồng
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="/Assets/Customer/cozastore/#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="/Assets/Customer/cozastore/images/icons/icon-heart-01.png" alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/Assets/Customer/cozastore/images/icons/icon-heart-02.png" alt="ICON">
-                            </a>
+                            <div class="block2-txt-child2 flex-r p-t-3">
+                                <a href="/Assets/Customer/cozastore/#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                    <img class="icon-heart1 dis-block trans-04" src="/Assets/Customer/cozastore/images/icons/icon-heart-01.png" alt="ICON">
+                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/Assets/Customer/cozastore/images/icons/icon-heart-02.png" alt="ICON">
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="/Assets/Customer/cozastore/images/bookt3.jpg" alt="IMG-PRODUCT" style="width: 270px; height: 200px">
-
-                        <a href="/Assets/Customer/cozastore/#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Xem nhanh
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="/Assets/Customer/cozastore/product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Cuộc cách mạng MỘT - CỌNG - ROM
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                200.000 đồng
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="/Assets/Customer/cozastore/#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="/Assets/Customer/cozastore/images/icons/icon-heart-01.png" alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/Assets/Customer/cozastore/images/icons/icon-heart-02.png" alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="/Assets/Customer/cozastore/images/bookt6.jpg" alt="IMG-PRODUCT" style="width: 270px; height: 200px">
-
-                        <a href="/Assets/Customer/cozastore/#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Xem nhanh
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="/Assets/Customer/cozastore/product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Đắc nhân tâm
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                300.000 đồng
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="/Assets/Customer/cozastore/#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="/Assets/Customer/cozastore/images/icons/icon-heart-01.png" alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/Assets/Customer/cozastore/images/icons/icon-heart-02.png" alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="/Assets/Customer/cozastore/images/bookt6.jpg" alt="IMG-PRODUCT" style="width: 270px; height: 200px">
-
-                        <a href="/Assets/Customer/cozastore/#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Xem nhanh
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="/Assets/Customer/cozastore/product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Đắc nhân tâm
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                300.000 đồng
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="/Assets/Customer/cozastore/#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="/Assets/Customer/cozastore/images/icons/icon-heart-01.png" alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/Assets/Customer/cozastore/images/icons/icon-heart-02.png" alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="/Assets/Customer/cozastore/images/bookt6.jpg" alt="IMG-PRODUCT" style="width: 270px; height: 200px">
-
-                        <a href="/Assets/Customer/cozastore/#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Xem nhanh
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="/Assets/Customer/cozastore/product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Đắc nhân tâm
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                300.000 đồng
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="/Assets/Customer/cozastore/#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="/Assets/Customer/cozastore/images/icons/icon-heart-01.png" alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/Assets/Customer/cozastore/images/icons/icon-heart-02.png" alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="/Assets/Customer/cozastore/images/bookt6.jpg" alt="IMG-PRODUCT" style="width: 270px; height: 200px">
-
-                        <a href="/Assets/Customer/cozastore/#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Xem nhanh
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="/Assets/Customer/cozastore/product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Đắc nhân tâm
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                300.000 đồng
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="/Assets/Customer/cozastore/#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="/Assets/Customer/cozastore/images/icons/icon-heart-01.png" alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/Assets/Customer/cozastore/images/icons/icon-heart-02.png" alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="/Assets/Customer/cozastore/images/bookt6.jpg" alt="IMG-PRODUCT" style="width: 270px; height: 200px">
-
-                        <a href="/Assets/Customer/cozastore/#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Xem nhanh
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="/Assets/Customer/cozastore/product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Đắc nhân tâm
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                300.000 đồng
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="/Assets/Customer/cozastore/#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="/Assets/Customer/cozastore/images/icons/icon-heart-01.png" alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/Assets/Customer/cozastore/images/icons/icon-heart-02.png" alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="/Assets/Customer/cozastore/images/bookt6.jpg" alt="IMG-PRODUCT" style="width: 270px; height: 200px">
-
-                        <a href="/Assets/Customer/cozastore/#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Xem nhanh
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="/Assets/Customer/cozastore/product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Đắc nhân tâm
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                300.000 đồng
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="/Assets/Customer/cozastore/#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="/Assets/Customer/cozastore/images/icons/icon-heart-01.png" alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/Assets/Customer/cozastore/images/icons/icon-heart-02.png" alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="/Assets/Customer/cozastore/images/bookt6.jpg" alt="IMG-PRODUCT" style="width: 270px; height: 200px">
-
-                        <a href="/Assets/Customer/cozastore/#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Xem nhanh
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="/Assets/Customer/cozastore/product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Đắc nhân tâm
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                300.000 đồng
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="/Assets/Customer/cozastore/#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="/Assets/Customer/cozastore/images/icons/icon-heart-01.png" alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/Assets/Customer/cozastore/images/icons/icon-heart-02.png" alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="/Assets/Customer/cozastore/images/bookt6.jpg" alt="IMG-PRODUCT" style="width: 270px; height: 200px">
-
-                        <a href="/Assets/Customer/cozastore/#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Xem nhanh
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="/Assets/Customer/cozastore/product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Đắc nhân tâm
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                300.000 đồng
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="/Assets/Customer/cozastore/#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="/Assets/Customer/cozastore/images/icons/icon-heart-01.png" alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/Assets/Customer/cozastore/images/icons/icon-heart-02.png" alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="/Assets/Customer/cozastore/images/bookt6.jpg" alt="IMG-PRODUCT" style="width: 270px; height: 200px">
-
-                        <a href="/Assets/Customer/cozastore/#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Xem nhanh
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="/Assets/Customer/cozastore/product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Đắc nhân tâm
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                300.000 đồng
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="/Assets/Customer/cozastore/#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="/Assets/Customer/cozastore/images/icons/icon-heart-01.png" alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/Assets/Customer/cozastore/images/icons/icon-heart-02.png" alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
 
 
         </div>
         <!-- Load more -->
         <div class="flex-c-m flex-w w-full p-t-45">
-            <br />
-            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-
+            @*<br />
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                 <br />*@
             @Html.PagedListPager(Model, page => Url.Action("Index",
                 new { page,id=ViewBag.TypeID }))
         </div>
@@ -626,6 +279,162 @@
     class="header-v4"
 }
 
+
+@section ModalProduct
+{
+    @foreach (var item in Model)
+    {
+        <!-- Modal1 -->
+        <div class="wrap-modal1 js-modal1 p-t-60 p-b-20" id="Sach@(item.SachID)">
+            <div class="overlay-modal1 js-hide-modal1"></div>
+
+            <div class="container">
+                <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+                    <button class="how-pos3 hov3 trans-04 js-hide-modal1">
+                        <img src="/Assets/Customer/cozastore/images/icons/icon-close.png" alt="CLOSE">
+                    </button>
+
+                    <div class="row">
+                        <div class="col-md-6 col-lg-7 p-b-30">
+                            <div class="p-l-25 p-r-30 p-lr-0-lg">
+                                <div class="wrap-slick3 flex-sb flex-w">
+                                    <div class="wrap-slick3-dots"></div>
+                                    <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
+
+                                    <div class="slick3 gallery-lb">
+                                        <div class="item-slick3" data-thumb="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,1)">
+                                            <div class="wrap-pic-w pos-relative">
+                                                <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,1)" alt="IMG-PRODUCT">
+
+                                                <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,1)">
+                                                    <i class="fa fa-expand"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="item-slick3" data-thumb="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,2)">
+                                            <div class="wrap-pic-w pos-relative">
+                                                <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,2)" alt="IMG-PRODUCT">
+
+                                                <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,2)">
+                                                    <i class="fa fa-expand"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="item-slick3" data-thumb="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,3)">
+                                            <div class="wrap-pic-w pos-relative">
+                                                <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,3)" alt="IMG-PRODUCT">
+
+                                                <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,3)">
+                                                    <i class="fa fa-expand"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-5 p-b-30">
+                            <div class="p-r-50 p-t-5 p-lr-0-lg">
+                                <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                                    @item.TenSach
+                                </h4>
+
+
+                                @if (item.GiaKhuyenMai == null)
+                                {
+                                    <span class="mtext-106 cl2">
+                                        @item.GiaTien.ToString("N0")
+                                    </span>
+
+                                }
+                                else
+                                {
+                                    <span class="mtext-106 cl2">
+                                        @item.GiaKhuyenMai.GetValueOrDefault(0).ToString("N0")
+                                    </span>
+                                    <p>
+                                        Tiết kiệm: <a style="color: red">@HtmlHelperExtensions.ConvertDecimaltoIntegerSalePrice(item.GiaKhuyenMai.GetValueOrDefault(0),item.GiaTien) %<a> @(item.GiaTien-item.GiaKhuyenMai) ₫
+                                    </p>
+                                    <p>
+                                        Giá thị trường: @item.GiaTien.ToString("N0") ₫
+                                    </p>
+                                }
+
+
+                                <p class="stext-102 cl3 p-t-23">
+                                    @item.MoTa
+                                </p>
+
+                                <!--  -->
+                                <div class="p-t-33">
+
+                                    <div class="flex-w flex-r-m p-b-10">
+
+                                        <div class="size-204 flex-w flex-m respon6-next">
+                                            @using (Html.BeginForm("AddItem", "Cart", new { id = item.SachID }, FormMethod.Post))
+                                            {
+                                                <div class="wrap-num-product flex-w m-r-20 m-tb-10">
+                                                    <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+                                                        <i class="fs-16 zmdi zmdi-minus"></i>
+                                                    </div>
+
+                                                    <input class="mtext-104 cl3 txt-center num-product" type="number" name="quantity" id="quantity" value="1" max="@item.SoLuong">
+
+                                                    <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+                                                        <i class="fs-16 zmdi zmdi-plus"></i>
+                                                    </div>
+                                                </div>
+
+                                                if (item.SoLuong > 0)
+                                                {
+                                                    <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" type="submit">
+                                                        Chọn mua
+                                                    </button>
+                                                }
+                                                else
+                                                {
+                                                    <span class="btn-default">
+                                                        Hết hàng
+                                                    </span>
+                                                }
+                                            }
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!--  -->
+                                <div class="flex-w flex-m p-l-100 p-t-40 respon7">
+                                    <div class="flex-m bor9 p-r-10 m-r-11">
+                                        <a href="/Assets/Customer/cozastore/#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
+                                            <i class="zmdi zmdi-favorite"></i>
+                                        </a>
+                                    </div>
+
+                                    <a href="/Assets/Customer/cozastore/#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+
+                                    <a href="/Assets/Customer/cozastore/#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+
+                                    <a href="/Assets/Customer/cozastore/#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+}
 
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 @section PluginCSS

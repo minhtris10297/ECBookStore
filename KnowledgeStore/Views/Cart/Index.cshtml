@@ -42,7 +42,7 @@
                                     <tr class="table_row">
                                         <td class="column-1">
                                             <div class="how-itemcart1">
-                                                <img src="/Assets/Customer/cozastore/images/item-cart-04.jpg" alt="IMG"> <!-- Hình ảnh sản phẩm -->
+                                                <img src="/Assets/Image/ImageBook/@item.Sach.SachID/@(item.Sach.SachID)_1.jpg" alt="IMG"> <!-- Hình ảnh sản phẩm -->
                                             </div>
                                         </td>
                                         <td class="column-2">@item.Sach.TenSach</td> 			<!-- Tên sản phẩm -->
@@ -62,7 +62,7 @@
                                             </div>
                                         </td>
                                         <td class="column-5">@((item.Sach.GiaTien * item.Quantity).ToString("N0"))</td> 						<!-- Tổng giá -->
-                                        <td class="column-6"><button><i class="zmdi zmdi-hc-2x zmdi-delete btn-delete"></i></button></td>
+                                        <td class="column-6"><button class="btn-delete" data-id="@item.Sach.SachID"><i class="zmdi zmdi-hc-2x zmdi-delete"></i></button></td>
                                     </tr>
                                 }
 
@@ -72,14 +72,14 @@
                         <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
                             <div class="flex-w flex-m m-r-20 m-tb-5">
 
-                                <div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-                                    Áp dụng mã
-                                </div>
+                                <button id="btnDeleteAll" class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+                                    Làm mới giỏ
+                                </button>
                             </div>
 
-                            <div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10 btnUpdate">
+                            <button id="btnUpdate" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
                                 Cập nhật lại
-                            </div>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
 
                             <div class="p-r-18 p-r-0-sm w-full-ssm" style="width: 50%">
                                 <p class="stext-111 cl6 p-t-2" style="float: right;">
-                                    200.000 đ.
+                                    @ViewBag.TamTinh đ.
                                 </p>
                             </div>
 
@@ -107,7 +107,7 @@
 
                             <div class="p-r-18 p-r-0-sm w-full-ssm" style="width: 50%">
                                 <p class="stext-111 cl6 p-t-2" style="float: right;">
-                                    20.000 đ.
+                                    0 đ.
                                 </p>
                             </div>
                             <hr style="width: 100%;border-top: 0.5px solid #000; margin: 5px; ">
@@ -119,7 +119,7 @@
 
                             <div class=" p-r-18 p-r-0-sm w-full-ssm" style="width: 50%; margin: 5px 0;">
                                 <p class="stext-111 cl6 p-t-2" style="float: right; color: #ee2347; font-size: 19px; ">
-                                    221.000 đ.
+                                    @ViewBag.ThanhTien đ.
                                 </p>
                                 <p class="stext-111 cl6 p-t-2" style="float: right">
                                     (Đã bao gồm VAT)
@@ -238,9 +238,10 @@ else
 
 @section PluginJS
 {
-    <script src="~/Assets/Customer/cozastore/js/controller/cartController.js"></script>
     <!--===============================================================================================-->
     <script src="/Assets/Customer/cozastore/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Assets/Customer/cozastore/js/controller/cartController.js"></script>
     <!--===============================================================================================-->
     <script src="/Assets/Customer/cozastore/vendor/animsition/js/animsition.min.js"></script>
     <!--===============================================================================================-->

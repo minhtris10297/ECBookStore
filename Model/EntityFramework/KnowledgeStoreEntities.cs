@@ -145,18 +145,19 @@ namespace Model.EntityFramework
 
             modelBuilder.Entity<GioiTinh>()
                 .HasMany(e => e.Merchants)
+                .WithRequired(e => e.GioiTinh)
+                .HasForeignKey(e => e.GioiTinhID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<GioiTinh>()
+                .HasMany(e => e.Merchants1)
                 .WithRequired(e => e.GioiTinh1)
-                .HasForeignKey(e => e.GioiTinh)
+                .HasForeignKey(e => e.GioiTinhID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<HinhAnh>()
                 .Property(e => e.DuongDan)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<HinhAnh>()
-                .HasMany(e => e.Saches)
-                .WithOptional(e => e.HinhAnh)
-                .HasForeignKey(e => e.HinhAnhID);
 
             modelBuilder.Entity<LichSuCustomer>()
                 .Property(e => e.TongTien)
@@ -204,14 +205,6 @@ namespace Model.EntityFramework
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<Sach>()
-                .Property(e => e.MoTa)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Sach>()
-                .Property(e => e.NangTinID)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Sach>()
                 .HasMany(e => e.ChiTietDonHangs)
                 .WithRequired(e => e.Sach)
                 .WillCascadeOnDelete(false);
@@ -219,7 +212,6 @@ namespace Model.EntityFramework
             modelBuilder.Entity<Sach>()
                 .HasMany(e => e.HinhAnhs)
                 .WithRequired(e => e.Sach)
-                .HasForeignKey(e => e.SachID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Sach>()
