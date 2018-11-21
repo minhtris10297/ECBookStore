@@ -396,7 +396,7 @@
 
                         <div class="block2-txt flex-w flex-t p-t-14">
                             <div class="block2-txt-child1 flex-col-l ">
-                                <a href="/Assets/Customer/cozastore/product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                <a href="@Url.Action("BookDetail","ListBooks",new { id=Model[i].SachID})" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                     @Model[i].TenSach
                                 </a>
 
@@ -752,7 +752,7 @@
                             count = 1;
                             topStyle += 315;
                         }
-                        var divProduct = '<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women" style="position: absolute; left: ' + leftStyle + '%; top: ' + topStyle + 'px;"><!-- Block2 --><div class="block2"><div class="block2-pic hov-img0"><img src="/Assets/Image/ImageBook/' + item.SachID + '/' + item.SachID + '_1.jpg" alt="IMG-PRODUCT" style="width: 270px; height: 200px"><a href="" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" data-val="Sach' + item.SachID + '" onclick="ShowModal1()">Xem nhanh</a></div><div class="block2-txt flex-w flex-t p-t-14"><div class="block2-txt-child1 flex-col-l "><a href="/Assets/Customer/cozastore/product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">' + item.TenSach + '</a><span class="stext-105 cl3">' + item.GiaTien + ' đồng</span></div><div class="block2-txt-child2 flex-r p-t-3"><a href="/Assets/Customer/cozastore/#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"><img class="icon-heart1 dis-block trans-04" src="/Assets/Customer/cozastore/images/icons/icon-heart-01.png" alt="ICON"><img class="icon-heart2 dis-block trans-04 ab-t-l" src="/Assets/Customer/cozastore/images/icons/icon-heart-02.png" alt="ICON"></a></div></div></div></div>';
+                        var divProduct = '<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women" style="position: absolute; left: ' + leftStyle + '%; top: ' + topStyle + 'px;"><!-- Block2 --><div class="block2"><div class="block2-pic hov-img0"><img src="/Assets/Image/ImageBook/' + item.SachID + '/' + item.SachID + '_1.jpg" alt="IMG-PRODUCT" style="width: 270px; height: 200px"><a href="" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" data-val="Sach' + item.SachID + '" onclick="ShowModal1()">Xem nhanh</a></div><div class="block2-txt flex-w flex-t p-t-14"><div class="block2-txt-child1 flex-col-l "><a href="/ListBooks/BookDetail/' + item.SachID + '" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">' + item.TenSach + '</a><span class="stext-105 cl3">' + item.GiaTien + ' đồng</span></div><div class="block2-txt-child2 flex-r p-t-3"><a href="/Assets/Customer/cozastore/#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"><img class="icon-heart1 dis-block trans-04" src="/Assets/Customer/cozastore/images/icons/icon-heart-01.png" alt="ICON"><img class="icon-heart2 dis-block trans-04 ab-t-l" src="/Assets/Customer/cozastore/images/icons/icon-heart-02.png" alt="ICON"></a></div></div></div></div>';
                         divRowIsotope += divProduct;
                     });
                     divRowIsotope += '</div>';

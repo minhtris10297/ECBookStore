@@ -5,12 +5,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using Model.ViewModel;
 
 namespace KnowledgeStore.Controllers
 {
     public class ListBooksController : Controller
     {
         KnowledgeStoreEntities db = new KnowledgeStoreEntities();
+        private const string CartSession = "CartSession";
         // GET: ListBooks
         public ActionResult Index(string id, int? page,string theLoai)
         {
@@ -44,6 +46,32 @@ namespace KnowledgeStore.Controllers
         public ActionResult BookDetail(int id)
         {
             var book = db.Saches.Find(id);
+
+            var cart = Session[CartSession];
+            var list = new List<CartItem>();
+            if (cart != null)
+            {
+                list = (List<CartItem>)cart;
+                if (list.Exists(x => x.Sach.SachID == id))
+                {
+
+                    foreach (var item in list)
+                    {
+                        ViewBag.QuantityMax =book.SoLuong- item.Quantity;
+                    }
+                }
+                else
+                {
+                    ViewBag.QuantityMax = book.SoLuong;
+                }
+            }
+            else
+            {
+                ViewBag.QuantityMax = book.SoLuong;
+            }
+
+            
+
             return View(book);
         }
     }

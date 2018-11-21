@@ -2180,15 +2180,15 @@ input.num-product::-webkit-inner-spin-button {
 [ S-Text 0 - 15 ]*/
 .stext-101 {
   font-family: Poppins-Medium;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.466667;
   text-transform: uppercase;
 }
 
 .stext-102 {
-  font-family: Poppins-Regular;
-  font-size: 14px;
-  line-height: 1.7;
+    font-family: 'Comfortaa', cursive;
+    font-size: 14px;
+    line-height: 1.7;
 }
 
 .stext-103 {
