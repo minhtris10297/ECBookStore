@@ -25,6 +25,7 @@
     <WebStackScaffolding_DbContextDialogWidth>600</WebStackScaffolding_DbContextDialogWidth>
     <WebStackScaffolding_DbContextTypeFullName>Model.EntityFramework.KnowledgeStoreEntities</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
+    <ToolsVersionPromptShown>3.1</ToolsVersionPromptShown>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

@@ -21,3 +21,8 @@ E:\ASP.NET MVC PROJECT\ProjectBookSt_N7\Common\obj\Debug\Common.csprojAssemblyRe
 E:\ASP.NET MVC PROJECT\ProjectBookSt_N7\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 E:\ASP.NET MVC PROJECT\ProjectBookSt_N7\Common\obj\Debug\Common.dll
 E:\ASP.NET MVC PROJECT\ProjectBookSt_N7\Common\obj\Debug\Common.pdb
+D:\Test\ProjectBookSt_N7\Common\bin\Debug\Common.dll
+D:\Test\ProjectBookSt_N7\Common\bin\Debug\Common.pdb
+D:\Test\ProjectBookSt_N7\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+D:\Test\ProjectBookSt_N7\Common\obj\Debug\Common.dll
+D:\Test\ProjectBookSt_N7\Common\obj\Debug\Common.pdb
