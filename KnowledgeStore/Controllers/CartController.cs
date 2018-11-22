@@ -111,6 +111,20 @@ namespace KnowledgeStore.Controllers
                 //Gán vào session
                 Session[CartSession] = list;
             }
+            using (var dbContextTransaction = db.Database.BeginTransaction())
+            {
+                try
+                {
+                    db.GioHangs.Add(new GioHang() { SachID = id, SoLuong = quantity });
+                    db.Database.CommandTimeout = 10;
+
+                    dbContextTransaction.Rollback();
+                }
+                catch (Exception)
+                {
+                    
+                }
+            }
             return RedirectToAction("Index");
         }
         public ActionResult Success()

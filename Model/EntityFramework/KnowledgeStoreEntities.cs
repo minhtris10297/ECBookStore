@@ -35,6 +35,7 @@ namespace Model.EntityFramework
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TheLoai> TheLoais { get; set; }
         public virtual DbSet<TinhTrangDonHang> TinhTrangDonHangs { get; set; }
+        public virtual DbSet<GioHang> GioHangs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -216,6 +217,11 @@ namespace Model.EntityFramework
 
             modelBuilder.Entity<Sach>()
                 .HasMany(e => e.NangTins)
+                .WithRequired(e => e.Sach)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Sach>()
+                .HasMany(e => e.GioHangs)
                 .WithRequired(e => e.Sach)
                 .WillCascadeOnDelete(false);
 

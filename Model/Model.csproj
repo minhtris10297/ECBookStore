@@ -60,6 +60,7 @@
     <Compile Include="EntityFramework\DoanhThu.cs" />
     <Compile Include="EntityFramework\DonHang.cs" />
     <Compile Include="EntityFramework\GiaTriKIPXu.cs" />
+    <Compile Include="EntityFramework\GioHang.cs" />
     <Compile Include="EntityFramework\GioiTinh.cs" />
     <Compile Include="EntityFramework\HinhAnh.cs" />
     <Compile Include="EntityFramework\HoaHong.cs" />
