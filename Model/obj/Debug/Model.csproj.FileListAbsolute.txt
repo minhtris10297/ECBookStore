@@ -54,3 +54,15 @@ E:\ASP.NET MVC PROJECT\ProjectBookSt_N7\Model\obj\Debug\Model.csproj.CoreCompile
 E:\ASP.NET MVC PROJECT\ProjectBookSt_N7\Model\obj\Debug\Model.csproj.CopyComplete
 E:\ASP.NET MVC PROJECT\ProjectBookSt_N7\Model\obj\Debug\Model.dll
 E:\ASP.NET MVC PROJECT\ProjectBookSt_N7\Model\obj\Debug\Model.pdb
+D:\ThuongMaiDienTu\Model\bin\Debug\Model.dll.config
+D:\ThuongMaiDienTu\Model\bin\Debug\Model.dll
+D:\ThuongMaiDienTu\Model\bin\Debug\Model.pdb
+D:\ThuongMaiDienTu\Model\bin\Debug\Common.dll
+D:\ThuongMaiDienTu\Model\bin\Debug\EntityFramework.dll
+D:\ThuongMaiDienTu\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\ThuongMaiDienTu\Model\bin\Debug\Common.pdb
+D:\ThuongMaiDienTu\Model\bin\Debug\EntityFramework.xml
+D:\ThuongMaiDienTu\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\ThuongMaiDienTu\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\ThuongMaiDienTu\Model\obj\Debug\Model.dll
+D:\ThuongMaiDienTu\Model\obj\Debug\Model.pdb

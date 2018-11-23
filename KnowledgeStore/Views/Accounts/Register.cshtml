@@ -40,7 +40,7 @@
                 @Html.AntiForgeryToken()
                 <div class="form-group">
                     @*<input id="sign-up-name" type="text" class="form-control" placeholder="Họ Tên">*@
-                    @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Họ Tên", required="required" } })
+                    @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Họ Tên", required = "required" } })
                     @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
@@ -51,8 +51,13 @@
                 </div>
                 <div class="form-group">
                     @*<input id="sign-up-name" type="password" class="form-control" placeholder="Mật Khẩu">*@
-                    @Html.EditorFor(model => model.MatKhauMaHoa, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Mật khẩu", required = "required" } })
-                    @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.MatKhauMaHoa, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Mật khẩu", required = "required", @id="password" } })
+                    @Html.ValidationMessageFor(model => model.MatKhauMaHoa, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @*<input id="sign-up-name" type="password" class="form-control" placeholder="Mật Khẩu">*@
+                    @Html.Editor("RetypePassword", new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Xác nhận mật khẩu", required = "required", @id = "retypePassword" } })
+                    <lable id="lblRePass"></lable>
                 </div>
                 <div class="form-group">
                     @*<input id="sign-up-name" type="number" class="form-control" placeholder="Số Điện Thoại">*@
@@ -116,6 +121,18 @@
                 alert("Ban chua nhap email")
             }
 
+        });
+        //retype password
+        $('#retypePassword').keyup(function () {
+            var re = $(this).val();
+            var pass = $('#password').val();
+            if (re != pass) {
+                $('#lblRePass').text("Mật khẩu xác nhận không khớp với mật khẩu");
+                $('#lblRePass').css("color", "red");
+            }
+            else {
+                $('#lblRePass').text("");
+            }
         });
     </script>
 </body>
