@@ -63,6 +63,26 @@ namespace KnowledgeStore.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register([Bind(Include = "CustomerID,Email,HoTen,DiaChi,MatKhauMaHoa,GioiTinhID,SoDienThoai")] Customer customer,string AuthenticationCode)
         {
+            //check Ho ten
+            if (customer.HoTen.Trim().Any(char.IsNumber))
+            {
+                ViewBag.GioiTinhID = new SelectList(db.GioiTinhs, "GioiTinhID", "TenGioiTinh", "1");
+                ModelState.AddModelError("", "Họ tên không hợp lệ!");
+                return View(customer);
+            }
+            //check password
+            if (customer.MatKhauMaHoa.Trim().Length < 5)
+            {
+                ViewBag.GioiTinhID = new SelectList(db.GioiTinhs, "GioiTinhID", "TenGioiTinh", "1");
+                ModelState.AddModelError("", "Mật khẩu không hợp lệ! Mật khẩu hợp lệ phải chứa ít nhất 5 ký tự bao gồm chữ và số");
+                return View(customer);
+            }
+            if (customer.MatKhauMaHoa.Trim().All(char.IsLetter))
+            {
+                ViewBag.GioiTinhID = new SelectList(db.GioiTinhs, "GioiTinhID", "TenGioiTinh", "1");
+                ModelState.AddModelError("", "Mật khẩu không hợp lệ! Mật khẩu hợp lệ phải chứa ít nhất 1 ký tự số và chữ");
+                return View(customer);
+            }
             var authenticationEmail = (AuthenticationEmail)Session[CommonConstants.AUTHENTICATIONEMAIL_SESSION];
 
             if (ModelState.IsValid & authenticationEmail!=null)
@@ -91,7 +111,7 @@ namespace KnowledgeStore.Controllers
                     return View(customer);
                 }
             }
-            ViewBag.GioiTinhID = new SelectList(db.GioiTinhs, "GioiTinhID", "TenGioiTinh");
+            ViewBag.GioiTinhID = new SelectList(db.GioiTinhs, "GioiTinhID", "TenGioiTinh",1);
             return View(customer);
         }
         public JsonResult GetAuthenticationInEmail(string Email)
