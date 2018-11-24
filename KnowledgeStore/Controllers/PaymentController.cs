@@ -89,5 +89,33 @@ namespace KnowledgeStore.Controllers
             }
             return View(model);
         }
+
+        public ActionResult PaymentSuccess()
+        {
+            var sessionUser = (UserLogin)Session[CommonConstants.USER_SESSION];
+            var user = db.Customers.Where(m => m.Email == sessionUser.Email).FirstOrDefault();
+
+            var cart = Session[CartSession];
+            var listCart = new List<CartItem>();
+            if (cart != null)
+            {
+                listCart = (List<CartItem>)cart;
+            }
+
+            decimal tamTinh = 0;
+            foreach (var item in listCart)
+            {
+                tamTinh += item.Quantity * item.Sach.GiaTien;
+            }
+            var donHang = new DonHang() { CustomerID = user.CustomerID, NgayDat = System.DateTime.Now, TongTien = tamTinh, DiaChi = user.DiaChi, TinhTrangDonHangID = 1 };
+            foreach(var item in listCart)
+            {
+                var chiTietDH = new ChiTietDonHang() { DonHangID = donHang.DonHangID, SachID = item.Sach.SachID, MerchantID = item.Sach.MerchantID.GetValueOrDefault(0), SoLuong = item.Quantity, ThanhTien = item.Quantity * item.Sach.GiaTien };
+                db.ChiTietDonHangs.Add(chiTietDH);
+            }
+            db.DonHangs.Add(donHang);
+            db.SaveChanges();
+            return View();
+        }
     }
 }

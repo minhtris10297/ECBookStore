@@ -15,6 +15,10 @@ namespace Model.EntityFramework
 
         public int SachID { get; set; }
 
+        public int MerchantID { get; set; }
+
+        public DateTime? NgayXuat { get; set; }
+
         public int SoLuong { get; set; }
 
         public decimal ThanhTien { get; set; }
@@ -25,5 +29,7 @@ namespace Model.EntityFramework
         public virtual DonHang DonHang { get; set; }
 
         public virtual Sach Sach { get; set; }
+
+        public virtual Merchant Merchant { get; set; }
     }
 }

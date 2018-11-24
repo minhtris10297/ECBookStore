@@ -23,11 +23,7 @@ namespace Model.EntityFramework
 
         public int CustomerID { get; set; }
 
-        public int MerchantID { get; set; }
-
         public DateTime NgayDat { get; set; }
-
-        public DateTime NgayXuat { get; set; }
 
         public decimal TongTien { get; set; }
 
@@ -47,8 +43,6 @@ namespace Model.EntityFramework
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DoanhThu> DoanhThus { get; set; }
-
-        public virtual Merchant Merchant { get; set; }
 
         public virtual TinhTrangDonHang TinhTrangDonHang { get; set; }
 

@@ -172,12 +172,12 @@ namespace Model.EntityFramework
                 .IsUnicode(false);
 
             modelBuilder.Entity<Merchant>()
-                .HasMany(e => e.DanhGiaCuaMerchants)
+                .HasMany(e => e.ChiTietDonHangs)
                 .WithRequired(e => e.Merchant)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Merchant>()
-                .HasMany(e => e.DonHangs)
+                .HasMany(e => e.DanhGiaCuaMerchants)
                 .WithRequired(e => e.Merchant)
                 .WillCascadeOnDelete(false);
 
