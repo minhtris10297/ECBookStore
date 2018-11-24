@@ -81,6 +81,7 @@
     <Compile Include="ViewModel\BookHomeVM.cs" />
     <Compile Include="ViewModel\CartItem.cs" />
     <Compile Include="ViewModel\LoginModel.cs" />
+    <Compile Include="ViewModel\UserLogin.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
