@@ -405,6 +405,17 @@
 						</div>
 
 						<div class="flex-w flex-t p-t-27 p-b-33">
+							<div class="w-full-ssm" style="width: 50%">
+								<span class="stext-110 cl2">
+									Địa chỉ giao hàng:
+								</span>
+							</div>
+
+							<div class="p-r-18 p-r-0-sm w-full-ssm" style="width: 50%">
+								<p class="stext-111 cl6 p-t-2" style="float: right;">
+									<button type="button" style="width: 70px; height: 30px; border: 1px solid #e6e6e6;" data-toggle="modal" data-target="#exampleModal">Sửa</button>
+								</p>	
+							</div>
 							<p>Tên: Trần Tuấn</p>
 							<p>Địa chỉ: 75/38, Quận 5, </p>
 							<p>SDT: 098888888</p>
@@ -480,6 +491,103 @@
 								</p>	
 							</div>
 						</div>
+
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="exampleModalLabel">Địa chỉ giao hàng</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+							<div class="modal-body">
+					        <form>
+					        	<div class="form-group">
+					        		<div class="row p-b-10">
+										<div class="col-sm-5" style="padding: 8px">
+											<p>Họ và tên:</p>
+										</div>
+										<div class="col-sm-7" style="left: -55px">
+											<input class="form-control" id="recipient-name" type="text" name="name" >
+										</div>
+									</div>
+								</div>
+						        <div class="form-group">
+					        		<div class="row p-b-10">
+										<div class="col-sm-5" style="padding: 8px">
+											<p>Số điện thoại:</p>
+										</div>
+										<div class="col-sm-7" style="left: -55px">
+											<input class="form-control" id="recipient-name" type="text" name="name" >
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+					        		<div class="row p-b-10">
+										<div class="col-sm-5" style="padding: 8px">
+											<p>Tỉnh / Thành phố:</p>
+										</div>
+										<div class="col-sm-7" style="left: -55px">
+											<div class="rs1-select2 rs2-select2 bor8 bg0">
+											<select class="js-select2 " name="js-select2" id="js-select2">
+												<option>Chọn Tỉnh / Thành phố</option>
+											</select>
+											<div class="dropDownSelect2"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+                        		<div class="form-group">
+					        		<div class="row p-b-10">
+										<div class="col-sm-5" style="padding: 8px">
+											<p>Quận / Huyện:</p>
+										</div>
+										<div class="col-sm-7" style="left: -55px">
+											<div class="rs1-select2 rs2-select2 bor8 bg0">
+											<select class="js-select2 form-control" name="js-select2" id="js-select2">
+												<option>Chọn Quận / Huyện</option>
+											</select>
+											<div class="dropDownSelect2"></div>
+										</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+					        		<div class="row p-b-10">
+										<div class="col-sm-5" style="padding: 8px">
+											<p>Phường / Xã:</p>
+										</div>
+										<div class="col-sm-7" style="left: -55px">
+											<div class="rs1-select2 rs2-select2 bor8 bg0">
+											<select class="js-select2" name="js-select2" id="js-select2">
+												<option>Chọn Phường / Xã</option>
+											</select>
+											<div class="dropDownSelect2"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+                        		<div class="form-group">
+					        		<div class="row p-b-10">
+										<div class="col-sm-5" style="padding: 8px">
+											<p>Số nhà, đường:</p>
+										</div>
+										<div class="col-sm-7" style="left: -55px">
+											<input class="form-control" id="recipient-name" type="text" name="name" >
+										</div>
+									</div>
+								</div>
+					        </form>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
+					        <button type="button" class="btn btn-primary" >Cập nhật</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
 
 					</div>
 				</div>
