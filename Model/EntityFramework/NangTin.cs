@@ -9,11 +9,12 @@ namespace Model.EntityFramework
     [Table("NangTin")]
     public partial class NangTin
     {
-        [Key]
-        public int MaLuotNang { get; set; }
+        public int NangTinID { get; set; }
 
-        public int MaBaiDang { get; set; }
+        public int SachID { get; set; }
 
-        public int MaMer { get; set; }
+        public DateTime NgayNang { get; set; }
+
+        public virtual Sach Sach { get; set; }
     }
 }

@@ -32,6 +32,7 @@ namespace Model.EntityFramework
         public virtual DbSet<NangTin> NangTins { get; set; }
         public virtual DbSet<NhaXuatBan> NhaXuatBans { get; set; }
         public virtual DbSet<Sach> Saches { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TheLoai> TheLoais { get; set; }
         public virtual DbSet<TinhTrangDonHang> TinhTrangDonHangs { get; set; }
 
@@ -144,8 +145,14 @@ namespace Model.EntityFramework
 
             modelBuilder.Entity<GioiTinh>()
                 .HasMany(e => e.Merchants)
+                .WithRequired(e => e.GioiTinh)
+                .HasForeignKey(e => e.GioiTinhID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<GioiTinh>()
+                .HasMany(e => e.Merchants1)
                 .WithRequired(e => e.GioiTinh1)
-                .HasForeignKey(e => e.GioiTinh)
+                .HasForeignKey(e => e.GioiTinhID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<HinhAnh>()
@@ -165,12 +172,12 @@ namespace Model.EntityFramework
                 .IsUnicode(false);
 
             modelBuilder.Entity<Merchant>()
-                .HasMany(e => e.DanhGiaCuaMerchants)
+                .HasMany(e => e.ChiTietDonHangs)
                 .WithRequired(e => e.Merchant)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Merchant>()
-                .HasMany(e => e.DonHangs)
+                .HasMany(e => e.DanhGiaCuaMerchants)
                 .WithRequired(e => e.Merchant)
                 .WillCascadeOnDelete(false);
 
@@ -198,11 +205,17 @@ namespace Model.EntityFramework
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<Sach>()
-                .Property(e => e.MoTa)
-                .IsUnicode(false);
+                .HasMany(e => e.ChiTietDonHangs)
+                .WithRequired(e => e.Sach)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Sach>()
-                .HasMany(e => e.ChiTietDonHangs)
+                .HasMany(e => e.HinhAnhs)
+                .WithRequired(e => e.Sach)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Sach>()
+                .HasMany(e => e.NangTins)
                 .WithRequired(e => e.Sach)
                 .WillCascadeOnDelete(false);
 

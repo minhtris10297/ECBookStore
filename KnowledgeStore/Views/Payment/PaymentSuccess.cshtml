@@ -1,0 +1,164 @@
+﻿
+@{
+    ViewBag.Title = "PaymentSuccess";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Shoping Cart -->
+<form class="bg0 p-t-75 p-b-85">
+    <div class="container">
+        <h1>-------------------------</h1>
+        <h1>THANH TOÁN THÀNH CÔNG</h1>
+        <a class="btn btn-primary" href="@Url.Action("Index","Home")">Trở về trang chủ</a>
+    </div>
+</form>
+
+@section PluginCSS{
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="/Assets/Customer/cozastore/images/icons/favicon.png" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/fonts/linearicons-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/css/main.css">
+    <!--===============================================================================================-->
+}
+
+@section PluginJS{
+    <!--===============================================================================================-->
+    <script src="/Assets/Customer/cozastore/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Assets/Customer/cozastore/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Assets/Customer/cozastore/vendor/bootstrap/js/popper.js"></script>
+    <script src="/Assets/Customer/cozastore/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Assets/Customer/cozastore/vendor/select2/select2.min.js"></script>
+    <script>
+        $(".js-select2").each(function () {
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="/Assets/Customer/cozastore/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Assets/Customer/cozastore/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+        $('.js-pscroll').each(function () {
+            $(this).css('position', 'relative');
+            $(this).css('overflow', 'hidden');
+            var ps = new PerfectScrollbar(this, {
+                wheelSpeed: 1,
+                scrollingThreshold: 1000,
+                wheelPropagation: false,
+            });
+
+            $(window).on('resize', function () {
+                ps.update();
+            })
+        });
+
+
+
+
+
+    </script>
+    <!--===============================================================================================-->
+    <script src="/Assets/Customer/cozastore/js/main.js"></script>
+    <script>
+        $('#js-select2').change(function () {
+            var myID = $(this).val();
+            $('.paypaypal').each(function () {
+                myID === $(this).attr('id') ? $(this).show() : $(this).hide();
+            });
+        });
+    </script>
+    <style>
+        .containerxukip {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 1px;
+            cursor: pointer;
+            font-size: 16px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+            /* Hide the browser's default radio button */
+            .containerxukip input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                height: 0;
+                width: 0;
+            }
+
+        /* Create a custom radio button */
+        .checkmarkxukip {
+            position: absolute;
+            top: -5;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+            border-radius: 50%;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .containerxukip:hover input ~ .checkmarkxukip {
+            background-color: #ccc;
+        }
+
+        /* When the radio button is checked, add a blue background */
+        .containerxukip input:checked ~ .checkmarkxukip {
+            background-color: #2196F3;
+        }
+
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        .checkmarkxukip:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the indicator (dot/circle) when checked */
+        .containerxukip input:checked ~ .checkmarkxukip:after {
+            display: block;
+        }
+
+        /* Style the indicator (dot/circle) */
+        .containerxukip .checkmarkxukip:after {
+            top: 9px;
+            left: 9px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+    </style>
+}
+
+

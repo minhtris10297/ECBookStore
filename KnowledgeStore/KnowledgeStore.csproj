@@ -19,14 +19,14 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44309</IISExpressSSLPort>
+    <IISExpressSSLPort>44381</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -83,6 +83,12 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -159,6 +165,8 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
+    <Compile Include="Controllers\ListBooksController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1297,6 +1305,7 @@
     <Content Include="Assets\Customer\cozastore\cozastore\vendor\slick\slick.js" />
     <Content Include="Assets\Customer\cozastore\cozastore\vendor\slick\slick.min.js" />
     <Content Include="Assets\Customer\cozastore\cozastore\vendor\sweetalert\sweetalert.min.js" />
+    <Content Include="Assets\Customer\cozastore\css\form.css" />
     <Content Include="Assets\Customer\cozastore\css\main.css" />
     <Content Include="Assets\Customer\cozastore\css\util.css" />
     <Content Include="Assets\Customer\cozastore\dangnhap.html" />
@@ -1374,6 +1383,7 @@
     <Content Include="Assets\Customer\cozastore\images\item-cart-03.jpg" />
     <Content Include="Assets\Customer\cozastore\images\item-cart-04.jpg" />
     <Content Include="Assets\Customer\cozastore\images\item-cart-05.jpg" />
+    <Content Include="Assets\Customer\cozastore\images\login.png" />
     <Content Include="Assets\Customer\cozastore\images\PDF-Design&amp;Alnalysis.htm" />
     <Content Include="Assets\Customer\cozastore\images\product-01.jpg" />
     <Content Include="Assets\Customer\cozastore\images\product-02.jpg" />
@@ -1418,9 +1428,11 @@
     <Content Include="Assets\Customer\cozastore\js\main.js" />
     <Content Include="Assets\Customer\cozastore\js\map-custom.js" />
     <Content Include="Assets\Customer\cozastore\js\slick-custom.js" />
+    <Content Include="Assets\Customer\cozastore\login.html" />
     <Content Include="Assets\Customer\cozastore\manage-order.html" />
     <Content Include="Assets\Customer\cozastore\product-detail.html" />
     <Content Include="Assets\Customer\cozastore\product.html" />
+    <Content Include="Assets\Customer\cozastore\register.html" />
     <Content Include="Assets\Customer\cozastore\shoping-cart -Billing.html" />
     <Content Include="Assets\Customer\cozastore\shoping-cart.html" />
     <Content Include="Assets\Customer\cozastore\vendor\animate\animate.css" />
@@ -1669,12 +1681,27 @@
     <Content Include="Assets\Customer\cozastore\__MACOSX\cozastore\vendor\sweetalert\._sweetalert.min.js" />
     <Content Include="Assets\Database\databaseCu.sql" />
     <Content Include="Assets\Database\databaseVuUpdate.sql" />
+    <Content Include="Assets\Image\ImageBook\13\13_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\14\14_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\15\15_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\16\16_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\17\17_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\19\19_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\1\1_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\20\20_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\21\21_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\2\2_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\4\4_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\7\7_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\8\8_1.jpg" />
+    <Content Include="Assets\Image\ImageBook\9\9_1.jpg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -2308,6 +2335,13 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Layout\CartModalDisplay.cshtml" />
+    <Content Include="Views\ListBooks\Index.cshtml" />
+    <Content Include="Views\ListBooks\BookDetail.cshtml" />
+    <Content Include="Views\Layout\CartIconDisplay.cshtml" />
+    <Content Include="Views\Layout\TopbarTypeBookDisplay.cshtml" />
+    <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Payment\LoginPayment.cshtml" />
+    <Content Include="Views\Payment\PaymentSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2356,7 +2390,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>64155</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44309/</IISUrl>
+          <IISUrl>http://localhost:8080/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

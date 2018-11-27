@@ -14,6 +14,7 @@ namespace Model.EntityFramework
         {
             Customers = new HashSet<Customer>();
             Merchants = new HashSet<Merchant>();
+            Merchants1 = new HashSet<Merchant>();
         }
 
         public int GioiTinhID { get; set; }
@@ -27,5 +28,8 @@ namespace Model.EntityFramework
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Merchant> Merchants { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Merchant> Merchants1 { get; set; }
     }
 }

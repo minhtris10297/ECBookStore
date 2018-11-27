@@ -1,0 +1,42 @@
+#form input[ type = email]
+{
+	padding: 10px 10px;
+	margin: 15px 0px 15px 15px;
+	box-sizing: border-box;
+	width: 400px;
+}
+#form input[ type = password]
+{
+	padding: 10px 10px;
+	margin: 15px 0px 15px 15px;
+	box-sizing: border-box;
+	width: 400px;
+}
+#form button
+{
+	padding: 10px 10px;
+	margin: 15px 0px 15px 15px;
+	box-sizing: border-box;
+	width: 150px;
+}
+#form1 input[ type = text]
+{
+	padding: 10px 10px;
+	margin: 15px 0px 15px 15px;
+	box-sizing: border-box;
+	width: 350px;
+}
+#form1 input[ type = email]
+{
+	padding: 10px 10px;
+	margin: 15px 0px 15px 15px;
+	box-sizing: border-box;
+	width: 350px;
+}
+#form1 input[ type = password]
+{
+	padding: 10px 10px;
+	margin: 15px 0px 15px 15px;
+	box-sizing: border-box;
+	width: 350px;
+}

@@ -12,9 +12,9 @@ namespace Model.EntityFramework
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Merchant()
         {
+            ChiTietDonHangs = new HashSet<ChiTietDonHang>();
             ChiTietSachMerchants = new HashSet<ChiTietSachMerchant>();
             DanhGiaCuaMerchants = new HashSet<DanhGiaCuaMerchant>();
-            DonHangs = new HashSet<DonHang>();
             LichSuGiaoDichXuCuaMerchants = new HashSet<LichSuGiaoDichXuCuaMerchant>();
             LichSuMerchants = new HashSet<LichSuMerchant>();
             Saches = new HashSet<Sach>();
@@ -34,11 +34,18 @@ namespace Model.EntityFramework
         [StringLength(100)]
         public string DiaChi { get; set; }
 
-        public int GioiTinh { get; set; }
+        public int GioiTinhID { get; set; }
+
+        [Required]
+        [StringLength(120)]
+        public string TenCuaHang { get; set; }
 
         public int SoLuongKIPXu { get; set; }
 
         public DateTime NgayTao { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietSachMerchant> ChiTietSachMerchants { get; set; }
@@ -46,8 +53,7 @@ namespace Model.EntityFramework
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DanhGiaCuaMerchant> DanhGiaCuaMerchants { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DonHang> DonHangs { get; set; }
+        public virtual GioiTinh GioiTinh { get; set; }
 
         public virtual GioiTinh GioiTinh1 { get; set; }
 
