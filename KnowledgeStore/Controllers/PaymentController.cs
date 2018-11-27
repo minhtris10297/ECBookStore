@@ -61,6 +61,13 @@ namespace KnowledgeStore.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LoginPayment(LoginModel model)
         {
+            var cart = Session[CartSession];
+            var list = new List<CartItem>();
+            if (cart != null)
+            {
+                list = (List<CartItem>)cart;
+            }
+            ViewBag.ListCart = list;
             if (ModelState.IsValid)
             {
                 var dao = new UserDao();

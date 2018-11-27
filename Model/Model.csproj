@@ -72,7 +72,6 @@
     <Compile Include="EntityFramework\NangTin.cs" />
     <Compile Include="EntityFramework\NhaXuatBan.cs" />
     <Compile Include="EntityFramework\Sach.cs" />
-    <Compile Include="EntityFramework\sysdiagram.cs" />
     <Compile Include="EntityFramework\TheLoai.cs" />
     <Compile Include="EntityFramework\TinhTrangDonHang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
