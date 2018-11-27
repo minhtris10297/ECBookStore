@@ -110,6 +110,16 @@ namespace KnowledgeStore.Controllers
             var donHang = new DonHang() { CustomerID = user.CustomerID, NgayDat = System.DateTime.Now, TongTien = tamTinh, DiaChi = user.DiaChi, TinhTrangDonHangID = 1 };
             foreach(var item in listCart)
             {
+                var book = db.Saches.Find(item.Sach.SachID);
+                if (item.Quantity < book.SoLuong)
+                {
+                    ModelState.AddModelError("", "Không thể đặt do giỏ hàng bạn để quá lâu");
+                }
+                book.SoLuong = book.SoLuong - item.Quantity;
+                if (book.SoLuong == 0)
+                {
+                    book.TrangThai = false;
+                }
                 var chiTietDH = new ChiTietDonHang() { DonHangID = donHang.DonHangID, SachID = item.Sach.SachID, MerchantID = item.Sach.MerchantID.GetValueOrDefault(0), SoLuong = item.Quantity, ThanhTien = item.Quantity * item.Sach.GiaTien };
                 db.ChiTietDonHangs.Add(chiTietDH);
             }
