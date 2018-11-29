@@ -161,6 +161,8 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomersController.cs" />
+    <Compile Include="Areas\Merchant\Controllers\AccountsMerchantController.cs" />
+    <Compile Include="Areas\Merchant\Controllers\BaseController.cs" />
     <Compile Include="Areas\Merchant\Controllers\OrderManagerController.cs" />
     <Compile Include="Areas\Merchant\MerchantAreaRegistration.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
@@ -3415,6 +3417,7 @@
     <Content Include="Assets\Merchant\Infinity-v2.0.0\package.json" />
     <Content Include="Assets\Merchant\Infinity-v2.0.0\README.md" />
     <Content Include="Areas\Merchant\Views\OrderManager\Index.cshtml" />
+    <Content Include="Areas\Merchant\Views\AccountsMerchant\Login.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -3477,6 +3480,7 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Merchant\Models\" />
+    <Folder Include="Areas\Merchant\Views\Base\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

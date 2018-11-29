@@ -30,7 +30,7 @@ namespace KnowledgeStore.Controllers
                 }
                 else if (id == "SachBanChay")
                 {
-                    listSach = db.Saches.OrderByDescending(m => m.NangTins.Max(n => n.NgayNang)).ToList();
+                    listSach = db.Saches.OrderByDescending(m => m.LichSuNangTins.Max(n => n.NgayNang)).ToList();
                 }
             }
             if (theLoai != null)

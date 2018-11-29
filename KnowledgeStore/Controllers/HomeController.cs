@@ -85,7 +85,7 @@ namespace KnowledgeStore.Controllers
                 }
                 else if (id == "SachBanChay")
                 {
-                    listSach = listSach.OrderByDescending(m => m.NangTins.Max(n => n.NgayNang)).ToList();
+                    listSach = listSach.OrderByDescending(m => m.LichSuNangTins.Max(n => n.NgayNang)).ToList();
                 }
             }
             if (theLoai != null)

@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Model.EntityFramework.ChiTietDonHang>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Merchant/Views/Shared/_Layout.cshtml";
@@ -9,53 +9,59 @@
     <div class="wrap">
         <section class="app-content">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="widget widget-pie-chart">
-                        <header class="widget-header">
-                            <h4 class="widget-title">Tìm kiếm</h4>
-                        </header>
-                        <hr class="widget-separator" />
-                        <div class="widget-body clearfix">
-                            <!-- new row -->
-                            <div class="col-xs-6 col-sm-4 col-md-3">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Mã đơn hàng</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Mã đơn hàng">
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-xs-6 col-sm-4 col-md-3">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Ngày đặt</label>
-                                        <input type="text" id="datetimepicker5" class="form-control" data-plugin="datetimepicker" data-options="{ defaultDate: '3/27/2018' }">
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-xs-6 col-sm-4 col-md-3">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Thông tin khách hàng</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Tên khách hàng">
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-xs-6 col-sm-4 col-md-3">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Trạng thái</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Trạng thái">
-                                    </div>
-                                </form>
-                                <div class="m-b-xl">
-                                    <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Tìm kiếm</button>
-                                    <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Làm mới</button>
+                @using (Html.BeginForm())
+                {
+                    <div class="col-md-12">
+                        <div class="widget widget-pie-chart">
+                            <header class="widget-header">
+                                <h4 class="widget-title">Tìm kiếm</h4>
+                            </header>
+                            <hr class="widget-separator" />
+                            <div class="widget-body clearfix">
+                                <!-- new row -->
+                                <div class="col-xs-6 col-sm-4 col-md-3">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Mã đơn hàng</label>
+                                            <input type="number" name="searchId" id="searchId" class="form-control" placeholder="Mã đơn hàng">
+                                        </div>
+                                    </form>
                                 </div>
-                            </div>
-                        </div><!-- .widget -->
+                                <div class="col-xs-6 col-sm-4 col-md-3">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Ngày đặt</label>
+                                            <input type="date" name="searchTime" class="form-control">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-xs-6 col-sm-4 col-md-3">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Thông tin khách hàng</label>
+                                            <input type="text" name="nameCus" class="form-control" placeholder="Tên khách hàng">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-xs-6 col-sm-4 col-md-3">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Trạng thái</label>
+                                            @Html.DropDownList("DropdownStatus", null, "Chọn tình trạng đơn", new { @class = "form-control" })
+                                        </div>
+                                    </form>
+                                    <div class="m-b-xl">
+                                        <button type="submit" class="btn btn-primary btn-sm" style="padding: 8px">Tìm kiếm</button>
+                                        <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Làm mới</button>
+                                    </div>
+                                </div>
+                            </div><!-- .widget -->
+                        </div>
                     </div>
-                </div><!-- .row -->
+                }
+
+
+            </div><!-- .row -->
                 <div class="row">
                     <div class="col-md-12">
                         <div class="widget widget-pie-chart">
@@ -65,7 +71,7 @@
                             <hr class="widget-separator" />
                             <div class="widget-body">
                                 <div class="table-responsive">
-                                    <table id="default-datatable" data-plugin="DataTable" class="table table-striped" cellspacing="0" width="100%">
+                                    <table id="default-datatable" data-plugin="DataTable" class="table table-striped" cellspacing="0">
                                         <thead>
                                             <tr>
                                                 <th>Mã đơn hàng</th>
@@ -73,182 +79,108 @@
                                                 <th>Ngày xử lý</th>
                                                 <th>Số lượng</th>
                                                 <th>Thành tiền</th>
-                                                <th>Lợi nhuận</th>
                                                 <th>Trạng thái</th>
                                                 <th>Chức năng</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>5555555</td>
-                                                <td>
-                                                    <p>Nguyễn Văn B(09888888)</p>
-                                                    <p> số 4, nguyễn trãi, TPHCM</p>
-                                                </td>
-                                                <td>
-                                                    <p>Ngày mua: 31/10/2018</p>
-                                                    <p>Ngày giao: 05/11/2018</p>
-                                                </td>
-                                                <td>1</td>
-                                                <td>500000</td>
-                                                <td>230000</td>
-                                                <td>
-                                                    <button class="btn btn-info btn-sm" disabled>Chờ xử lý</button>
-                                                </td>
-                                                <td>
-                                                    <button type="button" class="btn btn-info btn-sm">Chi tiết </button>
-                                                </td>
-                                                <td>
-                                                    <div class="p-r-18 p-r-0-sm w-full-ssm" style="width: 50%">
-                                                        <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-info btn-sm">Xử lý</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            @{
+                                                foreach (var item in Model)
+                                                {
+                                                    <tr>
+                                                        <td>@item.ChiTietDonHangID</td>
+                                                        <td>
+                                                            <p>@item.DonHang.Customer.HoTen (@item.DonHang.Customer.SoDienThoai)</p>
+                                                            <p> @item.DonHang.Customer.DiaChi</p>
+                                                        </td>
+                                                        <td>
+                                                            <p>Ngày mua: @item.DonHang.NgayDat.ToString("dd/MM/yyyy")</p>
+                                                            @if (item.NgayXuat != null)
+                                                            {
+                                                                <p>Ngày giao: @item.NgayXuat.GetValueOrDefault(System.DateTime.MinValue).ToString("dd/MM/yyyy")</p>
+                                                            }
+                                                            else
+                                                            {
+                                                                <p>Ngày giao: Chưa được giao!!!</p>
+                                                            }
+                                                        </td>
+                                                        <td>@item.SoLuong</td>
+                                                        <td>@item.ThanhTien</td>
+                                                        <td>
+                                                            <button class="btn btn-info btn-sm" disabled>@item.TinhTrangDonHang.TinhTrangDonHang1</button>
+                                                        </td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-info btn-sm">Chi tiết </button>
+                                                        </td>
+                                                        <td>
+                                                            <div class="p-r-18 p-r-0-sm w-full-ssm" style="width: 50%">
+                                                                @if (item.TinhTrangDonHangID != 1)
+                                                                {
+                                                                    <button type="button" disabled class="btn btn-info btn-sm">Xử lý</button>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <button type="button" data-toggle="modal" data-target="#exampleModal@(item.ChiTietDonHangID)" class="btn btn-info btn-sm">Xử lý</button>
+                                                                }
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+
                                         </tbody>
                                     </table>
                                 </div>
                             </div><!-- .widget-body -->
-                            <!-- Modal xử lý đơn hàng-->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
-                                <div class="modal-dialog" role="document" style="width: 450px">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title" id="exampleModalLabel">Xử lý đơn hàng</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form>
-                                                <div class="form-group">
-                                                    <div class="row p-b-10">
-                                                        <div class="col-sm-5">
-                                                            <p>Sách: </p>
-                                                        </div>
-                                                        <div class="col-sm-5" style="left: -55px">
-                                                            <p>Đăc nhân tâm </p>
-                                                            <p>Số lượng 1 </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="row p-b-10">
-                                                        <div class="col-sm-5">
-                                                            <p>Lợi nhuận: </p>
-                                                        </div>
-                                                        <div class="col-sm-5" style="left: -55px">
-                                                            <p>48.000</p>
+
+                            @foreach (var item in Model)
+                            {
+                                <!-- Modal xử lý đơn hàng-->
+                                <div class="modal fade" id="exampleModal@(item.ChiTietDonHangID)" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
+                                    <div class="modal-dialog" role="document" style="width: 450px">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="exampleModalLabel">Xử lý đơn hàng đang vận chuyển</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="form-group">
+                                                        <div class="row p-b-10">
+                                                            <div class="col-sm-5">
+                                                                <p>Sách: </p>
+                                                            </div>
+                                                            <div class="col-sm-5" style="left: -55px">
+                                                                <p>@item.Sach.TenSach </p>
+                                                                <p>Số lượng: @item.SoLuong </p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="row p-b-10">
-                                                        <div class="col-sm-5">
-                                                            <p>Mã giao hàng:</p>
-                                                        </div>
-                                                        <div class="col-sm-5" style="left: -55px">
-                                                            <p>86254</p>
+                                                    <div class="form-group">
+                                                        <div class="row p-b-10">
+                                                            <div class="col-sm-5">
+                                                                <p>Mã giao hàng:</p>
+                                                            </div>
+                                                            <div class="col-sm-5" style="left: -55px">
+                                                                <p>86254</p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy đơn hàng</button>
-                                            <button type="button" data-toggle="modal" data-dismiss="modal" data-target="#exampleModalxacnhangiaohang" class="btn btn-info btn-sm">Xác nhận đơn hàng</button>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay về</button>
+                                                <a type="button" class="btn btn-info btn-sm" href="@Url.Action("ChangeDeliveryStatus", "OrderManager", new { id = @ViewBag.IdMerchant, idCtdh = item.ChiTietDonHangID })">Xác nhận đơn hàng</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            }
 
-                            <!-- Modal xử lý đơn hàng đang vận chuyển-->
-                            <div class="modal fade" id="exampleModalvanchuyen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
-                                <div class="modal-dialog" role="document" style="width: 450px">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title" id="exampleModalLabel">Xử lý đơn hàng đang vận chuyển</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form>
-                                                <div class="form-group">
-                                                    <div class="row p-b-10">
-                                                        <div class="col-sm-5">
-                                                            <p>Sách: </p>
-                                                        </div>
-                                                        <div class="col-sm-5" style="left: -55px">
-                                                            <p>Đăc nhân tâm </p>
-                                                            <p>Số lượng 1 </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="row p-b-10">
-                                                        <div class="col-sm-5">
-                                                            <p>Lợi nhuận: </p>
-                                                        </div>
-                                                        <div class="col-sm-5" style="left: -55px">
-                                                            <p>48.000</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="row p-b-10">
-                                                        <div class="col-sm-5">
-                                                            <p>Mã giao hàng:</p>
-                                                        </div>
-                                                        <div class="col-sm-5" style="left: -55px">
-                                                            <p>86254</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Giao hàng thất bại</button>
-                                            <button type="button" data-toggle="modal" data-dismiss="modal" data-target="#exampleModalxacnhangiaohang" class="btn btn-info btn-sm">Xác nhận đơn hàng</button>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
-
-                            <!-- Modal xác nhận giao hàng-->
-                            <div class="modal fade" id="exampleModalxacnhangiaohang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
-                                <div class="modal-dialog" role="document" style="width: 450px">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title" id="exampleModalLabel">Xác nhận giao hàng</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form class="form-horizontal">
-                                                <div class="form-group">
-                                                    <label for="exampleTextInput1" class="col-sm-3 control-label">Chứng minh nhân dân:</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="exampleTextInput1" placeholder="Nhập chứng minh nhân dân khách hàng">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="email2" class="col-sm-3 control-label">Upload biên bản bàn giao:</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" id="exampleInputFile" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Giao hàng thất bại</button>
-                                            <button type="button" data-toggle="modal" class="btn btn-info btn-sm">Xác nhận giao hàng</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
 
                         </div>
                     </div><!-- .row -->

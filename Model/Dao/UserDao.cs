@@ -37,6 +37,32 @@ namespace Model.Dao
                 }
             }
         }
+        public int LoginMerchant(string email, string passWord)
+        {
+            var result = db.Merchants.SingleOrDefault(x => x.Email == email);
+            if (result == null)
+            {
+                return -1;
+            }
+            else
+            {
+                if (!result.TrangThai)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (result.MatKhauMaHoa == passWord)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return -2;
+                    }
+                }
+            }
+        }
         public int InsertUserFb(Customer Customer)
         {
             var modelMb = db.Customers.SingleOrDefault(m => m.Email == Customer.Email || m.IDFacebook == Customer.IDFacebook);
