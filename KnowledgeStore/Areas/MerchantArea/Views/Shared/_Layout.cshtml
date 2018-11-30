@@ -1,28 +1,29 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-	<meta name="description" content="Admin, Dashboard, Bootstrap" />
-	<link rel="shortcut icon" sizes="196x196" href="/Assets/Merchant/Infinity-v2.0.0/assets/images/logo.png">
-	<title>KIP SHOP</title>
-	
-	<link rel="stylesheet" href="/Assets/Merchant/Infinity-v2.0.0/libs/bower/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/Assets/Merchant/Infinity-v2.0.0/libs/bower/material-design-iconic-font/dist/css/material-design-iconic-font.css">
-	<!-- build:css ../assets/css/app.min.css -->
-	<link rel="stylesheet" href="/Assets/Merchant/Infinity-v2.0.0/libs/bower/animate.css/animate.min.css">
-	<link rel="stylesheet" href="/Assets/Merchant/Infinity-v2.0.0/libs/bower/fullcalendar/dist/fullcalendar.min.css">
-	<link rel="stylesheet" href="/Assets/Merchant/Infinity-v2.0.0/libs/bower/perfect-scrollbar/css/perfect-scrollbar.css">
-	<link rel="stylesheet" href="/Assets/Merchant/Infinity-v2.0.0/assets/css/bootstrap.css">
-	<link rel="stylesheet" href="/Assets/Merchant/Infinity-v2.0.0/assets/css/core.css">
-	<link rel="stylesheet" href="/Assets/Merchant/Infinity-v2.0.0/assets/css/app.css">
-	<!-- endbuild -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900,300">
-	<script src="/Assets/Merchant/Infinity-v2.0.0/libs/bower/breakpoints.js/dist/breakpoints.min.js"></script>
-	<script>
-		Breakpoints();
-	</script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Admin, Dashboard, Bootstrap" />
+    @RenderSection("PluginMeta", false)
+    <link rel="shortcut icon" sizes="196x196" href="/Assets/Merchant/Infinity-v2.0.0/assets/images/logo.png">
+    <title>KIP SHOP</title>
+
+    <link rel="stylesheet" href="/Assets/Merchant/Infinity-v2.0.0/libs/bower/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Assets/Merchant/Infinity-v2.0.0/libs/bower/material-design-iconic-font/dist/css/material-design-iconic-font.css">
+    <!-- build:css ../assets/css/app.min.css -->
+    <link rel="stylesheet" href="/Assets/Merchant/Infinity-v2.0.0/libs/bower/animate.css/animate.min.css">
+    <link rel="stylesheet" href="/Assets/Merchant/Infinity-v2.0.0/libs/bower/fullcalendar/dist/fullcalendar.min.css">
+    <link rel="stylesheet" href="/Assets/Merchant/Infinity-v2.0.0/libs/bower/perfect-scrollbar/css/perfect-scrollbar.css">
+    <link rel="stylesheet" href="/Assets/Merchant/Infinity-v2.0.0/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/Assets/Merchant/Infinity-v2.0.0/assets/css/core.css">
+    <link rel="stylesheet" href="/Assets/Merchant/Infinity-v2.0.0/assets/css/app.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900,300">
+    <script src="/Assets/Merchant/Infinity-v2.0.0/libs/bower/breakpoints.js/dist/breakpoints.min.js"></script>
+    <script>
+        Breakpoints();
+    </script>
 </head>
 	
 <body class="menubar-left menubar-unfold menubar-light theme-primary">
@@ -141,132 +142,84 @@
 
 <!-- APP ASIDE ==========-->
 <aside id="menubar" class="menubar light">
-  <div class="app-user">
-    <div class="media">
-      <div class="media-left">
-        <div class="avatar avatar-md avatar-circle">
-          <a href="javascript:void(0)"><img class="img-responsive" src="/Assets/Merchant/Infinity-v2.0.0/assets/images/221.jpg" alt="avatar"/></a>
-        </div><!-- .avatar -->
-      </div>
-      <div class="media-body">
-        <div class="foldable">
-          <h5><a href="javascript:void(0)" class="username">Merchant A</a></h5>
-          <ul>
-            <li class="dropdown">
-              <a href="javascript:void(0)" class="dropdown-toggle usertitle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <small>Thông tin</small>
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu animated flipInY">
-                <li>
-                  <a class="text-color" href="/index.html">
-                    <span class="m-r-xs"><i class="fa fa-home"></i></span>
-                    <span>Trang chủ</span>
-                  </a>
+    @{Html.RenderAction("TopbarMenuDisplay", "LayoutMerchant");}
+
+    <div class="menubar-scroll">
+        <div class="menubar-scroll-inner">
+            <ul class="app-menu">
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="submenu-toggle">
+                        <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
+                        <span class="menu-text">Tổng quan</span>
+                    </a>
                 </li>
-                <li>
-                  <a class="text-color" href="profile.html">
-                    <span class="m-r-xs"><i class="fa fa-user"></i></span>
-                    <span>Thông tin cá nhân</span>
-                  </a>
+
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="submenu-toggle">
+                        <i class="menu-icon fa fa-user"></i>
+                        <span class="menu-text">Khách hàng</span>
+                    </a>
                 </li>
-                <li>
-                  <a class="text-color" href="settings.html">
-                    <span class="m-r-xs"><i class="fa fa-gear"></i></span>
-                    <span>Cài đặt</span>
-                  </a>
+
+                <li class="has-submenu">
+                    <a href="@Url.Action("Index","OrderManager")" class="submenu-toggle">
+                        <i class="menu-icon zmdi zmdi-storage zmdi-hc-lg"></i>
+                        <span class="menu-text">Đơn hàng</span>
+                    </a>
                 </li>
-                <li role="separator" class="divider"></li>
-                <li>
-                  <a class="text-color" href="logout.html">
-                    <span class="m-r-xs"><i class="fa fa-power-off"></i></span>
-                    <span>Trang chủ</span>
-                  </a>
+
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="submenu-toggle">
+                        <i class="menu-icon zmdi zmdi-puzzle-piece zmdi-hc-lg"></i>
+                        <span class="menu-text">Hóa đơn</span>
+                    </a>
                 </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div><!-- .media-body -->
-    </div><!-- .media -->
-  </div><!-- .app-user -->
 
-  <div class="menubar-scroll">
-    <div class="menubar-scroll-inner">
-      <ul class="app-menu">
-        <li class="has-submenu">
-          <a href="javascript:void(0)" class="submenu-toggle">
-            <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
-            <span class="menu-text">Tổng quan</span>
-          </a>
-        </li>
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="submenu-toggle">
+                        <i class="menu-icon zmdi zmdi-file-text zmdi-hc-lg"></i>
+                        <span class="menu-text">Sách</span>
+                    </a>
+                </li>
 
-        <li class="has-submenu">
-          <a href="javascript:void(0)" class="submenu-toggle">
-            <i class="menu-icon fa fa-user"></i>
-            <span class="menu-text">Khách hàng</span>
-          </a>
-        </li>
-        
-        <li class="has-submenu">
-          <a href="@Url.Action("Index","OrderManager")" class="submenu-toggle">
-            <i class="menu-icon zmdi zmdi-storage zmdi-hc-lg"></i>
-            <span class="menu-text">Đơn hàng</span>
-          </a>
-        </li>
+                <li>
+                    <a href="search.web.html">
+                        <i class="menu-icon zmdi zmdi-search zmdi-hc-lg"></i>
+                        <span class="menu-text">Thể loại</span>
+                    </a>
+                </li>
 
-        <li class="has-submenu">
-          <a href="javascript:void(0)" class="submenu-toggle">
-            <i class="menu-icon zmdi zmdi-puzzle-piece zmdi-hc-lg"></i>
-            <span class="menu-text">Hóa đơn</span>
-          </a>
-        </li>
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="submenu-toggle">
+                        <i class="menu-icon zmdi zmdi-pages zmdi-hc-lg"></i>
+                        <span class="menu-text">Nhà xuất bản</span>
+                    </a>
+                </li>
 
-        <li class="has-submenu">
-          <a href="javascript:void(0)" class="submenu-toggle">
-            <i class="menu-icon zmdi zmdi-file-text zmdi-hc-lg"></i>
-            <span class="menu-text">Sách</span>
-          </a>
-        </li>
-        
-        <li>
-          <a href="search.web.html">
-            <i class="menu-icon zmdi zmdi-search zmdi-hc-lg"></i>
-            <span class="menu-text">Thể loại</span>
-          </a>
-        </li>
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="submenu-toggle">
+                        <i class="menu-icon zmdi zmdi-check zmdi-hc-lg"></i>
+                        <span class="menu-text">Tồn kho</span>
+                    </a>
+                </li>
 
-        <li class="has-submenu">
-          <a href="javascript:void(0)" class="submenu-toggle">
-            <i class="menu-icon zmdi zmdi-pages zmdi-hc-lg"></i>
-            <span class="menu-text">Nhà xuất bản</span>
-          </a>
-        </li>
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="submenu-toggle">
+                        <i class="menu-icon zmdi zmdi-storage zmdi-hc-lg"></i>
+                        <span class="menu-text">Nhận xét KH</span>
+                        <span class="label label-success menu-label">7</span>
+                    </a>
+                </li>
 
-        <li class="has-submenu">
-          <a href="javascript:void(0)" class="submenu-toggle">
-            <i class="menu-icon zmdi zmdi-check zmdi-hc-lg"></i>
-            <span class="menu-text">Tồn kho</span>
-          </a>
-        </li>
-
-        <li class="has-submenu">
-          <a href="javascript:void(0)" class="submenu-toggle">
-            <i class="menu-icon zmdi zmdi-storage zmdi-hc-lg"></i>
-            <span class="menu-text">Nhận xét KH</span>
-            <span class="label label-success menu-label">7</span>
-          </a>
-        </li>
-
-        <li class="has-submenu">
-          <a href="javascript:void(0)" class="submenu-toggle">
-            <i class="menu-icon zmdi zmdi-chart zmdi-hc-lg"></i>
-            <span class="menu-text">Cửa hàng</span>
-          </a>
-        </li>
-      </ul><!-- .app-menu -->
-    </div><!-- .menubar-scroll-inner -->
-  </div><!-- .menubar-scroll -->
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="submenu-toggle">
+                        <i class="menu-icon zmdi zmdi-chart zmdi-hc-lg"></i>
+                        <span class="menu-text">Cửa hàng</span>
+                    </a>
+                </li>
+            </ul><!-- .app-menu -->
+        </div><!-- .menubar-scroll-inner -->
+    </div><!-- .menubar-scroll -->
 </aside>
 <!--========== END app aside -->
 

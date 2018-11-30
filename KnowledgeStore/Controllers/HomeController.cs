@@ -11,15 +11,30 @@ namespace KnowledgeStore.Controllers
     public class HomeController : Controller
     {
         KnowledgeStoreEntities db = new KnowledgeStoreEntities();
-        public ActionResult Index(string id, string theLoai, string searchProduct)
+        public ActionResult Index( string sort, string searchProduct)
         {
-            ViewBag.TypeID = id;
-
             var listSach = db.Saches.ToList();
             if (!String.IsNullOrEmpty(searchProduct))
             {
+                ViewBag.Search = searchProduct;
                 listSach = listSach.Where(m => m.TenSach.ToLower().Contains(searchProduct.ToLower())
                                          || m.NhaXuatBan.TenNXB.ToLower().Contains(searchProduct.ToLower())).ToList();
+            }
+            if (!String.IsNullOrEmpty(sort))
+            {
+                ViewBag.Sort = sort;
+                if (sort == "HangMoi")
+                {
+                    listSach = listSach.OrderByDescending(m => m.NgayXuatBan).ToList();
+                }
+                else if(sort == "GiaGiamDan")
+                {
+                    listSach = listSach.OrderByDescending(m => m.GiaTien).ToList();
+                }
+                else if (sort == "GiaTangDan")
+                {
+                    listSach = listSach.OrderBy(m => m.GiaTien).ToList();
+                }
             }
             //if (id != null)
             //{
@@ -43,10 +58,25 @@ namespace KnowledgeStore.Controllers
             return View("Index", listSach);
         }
 
-        public JsonResult ViewMore(int xPosition, int height)
+        public JsonResult ViewMore(int xPosition, int height,string sort)
         {
             var listSach = new List<BookHomeVM>();
             var list = db.Saches.ToList();
+            if (!String.IsNullOrEmpty(sort))
+            {
+                if (sort == "HangMoi")
+                {
+                    list = list.OrderByDescending(m => m.NgayXuatBan).ToList();
+                }
+                else if (sort == "GiaGiamDan")
+                {
+                    list = list.OrderByDescending(m => m.GiaTien).ToList();
+                }
+                else if (sort == "GiaTangDan")
+                {
+                    list = list.OrderBy(m => m.GiaTien).ToList();
+                }
+            }
             for (int i = 0; i <= xPosition + 8; i++)
             {
                 if (i<list.Count())
@@ -63,9 +93,8 @@ namespace KnowledgeStore.Controllers
             return Json(new { data = listSach, position = xPosition + 8, heightStyle = height + 610, top = 0 }, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult SearchProduct(string id, string theLoai, string searchProduct)
+        public JsonResult SearchProduct( string theLoai, string searchProduct)
         {
-            ViewBag.TypeID = id;
             var listSach = db.Saches.ToList();
             if (!String.IsNullOrEmpty(searchProduct))
             {
@@ -76,17 +105,6 @@ namespace KnowledgeStore.Controllers
                                              TenSach = x.TenSach,
                                              GiaTien = x.GiaTien
                                          }).ToList();
-            }
-            if (id != null)
-            {
-                if (id == "SachMoiPhatHanh")
-                {
-                    listSach = listSach.OrderByDescending(m => m.NgayXuatBan).ToList();
-                }
-                else if (id == "SachBanChay")
-                {
-                    listSach = listSach.OrderByDescending(m => m.LichSuNangTins.Max(n => n.NgayNang)).ToList();
-                }
             }
             if (theLoai != null)
             {

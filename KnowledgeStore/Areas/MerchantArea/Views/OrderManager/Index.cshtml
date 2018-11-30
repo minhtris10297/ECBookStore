@@ -1,5 +1,5 @@
 ﻿@model List<Model.EntityFramework.ChiTietDonHang>
-
+@using Common
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/MerchantArea/Views/Shared/_Layout.cshtml";
@@ -21,28 +21,28 @@
                             <div class="widget-body clearfix">
                                 <!-- new row -->
                                 <div class="col-xs-6 col-sm-4 col-md-3">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Mã đơn hàng</label>
-                                            <input type="number" name="searchId" class="form-control" placeholder="Mã đơn hàng">
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Mã đơn hàng</label>
+                                        <input type="number" name="searchId" class="form-control" placeholder="Mã đơn hàng">
+                                    </div>
                                 </div>
                                 <div class="col-xs-6 col-sm-4 col-md-3">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Ngày đặt</label>
-                                            <input type="date" value=@ViewBag.SearchTime name="searchTime" class="form-control">
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Ngày đặt</label>
+                                        <input type="date" value=@ViewBag.SearchTime name="searchTime" class="form-control">
+                                    </div>
                                 </div>
                                 <div class="col-xs-6 col-sm-4 col-md-3">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Thông tin khách hàng</label>
-                                            <input type="text" name="nameCus" class="form-control" placeholder="Tên khách hàng">
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Thông tin khách hàng</label>
+                                        <input type="text" name="nameCus" class="form-control" placeholder="Tên khách hàng">
+                                    </div>
                                 </div>
                                 <div class="col-xs-6 col-sm-4 col-md-3">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Trạng thái</label>
-                                            @Html.DropDownList("DropdownStatus", null, "Chọn tình trạng đơn", new { @class = "form-control" })
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Trạng thái</label>
+                                        @Html.DropDownList("DropdownStatus", null, "Chọn tình trạng đơn", new { @class = "form-control" })
+                                    </div>
                                     <div class="m-b-xl">
                                         <button type="submit" class="btn btn-primary btn-sm" style="padding: 8px">Tìm kiếm</button>
                                         <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Làm mới</button>
@@ -98,7 +98,7 @@
                                                             <p>Ngày giao: Chưa được giao!!!</p>
                                                         }
                                                     </td>
-                                                    <td>@item.SoLuong</td>
+                                                    <td>@item.SoLuong x @item.Sach.TenSach</td>
                                                     <td>@item.ThanhTien</td>
                                                     <td>
                                                         <button class="btn btn-info btn-sm" disabled>@item.TinhTrangDonHang.TinhTrangDonHang1</button>
@@ -147,7 +147,7 @@
                                                             <p>Sách: </p>
                                                         </div>
                                                         <div class="col-sm-5" style="left: -55px">
-                                                            <p>@item.Sach.TenSach </p>
+                                                            <p>@item.Sach.TenSach </p> <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,1)" />
                                                             <p>Số lượng: @item.SoLuong </p>
                                                         </div>
                                                     </div>
@@ -195,3 +195,7 @@
     <!-- /#app-footer -->
 </main>
 <!--========== END app main -->
+
+@section PluginMeta{
+    <meta http-equiv="refresh" content="5; URL=@Url.Action("Index","OrderManager",new { id=ViewBag.IdMerchant})">
+}

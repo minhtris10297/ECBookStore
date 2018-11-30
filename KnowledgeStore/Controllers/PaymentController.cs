@@ -132,6 +132,7 @@ namespace KnowledgeStore.Controllers
             }
             db.DonHangs.Add(donHang);
             db.SaveChanges();
+            Session[CartSession] = null;
             return View();
         }
     }

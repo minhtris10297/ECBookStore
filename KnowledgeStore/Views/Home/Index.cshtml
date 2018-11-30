@@ -175,25 +175,29 @@
                     Tất cả
                 </button>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
+                <a href="@Url.Action("Index","Home",new { sort="HangMoi",searchProduct=ViewBag.Search})" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
                     Hàng mới
-                </button>
+                </a>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-                    Bán chạy
-                </button>
+                <a href="@Url.Action("Index","Home",new { sort="GiaTangDan",searchProduct=ViewBag.Search})" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
+                    Giá Tăng Dần
+                </a>
+
+                <a href="@Url.Action("Index","Home",new { sort="GiaGiamDan",searchProduct=ViewBag.Search})" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
+                    Giá Giảm Dần
+                </a>
 
                 @*<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-                        Giảm giá nhiều
-                    </button>
+            Giảm giá nhiều
+        </button>
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-                        Giá thấp
-                    </button>
+        <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
+            Giá thấp
+        </button>
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                        Giá cao
-                    </button>*@
+        <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
+            Giá cao
+        </button>*@
             </div>
 
             <div class="flex-w flex-c-m m-tb-10">
@@ -661,7 +665,7 @@
 
             $.ajax({
                 url: '/Home/ViewMore',
-                data: { xPosition: $('#btnXemThem').data("num"), height: heightStyle },
+                data: { xPosition: $('#btnXemThem').data("num"), height: heightStyle,sort: "@ViewBag.Sort" },
                 dataType: 'json',
                 type: 'POST',
                 success: function (res) {
