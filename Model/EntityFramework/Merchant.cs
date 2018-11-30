@@ -43,6 +43,10 @@ namespace Model.EntityFramework
         [StringLength(200)]
         public string TenCuaHang { get; set; }
 
+        [Required]
+        [StringLength(20)]
+        public string SoDienThoai { get; set; }
+
         public int SoLuongKIPXu { get; set; }
 
         public bool TrangThai { get; set; }

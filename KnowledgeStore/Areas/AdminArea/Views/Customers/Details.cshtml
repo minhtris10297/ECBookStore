@@ -1,0 +1,82 @@
+﻿@model Model.EntityFramework.Customer
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Customer</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.HoTen)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.HoTen)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DiaChi)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DiaChi)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MatKhauMaHoa)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MatKhauMaHoa)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DanhGia)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DanhGia)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TrangThai)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TrangThai)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.GioiTinh.TenGioiTinh)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.GioiTinh.TenGioiTinh)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

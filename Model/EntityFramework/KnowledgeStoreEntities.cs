@@ -181,6 +181,10 @@ namespace Model.EntityFramework
                 .IsUnicode(false);
 
             modelBuilder.Entity<Merchant>()
+                .Property(e => e.SoDienThoai)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Merchant>()
                 .HasMany(e => e.DanhGiaCuaMerchants)
                 .WithRequired(e => e.Merchant)
                 .WillCascadeOnDelete(false);

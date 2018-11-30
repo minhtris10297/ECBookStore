@@ -1,0 +1,144 @@
+﻿@model Model.EntityFramework.Merchant
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Infinity - Bootstrap Admin Template</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Admin, Dashboard, Bootstrap" />
+    <link rel="shortcut icon" sizes="196x196" href="/Assets/Admin/Infinity-v2.0.0/assets/images/logo.png">
+
+    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/libs/bower/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/libs/bower/material-design-iconic-font/dist/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/libs/bower/animate.css/animate.min.css">
+    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/assets/css/core.css">
+    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/assets/css/misc-pages.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900,300">
+</head>
+<body class="simple-page">
+    <div id="back-to-home">
+        <a href="@Url.Action("Index","Home")" class="btn btn-outline btn-default"><i class="fa fa-home animated zoomIn"></i></a>
+    </div>
+    <div class="simple-page-wrap">
+        <div class="simple-page-logo animated swing">
+            <a href="index.html">
+                <span><i class="fa fa-gg"></i></span>
+                <span>Infinity</span>
+            </a>
+        </div><!-- logo -->
+
+        <div class="simple-page-form animated flipInY" id="signup-form">
+            <h4 class="form-title m-b-xl text-center">Sign Up For a new Account</h4>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @*<input id="sign-up-name" type="text" class="form-control" placeholder="Họ Tên">*@
+                    @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Họ Tên", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @*<input id="sign-up-email" type="email" class="form-control" placeholder="Email">*@
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "email", @placeholder = "Email", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    <span class="input-group-addon bootstrap-touchspin-postfix btn btn-default" id="btnGetAuthCode">Lấy mã xác thực</span>
+                </div>
+                <div class="form-group">
+                    @*<input id="sign-up-name" type="password" class="form-control" placeholder="Mật Khẩu">*@
+                    @Html.EditorFor(model => model.MatKhauMaHoa, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Mật khẩu", required = "required", @id = "password" } })
+                    @Html.ValidationMessageFor(model => model.MatKhauMaHoa, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @*<input id="sign-up-name" type="password" class="form-control" placeholder="Mật Khẩu">*@
+                    @Html.Editor("RetypePassword", new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Xác nhận mật khẩu", required = "required", @id = "retypePassword" } })
+                    <lable id="lblRePass"></lable>
+                </div>
+                <div class="form-group">
+                    @*<input id="sign-up-name" type="number" class="form-control" placeholder="Số Điện Thoại">*@
+                    @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control", @type = "number", @placeholder = "Số điện thoại", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @*<input id="sign-up-name" type="text" class="form-control" placeholder="Địa chỉ">*@
+                    @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Địa chỉ", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @*<input id="sign-up-name" type="text" class="form-control" placeholder="Địa chỉ">*@
+                    @Html.EditorFor(model => model.TenCuaHang, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Tên Cửa Hàng", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.TenCuaHang, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.DropDownList("GioiTinhID", null, htmlAttributes: new { @class = "form-control", @placeholder = "Giới tính", required = "required" })
+                    @Html.ValidationMessageFor(model => model.GioiTinhID, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <input name="AuthenticationCode" type="text" class="form-control" placeholder="Mã xác thực" data-val-required="Mời nhập mã xác thực">
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group m-b-xl">
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" id="keep_me_logged_in" />
+                        <label for="keep_me_logged_in">Keep me signed in</label>
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-primary" value="SING UP">
+            }
+        </div><!-- #login-form -->
+        <div class="simple-page-footer">
+            <p>
+                <small>Do you have an account ?</small>
+                <a href="login.html">SIGN IN</a>
+            </p>
+        </div><!-- .simple-page-footer -->
+
+    </div><!-- .simple-page-wrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <script>
+        $('#btnGetAuthCode').off('click').on('click', function () {
+            alert("Đang kiểm tra...")
+            var memberEmail = document.getElementById('Email').value;
+            if (memberEmail) {
+                $.ajax({
+                    url: '/Accounts/GetAuthenticationInEmail',
+                    data: { Email: memberEmail },
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (res) {
+                        if (res.status == true) {
+                            alert("Mã xác thực đã được gửi vào email  " + memberEmail)
+                        }
+                        else {
+                            alert("Email " + memberEmail + " đã tồn tại")
+                        }
+                    }
+                });
+            }
+            else {
+                alert("Ban chua nhap email")
+            }
+
+        });
+        //retype password
+        $('#retypePassword').keyup(function () {
+            var re = $(this).val();
+            var pass = $('#password').val();
+            if (re != pass) {
+                $('#lblRePass').text("Mật khẩu xác nhận không khớp với mật khẩu");
+                $('#lblRePass').css("color", "red");
+            }
+            else {
+                $('#lblRePass').text("");
+            }
+        });
+    </script>
+</body>
+</html>

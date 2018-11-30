@@ -158,13 +158,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
-    <Compile Include="Areas\Admin\Controllers\CustomersController.cs" />
-    <Compile Include="Areas\Merchant\Controllers\AccountsMerchantController.cs" />
-    <Compile Include="Areas\Merchant\Controllers\BaseController.cs" />
-    <Compile Include="Areas\Merchant\Controllers\OrderManagerController.cs" />
-    <Compile Include="Areas\Merchant\MerchantAreaRegistration.cs" />
+    <Compile Include="Areas\AdminArea\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\AdminArea\Controllers\BaseController.cs" />
+    <Compile Include="Areas\AdminArea\Controllers\CustomersController.cs" />
+    <Compile Include="Areas\MerchantArea\Controllers\AccountsMerchantController.cs" />
+    <Compile Include="Areas\MerchantArea\Controllers\BaseController.cs" />
+    <Compile Include="Areas\MerchantArea\Controllers\OrderManagerController.cs" />
+    <Compile Include="Areas\MerchantArea\MerchantAreaRegistration.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -2974,7 +2974,7 @@
     <Content Include="Assets\Customer\cozastore\__MACOSX\cozastore\vendor\slick\fonts\._slick.eot" />
     <Content Include="Assets\Customer\cozastore\__MACOSX\cozastore\vendor\slick\fonts\._slick.ttf" />
     <Content Include="Assets\Customer\cozastore\__MACOSX\cozastore\vendor\slick\fonts\._slick.woff" />
-    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\AdminArea\Views\web.config" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\api\dropzone" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\api\json\data.json" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\api\json\dataTable.json" />
@@ -3180,11 +3180,11 @@
     <Content Include="Assets\Admin\Infinity-v2.0.0\libs\misc\echarts\.DS_Store" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\package.json" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\README.md" />
-    <Content Include="Areas\Admin\Views\Customers\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Customers\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Customers\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Customers\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Customers\Index.cshtml" />
+    <Content Include="Areas\AdminArea\Views\Customers\Create.cshtml" />
+    <Content Include="Areas\AdminArea\Views\Customers\Delete.cshtml" />
+    <Content Include="Areas\AdminArea\Views\Customers\Details.cshtml" />
+    <Content Include="Areas\AdminArea\Views\Customers\Edit.cshtml" />
+    <Content Include="Areas\AdminArea\Views\Customers\Index.cshtml" />
     <Content Include="Assets\Database\FileBakSQL\KnowledgeStore.bak" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -3209,8 +3209,8 @@
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="Assets\Database\KnowledgeStore.bak" />
-    <Content Include="Areas\Merchant\Views\web.config" />
-    <Content Include="Areas\Merchant\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\MerchantArea\Views\web.config" />
+    <Content Include="Areas\MerchantArea\Views\Shared\_Layout.cshtml" />
     <Content Include="Assets\Merchant\Infinity-v2.0.0\api\dropzone" />
     <Content Include="Assets\Merchant\Infinity-v2.0.0\api\json\data.json" />
     <Content Include="Assets\Merchant\Infinity-v2.0.0\api\json\dataTable.json" />
@@ -3416,8 +3416,9 @@
     <Content Include="Assets\Merchant\Infinity-v2.0.0\libs\misc\echarts\.DS_Store" />
     <Content Include="Assets\Merchant\Infinity-v2.0.0\package.json" />
     <Content Include="Assets\Merchant\Infinity-v2.0.0\README.md" />
-    <Content Include="Areas\Merchant\Views\OrderManager\Index.cshtml" />
-    <Content Include="Areas\Merchant\Views\AccountsMerchant\Login.cshtml" />
+    <Content Include="Areas\MerchantArea\Views\AccountsMerchant\Login.cshtml" />
+    <Content Include="Areas\MerchantArea\Views\OrderManager\Index.cshtml" />
+    <Content Include="Areas\MerchantArea\Views\AccountsMerchant\Register.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -3477,10 +3478,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\Merchant\Models\" />
-    <Folder Include="Areas\Merchant\Views\Base\" />
+    <Folder Include="Areas\AdminArea\Models\" />
+    <Folder Include="Areas\AdminArea\Views\Shared\" />
+    <Folder Include="Areas\MerchantArea\Models\" />
+    <Folder Include="Areas\MerchantArea\Views\Base\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

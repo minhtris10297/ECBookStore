@@ -54,6 +54,7 @@ namespace KnowledgeStore.Controllers
             }
             return View(model);
         }
+
         public ActionResult Register()
         {
             ViewBag.GioiTinhID = new SelectList(db.GioiTinhs, "GioiTinhID", "TenGioiTinh");
