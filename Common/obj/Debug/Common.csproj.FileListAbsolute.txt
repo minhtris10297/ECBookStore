@@ -26,3 +26,8 @@ D:\ThuongMaiDienTu\Common\bin\Debug\Common.pdb
 D:\ThuongMaiDienTu\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
 D:\ThuongMaiDienTu\Common\obj\Debug\Common.dll
 D:\ThuongMaiDienTu\Common\obj\Debug\Common.pdb
+E:\Project\Common\bin\Debug\Common.dll
+E:\Project\Common\bin\Debug\Common.pdb
+E:\Project\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+E:\Project\Common\obj\Debug\Common.dll
+E:\Project\Common\obj\Debug\Common.pdb
