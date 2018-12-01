@@ -127,10 +127,11 @@ namespace KnowledgeStore.Controllers
                 {
                     book.TrangThai = false;
                 }
-                var chiTietDH = new ChiTietDonHang() { DonHangID = donHang.DonHangID, SachID = item.Sach.SachID, MerchantID = item.Sach.MerchantID.GetValueOrDefault(0), SoLuong = item.Quantity, ThanhTien = item.Quantity * item.Sach.GiaTien };
+                var chiTietDH = new ChiTietDonHang() { DonHangID = donHang.DonHangID, SachID = item.Sach.SachID, MerchantID = item.Sach.MerchantID.GetValueOrDefault(0), SoLuong = item.Quantity, ThanhTien = item.Quantity * item.Sach.GiaTien , TrangThaiDanhGia = true, TrangThai = true};
                 db.ChiTietDonHangs.Add(chiTietDH);
             }
             db.DonHangs.Add(donHang);
+            Session[CartSession] = null;
             db.SaveChanges();
             return View();
         }
