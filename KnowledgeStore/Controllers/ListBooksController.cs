@@ -87,21 +87,39 @@ namespace KnowledgeStore.Controllers
 
             ViewBag.comment = db.DanhGiaCuaCustomers.Where(p => p.SachID == id).ToList();
 
+
+            var session = Session[CommonConstants.USER_SESSION];
+            if(session == null)
+            {
+                ViewBag.ktdangnhap = 0;
+            }
+            else
+            {
+                ViewBag.ktdangnhap = 1;
+            }
+
+            
+
             return View(book);
         }
         [HttpPost]
-        public ActionResult Rating(DanhGiaCuaCustomer comment)
+        public ActionResult Rating(int id,int rating, string title, string review)
         {
-            var session = Session[CommonConstants.USER_SESSION];
-          
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            var comment = new DanhGiaCuaCustomer();
 
-            if (session == null)
-                return View("Chua dang nhap");
-            else
-            {
-                db.DanhGiaCuaCustomers.Add(comment);                
-            }
-            return View();
+            comment.CustomerID = db.Customers.Where(p => p.Email == session.Email).First().CustomerID;
+            /*omment.CustomerID =1;*/
+            comment.SachID = id;
+            comment.SoSao = rating;
+            comment.TieuDe = title;
+            comment.NoiDung = review;
+            comment.ChiTietDonHang = db.ChiTietDonHangs.Find(2);
+                        
+            db.DanhGiaCuaCustomers.Add(comment);
+            db.SaveChanges();              
+            
+            return RedirectToAction("/BookDetail/" + id);
         }
     }
 }

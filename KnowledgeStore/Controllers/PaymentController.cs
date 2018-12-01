@@ -114,7 +114,7 @@ namespace KnowledgeStore.Controllers
             {
                 tamTinh += item.Quantity * item.Sach.GiaTien;
             }
-            var donHang = new DonHang() { CustomerID = user.CustomerID, NgayDat = System.DateTime.Now, TongTien = tamTinh, DiaChi = user.DiaChi, TinhTrangDonHangID = 1 };
+            var donHang = new DonHang() { CustomerID = user.CustomerID, NgayDat = System.DateTime.Now, TongTien = tamTinh, DiaChi = user.DiaChi};
             foreach(var item in listCart)
             {
                 var book = db.Saches.Find(item.Sach.SachID);
@@ -127,7 +127,7 @@ namespace KnowledgeStore.Controllers
                 {
                     book.TrangThai = false;
                 }
-                var chiTietDH = new ChiTietDonHang() { DonHangID = donHang.DonHangID, SachID = item.Sach.SachID, MerchantID = item.Sach.MerchantID.GetValueOrDefault(0), SoLuong = item.Quantity, ThanhTien = item.Quantity * item.Sach.GiaTien , TrangThaiDanhGia = true, TrangThai = true};
+                var chiTietDH = new ChiTietDonHang() { DonHangID = donHang.DonHangID, SachID = item.Sach.SachID, MerchantID = item.Sach.MerchantID.GetValueOrDefault(0), SoLuong = item.Quantity, ThanhTien = item.Quantity * item.Sach.GiaTien , TrangThaiDanhGia = true};
                 db.ChiTietDonHangs.Add(chiTietDH);
             }
             db.DonHangs.Add(donHang);

@@ -29,9 +29,9 @@ namespace Model.EntityFramework
 
         public decimal ThanhTien { get; set; }
 
-        public bool? TrangThaiDanhGia { get; set; }
+        public bool TrangThaiDanhGia { get; set; }
 
-        public bool? TrangThai { get; set; }
+        public int TinhTrangDonHangID { get; set; }
 
         [StringLength(100)]
         public string GhiChu { get; set; }
@@ -40,7 +40,7 @@ namespace Model.EntityFramework
 
         public virtual Sach Sach { get; set; }
 
-        public virtual Merchant Merchant { get; set; }
+        public virtual TinhTrangDonHang TinhTrangDonHang { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DanhGiaCuaCustomer> DanhGiaCuaCustomers { get; set; }

@@ -30,7 +30,7 @@ namespace Model.EntityFramework
         [StringLength(100)]
         public string DiaChi { get; set; }
 
-        public int TinhTrangDonHangID { get; set; }
+        public bool TrangThai { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
@@ -39,8 +39,6 @@ namespace Model.EntityFramework
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DoanhThu> DoanhThus { get; set; }
-
-        public virtual TinhTrangDonHang TinhTrangDonHang { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LichSuCustomer> LichSuCustomers { get; set; }

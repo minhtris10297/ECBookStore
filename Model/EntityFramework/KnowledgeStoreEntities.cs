@@ -33,7 +33,6 @@ namespace Model.EntityFramework
         public virtual DbSet<Merchant> Merchants { get; set; }
         public virtual DbSet<NhaXuatBan> NhaXuatBans { get; set; }
         public virtual DbSet<Sach> Saches { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TheLoai> TheLoais { get; set; }
         public virtual DbSet<TinhTrangDonHang> TinhTrangDonHangs { get; set; }
 
@@ -54,7 +53,6 @@ namespace Model.EntityFramework
             modelBuilder.Entity<ChiTietDonHang>()
                 .HasMany(e => e.DanhGiaCuaCustomers)
                 .WithRequired(e => e.ChiTietDonHang)
-                .HasForeignKey(e => e.SachID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ChiTietSachMerchant>()
@@ -96,12 +94,12 @@ namespace Model.EntityFramework
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Customer>()
-                .HasMany(e => e.DonHangs)
+                .HasMany(e => e.LichSuCustomers)
                 .WithRequired(e => e.Customer)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Customer>()
-                .HasMany(e => e.LichSuCustomers)
+                .HasMany(e => e.DonHangs)
                 .WithRequired(e => e.Customer)
                 .WillCascadeOnDelete(false);
 
@@ -178,9 +176,12 @@ namespace Model.EntityFramework
                 .IsUnicode(false);
 
             modelBuilder.Entity<Merchant>()
-                .HasMany(e => e.ChiTietDonHangs)
-                .WithRequired(e => e.Merchant)
-                .WillCascadeOnDelete(false);
+                .Property(e => e.MatKhauMaHoa)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Merchant>()
+                .Property(e => e.SoDienThoai)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Merchant>()
                 .HasMany(e => e.DanhGiaCuaMerchants)
@@ -216,6 +217,11 @@ namespace Model.EntityFramework
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Sach>()
+                .HasMany(e => e.DanhGiaCuaCustomers)
+                .WithRequired(e => e.Sach)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Sach>()
                 .HasMany(e => e.HinhAnhs)
                 .WithRequired(e => e.Sach)
                 .WillCascadeOnDelete(false);
@@ -231,7 +237,7 @@ namespace Model.EntityFramework
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TinhTrangDonHang>()
-                .HasMany(e => e.DonHangs)
+                .HasMany(e => e.ChiTietDonHangs)
                 .WithRequired(e => e.TinhTrangDonHang)
                 .WillCascadeOnDelete(false);
         }

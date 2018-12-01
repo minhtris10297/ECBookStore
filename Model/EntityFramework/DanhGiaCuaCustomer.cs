@@ -14,10 +14,12 @@ namespace Model.EntityFramework
 
         public int CustomerID { get; set; }
 
-        public int SachID { get; set; }
+        public int ChiTIetDonHangID { get; set; }
 
         [Column(TypeName = "text")]
         public string NoiDung { get; set; }
+
+        public int SachID { get; set; }
 
         [Required]
         public string TieuDe { get; set; }
@@ -27,5 +29,7 @@ namespace Model.EntityFramework
         public virtual ChiTietDonHang ChiTietDonHang { get; set; }
 
         public virtual Customer Customer { get; set; }
+
+        public virtual Sach Sach { get; set; }
     }
 }
