@@ -64,7 +64,7 @@
                         <hr class="widget-separator" />
                         <div class="widget-body">
                             <div class="table-responsive">
-                                <table id="default-datatable" data-plugin="DataTable" class="table table-striped" cellspacing="0">
+                                <table id="default-datatable" data-plugin="DataTable" class="table table-striped" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                             <th>Mã đơn hàng</th>
@@ -77,6 +77,18 @@
                                             <th></th>
                                         </tr>
                                     </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Mã đơn hàng</th>
+                                            <th>Thông tin đặt hàng</th>
+                                            <th>Ngày xử lý</th>
+                                            <th>Số lượng</th>
+                                            <th>Thành tiền</th>
+                                            <th>Trạng thái</th>
+                                            <th>Chức năng</th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
                                     <tbody>
                                         @{
                                             foreach (var item in Model)
@@ -196,6 +208,6 @@
 </main>
 <!--========== END app main -->
 
-@section PluginMeta{
+@*@section PluginMeta{
     <meta http-equiv="refresh" content="5; URL=@Url.Action("Index","OrderManager",new { id=ViewBag.IdMerchant})">
-}
+}*@
