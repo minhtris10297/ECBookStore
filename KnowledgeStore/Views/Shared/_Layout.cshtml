@@ -367,8 +367,8 @@
                 type: 'POST',
                 success: function (data) {
                     if (data.status == true) {
-                        alert('Login Success');
-                        window.location.href = "/";
+                        alert('Login By Google');
+                        window.location.href = "/Accounts/AdditionalInfoGg/"+data.id;
                     }
                 }
             });
