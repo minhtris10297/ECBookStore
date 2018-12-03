@@ -163,6 +163,7 @@
     <Compile Include="Areas\AdminArea\Controllers\CustomersController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\AccountsMerchantController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\BaseController.cs" />
+    <Compile Include="Areas\MerchantArea\Controllers\BookManagerController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\LayoutMerchantController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\OrderManagerController.cs" />
     <Compile Include="Areas\MerchantArea\MerchantAreaRegistration.cs" />
@@ -3422,6 +3423,7 @@
     <Content Include="Areas\MerchantArea\Views\AccountsMerchant\Register.cshtml" />
     <Content Include="Areas\MerchantArea\Views\_ViewStart.cshtml" />
     <Content Include="Areas\MerchantArea\Views\LayoutMerchant\TopbarMenuDisplay.cshtml" />
+    <Content Include="Areas\MerchantArea\Views\BookManager\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

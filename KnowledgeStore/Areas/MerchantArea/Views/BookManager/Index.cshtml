@@ -1,0 +1,158 @@
+﻿@model PagedList.IPagedList<Model.EntityFramework.Sach>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@using Common
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/MerchantArea/Views/Shared/_Layout.cshtml";
+}
+
+<<!-- APP MAIN ==========-->
+<main id="app-main" class="app-main">
+    <div class="profile-header">
+        <div class="profile-cover">
+            <div class="text-center">
+                <div class="avatar avatar-xl avatar-circle">
+                    <a href="javascript:void(0)">
+                        <img class="img-responsive" data-toggle="modal" data-target="#exampleModal" src="../assets/images/221.jpg" alt="avatar" />
+                    </a>
+                </div><!-- .avatar -->
+                <h4 class="profile-info-name m-b-lg"><a href="javascript:void(0)" class="title-color">Merchant A</a></h4>
+                <div>
+                    <a href="javascript:void(0)" class="m-r-xl theme-color"><i class="fa fa-bolt m-r-xs"></i> Shop A</a>
+                    <a href="javascript:void(0)" class="theme-color"><i class="fa fa-map-marker m-r-xs"></i>Quận 4</a>
+                </div>
+            </div>
+        </div><!-- .profile-cover -->
+
+        <div class="promo-footer">
+            <div class="row no-gutter">
+                <div class="col-sm-2 col-sm-offset-3 col-xs-6 promo-tab">
+                    <div class="text-center">
+                        <small>Hoạt động</small>
+                        <h4 class="m-0 m-t-xs">+2 năm</h4>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-xs-6 promo-tab">
+                    <div class="text-center">
+                        <small>Số sản phẩm</small>
+                        <h4 class="m-0 m-t-xs">1123</h4>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-xs-12 promo-tab">
+                    <div class="text-center">
+                        <small>Đánh giá</small>
+                        <div class="m-t-xs">
+                            <i class="text-primary fa fa-star"></i>
+                            <i class="text-primary fa fa-star"></i>
+                            <i class="text-primary fa fa-star"></i>
+                            <i class="text-primary fa fa-star"></i>
+                            <i class="text-primary fa fa-star-o"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- .promo-footer -->
+    </div><!-- .profile-header -->
+    <div class="wrap">
+        <section class="app-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="profile-tabs" class="nav-tabs-horizontal white m-b-lg">
+                        <!-- tabs list -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#profile-all" aria-controls="all" role="tab" data-toggle="tab">Tất cả</a></li>
+                            <li role="presentation"><a href="#profile-new" aria-controls="new" role="tab" data-toggle="tab">Hàng mới</a></li>
+                            <li role="presentation"><a href="#profile-sales" aria-controls="sales" role="tab" data-toggle="tab">Giảm giá</a></li>
+                        </ul><!-- .nav-tabs -->
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane in active fade" id="profile-all">
+                                @foreach (var item in Model)
+                                {
+                                    <!-- new row -->
+                                    <div class="col-md-3 col-sm-6">
+                                        <div class="widget">
+                                            <hr class="widget-separator">
+                                            <div class="widget-body p-h-lg">
+                                                <div class="media">
+                                                    <div class="media-left">
+                                                        <div class="avatar avatar-lg avatar-circle">
+                                                            <img class="img-responsive" src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,1)" alt="avatar" />
+                                                        </div><!-- .avatar -->
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading">@item.TenSach</h4>
+
+                                                        @if (item.GiaKhuyenMai != null)
+                                                        {
+                                                            <h5 class="media-meta">@item.GiaKhuyenMai.GetValueOrDefault(0).ToString("N0") - @item.GiaTien.ToString("N0")</h5>
+                                                            <h5 class="media-meta text-primary">- @HtmlHelperExtensions.ConvertDecimaltoIntegerSalePrice(item.GiaKhuyenMai.GetValueOrDefault(0), item.GiaTien) %</h5>
+                                                        }
+                                                        else
+                                                        {
+                                                            <h5 class="media-meta">@item.GiaTien.ToString("N0")</h5>
+                                                        }
+
+                                                    </div>
+                                                </div>
+                                            </div><!-- .widget-body -->
+                                        </div><!-- .widget -->
+                                    </div><!-- END column -->
+                                }
+                                <br />
+                                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                                @Html.PagedListPager(Model, page => Url.Action("Index",
+                                    new { page, id=@ViewBag.MerchantID }))
+
+                            </div><!-- .tab-pane -->
+                        </div><!-- .tab-content -->
+                    </div><!-- #profile-components -->
+                </div><!-- END column -->
+            </div><!-- .row -->
+        </section><!-- #dash-content -->
+    </div><!-- .row -->
+    <!-- Modal xác nhận giao hàng-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
+        <div class="modal-dialog" role="document" style="width: 450px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Đổi ảnh đại diện</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="email2" class="col-sm-3 control-label">Chọn ảnh:</label>
+                            <div class="col-sm-9">
+                                <input type="file" id="exampleInputFile" class="form-control">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="button" data-toggle="modal" class="btn btn-warning btn-sm">Xác nhận</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- APP FOOTER -->
+    <div class="wrap p-t-0">
+        <footer class="app-footer">
+            <div class="clearfix">
+                <ul class="footer-menu pull-right">
+                    <li><a href="javascript:void(0)">Careers</a></li>
+                    <li><a href="javascript:void(0)">Privacy Policy</a></li>
+                    <li><a href="javascript:void(0)">Feedback <i class="fa fa-angle-up m-l-md"></i></a></li>
+                </ul>
+                <div class="copyright pull-left">Copyright RaThemes 2016 &copy;</div>
+            </div>
+        </footer>
+    </div>
+    <!-- /#app-footer -->
+</main>
+<!--========== END app main -->

@@ -162,7 +162,7 @@
                 </li>
 
                 <li class="has-submenu">
-                    <a href="@Url.Action("Index","OrderManager")" class="submenu-toggle">
+                    <a href="@Url.Action("Index","OrderManager",new { id=@ViewBag.MerchantID})" class="submenu-toggle">
                         <i class="menu-icon zmdi zmdi-storage zmdi-hc-lg"></i>
                         <span class="menu-text">Đơn hàng</span>
                     </a>
@@ -176,7 +176,7 @@
                 </li>
 
                 <li class="has-submenu">
-                    <a href="javascript:void(0)" class="submenu-toggle">
+                    <a href="@Url.Action("Index","BookManager",new { id=@ViewBag.MerchantID})"  class="submenu-toggle">
                         <i class="menu-icon zmdi zmdi-file-text zmdi-hc-lg"></i>
                         <span class="menu-text">Sách</span>
                     </a>

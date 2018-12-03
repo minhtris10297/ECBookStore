@@ -1,4 +1,5 @@
 ﻿using KnowledgeStore.Common;
+using Model.EntityFramework;
 using Model.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
 {
     public class LayoutMerchantController : Controller
     {
+        KnowledgeStoreEntities db = new KnowledgeStoreEntities();
         public PartialViewResult TopbarMenuDisplay()
         {
             var sessionUser = (UserLogin)Session[CommonConstants.USERMERCHANT_SESSION];
