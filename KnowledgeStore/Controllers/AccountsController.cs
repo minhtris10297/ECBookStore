@@ -228,7 +228,40 @@ namespace KnowledgeStore.Controllers
 
 
 
-            return Json(new { status = true });
+            return Json(new { status = true,id=customerAccount.CustomerID });
+        }
+
+        public ActionResult AdditionalInfoGg(int id)
+        {
+            ViewBag.GioiTinhID = new SelectList(db.GioiTinhs, "GioiTinhID", "TenGioiTinh");
+            var customer = db.Customers.Find(id);
+            ViewBag.CusId = id;
+            return View(customer);
+        }
+
+        [HttpPost]
+        public ActionResult AdditionalInfoGg(int id,Customer customer, string AuthenticationCode)
+        {
+            ViewBag.GioiTinhID = new SelectList(db.GioiTinhs, "GioiTinhID", "TenGioiTinh");
+            var customerFind = db.Customers.Find(id);
+            var authenticationEmail = (AuthenticationEmail)Session[CommonConstants.AUTHENTICATIONEMAIL_SESSION];
+            
+            if ((ModelState.IsValid & authenticationEmail != null)|| (ModelState.IsValid &customerFind.IDGoogle!=null))
+            {
+                    customer.NgayTao = System.DateTime.Now;
+                    customerFind = customer;
+                    customerFind.TrangThai = true;
+                    db.SaveChanges();
+
+                    var userSession = new UserLogin();
+                    userSession.UserName = customer.HoTen;
+                    userSession.Email = customer.Email;
+                    Session[CommonConstants.USER_SESSION] = null;
+                    Session[CommonConstants.USER_SESSION] = userSession;
+
+                    return RedirectToAction("Index", "Home");
+            }
+            return View(customer);
         }
         protected override void Dispose(bool disposing)
         {

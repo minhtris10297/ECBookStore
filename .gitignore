@@ -1,4 +1,3 @@
-
 .vs/config/applicationhost.config
 .vs/KnowledgeStore/v15/.suo
 .vs/KnowledgeStore/v15/Server/sqlite3/storage.ide-shm
@@ -22,6 +21,7 @@ Model/obj/Debug/Model.csprojAssemblyReference.cache
 *.dll.config
 *.cache
 *.suo
+*.ide
 # Include dlls if they’re in the NuGet packages directory
 !/packages/*/lib/*.dll
 !/packages/*/lib/*/*.dll
@@ -69,7 +69,6 @@ TestResults/
 ######################
 .DS_Store?
 ehthumbs.db
-Icon?
 Thumbs.db
 [Bb]in
 [Oo]bj
