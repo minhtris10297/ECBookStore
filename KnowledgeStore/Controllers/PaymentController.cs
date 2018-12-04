@@ -96,8 +96,11 @@ namespace KnowledgeStore.Controllers
             }
             return View(model);
         }
-
         public ActionResult PaymentSuccess()
+        {
+            return View();
+        }
+        public JsonResult PaymentSuccessProcess(string diaChi)
         {
             var sessionUser = (UserLogin)Session[CommonConstants.USER_SESSION];
             var user = db.Customers.Where(m => m.Email == sessionUser.Email).FirstOrDefault();
@@ -114,7 +117,16 @@ namespace KnowledgeStore.Controllers
             {
                 tamTinh += item.Quantity * item.Sach.GiaTien;
             }
-            var donHang = new DonHang() { CustomerID = user.CustomerID, NgayDat = System.DateTime.Now, TongTien = tamTinh, DiaChi = user.DiaChi ,TrangThai=true};
+            string diaChiCanLay = null;
+            if (diaChi != null)
+            {
+                diaChiCanLay = diaChi;
+            }
+            else
+            {
+                diaChiCanLay = user.DiaChi;
+            }
+            var donHang = new DonHang() { CustomerID = user.CustomerID, NgayDat = System.DateTime.Now, TongTien = tamTinh, DiaChi = diaChiCanLay, TrangThai=true};
             foreach(var item in listCart)
             {
                 var book = db.Saches.Find(item.Sach.SachID);
@@ -133,7 +145,10 @@ namespace KnowledgeStore.Controllers
             db.DonHangs.Add(donHang);
             db.SaveChanges();
             Session[CartSession] = null;
-            return View();
+            return Json(new
+            {
+                status = true
+            });
         }
     }
 }

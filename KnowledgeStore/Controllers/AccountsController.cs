@@ -226,9 +226,9 @@ namespace KnowledgeStore.Controllers
             Session.Remove(CommonConstants.USER_SESSION);
             Session.Add(CommonConstants.USER_SESSION, userLogin);
 
+            var trangThai = db.Customers.Where(m => m.CustomerID == resultInsertGg).Select(m => m.TrangThai).FirstOrDefault();
 
-
-            return Json(new { status = true,id=customerAccount.CustomerID });
+            return Json(new { status = true,id= resultInsertGg, valueTrangThai= trangThai });
         }
 
         public ActionResult AdditionalInfoGg(int id)
@@ -248,10 +248,12 @@ namespace KnowledgeStore.Controllers
             
             if ((ModelState.IsValid & authenticationEmail != null)|| (ModelState.IsValid &customerFind.IDGoogle!=null))
             {
-                    customer.NgayTao = System.DateTime.Now;
-                    customerFind = customer;
-                    customerFind.TrangThai = true;
-                    db.SaveChanges();
+                    customerFind.HoTen=customer.HoTen;
+                    customerFind.GioiTinhID=customer.GioiTinhID;
+                    customerFind.SoDienThoai=customer.SoDienThoai;
+                    customerFind.DiaChi = customer.DiaChi;
+                    customerFind.TrangThai=true;
+                    
 
                     var userSession = new UserLogin();
                     userSession.UserName = customer.HoTen;
@@ -259,7 +261,8 @@ namespace KnowledgeStore.Controllers
                     Session[CommonConstants.USER_SESSION] = null;
                     Session[CommonConstants.USER_SESSION] = userSession;
 
-                    return RedirectToAction("Index", "Home");
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home");
             }
             return View(customer);
         }

@@ -22,7 +22,7 @@ Model/obj/Debug/Model.csprojAssemblyReference.cache
 *.cache
 *.suo
 *.ide
-# Include dlls if they’re in the NuGet packages directory
+# Include dlls if theyï¿½re in the NuGet packages directory
 !/packages/*/lib/*.dll
 !/packages/*/lib/*/*.dll
 # Include dlls if they're in the CommonReferences directory
@@ -50,7 +50,7 @@ TestResults/
 ############
 # Packages #
 ############
-# it’s better to unpack these files and commit the raw source
+# itï¿½s better to unpack these files and commit the raw source
 # git has its own built in compression methods
 *.7z
 *.dmg
@@ -86,3 +86,5 @@ _[Ss]cripts
 *.ncrunchsolution
 *.dot[Cc]over
 
+.vs/KnowledgeStore/v15/Server/sqlite3/storage.ide
+*.ide

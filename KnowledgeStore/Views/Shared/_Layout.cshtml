@@ -367,8 +367,15 @@
                 type: 'POST',
                 success: function (data) {
                     if (data.status == true) {
-                        alert('Login By Google');
-                        window.location.href = "/Accounts/AdditionalInfoGg/"+data.id;
+                        if (data.valueTrangThai == true) {
+                            alert('Login Google');
+                            window.location.href = "/";
+                        }
+                        else {
+                            alert('Login By Google');
+                            window.location.href = "/Accounts/AdditionalInfoGg/" + data.id;
+                        }
+                        
                     }
                 }
             });
