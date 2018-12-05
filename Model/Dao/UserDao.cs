@@ -116,7 +116,7 @@ namespace Model.Dao
                     db.SaveChanges();
                     return modelMb.CustomerID;
                 }
-                return 0;
+                return modelMb.CustomerID;
             }
         }
     }

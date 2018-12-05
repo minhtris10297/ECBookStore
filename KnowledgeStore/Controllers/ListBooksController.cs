@@ -22,20 +22,20 @@ namespace KnowledgeStore.Controllers
             {
                 if (id == "SachGiamGia")
                 {
-                    listSach = db.Saches.OrderByDescending(m => m.GiaKhuyenMai / m.GiaTien).ToList();
+                    listSach = db.Saches.OrderByDescending(m => (m.GiaKhuyenMai / m.GiaTien)).Where(m=>m.TrangThai==true).ToList();
                 }
                 else if (id == "SachMoiPhatHanh")
                 {
-                    listSach = db.Saches.OrderByDescending(m => m.NgayXuatBan).ToList();
+                    listSach = db.Saches.OrderByDescending(m => m.NgayXuatBan).Where(m => m.TrangThai == true).ToList();
                 }
                 else if (id == "SachBanChay")
                 {
-                    listSach = db.Saches.OrderByDescending(m => m.LichSuNangTins.Max(n => n.NgayNang)).ToList();
+                    listSach = db.Saches.OrderByDescending(m => m.LichSuNangTins.Max(n => n.NgayNang)).Where(m => m.TrangThai == true).ToList();
                 }
             }
             if (theLoai != null)
             {
-                listSach = db.Saches.Where(m => m.TheLoai.TenTheLoai==theLoai).ToList();
+                listSach = db.Saches.Where(m => m.TheLoai.TenTheLoai==theLoai&m.TrangThai==true).ToList();
             }
             
             int pageSize = 12;

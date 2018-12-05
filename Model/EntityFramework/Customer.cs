@@ -28,8 +28,7 @@ namespace Model.EntityFramework
 
         [StringLength(100)]
         public string IDFacebook { get; set; }
-
-        [Required]
+        
         [StringLength(100)]
         public string HoTen { get; set; }
 

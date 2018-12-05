@@ -163,6 +163,7 @@
     <Compile Include="Areas\AdminArea\Controllers\CustomersController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\AccountsMerchantController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\BaseController.cs" />
+    <Compile Include="Areas\MerchantArea\Controllers\BookManagerController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\LayoutMerchantController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\OrderManagerController.cs" />
     <Compile Include="Areas\MerchantArea\MerchantAreaRegistration.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\ListBooksController.cs" />
+    <Compile Include="Controllers\OrderDetailController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -3422,6 +3424,7 @@
     <Content Include="Areas\MerchantArea\Views\AccountsMerchant\Register.cshtml" />
     <Content Include="Areas\MerchantArea\Views\_ViewStart.cshtml" />
     <Content Include="Areas\MerchantArea\Views\LayoutMerchant\TopbarMenuDisplay.cshtml" />
+    <Content Include="Areas\MerchantArea\Views\BookManager\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -3478,6 +3481,8 @@
     <Content Include="Views\Payment\Index.cshtml" />
     <Content Include="Views\Payment\LoginPayment.cshtml" />
     <Content Include="Views\Payment\PaymentSuccess.cshtml" />
+    <Content Include="Views\Accounts\AdditionalInfoGg.cshtml" />
+    <Content Include="Views\OrderDetail\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

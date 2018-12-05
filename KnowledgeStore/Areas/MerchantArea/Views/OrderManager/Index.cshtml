@@ -5,209 +5,229 @@
     Layout = "~/Areas/MerchantArea/Views/Shared/_Layout.cshtml";
 }
 
-<!-- APP MAIN ==========-->
-<main id="app-main" class="app-main">
-    <div class="wrap">
-        <section class="app-content">
-            <div class="row">
-                @using (Html.BeginForm("Index", "OrderManager", new { id = ViewBag.IdMerchant }))
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>Đơn hàng</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content mt-3">
+    <div class="col-sm-12">
+        <div class="widget widget-pie-chart">
+            @using (Html.BeginForm("Index", "OrderManager", new { id = ViewBag.IdMerchant }))
+            {
+                <header class="widget-header">
+                    <h4 class="widget-title">Tìm kiếm</h4>
+                </header>
+                <hr class="widget-separator" />
+                <div class="widget-body clearfix">
+                    <!-- new row -->
+                    <!-- new row -->
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Mã đơn hàng</label>
+                            <input type="number" name="searchId" class="form-control" placeholder="Mã đơn hàng">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Ngày đặt</label>
+                            <input type="date" value=@ViewBag.SearchTime name="searchTime" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Thông tin khách hàng</label>
+                            <input type="text" name="nameCus" class="form-control" placeholder="Tên khách hàng">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Trạng thái</label>
+                            @Html.DropDownList("DropdownStatus", null, "Chọn tình trạng đơn", new { @class = "form-control" })
+                        </div>
+                        <div class="m-b-xl">
+                            <button type="submit" class="btn btn-primary btn-sm" style="padding: 8px">Tìm kiếm</button>
+                            <button type="reset" class="btn btn-primary btn-sm" style="padding: 8px">Làm mới</button>
+                        </div>
+                    </div>
+                </div><!-- .widget -->
+            }
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title">Danh sách đơn hàng</strong>
+                    </div>
+                    <div class="card-body">
+                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Mã đơn hàng</th>
+                                    <th>Thông tin đặt hàng</th>
+                                    <th>Khách hàng</th>
+                                    <th>Ngày xử lý</th>
+                                    <th>Số lượng</th>
+                                    <th>Thành tiền</th>
+                                    <th>Lợi nhuận</th>
+                                    <th>Trạng thái</th>
+                                    <th>Chức năng</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Mã đơn hàng</th>
+                                    <th>Thông tin đặt hàng</th>
+                                    <th>Khách hàng</th>
+                                    <th>Ngày xử lý</th>
+                                    <th>Số lượng</th>
+                                    <th>Thành tiền</th>
+                                    <th>Lợi nhuận</th>
+                                    <th>Trạng thái</th>
+                                    <th>Chức năng</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                @{
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.ChiTietDonHangID</td>
+                                            <td>
+                                                <p>@item.DonHang.Customer.HoTen (@item.DonHang.Customer.SoDienThoai)</p>
+                                                <p> @item.DonHang.Customer.DiaChi</p>
+                                            </td>
+                                            <td>
+                                                <p>Mã KH: @item.DonHang.Customer.CustomerID</p>
+                                                <p>@item.DonHang.Customer.HoTen</p>
+                                            </td>
+                                            <td>
+                                                <p>Ngày mua: @item.DonHang.NgayDat.ToString("dd/MM/yyyy")</p>
+                                                @if (item.NgayXuat != null)
+                                                {
+                                                    <p>Ngày giao: @item.NgayXuat.GetValueOrDefault(System.DateTime.MinValue).ToString("dd/MM/yyyy")</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>Ngày giao: Chưa được giao!!!</p>
+                                                }
+                                            </td>
+                                            <td>@item.SoLuong x @item.Sach.TenSach</td>
+                                            <td>@item.ThanhTien</td>
+                                            <td>
+                                                <button class="btn btn-info btn-sm" disabled>@item.TinhTrangDonHang.TinhTrangDonHang1</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-info btn-sm">Chi tiết </button>
+                                            </td>
+                                            <td>
+                                                <div class="p-r-18 p-r-0-sm w-full-ssm" style="width: 50%">
+                                                    @if (item.TinhTrangDonHangID != 1)
+                                                    {
+                                                        <button type="button" disabled class="btn btn-info btn-sm">Xử lý</button>
+                                                    }
+                                                    else
+                                                    {
+                                                        <button type="button" data-toggle="modal" data-target="#exampleModal@(item.ChiTietDonHangID)" class="btn btn-info btn-sm">Xử lý</button>
+                                                    }
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                @foreach (var item in Model)
                 {
-                    <div class="col-md-12">
-                        <div class="widget widget-pie-chart">
-                            <header class="widget-header">
-                                <h4 class="widget-title">Tìm kiếm</h4>
-                            </header>
-                            <hr class="widget-separator" />
-                            <div class="widget-body clearfix">
-                                <!-- new row -->
-                                <div class="col-xs-6 col-sm-4 col-md-3">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Mã đơn hàng</label>
-                                        <input type="number" name="searchId" class="form-control" placeholder="Mã đơn hàng">
-                                    </div>
+                    <!-- Modal xử lý đơn hàng-->
+                    <div class="modal fade" id="exampleModal@(item.ChiTietDonHangID)" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
+                        <div class="modal-dialog" role="document" style="width: 450px">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="exampleModalLabel">Xử lý đơn hàng đang vận chuyển</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-                                <div class="col-xs-6 col-sm-4 col-md-3">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Ngày đặt</label>
-                                        <input type="date" value=@ViewBag.SearchTime name="searchTime" class="form-control">
-                                    </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <div class="row p-b-10">
+                                                <div class="col-sm-5">
+                                                    <p>Sách: </p>
+                                                </div>
+                                                <div class="col-sm-5" style="left: -55px">
+                                                    <p>@item.Sach.TenSach </p> <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,1)" />
+                                                    <p>Số lượng: @item.SoLuong </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row p-b-10">
+                                                <div class="col-sm-5">
+                                                    <p>Mã giao hàng:</p>
+                                                </div>
+                                                <div class="col-sm-5" style="left: -55px">
+                                                    <p>86254</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="col-xs-6 col-sm-4 col-md-3">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Thông tin khách hàng</label>
-                                        <input type="text" name="nameCus" class="form-control" placeholder="Tên khách hàng">
-                                    </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay về</button>
+                                    <a type="button" class="btn btn-info btn-sm" href="/Assets/Merchant/UI/@Url.Action("ChangeDeliveryStatus", "OrderManager", new { id = @ViewBag.IdMerchant, idCtdh = item.ChiTietDonHangID })">Xác nhận đơn hàng</a>
                                 </div>
-                                <div class="col-xs-6 col-sm-4 col-md-3">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Trạng thái</label>
-                                        @Html.DropDownList("DropdownStatus", null, "Chọn tình trạng đơn", new { @class = "form-control" })
-                                    </div>
-                                    <div class="m-b-xl">
-                                        <button type="submit" class="btn btn-primary btn-sm" style="padding: 8px">Tìm kiếm</button>
-                                        <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Làm mới</button>
-                                    </div>
-                                </div>
-                            </div><!-- .widget -->
+                            </div>
                         </div>
                     </div>
                 }
-
-
-            </div><!-- .row -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="widget widget-pie-chart">
-                        <header class="widget-header">
-                            <h4 class="widget-title">Danh sách đơn hàng</h4>
-                        </header>
-                        <hr class="widget-separator" />
-                        <div class="widget-body">
-                            <div class="table-responsive">
-                                <table id="default-datatable" data-plugin="DataTable" class="table table-striped" cellspacing="0" width="100%">
-                                    <thead>
-                                        <tr>
-                                            <th>Mã đơn hàng</th>
-                                            <th>Thông tin đặt hàng</th>
-                                            <th>Ngày xử lý</th>
-                                            <th>Số lượng</th>
-                                            <th>Thành tiền</th>
-                                            <th>Trạng thái</th>
-                                            <th>Chức năng</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Mã đơn hàng</th>
-                                            <th>Thông tin đặt hàng</th>
-                                            <th>Ngày xử lý</th>
-                                            <th>Số lượng</th>
-                                            <th>Thành tiền</th>
-                                            <th>Trạng thái</th>
-                                            <th>Chức năng</th>
-                                            <th></th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        @{
-                                            foreach (var item in Model)
-                                            {
-                                                <tr>
-                                                    <td>@item.ChiTietDonHangID</td>
-                                                    <td>
-                                                        <p>@item.DonHang.Customer.HoTen (@item.DonHang.Customer.SoDienThoai)</p>
-                                                        <p> @item.DonHang.Customer.DiaChi</p>
-                                                    </td>
-                                                    <td>
-                                                        <p>Ngày mua: @item.DonHang.NgayDat.ToString("dd/MM/yyyy")</p>
-                                                        @if (item.NgayXuat != null)
-                                                        {
-                                                            <p>Ngày giao: @item.NgayXuat.GetValueOrDefault(System.DateTime.MinValue).ToString("dd/MM/yyyy")</p>
-                                                        }
-                                                        else
-                                                        {
-                                                            <p>Ngày giao: Chưa được giao!!!</p>
-                                                        }
-                                                    </td>
-                                                    <td>@item.SoLuong x @item.Sach.TenSach</td>
-                                                    <td>@item.ThanhTien</td>
-                                                    <td>
-                                                        <button class="btn btn-info btn-sm" disabled>@item.TinhTrangDonHang.TinhTrangDonHang1</button>
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-info btn-sm">Chi tiết </button>
-                                                    </td>
-                                                    <td>
-                                                        <div class="p-r-18 p-r-0-sm w-full-ssm" style="width: 50%">
-                                                            @if (item.TinhTrangDonHangID != 1)
-                                                            {
-                                                                <button type="button" disabled class="btn btn-info btn-sm">Xử lý</button>
-                                                            }
-                                                            else
-                                                            {
-                                                                <button type="button" data-toggle="modal" data-target="#exampleModal@(item.ChiTietDonHangID)" class="btn btn-info btn-sm">Xử lý</button>
-                                                            }
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            }
-                                        }
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div><!-- .widget-body -->
-
-                        @foreach (var item in Model)
-                        {
-                            <!-- Modal xử lý đơn hàng-->
-                            <div class="modal fade" id="exampleModal@(item.ChiTietDonHangID)" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
-                                <div class="modal-dialog" role="document" style="width: 450px">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title" id="exampleModalLabel">Xử lý đơn hàng đang vận chuyển</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form>
-                                                <div class="form-group">
-                                                    <div class="row p-b-10">
-                                                        <div class="col-sm-5">
-                                                            <p>Sách: </p>
-                                                        </div>
-                                                        <div class="col-sm-5" style="left: -55px">
-                                                            <p>@item.Sach.TenSach </p> <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,1)" />
-                                                            <p>Số lượng: @item.SoLuong </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="row p-b-10">
-                                                        <div class="col-sm-5">
-                                                            <p>Mã giao hàng:</p>
-                                                        </div>
-                                                        <div class="col-sm-5" style="left: -55px">
-                                                            <p>86254</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay về</button>
-                                            <a type="button" class="btn btn-info btn-sm" href="@Url.Action("ChangeDeliveryStatus", "OrderManager", new { id = @ViewBag.IdMerchant, idCtdh = item.ChiTietDonHangID })">Xác nhận đơn hàng</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-
-                    </div>
-
-                </div>
-            </div><!-- .row -->
-        </section><!-- #dash-content -->
-    </div><!-- .wrap -->
-    <!-- APP FOOTER -->
-    <div class="wrap p-t-0">
-        <footer class="app-footer">
-            <div class="clearfix">
-                <ul class="footer-menu pull-right">
-                    <li><a href="javascript:void(0)">Careers</a></li>
-                    <li><a href="javascript:void(0)">Privacy Policy</a></li>
-                    <li><a href="javascript:void(0)">Feedback <i class="fa fa-angle-up m-l-md"></i></a></li>
-                </ul>
-                <div class="copyright pull-left">Copyright RaThemes 2016 &copy;</div>
             </div>
-        </footer>
-    </div>
-    <!-- /#app-footer -->
-</main>
-<!--========== END app main -->
+        </div><!-- .row -->
+    </div> <!-- .content -->
+</div><!-- /#right-panel -->
 
-@*@section PluginMeta{
-    <meta http-equiv="refresh" content="5; URL=@Url.Action("Index","OrderManager",new { id=ViewBag.IdMerchant})">
-}*@
+@section PluginCSS{
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
+
+    <link rel="stylesheet" href="/Assets/Merchant/UI/assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+}
+
+@section PluginJS{
+    <script src="/Assets/Merchant/UI/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/Assets/Merchant/UI/assets/js/main.js"></script>
+
+
+    <script src="/Assets/Merchant/UI/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="/Assets/Merchant/UI/assets/js/init-scripts/data-table/datatables-init.js"></script>
+}

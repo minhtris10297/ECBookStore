@@ -226,9 +226,45 @@ namespace KnowledgeStore.Controllers
             Session.Remove(CommonConstants.USER_SESSION);
             Session.Add(CommonConstants.USER_SESSION, userLogin);
 
+            var trangThai = db.Customers.Where(m => m.CustomerID == resultInsertGg).Select(m => m.TrangThai).FirstOrDefault();
 
+            return Json(new { status = true,id= resultInsertGg, valueTrangThai= trangThai });
+        }
 
-            return Json(new { status = true });
+        public ActionResult AdditionalInfoGg(int id)
+        {
+            ViewBag.GioiTinhID = new SelectList(db.GioiTinhs, "GioiTinhID", "TenGioiTinh");
+            var customer = db.Customers.Find(id);
+            ViewBag.CusId = id;
+            return View(customer);
+        }
+
+        [HttpPost]
+        public ActionResult AdditionalInfoGg(int id,Customer customer, string AuthenticationCode)
+        {
+            ViewBag.GioiTinhID = new SelectList(db.GioiTinhs, "GioiTinhID", "TenGioiTinh");
+            var customerFind = db.Customers.Find(id);
+            var authenticationEmail = (AuthenticationEmail)Session[CommonConstants.AUTHENTICATIONEMAIL_SESSION];
+            
+            if ((ModelState.IsValid & authenticationEmail != null)|| (ModelState.IsValid &customerFind.IDGoogle!=null))
+            {
+                    customerFind.HoTen=customer.HoTen;
+                    customerFind.GioiTinhID=customer.GioiTinhID;
+                    customerFind.SoDienThoai=customer.SoDienThoai;
+                    customerFind.DiaChi = customer.DiaChi;
+                    customerFind.TrangThai=true;
+                    
+
+                    var userSession = new UserLogin();
+                    userSession.UserName = customer.HoTen;
+                    userSession.Email = customer.Email;
+                    Session[CommonConstants.USER_SESSION] = null;
+                    Session[CommonConstants.USER_SESSION] = userSession;
+
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            }
+            return View(customer);
         }
         protected override void Dispose(bool disposing)
         {

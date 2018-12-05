@@ -1,4 +1,6 @@
-﻿using Model.EntityFramework;
+﻿using KnowledgeStore.Common;
+using Model.EntityFramework;
+using Model.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +13,10 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
     {
         KnowledgeStoreEntities db = new KnowledgeStoreEntities();
         // GET: Merchant/OrderManager
-        public ActionResult Index( int id)
+        public ActionResult Index()
         {
-            ViewBag.IdMerchant = id;
+            var sessionUser = (UserLogin)Session[CommonConstants.USERMERCHANT_SESSION];
+            var id = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
             ViewBag.DropdownStatus = new SelectList(db.TinhTrangDonHangs, "TinhTrangDonHangID", "TinhTrangDonHang1");
 
             var listCTDH = db.ChiTietDonHangs.Where(m => m.MerchantID == id).OrderByDescending(m=>m.DonHang.NgayDat).ToList();
@@ -21,11 +24,13 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(int id, System.DateTime? searchTime,int? searchId, string nameCus,int? DropdownStatus)
+        public ActionResult Index( System.DateTime? searchTime,int? searchId, string nameCus,int? DropdownStatus)
         {
-            ViewBag.IdMerchant = id;
+            var sessionUser = (UserLogin)Session[CommonConstants.USERMERCHANT_SESSION];
+            var id = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
+
             ViewBag.DropdownStatus = new SelectList(db.TinhTrangDonHangs, "TinhTrangDonHangID", "TinhTrangDonHang1");
-            ViewBag.SearchTime = searchTime.GetValueOrDefault(System.DateTime.Now).ToString("yyyy-MM-dd");
+            
 
             var listCTDH = db.ChiTietDonHangs.Where(m => m.MerchantID == id).OrderByDescending(m => m.DonHang.NgayDat).ToList();
             if (ModelState.IsValid)
@@ -33,13 +38,14 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                 
                 if (searchTime != null)
                 {
+                    ViewBag.SearchTime = searchTime.GetValueOrDefault(System.DateTime.Now).ToString("yyyy-MM-dd");
                     //listCTDH = db.ChiTietDonHangs.Where(m => m.MerchantID == id&m.DonHang.NgayDat==searchTime).OrderByDescending(m => m.DonHang.NgayDat);
                     listCTDH = listCTDH.Where(m=>m.DonHang.NgayDat.Day==searchTime.GetValueOrDefault().Day& m.DonHang.NgayDat.Month== searchTime.GetValueOrDefault().Month& m.DonHang.NgayDat.Year== searchTime.GetValueOrDefault().Year).ToList();
                 }
                 if (searchId != null)
                 {
                     //listCTDH= db.ChiTietDonHangs.Where(m => m.MerchantID == id&m.TinhTrangDonHangID==searchId).OrderByDescending(m => m.DonHang.NgayDat);
-                    listCTDH = listCTDH.Where(m => m.TinhTrangDonHangID == searchId).ToList();
+                    listCTDH = listCTDH.Where(m => m.ChiTietDonHangID == searchId).ToList();
                 }
                 if (nameCus != null)
                 {
@@ -56,8 +62,10 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
 
         }
 
-        public ActionResult ChangeDeliveryStatus(int id,int idCtdh)
+        public ActionResult ChangeDeliveryStatus(int idCtdh)
         {
+            var sessionUser = (UserLogin)Session[CommonConstants.USERMERCHANT_SESSION];
+            var id = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
             ViewBag.IdMerchant = id;
 
             var ctdh = db.ChiTietDonHangs.Find(idCtdh);
