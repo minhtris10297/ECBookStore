@@ -1,158 +1,283 @@
-﻿@model PagedList.IPagedList<Model.EntityFramework.Sach>
-@using PagedList.Mvc;
-<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+﻿@model List<Model.EntityFramework.Sach>
 @using Common
+@using Model.EntityFramework
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/MerchantArea/Views/Shared/_Layout.cshtml";
 }
 
-<<!-- APP MAIN ==========-->
-<main id="app-main" class="app-main">
-    <div class="profile-header">
-        <div class="profile-cover">
-            <div class="text-center">
-                <div class="avatar avatar-xl avatar-circle">
-                    <a href="javascript:void(0)">
-                        <img class="img-responsive" data-toggle="modal" data-target="#exampleModal" src="../assets/images/221.jpg" alt="avatar" />
-                    </a>
-                </div><!-- .avatar -->
-                <h4 class="profile-info-name m-b-lg"><a href="javascript:void(0)" class="title-color">Merchant A</a></h4>
-                <div>
-                    <a href="javascript:void(0)" class="m-r-xl theme-color"><i class="fa fa-bolt m-r-xs"></i> Shop A</a>
-                    <a href="javascript:void(0)" class="theme-color"><i class="fa fa-map-marker m-r-xs"></i>Quận 4</a>
-                </div>
-            </div>
-        </div><!-- .profile-cover -->
-
-        <div class="promo-footer">
-            <div class="row no-gutter">
-                <div class="col-sm-2 col-sm-offset-3 col-xs-6 promo-tab">
-                    <div class="text-center">
-                        <small>Hoạt động</small>
-                        <h4 class="m-0 m-t-xs">+2 năm</h4>
-                    </div>
-                </div>
-                <div class="col-sm-2 col-xs-6 promo-tab">
-                    <div class="text-center">
-                        <small>Số sản phẩm</small>
-                        <h4 class="m-0 m-t-xs">1123</h4>
-                    </div>
-                </div>
-                <div class="col-sm-2 col-xs-12 promo-tab">
-                    <div class="text-center">
-                        <small>Đánh giá</small>
-                        <div class="m-t-xs">
-                            <i class="text-primary fa fa-star"></i>
-                            <i class="text-primary fa fa-star"></i>
-                            <i class="text-primary fa fa-star"></i>
-                            <i class="text-primary fa fa-star"></i>
-                            <i class="text-primary fa fa-star-o"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- .promo-footer -->
-    </div><!-- .profile-header -->
-    <div class="wrap">
-        <section class="app-content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="profile-tabs" class="nav-tabs-horizontal white m-b-lg">
-                        <!-- tabs list -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#profile-all" aria-controls="all" role="tab" data-toggle="tab">Tất cả</a></li>
-                            <li role="presentation"><a href="#profile-new" aria-controls="new" role="tab" data-toggle="tab">Hàng mới</a></li>
-                            <li role="presentation"><a href="#profile-sales" aria-controls="sales" role="tab" data-toggle="tab">Giảm giá</a></li>
-                        </ul><!-- .nav-tabs -->
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane in active fade" id="profile-all">
-                                @foreach (var item in Model)
-                                {
-                                    <!-- new row -->
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="widget">
-                                            <hr class="widget-separator">
-                                            <div class="widget-body p-h-lg">
-                                                <div class="media">
-                                                    <div class="media-left">
-                                                        <div class="avatar avatar-lg avatar-circle">
-                                                            <img class="img-responsive" src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,1)" alt="avatar" />
-                                                        </div><!-- .avatar -->
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <h4 class="media-heading">@item.TenSach</h4>
-
-                                                        @if (item.GiaKhuyenMai != null)
-                                                        {
-                                                            <h5 class="media-meta">@item.GiaKhuyenMai.GetValueOrDefault(0).ToString("N0") - @item.GiaTien.ToString("N0")</h5>
-                                                            <h5 class="media-meta text-primary">- @HtmlHelperExtensions.ConvertDecimaltoIntegerSalePrice(item.GiaKhuyenMai.GetValueOrDefault(0), item.GiaTien) %</h5>
-                                                        }
-                                                        else
-                                                        {
-                                                            <h5 class="media-meta">@item.GiaTien.ToString("N0")</h5>
-                                                        }
-
-                                                    </div>
-                                                </div>
-                                            </div><!-- .widget-body -->
-                                        </div><!-- .widget -->
-                                    </div><!-- END column -->
-                                }
-                                <br />
-                                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-
-                                @Html.PagedListPager(Model, page => Url.Action("Index",
-                                    new { page, id=@ViewBag.MerchantID }))
-
-                            </div><!-- .tab-pane -->
-                        </div><!-- .tab-content -->
-                    </div><!-- #profile-components -->
-                </div><!-- END column -->
-            </div><!-- .row -->
-        </section><!-- #dash-content -->
-    </div><!-- .row -->
-    <!-- Modal xác nhận giao hàng-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
-        <div class="modal-dialog" role="document" style="width: 450px">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">Đổi ảnh đại diện</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="email2" class="col-sm-3 control-label">Chọn ảnh:</label>
-                            <div class="col-sm-9">
-                                <input type="file" id="exampleInputFile" class="form-control">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button type="button" data-toggle="modal" class="btn btn-warning btn-sm">Xác nhận</button>
-                </div>
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>Quản lý sách</h1>
             </div>
         </div>
     </div>
-    <!-- APP FOOTER -->
-    <div class="wrap p-t-0">
-        <footer class="app-footer">
-            <div class="clearfix">
-                <ul class="footer-menu pull-right">
-                    <li><a href="javascript:void(0)">Careers</a></li>
-                    <li><a href="javascript:void(0)">Privacy Policy</a></li>
-                    <li><a href="javascript:void(0)">Feedback <i class="fa fa-angle-up m-l-md"></i></a></li>
-                </ul>
-                <div class="copyright pull-left">Copyright RaThemes 2016 &copy;</div>
+</div>
+
+<div class="content mt-3">
+    <div class="col-sm-12">
+        <div class="widget widget-pie-chart">
+            <div class="widget-body clearfix">
+                @using (Html.BeginForm("Index", "BookManager"))
+                {
+                    <!-- new row -->
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Id sách</label>
+                            <input name="searchId" type="text" class="form-control" id="exampleInputEmail1" placeholder="id sách">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tên sách</label>
+                            <input name="nameSach" type="text" class="form-control" id="exampleInputEmail1" placeholder="tên sách">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Loại sách</label>
+                            @Html.DropDownList("dropDownTheLoai", null, "Chọn thể loại", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nhà xuất bản</label>
+                            @Html.DropDownList("dropDownNXB", null, "Chọn nhà xuất bản", new { @class = "form-control" })
+                        </div>
+                        <div class="m-b-xl">
+                            <button type="submit" class="btn btn-primary btn-sm" style="padding: 8px">Tìm kiếm</button>
+                            <button type="reset" class="btn btn-primary btn-sm" style="padding: 8px">Làm mới</button>
+                        </div>
+                    </div>
+                }
+
+            </div><!-- .widget -->
+        </div>
+
+
+        <div class="row" style="margin-top: 20px">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title">Danh sách sách</strong>
+                    </div>
+
+
+                    <div class="card-body">
+                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Thông tin sách</th>
+                                    <th>Tồn kho</th>
+                                    <th>Giá bán</th>
+                                    <th>Hoa hồng KipXu</th>
+                                    <th>Lợi nhuận</th>
+                                    <th>Trạng thái</th>
+                                    <th>Chức năng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <p><font color="#CD090C"><b>@item.TenSach</b></font></p>
+                                            <p>Mã sản phẩm: @item.SachID</p>
+                                            <p>Thể loại: @item.TheLoai.TenTheLoai</p>
+                                        </td>
+                                        <td>@item.SoLuong</td>
+                                        <td>@item.GiaTien.ToString("N0")đ</td>
+                                        <td>2.000đ</td>
+                                        <td>48.000đ</td>
+                                        <td>
+                                            <div class="form-group">
+                                                @if (item.TrangThai == true)
+                                                {
+                                                    <span class="alert-primary">Trên tin</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="alert-dark">Đã ẩn</span>
+                                                }
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div id="button">
+                                                <div id="button1">
+                                                    <li class="dropdown" style="list-style: none;">
+                                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Xử lý</button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="/Assets/Merchant/UI/#" data-toggle="modal" data-target="#myModal">Sữa sách</a></li>
+                                                            <li><a href="/Assets/Merchant/UI/#">Cập nhật tồn kho</a></li>
+                                                            <li><a href="/Assets/Merchant/UI/#">Nâng tin</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </div>
+                                                <div id="button2">
+                                                    <button type="button" class="btn btn-warning btn-sm">Chi tiết</button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+
+
+
+
+                            </tbody>
+                        </table>
+                        <div class="m-b-xl pull-right" style="padding: 18px">
+                            <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 30px; margin-left: 720px; margin-top: 20px">Xuất sách</button>
+                            <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 30px; margin-left: 30px; margin-top: 20px">Nhập sách</button>
+                        </div>
+                    </div>
+                </div>
+
+                @foreach (var item in Model)
+                {
+                    <div id="myModal" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 style="margin-left: 200px">Sữa sách</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <table>
+                                            <tr>
+                                                <td>Sách :</td>
+                                                <td class="col-xs-6 col-sm-4 col-md-3">
+                                                    <input type="text" name="sach" id="sach" value="@item.TenSach" style="width: 300px; height: 40px" class="form-control">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="margin-top: 20px">Tác giả :</td>
+                                                <td class="col-xs-6 col-sm-4 col-md-3">
+                                                    <input type="text" name="tacgia" id="tacgia" value="@item.TacGia" style="width: 300px; height: 40px; margin-top: 20px" class="form-control">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="margin-top: 20px">Nhà xuất bản :</td>
+                                                <td class="col-xs-6 col-sm-4 col-md-3">
+                                                    <input type="text" name="nhaxuatban" id="nhaxuatban" value="@item.NhaXuatBan.TenNXB" style="width: 300px; height: 40px; margin-top: 20px" class="form-control">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="margin-top: 20px">Ngày xuất bản :</td>
+                                                <td>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3">
+                                                        <div class="form-group">
+                                                            <input type="text" id="datetimepicker5" class="form-control" data-plugin="datetimepicker" data-options="{ defaultDate: '@item.NgayXuatBan.ToString("dd/MM/yyyy")' }" style="width: 300px; height: 40px; margin-top: 20px">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="margin-top: 20px">Thể loại :</td>
+                                                <td class="col-xs-6 col-sm-4 col-md-3">
+                                                    <select name="theloai" id="theloai" value="" style="width: 200px; height: 40px; margin-top: 20px" class="form-control">
+                                                        <option>Kim đồng</option>
+                                                        <option>Kỹ năng sống</option>
+                                                        <option>Thiếu nhi</option>
+                                                        <option>
+                                                            Khác:
+                                                        </option>
+                                                    </select>
+                                                    @Html.DropDownListFor( )
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="margin-top: 20px">Số trang:</td>
+                                                <td class="col-xs-6 col-sm-4 col-md-3">
+                                                    <input type="text" name="trang" id="trang" value="" style="width: 300px; height: 40px; margin-top: 20px" class="form-control">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="margin-top: 20px">Loại bìa :</td>
+                                                <td class="col-xs-6 col-sm-4 col-md-3">
+                                                    <select name="loaibia" id="loaibia" value="" style="width: 300px; height: 40px; margin-top: 20px" class="form-control">
+                                                        <option>Bìa cứng</option>
+                                                        <option>Bìa mềm</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="margin-top: 20px">Giá tiền:</td>
+                                                <td class="col-xs-6 col-sm-4 col-md-3">
+                                                    <input type="text" name="giatien" id="giatien" value="" style="width: 300px; height: 40px; margin-top: 20px" class="form-control">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="margin-top: 20px">Giá khuyến mãi:</td>
+                                                <td class="col-xs-6 col-sm-4 col-md-3">
+                                                    <input type="text" name="giakhuyenmai" id="giakhuyenmai" value="" style="width: 300px; height: 40px; margin-top: 20px" class="form-control">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="margin-top: 20px">Số trang:</td>
+                                                <td class="col-xs-3 col-sm-1 col-md-1">
+                                                    <textarea name="trang" id="trang" value="" style="margin-top: 20px" class="form-control"></textarea>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-xs-6 col-sm-4 col-md-3">
+                                                    <button type="Reset" class="btn btn-warning btn-sm" style="margin-left: 40px; margin-top: 30px">Nhập lại</button>
+                                                </td>
+                                                <td class="col-xs-6 col-sm-4 col-md-3">
+                                                    <button type="submit" class="btn btn-primary btn-sm" style="margin-top: 30px">Lưu lại</button>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
             </div>
-        </footer>
-    </div>
-    <!-- /#app-footer -->
-</main>
-<!--========== END app main -->
+        </div><!-- .row -->
+    </div> <!-- .content -->
+</div>
+
+@section PluginCSS{
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
+
+    <link rel="stylesheet" href="/Assets/Merchant/UI/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/Assets/Merchant/UI/assets/css/button.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+}
+
+@section PluginJS{
+
+    <script src="/Assets/Merchant/UI/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/Assets/Merchant/UI/assets/js/main.js"></script>
+
+
+    <script src="/Assets/Merchant/UI/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="/Assets/Merchant/UI/assets/js/init-scripts/data-table/datatables-init.js"></script>
+}

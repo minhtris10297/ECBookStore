@@ -52,7 +52,7 @@
                         </div>
                         <div class="m-b-xl">
                             <button type="submit" class="btn btn-primary btn-sm" style="padding: 8px">Tìm kiếm</button>
-                            <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Làm mới</button>
+                            <button type="reset" class="btn btn-primary btn-sm" style="padding: 8px">Làm mới</button>
                         </div>
                     </div>
                 </div><!-- .widget -->
@@ -72,12 +72,12 @@
                                 <tr>
                                     <th>Mã đơn hàng</th>
                                     <th>Thông tin đặt hàng</th>
+                                    <th>Khách hàng</th>
                                     <th>Ngày xử lý</th>
                                     <th>Số lượng</th>
                                     <th>Thành tiền</th>
                                     <th>Lợi nhuận</th>
                                     <th>Trạng thái</th>
-                                    <th>Chức năng</th>
                                     <th>Chức năng</th>
                                 </tr>
                             </thead>
@@ -85,12 +85,12 @@
                                 <tr>
                                     <th>Mã đơn hàng</th>
                                     <th>Thông tin đặt hàng</th>
+                                    <th>Khách hàng</th>
                                     <th>Ngày xử lý</th>
                                     <th>Số lượng</th>
                                     <th>Thành tiền</th>
                                     <th>Lợi nhuận</th>
                                     <th>Trạng thái</th>
-                                    <th>Chức năng</th>
                                     <th>Chức năng</th>
                                 </tr>
                             </tfoot>
@@ -103,6 +103,10 @@
                                             <td>
                                                 <p>@item.DonHang.Customer.HoTen (@item.DonHang.Customer.SoDienThoai)</p>
                                                 <p> @item.DonHang.Customer.DiaChi</p>
+                                            </td>
+                                            <td>
+                                                <p>Mã KH: @item.DonHang.Customer.CustomerID</p>
+                                                <p>@item.DonHang.Customer.HoTen</p>
                                             </td>
                                             <td>
                                                 <p>Ngày mua: @item.DonHang.NgayDat.ToString("dd/MM/yyyy")</p>
