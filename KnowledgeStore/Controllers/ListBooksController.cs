@@ -85,13 +85,15 @@ namespace KnowledgeStore.Controllers
 
             ViewBag.countStar = db.DanhGiaCuaCustomers.Where(p => p.SachID == product.SachID).Count();
 
-            ViewBag.comment = db.DanhGiaCuaCustomers.Where(p => p.SachID == id).ToList();
+            ViewBag.comment = db.DanhGiaCuaCustomers.Where(p => p.SachID == id).OrderByDescending(p => p.DanhGiaCusID).ToList();
 
 
-            var session = Session[CommonConstants.USER_SESSION];
-            if(session == null)
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            ViewBag.muahang = 0;
+            if (session == null)
             {
                 ViewBag.ktdangnhap = 0;
+                ViewBag.muahang = 0;
             }
             else
             {
@@ -99,13 +101,32 @@ namespace KnowledgeStore.Controllers
             }
 
             
+            if (session != null)
+            {
+                var muahang = from a in db.ChiTietDonHangs
+                              join b in db.DonHangs
+                              on a.DonHangID equals b.DonHangID
+                              where a.SachID == id
+                              select b.CustomerID;
+                if (muahang.Count() != 0 && db.Customers.Find(muahang.Min()).Email.ToString() == session.Email.ToString())
+                    ViewBag.muahang = 1;
+            }
 
+            
             return View(book);
         }
         [HttpPost]
         public ActionResult Rating(int id,int rating, string title, string review)
         {
             var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            var muahang = from a in db.Customers
+                          join b in db.DonHangs
+                          on a.CustomerID equals b.CustomerID
+                          where a.Email == session.Email 
+                          select b.DonHangID;
+            var ctdonhang = db.ChiTietDonHangs.
+                Where(p => p.DonHangID == muahang.Min()).First().ChiTietDonHangID;
+
             var comment = new DanhGiaCuaCustomer();
 
             comment.CustomerID = db.Customers.Where(p => p.Email == session.Email).First().CustomerID;
@@ -114,11 +135,12 @@ namespace KnowledgeStore.Controllers
             comment.SoSao = rating;
             comment.TieuDe = title;
             comment.NoiDung = review;
-            comment.ChiTietDonHang = db.ChiTietDonHangs.Find(2);
+            comment.ChiTietDonHang = db.ChiTietDonHangs.Find(ctdonhang);
                         
             db.DanhGiaCuaCustomers.Add(comment);
-            db.SaveChanges();              
-            
+            db.SaveChanges();
+
+
             return RedirectToAction("/BookDetail/" + id);
         }
     }
