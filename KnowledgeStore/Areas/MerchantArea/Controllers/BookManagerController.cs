@@ -18,8 +18,15 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
         {
             ViewBag.dropDownNXB = new SelectList(db.NhaXuatBans, "NhaXuatBanID", "TenNXB");
             ViewBag.dropDownTheLoai = new SelectList(db.TheLoais, "TheLoaiID", "TenTheLoai");
+            ViewBag.listTheLoai = db.TheLoais;
+            ViewBag.listBia = db.LoaiBias;
+            ViewBag.listNXB = db.NhaXuatBans;
 
             var sessionUser = (UserLogin)Session[CommonConstants.USERMERCHANT_SESSION];
+            if (sessionUser == null)
+            {
+                return RedirectToAction("Login", "AccountsMerchant");
+            }
             var id = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
             var listSach = db.Saches.Where(m => m.MerchantID == id).OrderByDescending(m => m.LichSuNangTins.Max(n => n.NgayNang)).ToList();
             return View(listSach);
@@ -29,6 +36,9 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
         {
             ViewBag.dropDownNXB = new SelectList(db.NhaXuatBans, "NhaXuatBanID", "TenNXB");
             ViewBag.dropDownTheLoai = new SelectList(db.TheLoais, "TheLoaiID", "TenTheLoai");
+            ViewBag.listTheLoai = db.TheLoais;
+            ViewBag.listBia = db.LoaiBias;
+            ViewBag.listNXB = db.NhaXuatBans;
 
             var sessionUser = (UserLogin)Session[CommonConstants.USERMERCHANT_SESSION];
             var id = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
@@ -60,6 +70,15 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             }
             return View(listSach);
 
+        }
+
+        [HttpPost]
+        public ActionResult Index( int id,Sach sach)
+        {
+            var book = db.Saches.Find(id);
+            book = sach;
+                db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 

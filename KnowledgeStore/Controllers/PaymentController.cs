@@ -135,10 +135,6 @@ namespace KnowledgeStore.Controllers
                     ModelState.AddModelError("", "Không thể đặt do hết hàng hoặc giỏ hàng bạn để quá lâu");
                 }
                 book.SoLuong = book.SoLuong - item.Quantity;
-                if (book.SoLuong == 0)
-                {
-                    book.TrangThai = false;
-                }
                 var chiTietDH = new ChiTietDonHang() { DonHangID = donHang.DonHangID, SachID = item.Sach.SachID, MerchantID = item.Sach.MerchantID.GetValueOrDefault(0), SoLuong = item.Quantity, ThanhTien = item.Quantity * item.Sach.GiaTien,TinhTrangDonHangID=1};
                 db.ChiTietDonHangs.Add(chiTietDH);
             }
