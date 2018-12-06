@@ -14,18 +14,22 @@ namespace Model.EntityFramework
 
         public int CustomerID { get; set; }
 
-        public int DonHangID { get; set; }
+        public int ChiTIetDonHangID { get; set; }
 
         [Column(TypeName = "text")]
         public string NoiDung { get; set; }
+
+        public int SachID { get; set; }
 
         [Required]
         public string TieuDe { get; set; }
 
         public double SoSao { get; set; }
 
+        public virtual ChiTietDonHang ChiTietDonHang { get; set; }
+
         public virtual Customer Customer { get; set; }
 
-        public virtual DonHang DonHang { get; set; }
+        public virtual Sach Sach { get; set; }
     }
 }
