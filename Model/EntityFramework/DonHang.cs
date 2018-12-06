@@ -13,6 +13,7 @@ namespace Model.EntityFramework
         public DonHang()
         {
             ChiTietDonHangs = new HashSet<ChiTietDonHang>();
+            DanhGiaCuaCustomers = new HashSet<DanhGiaCuaCustomer>();
             DoanhThus = new HashSet<DoanhThu>();
             LichSuCustomers = new HashSet<LichSuCustomer>();
             LichSuMerchants = new HashSet<LichSuMerchant>();
@@ -30,7 +31,7 @@ namespace Model.EntityFramework
         [StringLength(100)]
         public string DiaChi { get; set; }
 
-        public bool TrangThai { get; set; }
+        public int TinhTrangDonHangID { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
@@ -38,7 +39,12 @@ namespace Model.EntityFramework
         public virtual Customer Customer { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DanhGiaCuaCustomer> DanhGiaCuaCustomers { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DoanhThu> DoanhThus { get; set; }
+
+        public virtual TinhTrangDonHang TinhTrangDonHang { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LichSuCustomer> LichSuCustomers { get; set; }

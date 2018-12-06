@@ -12,7 +12,7 @@ namespace Model.EntityFramework
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TinhTrangDonHang()
         {
-            ChiTietDonHangs = new HashSet<ChiTietDonHang>();
+            DonHangs = new HashSet<DonHang>();
         }
 
         public int TinhTrangDonHangID { get; set; }
@@ -23,6 +23,6 @@ namespace Model.EntityFramework
         public string TinhTrangDonHang1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
+        public virtual ICollection<DonHang> DonHangs { get; set; }
     }
 }

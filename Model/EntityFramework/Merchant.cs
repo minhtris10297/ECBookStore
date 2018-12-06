@@ -12,6 +12,7 @@ namespace Model.EntityFramework
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Merchant()
         {
+            ChiTietDonHangs = new HashSet<ChiTietDonHang>();
             ChiTietSachMerchants = new HashSet<ChiTietSachMerchant>();
             DanhGiaCuaMerchants = new HashSet<DanhGiaCuaMerchant>();
             LichSuGiaoDichXuCuaMerchants = new HashSet<LichSuGiaoDichXuCuaMerchant>();
@@ -26,32 +27,25 @@ namespace Model.EntityFramework
         public string Email { get; set; }
 
         [Required]
-        [StringLength(256)]
-        public string MatKhauMaHoa { get; set; }
-
-        [Required]
-        [StringLength(200)]
+        [StringLength(100)]
         public string HoTen { get; set; }
 
         [Required]
-        [StringLength(300)]
+        [StringLength(100)]
         public string DiaChi { get; set; }
 
         public int GioiTinhID { get; set; }
 
         [Required]
-        [StringLength(200)]
+        [StringLength(120)]
         public string TenCuaHang { get; set; }
-
-        [Required]
-        [StringLength(20)]
-        public string SoDienThoai { get; set; }
 
         public int SoLuongKIPXu { get; set; }
 
-        public bool TrangThai { get; set; }
-
         public DateTime NgayTao { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietSachMerchant> ChiTietSachMerchants { get; set; }

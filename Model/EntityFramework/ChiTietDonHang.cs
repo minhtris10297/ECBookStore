@@ -9,12 +9,6 @@ namespace Model.EntityFramework
     [Table("ChiTietDonHang")]
     public partial class ChiTietDonHang
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ChiTietDonHang()
-        {
-            DanhGiaCuaCustomers = new HashSet<DanhGiaCuaCustomer>();
-        }
-
         public int ChiTietDonHangID { get; set; }
 
         public int DonHangID { get; set; }
@@ -29,10 +23,6 @@ namespace Model.EntityFramework
 
         public decimal ThanhTien { get; set; }
 
-        public bool TrangThaiDanhGia { get; set; }
-
-        public int TinhTrangDonHangID { get; set; }
-
         [StringLength(100)]
         public string GhiChu { get; set; }
 
@@ -40,9 +30,6 @@ namespace Model.EntityFramework
 
         public virtual Sach Sach { get; set; }
 
-        public virtual TinhTrangDonHang TinhTrangDonHang { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DanhGiaCuaCustomer> DanhGiaCuaCustomers { get; set; }
+        public virtual Merchant Merchant { get; set; }
     }
 }

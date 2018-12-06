@@ -6,10 +6,9 @@ namespace Model.EntityFramework
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("LichSuNangTin")]
-    public partial class LichSuNangTin
+    [Table("NangTin")]
+    public partial class NangTin
     {
-        [Key]
         public int NangTinID { get; set; }
 
         public int SachID { get; set; }
