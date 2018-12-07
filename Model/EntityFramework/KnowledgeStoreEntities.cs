@@ -33,7 +33,6 @@ namespace Model.EntityFramework
         public virtual DbSet<Merchant> Merchants { get; set; }
         public virtual DbSet<NhaXuatBan> NhaXuatBans { get; set; }
         public virtual DbSet<Sach> Saches { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TheLoai> TheLoais { get; set; }
         public virtual DbSet<TinhTrangDonHang> TinhTrangDonHangs { get; set; }
 
@@ -214,6 +213,11 @@ namespace Model.EntityFramework
 
             modelBuilder.Entity<Sach>()
                 .HasMany(e => e.ChiTietDonHangs)
+                .WithRequired(e => e.Sach)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Sach>()
+                .HasMany(e => e.DanhGiaCuaCustomers)
                 .WithRequired(e => e.Sach)
                 .WillCascadeOnDelete(false);
 
