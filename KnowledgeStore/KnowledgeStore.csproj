@@ -158,13 +158,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\AdminArea\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\AdminArea\Controllers\BaseController.cs" />
-    <Compile Include="Areas\AdminArea\Controllers\CustomersController.cs" />
+    <Compile Include="Areas\AdminArea\AdminAreaAreaRegistration.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\AccountsMerchantController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\BaseController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\BookManagerController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\LayoutMerchantController.cs" />
+    <Compile Include="Areas\MerchantArea\Controllers\MCHomeController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\OrderManagerController.cs" />
     <Compile Include="Areas\MerchantArea\MerchantAreaRegistration.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
@@ -2977,7 +2976,6 @@
     <Content Include="Assets\Customer\cozastore\__MACOSX\cozastore\vendor\slick\fonts\._slick.eot" />
     <Content Include="Assets\Customer\cozastore\__MACOSX\cozastore\vendor\slick\fonts\._slick.ttf" />
     <Content Include="Assets\Customer\cozastore\__MACOSX\cozastore\vendor\slick\fonts\._slick.woff" />
-    <Content Include="Areas\AdminArea\Views\web.config" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\api\dropzone" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\api\json\data.json" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\api\json\dataTable.json" />
@@ -3183,11 +3181,6 @@
     <Content Include="Assets\Admin\Infinity-v2.0.0\libs\misc\echarts\.DS_Store" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\package.json" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\README.md" />
-    <Content Include="Areas\AdminArea\Views\Customers\Create.cshtml" />
-    <Content Include="Areas\AdminArea\Views\Customers\Delete.cshtml" />
-    <Content Include="Areas\AdminArea\Views\Customers\Details.cshtml" />
-    <Content Include="Areas\AdminArea\Views\Customers\Edit.cshtml" />
-    <Content Include="Areas\AdminArea\Views\Customers\Index.cshtml" />
     <Content Include="Assets\Database\FileBakSQL\KnowledgeStore.bak" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -3425,6 +3418,10 @@
     <Content Include="Areas\MerchantArea\Views\_ViewStart.cshtml" />
     <Content Include="Areas\MerchantArea\Views\LayoutMerchant\TopbarMenuDisplay.cshtml" />
     <Content Include="Areas\MerchantArea\Views\BookManager\Index.cshtml" />
+    <Content Include="Areas\AdminArea\Views\web.config" />
+    <Content Include="Areas\MerchantArea\Views\BookManager\Edit.cshtml" />
+    <Content Include="Areas\MerchantArea\Views\MCHome\Index.cshtml" />
+    <Content Include="Areas\AdminArea\Views\Shared\_Layout.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -3486,8 +3483,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\AdminArea\Controllers\" />
     <Folder Include="Areas\AdminArea\Models\" />
-    <Folder Include="Areas\AdminArea\Views\Shared\" />
     <Folder Include="Areas\MerchantArea\Models\" />
     <Folder Include="Areas\MerchantArea\Views\Base\" />
     <Folder Include="Models\" />

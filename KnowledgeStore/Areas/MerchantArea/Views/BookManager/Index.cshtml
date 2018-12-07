@@ -109,9 +109,9 @@
                                                     <li class="dropdown" style="list-style: none;">
                                                         <button type="button" class="btn btn-primary btn-sm" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Xử lý</button>
                                                         <ul class="dropdown-menu">
-                                                            <li><a href="/Assets/Merchant/UI/#" data-toggle="modal" data-target="#myModal">Sữa sách</a></li>
+                                                            <li><a href="@Url.Action("Edit","BookManager",new { id=item.SachID})">Sữa sách</a></li>
                                                             <li><a href="/Assets/Merchant/UI/#">Cập nhật tồn kho</a></li>
-                                                            <li><a href="/Assets/Merchant/UI/#">Nâng tin</a></li>
+                                                            <li><a href="#" data-toggle="modal" data-target="#NangSach@(item.SachID)">Nâng tin</a></li>
                                                         </ul>
                                                     </li>
                                                 </div>
@@ -125,7 +125,6 @@
 
 
 
-
                             </tbody>
                         </table>
                         <div class="m-b-xl pull-right" style="padding: 18px">
@@ -135,9 +134,60 @@
                     </div>
                 </div>
 
+                <!-- The Modal -->
                 @foreach (var item in Model)
                 {
-                    <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal fade" id="NangSach@(item.SachID)">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Nâng tin</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                @if (@item.Merchant.SoLuongKIPXu < ViewBag.GiaNangTin)
+                                {
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <div>
+                                            <p>Hiện tại bạn còn: <b>@item.Merchant.SoLuongKIPXu</b> xu<br>Bạn không đủ xu để nâng tin cho sách @item.TenSach</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <div>
+                                            <p>Hiện tại bạn còn: <b>@item.Merchant.SoLuongKIPXu</b> xu<br>bạn có chắc chắn muốn nâng tin cho sách @item.TenSach</p>
+                                        </div>
+                                    </div>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary" data-dismiss="modal">Xác nhận nâng tin bằng <b>10 xu</b></button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                }
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+                @*@for(int i=0;i<Model.Count();i++)
+                {
+                    <div id="SuaSach@(Model[i].SachID)" class="modal fade" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -146,24 +196,29 @@
 
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    @using (Html.BeginForm("Index", "BookManager", new { id=Model[i].SachID}))
+                                    {
                                         <table>
+                                            @Html.HiddenFor(model => Model[i].SachID)
+                                            @Html.HiddenFor(model => Model[i].MerchantID)
+                                            @Html.HiddenFor(model => Model[i].TrangThai)
+                                            @Html.HiddenFor(model => Model[i].SoLuong)
                                             <tr>
                                                 <td>Sách :</td>
                                                 <td class="col-xs-6 col-sm-4 col-md-3">
-                                                    <input type="text" name="sach" id="sach" value="@item.TenSach" style="width: 300px; height: 40px" class="form-control">
+                                                    @Html.TextBoxFor(model => Model[i].TenSach, new { @class = "form-control", @style = "width: 300px; height: 40px", required = "required" })
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="margin-top: 20px">Tác giả :</td>
                                                 <td class="col-xs-6 col-sm-4 col-md-3">
-                                                    <input type="text" name="tacgia" id="tacgia" value="@item.TacGia" style="width: 300px; height: 40px; margin-top: 20px" class="form-control">
+                                                    @Html.TextBoxFor(model => Model[i].TacGia, new { @class = "form-control", @style = "width: 300px; height: 40px; margin-top: 20px" , required = "required" })
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="margin-top: 20px">Nhà xuất bản :</td>
                                                 <td class="col-xs-6 col-sm-4 col-md-3">
-                                                    <input type="text" name="nhaxuatban" id="nhaxuatban" value="@item.NhaXuatBan.TenNXB" style="width: 300px; height: 40px; margin-top: 20px" class="form-control">
+                                                    @Html.DropDownListFor(model => Model[i].NhaXuatBanID, new SelectList(ViewBag.listNXB, "NhaXuatBanID", "TenNXB", Model[i].NhaXuatBanID), new { @class = "form-control", @style = "width: 200px; height: 40px; margin-top: 20px" })
                                                 </td>
                                             </tr>
                                             <tr>
@@ -171,7 +226,7 @@
                                                 <td>
                                                     <div class="col-xs-6 col-sm-4 col-md-3">
                                                         <div class="form-group">
-                                                            <input type="text" id="datetimepicker5" class="form-control" data-plugin="datetimepicker" data-options="{ defaultDate: '@item.NgayXuatBan.ToString("dd/MM/yyyy")' }" style="width: 300px; height: 40px; margin-top: 20px">
+                                                            <input type="date" class="form-control" value="@Model[i].NgayXuatBan.ToString("yyyy-MM-dd")" style="width: 300px; height: 40px; margin-top: 20px" id="Model[i].NgayXuatBan" name="Model[i].NgayXuatBan" required>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -179,48 +234,37 @@
                                             <tr>
                                                 <td style="margin-top: 20px">Thể loại :</td>
                                                 <td class="col-xs-6 col-sm-4 col-md-3">
-                                                    <select name="theloai" id="theloai" value="" style="width: 200px; height: 40px; margin-top: 20px" class="form-control">
-                                                        <option>Kim đồng</option>
-                                                        <option>Kỹ năng sống</option>
-                                                        <option>Thiếu nhi</option>
-                                                        <option>
-                                                            Khác:
-                                                        </option>
-                                                    </select>
-                                                    @Html.DropDownListFor( model=>item.TheLoai,new SelectList(item.TheLoai,"TheLoaiID","TenTheLoai"))
+                                                    @Html.DropDownListFor(model => Model[i].TheLoaiID, new SelectList(ViewBag.listTheLoai, "TheLoaiID", "TenTheLoai", Model[i].TheLoaiID), new { @class = "form-control", @style = "width: 200px; height: 40px; margin-top: 20px", required = "required" })
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="margin-top: 20px">Số trang:</td>
                                                 <td class="col-xs-6 col-sm-4 col-md-3">
-                                                    <input type="text" name="trang" id="trang" value="" style="width: 300px; height: 40px; margin-top: 20px" class="form-control">
+                                                    <input type="number" name="Model[i].SoTrang" id="Model[i].SoTrang" value="@Model[i].SoTrang" style="width: 300px; height: 40px; margin-top: 20px" class="form-control" required>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="margin-top: 20px">Loại bìa :</td>
                                                 <td class="col-xs-6 col-sm-4 col-md-3">
-                                                    <select name="loaibia" id="loaibia" value="" style="width: 300px; height: 40px; margin-top: 20px" class="form-control">
-                                                        <option>Bìa cứng</option>
-                                                        <option>Bìa mềm</option>
-                                                    </select>
+                                                    @Html.DropDownListFor(model => Model[i].LoaiBia, new SelectList(ViewBag.listBia, "LoaiBiaID", "LoaiBia1", Model[i].LoaiBiaID), new { @class = "form-control", @style = "width: 200px; height: 40px; margin-top: 20px" })
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="margin-top: 20px">Giá tiền:</td>
                                                 <td class="col-xs-6 col-sm-4 col-md-3">
-                                                    <input type="text" name="giatien" id="giatien" value="" style="width: 300px; height: 40px; margin-top: 20px" class="form-control">
+                                                    <input type="number" name="Model[i].GiaTien" id="Model[i].GiaTien" value="@Model[i].GiaTien" style="width: 300px; height: 40px; margin-top: 20px" class="form-control" required>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="margin-top: 20px">Giá khuyến mãi:</td>
                                                 <td class="col-xs-6 col-sm-4 col-md-3">
-                                                    <input type="text" name="giakhuyenmai" id="giakhuyenmai" value="" style="width: 300px; height: 40px; margin-top: 20px" class="form-control">
+                                                    <input type="text" name="Model[i].GiaKhuyenMai" id="Model[i].GiaKhuyenMai" value="@Model[i].GiaKhuyenMai" style="width: 300px; height: 40px; margin-top: 20px" class="form-control">
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td style="margin-top: 20px">Số trang:</td>
+                                                <td style="margin-top: 20px">Mô tả:</td>
                                                 <td class="col-xs-3 col-sm-1 col-md-1">
-                                                    <textarea name="trang" id="trang" value="" style="margin-top: 20px" class="form-control"></textarea>
+                                                    @Html.TextAreaFor(model => Model[i].MoTa, new { @class = "form-group", @style = "margin-top: 20px;width: 300px;height:500px" })
                                                 </td>
                                             </tr>
                                             <tr>
@@ -232,13 +276,13 @@
                                                 </td>
                                             </tr>
                                         </table>
-                                    </form>
+                                    }
 
                                 </div>
                             </div>
                         </div>
                     </div>
-                }
+                }*@
 
             </div>
         </div><!-- .row -->
