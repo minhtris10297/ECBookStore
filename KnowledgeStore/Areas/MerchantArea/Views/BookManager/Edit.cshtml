@@ -1,0 +1,156 @@
+﻿@model Model.EntityFramework.Sach
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/MerchantArea/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>Dashboard</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="page-header float-right">
+            <div class="page-title">
+                <ol class="breadcrumb text-right">
+                    <li><a href="/Assets/Merchant/UI/#">Dashboard</a></li>
+                    <li><a href="/Assets/Merchant/UI/#">Forms</a></li>
+                    <li class="active">Basic</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content mt-3">
+    <div class="animated fadeIn">
+
+
+        <div class="row">
+
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Sửa thông tin sách</strong> Elements
+                    </div>
+                    @using (Html.BeginForm("Edit", "BookManager", null, FormMethod.Post, new { @class = "form-horizontal" }))
+                    {
+                        @Html.AntiForgeryToken()
+                    <div class="card-body card-block">
+
+                        @Html.HiddenFor(model => model.SachID)
+                        @Html.HiddenFor(model => model.MerchantID)
+                        @Html.HiddenFor(model => model.TrangThai)
+                        @Html.HiddenFor(model => model.SoLuong)
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Tên Sách</label></div>
+                            <div class="col-12 col-md-9">@Html.EditorFor(model => model.TenSach, new { htmlAttributes = new { @class = "form-control" } })<small class="help-block form-text">@Html.ValidationMessageFor(model => model.TenSach, "", new { @class = "text-danger" })</small></div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Tác Giả</label></div>
+                            <div class="col-12 col-md-9">@Html.EditorFor(model => model.TacGia, new { htmlAttributes = new { @class = "form-control" } })<small class="help-block form-text">@Html.ValidationMessageFor(model => model.TacGia, "", new { @class = "text-danger" })</small></div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label for="select" class=" form-control-label">Nhà xuất bản</label></div>
+                            <div class="col-12 col-md-9">
+                                @Html.DropDownList("NhaXuatBanID", null, htmlAttributes: new { @class = "form-control" })
+                                <small class="help-block form-text">@Html.ValidationMessageFor(model => model.NhaXuatBanID, "", new { @class = "text-danger" })</small>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Ngày Xuất Bản</label></div>
+                            <div class="col-12 col-md-9"><input type="date" value="@Model.NgayXuatBan.ToString("yyyy-MM-dd")" name="NgayXuatBan" class="form-control"></div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label for="select" class=" form-control-label">Thể Loại</label></div>
+                            <div class="col-12 col-md-9">
+                                @Html.DropDownList("TheLoaiID", null, htmlAttributes: new { @class = "form-control" })
+                                <small class="help-block form-text">@Html.ValidationMessageFor(model => model.TheLoaiID, "", new { @class = "text-danger" })</small>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Số Trang</label></div>
+                            <div class="col-12 col-md-9"><input type="number" name="SoTrang" class="form-control" value="@Model.SoTrang"></div>
+                            <small class="help-block form-text">@Html.ValidationMessageFor(model => model.SoTrang, "", new { @class = "text-danger" })</small>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label for="select" class=" form-control-label">Nhà xuất bản</label></div>
+                            <div class="col-12 col-md-9">
+                                @Html.DropDownList("LoaiBiaID", null, htmlAttributes: new { @class = "form-control" })
+                                <small class="help-block form-text">@Html.ValidationMessageFor(model => model.LoaiBiaID, "", new { @class = "text-danger" })</small>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Giá tiền</label></div>
+                            <div class="col-12 col-md-9"><input type="number" name="GiaTien" class="form-control" value="@Model.GiaTien"></div>
+                            <small class="help-block form-text">@Html.ValidationMessageFor(model => model.GiaTien, "", new { @class = "text-danger" })</small>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Giá khuyến mãi</label></div>
+                            <div class="col-12 col-md-9"><input type="number" name="GiaKhuyenMai" class="form-control" value="@Model.GiaKhuyenMai"></div>
+                            <small class="help-block form-text">@Html.ValidationMessageFor(model => model.GiaKhuyenMai, "", new { @class = "text-danger" })</small>
+                        </div>
+
+
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Mô tả</label></div>
+                            <div class="col-12 col-md-9">@Html.TextAreaFor(model => model.MoTa, new { @class = "form-control", @rows = 9 })</div>
+                            @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+                        </div>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                <i class="fa fa-dot-circle-o"></i> Submit
+                            </button>
+                            <button type="reset" class="btn btn-danger btn-sm">
+                                <i class="fa fa-ban"></i> Reset
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div>
+
+
+    </div><!-- .animated -->
+</div><!-- .content -->
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section PluginCSS{
+
+    <link rel="apple-touch-icon" href="/Assets/Merchant/UI/apple-icon.png">
+    <link rel="shortcut icon" href="/Assets/Merchant/UI/favicon.ico">
+
+    <link rel="stylesheet" href="/Assets/Merchant/UI/assets/css/normalize.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/assets/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/assets/css/cs-skin-elastic.css">
+    <!-- <link rel="stylesheet" href="/Assets/Merchant/UI/assets/css/bootstrap-select.less"> -->
+    <link rel="stylesheet" href="/Assets/Merchant/UI/assets/scss/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+}
+
+@section PluginJS{
+    <script src="/Assets/Merchant/UI/assets/js/vendor/jquery-2.1.4.min.js"></script>
+    <script src="/Assets/Merchant/UI/assets/js/popper.min.js"></script>
+    <script src="/Assets/Merchant/UI/assets/js/plugins.js"></script>
+    <script src="/Assets/Merchant/UI/assets/js/main.js"></script>
+}
