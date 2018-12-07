@@ -130,15 +130,25 @@ namespace KnowledgeStore.Controllers
             var comment = new DanhGiaCuaCustomer();
 
             comment.CustomerID = db.Customers.Where(p => p.Email == session.Email).First().CustomerID;
-            /*omment.CustomerID =1;*/
-            comment.SachID = id;
-            comment.SoSao = rating;
-            comment.TieuDe = title;
-            comment.NoiDung = review;
-            comment.ChiTietDonHang = db.ChiTietDonHangs.Find(ctdonhang);
 
-            db.DanhGiaCuaCustomers.Add(comment);
+            if (db.ChiTietDonHangs.Find(ctdonhang).TrangThaiDanhGia)
+            {
+                comment.SachID = id;
+                comment.SoSao = rating;
+                comment.TieuDe = title;
+                comment.NoiDung = review;
+                comment.ChiTietDonHang = db.ChiTietDonHangs.Find(ctdonhang);
+
+                db.DanhGiaCuaCustomers.Add(comment);
+                db.ChiTietDonHangs.Find(ctdonhang).TrangThaiDanhGia = false;
+            }
+            else
+            {
+                ViewBag.DaNhanXet = 1;
+            }
+            
             db.SaveChanges();
+
             return RedirectToAction("/BookDetail/" + id);
         }
 
