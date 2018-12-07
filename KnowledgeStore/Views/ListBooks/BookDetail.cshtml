@@ -476,17 +476,7 @@
                                             @Model.NgayXuatBan.ToString("MM-yyyy")
                                         </span>
                                     </li>
-
-                                    <li class="flex-w flex-t p-b-7">
-                                        <span class="stext-102 cl3 size-205">
-                                            Kích thước
-                                        </span>
-
-                                        <span class="stext-102 cl6 size-206">
-                                            Kích thước
-                                        </span>
-                                    </li>
-
+                                    
                                     <li class="flex-w flex-t p-b-7">
                                         <span class="stext-102 cl3 size-205">
                                             Nhà xuất bản
@@ -576,6 +566,15 @@
                                                         Gửi nhận xét
                                                     </button>
                                                 }
+                                                else if (danhanxet == 1)
+                                                {
+                                                    <h5 class="mtext-108 cl2 p-b-7">
+                                                        Bạn chỉ được đánh giá 1 lần!
+                                                    </h5>
+                                                    <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 p-lr-15 trans-04 m-b-10" disabled>
+                                                        Gửi nhận xét
+                                                    </button>
+                                                }
                                                 else
                                                 {
                                                     <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10" type="submit">
@@ -583,13 +582,7 @@
                                                     </button>
                                                 }
                                             }
-                                            else if(danhanxet==1)
-                                            {
-                                                <h5 class="mtext-108 cl2 p-b-7">
-                                                    
-                                                    Bạn chỉ được nhận xét 1 lần!
-                                                </h5>
-                                            }
+                                           
                                             else
                                             {
                                                 <h5 class="mtext-108 cl2 p-b-7">
@@ -612,7 +605,7 @@
                                     else
                                     {
                                         <h5 class="mtext-108 cl2 p-b-7">
-                                            Đánh giá sản phẩm:
+                                            Các đánh giá về sản phẩm:
                                         </h5>
                                         <br />
                                         <div class="flex-w flex-t p-b-50">
@@ -660,15 +653,7 @@
         </div>
     </div>
 
-    <div class="bg6 flex-c-m flex-w size-302 m-t-73 p-tb-15">
-        <span class="stext-107 cl6 p-lr-25">
-            SKU: JAK-01
-        </span>
-
-        <span class="stext-107 cl6 p-lr-25">
-            Categories: Jacket, Men
-        </span>
-    </div>
+    
 </section>
 
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->

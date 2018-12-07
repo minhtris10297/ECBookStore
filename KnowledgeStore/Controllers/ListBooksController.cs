@@ -108,20 +108,25 @@ namespace KnowledgeStore.Controllers
                               where a.SachID == id
                               select b.CustomerID;
                 if (muahang.Count() != 0 && db.Customers.Find(muahang.Min()).Email.ToString() == session.Email.ToString())
+                {
                     ViewBag.muahang = 1;
+
+                    //kiem tra danh gia hay chua
+                    var cm = from a in db.Customers
+                             join b in db.DonHangs
+                             on a.CustomerID equals b.CustomerID
+                             where a.Email == session.Email
+                             select b.DonHangID;
+                    var ctdonhang = db.ChiTietDonHangs.Where(p => p.SachID == id).First().ChiTietDonHangID;
+                    if (db.ChiTietDonHangs.Find(ctdonhang).TrangThaiDanhGia == true)
+                    {
+                        ViewBag.DaNhanXet = 1;
+                    }
+                }
+                    
             }
-            //kiem tra danh gia hay chua
-            var cm = from a in db.Customers
-                     join b in db.DonHangs
-                     on a.CustomerID equals b.CustomerID
-                     where a.Email == session.Email
-                     select b.DonHangID;
-            var ctdonhang = db.ChiTietDonHangs.
-                Where(p => p.DonHangID == cm.Min()).First().ChiTietDonHangID;
-            if (db.ChiTietDonHangs.Find(ctdonhang).TrangThaiDanhGia == false)
-            {
-                ViewBag.DaNhanXet = 1;
-            }
+            
+            
             return View(book);
 
         }
@@ -135,20 +140,19 @@ namespace KnowledgeStore.Controllers
                           on a.CustomerID equals b.CustomerID
                           where a.Email == session.Email
                           select b.DonHangID;
-            var ctdonhang = db.ChiTietDonHangs.
-                Where(p => p.DonHangID == muahang.Min()).First().ChiTietDonHangID;
+            //var ctdonhang = db.ChiTietDonHangs.Where(p => p.DonHangID == muahang.Min()).First().ChiTietDonHangID;
+            var ctdonhang = db.ChiTietDonHangs.Where(p => p.SachID == id).First().ChiTietDonHangID;
 
             var comment = new DanhGiaCuaCustomer();
 
             comment.CustomerID = db.Customers.Where(p => p.Email == session.Email).First().CustomerID;
-
             comment.SachID = id;
             comment.SoSao = rating;
             comment.TieuDe = title;
             comment.NoiDung = review;
             comment.ChiTietDonHang = db.ChiTietDonHangs.Find(ctdonhang);
             db.DanhGiaCuaCustomers.Add(comment);
-            db.ChiTietDonHangs.Find(ctdonhang).TrangThaiDanhGia = false;
+            db.ChiTietDonHangs.Find(ctdonhang).TrangThaiDanhGia = true;
             
             db.SaveChanges();
 
