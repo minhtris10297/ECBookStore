@@ -123,10 +123,10 @@ namespace KnowledgeStore.Controllers
                         ViewBag.DaNhanXet = 1;
                     }
                 }
-                    
+
             }
-            
-            
+
+
             return View(book);
 
         }
@@ -153,7 +153,7 @@ namespace KnowledgeStore.Controllers
             comment.ChiTietDonHang = db.ChiTietDonHangs.Find(ctdonhang);
             db.DanhGiaCuaCustomers.Add(comment);
             db.ChiTietDonHangs.Find(ctdonhang).TrangThaiDanhGia = true;
-            
+
             db.SaveChanges();
 
             return RedirectToAction("/BookDetail/" + id);

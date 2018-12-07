@@ -2,24 +2,24 @@
 @using Common
 
 @{
-    ViewBag.Title = "BookDetail";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+                ViewBag.Title = "BookDetail";
+                Layout = "~/Views/Shared/_Layout.cshtml";
 
-    var relatedProduct = (List<Model.EntityFramework.Sach>)ViewBag.RelatedProduct;
-    var Comment = (List<Model.EntityFramework.DanhGiaCuaCustomer>)ViewBag.comment;
-    var ktlogin = ViewBag.ktdangnhap;
-    var muahang = ViewBag.muahang;
-    var danhanxet = ViewBag.DaNhanXet;
+                var relatedProduct = (List<Model.EntityFramework.Sach>)ViewBag.RelatedProduct;
+                var Comment = (List<Model.EntityFramework.DanhGiaCuaCustomer>)ViewBag.comment;
+                var ktlogin = ViewBag.ktdangnhap;
+                var muahang = ViewBag.muahang;
+                var danhanxet = ViewBag.DaNhanXet;
 
-    var countStar = ViewBag.countStar;
-    var sumStar = ViewBag.sumStar;
-    int rating;
-    if (countStar == 0)
-    {
-        rating = 0;
-    }
-    else { rating = (int)(sumStar / countStar); }
-}
+                var countStar = ViewBag.countStar;
+                var sumStar = ViewBag.sumStar;
+                int rating;
+                if (countStar == 0)
+                {
+                    rating = 0;
+                }
+                else { rating = (int)Math.Round((double)(sumStar / countStar)); }
+            }
 
 <!-- breadcrumb -->
 <div class="container">
@@ -96,7 +96,7 @@
                     <span class="fs-18 cl11">
 
                         @if (countStar == 0)
-                        {
+            {
                             <a>
                                 (Chưa có lượt đánh giá)
                             </a>
@@ -122,7 +122,7 @@
 
                     </span>
                     @if (Model.GiaKhuyenMai == null)
-                    {
+    {
                         <p style="color: red">
                             @Model.GiaTien.ToString("N0") đồng
                         </p>
@@ -135,7 +135,7 @@
                     }
 
                     @if (Model.GiaKhuyenMai != null)
-                    {
+    {
                         <p>
                             Tiết kiệm: <a style="color: red">@HtmlHelperExtensions.ConvertDecimaltoIntegerSalePrice(Model.GiaKhuyenMai.GetValueOrDefault(0), Model.GiaTien) %<a> @(Model.GiaTien - Model.GiaKhuyenMai) ₫
                         </p>
