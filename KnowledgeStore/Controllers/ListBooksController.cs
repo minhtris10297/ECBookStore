@@ -15,7 +15,7 @@ namespace KnowledgeStore.Controllers
         KnowledgeStoreEntities db = new KnowledgeStoreEntities();
         private const string CartSession = "CartSession";
         // GET: ListBooks
-        public ActionResult Index(string id, int? page,string theLoai)
+        public ActionResult Index(string id, int? page, string theLoai)
         {
             ViewBag.TypeID = id;
             var listSach = db.Saches.ToList();
@@ -23,7 +23,7 @@ namespace KnowledgeStore.Controllers
             {
                 if (id == "SachGiamGia")
                 {
-                    listSach = db.Saches.OrderByDescending(m => (m.GiaKhuyenMai / m.GiaTien)).Where(m=>m.TrangThai==true).ToList();
+                    listSach = db.Saches.OrderByDescending(m => (m.GiaKhuyenMai / m.GiaTien)).Where(m => m.TrangThai == true).ToList();
                 }
                 else if (id == "SachMoiPhatHanh")
                 {
@@ -36,9 +36,9 @@ namespace KnowledgeStore.Controllers
             }
             if (theLoai != null)
             {
-                listSach = db.Saches.Where(m => m.TheLoai.TenTheLoai==theLoai&m.TrangThai==true).ToList();
+                listSach = db.Saches.Where(m => m.TheLoai.TenTheLoai == theLoai & m.TrangThai == true).ToList();
             }
-            
+
             int pageSize = 12;
             int pageNumber = (page ?? 1);
             return View(listSach.ToPagedList(pageNumber, pageSize));
@@ -110,11 +110,22 @@ namespace KnowledgeStore.Controllers
                 if (muahang.Count() != 0 && db.Customers.Find(muahang.Min()).Email.ToString() == session.Email.ToString())
                     ViewBag.muahang = 1;
             }
-
+            //kiem tra danh gia hay chua
+            var cm = from a in db.Customers
+                     join b in db.DonHangs
+                     on a.CustomerID equals b.CustomerID
+                     where a.Email == session.Email
+                     select b.DonHangID;
+            var ctdonhang = db.ChiTietDonHangs.
+                Where(p => p.DonHangID == cm.Min()).First().ChiTietDonHangID;
+            if (db.ChiTietDonHangs.Find(ctdonhang).TrangThaiDanhGia == false)
+            {
+                ViewBag.DaNhanXet = 1;
+            }
             return View(book);
-           
+
         }
-        
+
         [HttpPost]
         public ActionResult Rating(int id, int rating, string title, string review)
         {
@@ -131,21 +142,13 @@ namespace KnowledgeStore.Controllers
 
             comment.CustomerID = db.Customers.Where(p => p.Email == session.Email).First().CustomerID;
 
-            if (db.ChiTietDonHangs.Find(ctdonhang).TrangThaiDanhGia)
-            {
-                comment.SachID = id;
-                comment.SoSao = rating;
-                comment.TieuDe = title;
-                comment.NoiDung = review;
-                comment.ChiTietDonHang = db.ChiTietDonHangs.Find(ctdonhang);
-
-                db.DanhGiaCuaCustomers.Add(comment);
-                db.ChiTietDonHangs.Find(ctdonhang).TrangThaiDanhGia = false;
-            }
-            else
-            {
-                ViewBag.DaNhanXet = 1;
-            }
+            comment.SachID = id;
+            comment.SoSao = rating;
+            comment.TieuDe = title;
+            comment.NoiDung = review;
+            comment.ChiTietDonHang = db.ChiTietDonHangs.Find(ctdonhang);
+            db.DanhGiaCuaCustomers.Add(comment);
+            db.ChiTietDonHangs.Find(ctdonhang).TrangThaiDanhGia = false;
             
             db.SaveChanges();
 
@@ -153,7 +156,7 @@ namespace KnowledgeStore.Controllers
         }
 
 
-            
-        
+
+
     }
 }
