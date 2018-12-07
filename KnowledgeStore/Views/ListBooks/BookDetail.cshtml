@@ -9,6 +9,7 @@
     var Comment = (List<Model.EntityFramework.DanhGiaCuaCustomer>)ViewBag.comment;
     var ktlogin = ViewBag.ktdangnhap;
     var muahang = ViewBag.muahang;
+    var danhanxet = ViewBag.DaNhanXet;
 
     var countStar = ViewBag.countStar;
     var sumStar = ViewBag.sumStar;
@@ -582,10 +583,18 @@
                                                     </button>
                                                 }
                                             }
+                                            else if(danhanxet==1)
+                                            {
+                                                <h5 class="mtext-108 cl2 p-b-7">
+                                                    
+                                                    Bạn chỉ được nhận xét 1 lần!
+                                                </h5>
+                                            }
                                             else
                                             {
                                                 <h5 class="mtext-108 cl2 p-b-7">
                                                     Bạn phải mua sản phẩm này mới được nhận xét
+                                                    
                                                 </h5>
                                             }
 
