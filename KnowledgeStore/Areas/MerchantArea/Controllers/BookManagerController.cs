@@ -9,6 +9,9 @@ using KnowledgeStore.Common;
 using Model.ViewModel;
 using System.Data.Entity;
 using System.Net;
+using System.Web.Helpers;
+using Common;
+using System.IO;
 
 namespace KnowledgeStore.Areas.MerchantArea.Controllers
 {
@@ -110,6 +113,11 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
         // GET: AdminArea/Saches/Create
         public ActionResult Create()
         {
+            var sessionUser = (UserLogin)Session[CommonConstants.USERMERCHANT_SESSION];
+            if (sessionUser == null)
+            {
+                return RedirectToAction("Login", "AccountsMerchant");
+            }
             ViewBag.LoaiBiaID = new SelectList(db.LoaiBias, "LoaiBiaID", "LoaiBia1");
             ViewBag.NhaXuatBanID = new SelectList(db.NhaXuatBans, "NhaXuatBanID", "TenNXB");
             ViewBag.TheLoaiID = new SelectList(db.TheLoais, "TheLoaiID", "TenTheLoai");
@@ -121,12 +129,55 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SachID,TenSach,TacGia,NhaXuatBanID,NgayXuatBan,SoTrang,LoaiBiaID,MerchantID,TrangThai,GiaTien,GiaKhuyenMai,MoTa,SoLuong,TheLoaiID")] Sach sach)
+        public ActionResult Create([Bind(Include = "TenSach,TacGia,NhaXuatBanID,NgayXuatBan,SoTrang,LoaiBiaID,GiaTien,GiaKhuyenMai,MoTa,SoLuong,TheLoaiID")] Sach sach, HttpPostedFileBase image1, HttpPostedFileBase image2, HttpPostedFileBase image3)
         {
             if (ModelState.IsValid)
             {
+                
+                var sessionUser = (UserLogin)Session[CommonConstants.USERMERCHANT_SESSION];
+                if (sessionUser == null)
+                {
+                    return RedirectToAction("Login", "AccountsMerchant");
+                }
+                var id = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
+                sach.MerchantID = id;
+                sach.TrangThai = true;
+                db.LichSuNangTins.Add(new LichSuNangTin() { SachID = sach.SachID, NgayNang = System.DateTime.Now });
                 db.Saches.Add(sach);
                 db.SaveChanges();
+                if (image1 != null)
+                {
+                    //Resize Image
+                    WebImage img = new WebImage(image1.InputStream);
+                    //img.Resize(500, 1000);
+
+                    var filePathOriginal = Server.MapPath("/Assets/Image/ImageBook/" );
+                    var fileName = sach.SachID + "_1"  + ".jpg";
+                    string savedFileName = Path.Combine(filePathOriginal, fileName);
+                    img.Save(savedFileName);
+                }
+                if (image2 != null)
+                {
+                    //Resize Image
+                    WebImage img = new WebImage(image2.InputStream);
+                    //img.Resize(500, 1000);
+
+                    var filePathOriginal = Server.MapPath("/Assets/Image/ImageBook/" + sach.SachID + "/");
+                    var fileName = sach.SachID + "_2" + ".jpg";
+                    string savedFileName = Path.Combine(filePathOriginal, fileName);
+                    img.Save(savedFileName);
+                }
+                if (image3 != null)
+                {
+                    //Resize Image
+                    WebImage img = new WebImage(image3.InputStream);
+                    //img.Resize(500, 1000);
+
+                    var filePathOriginal = Server.MapPath("/Assets/Image/ImageBook/" + sach.SachID + "/");
+                    var fileName = sach.SachID + "_3" + ".jpg";
+                    string savedFileName = Path.Combine(filePathOriginal, fileName);
+                    img.Save(savedFileName);
+                }
                 return RedirectToAction("Index");
             }
 

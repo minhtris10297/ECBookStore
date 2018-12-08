@@ -115,7 +115,7 @@ namespace KnowledgeStore.Controllers
             {
                 if (listSach.Count() % 8 != 0)
                 {
-                    height = 610 * ((listSach.Count() + 1) / 8);
+                    height = 610 * ((listSach.Count() ) / 8)+610;
                 }
                 else
                 {

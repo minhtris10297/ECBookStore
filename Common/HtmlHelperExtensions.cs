@@ -14,7 +14,7 @@ namespace Common
         private static string uploadsDirectory = "/Assets/Image/ImageBook/";
         public static string ImageBookOrDefault( int id,int numPic)
         {
-            var imagePath = uploadsDirectory + id + "/" + id+"_"+ numPic + ".jpg";
+            var imagePath = uploadsDirectory +  + id+"_"+ numPic + ".jpg";
             var imageSrc = File.Exists(HttpContext.Current.Server.MapPath(imagePath))
                                ? imagePath : defaultImage;
 

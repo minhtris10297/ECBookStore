@@ -37,91 +37,102 @@
                     <div class="card-header">
                         <strong>Sửa thông tin sách</strong> Elements
                     </div>
-                    @using (Html.BeginForm("Edit", "BookManager", null, FormMethod.Post, new { @class = "form-horizontal" }))
+                    @using (Html.BeginForm("Create", "BookManager", null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
                     {
                         @Html.AntiForgeryToken()
-                        <div class="card-body card-block">
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Tên Sách</label></div>
-                                <div class="col-12 col-md-9">@Html.EditorFor(model => model.TenSach, new { htmlAttributes = new { @class = "form-control" } })
-                                <small class="help-block form-text">@Html.ValidationMessageFor(model => model.TenSach, "", new { @class = "text-danger" })</small>
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Tác Giả</label></div>
-                                <div class="col-12 col-md-9">@Html.EditorFor(model => model.TacGia, new { htmlAttributes = new { @class = "form-control" } })
-                                <small class="help-block form-text">@Html.ValidationMessageFor(model => model.TacGia, "", new { @class = "text-danger" })</small>
-                                </div>
-                            </div>
-
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="select" class=" form-control-label">Nhà xuất bản</label></div>
-                                <div class="col-12 col-md-9">
-                                    @Html.DropDownList("NhaXuatBanID", null, htmlAttributes: new { @class = "form-control" })
-                                    <small class="help-block form-text">@Html.ValidationMessageFor(model => model.NhaXuatBanID, "", new { @class = "text-danger" })</small>
-                                </div>
-                            </div>
-
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Ngày Xuất Bản</label></div>
-                                <div class="col-12 col-md-9"><input type="date" name="NgayXuatBan" class="form-control"></div>
-                                <small class="help-block form-text">@Html.ValidationMessageFor(model => model.NgayXuatBan, "", new { @class = "text-danger" })</small>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="select" class=" form-control-label">Thể Loại</label></div>
-                                <div class="col-12 col-md-9">
-                                    @Html.DropDownList("TheLoaiID", null, htmlAttributes: new { @class = "form-control" })
-                                    <small class="help-block form-text">@Html.ValidationMessageFor(model => model.TheLoaiID, "", new { @class = "text-danger" })</small>
-                                </div>
-                            </div>
-
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Số Trang</label></div>
-                                <div class="col-12 col-md-9"><input type="number" name="SoTrang" class="form-control"></div>
-                                <small class="help-block form-text">@Html.ValidationMessageFor(model => model.SoTrang, "", new { @class = "text-danger" })</small>
-                            </div>
-
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="select" class=" form-control-label">Nhà xuất bản</label></div>
-                                <div class="col-12 col-md-9">
-                                    @Html.DropDownList("LoaiBiaID", null, htmlAttributes: new { @class = "form-control" })
-                                    <small class="help-block form-text">@Html.ValidationMessageFor(model => model.LoaiBiaID, "", new { @class = "text-danger" })</small>
-                                </div>
-                            </div>
-
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Giá tiền</label></div>
-                                <div class="col-12 col-md-9"><input type="number" name="GiaTien" class="form-control"></div>
-                                <small class="help-block form-text">@Html.ValidationMessageFor(model => model.GiaTien, "", new { @class = "text-danger" })</small>
-                            </div>
-
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Giá khuyến mãi</label></div>
-                                <div class="col-12 col-md-9"><input type="number" name="GiaKhuyenMai" class="form-control"></div>
-                                <small class="help-block form-text">@Html.ValidationMessageFor(model => model.GiaKhuyenMai, "", new { @class = "text-danger" })</small>
-                            </div>
-
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Số lượng</label></div>
-                                <div class="col-12 col-md-9"><input type="number" name="GiaKhuyenMai" class="form-control"></div>
-                                <small class="help-block form-text">@Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })</small>
-                            </div>
-
-
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Mô tả</label></div>
-                                <div class="col-12 col-md-9">@Html.TextAreaFor(model => model.MoTa, new { @class = "form-control", @rows = 9 })</div>
-                                @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
-                            </div>
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <button type="submit" class="btn btn-primary" style="float:right">
-                                <i class="fa fa-dot-circle-o"></i> Tạo mới sản phẩm
-                            </button>
-                            <button type="reset" class="btn btn-danger" style="float:right">
-                                <i class="fa fa-ban"></i> Làm mới
-                            </button>
-                            <a class="btn btn-light" href="@Html.Url("Index")">Quay lại</a>
+                    <div class="card-body card-block">
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Tên Sách</label></div>
+                            <div class="col-12 col-md-9">
+                                @Html.EditorFor(model => model.TenSach, new { htmlAttributes = new { @class = "form-control" } })
+                            <small class="help-block form-text">@Html.ValidationMessageFor(model => model.TenSach, "", new { @class = "text-danger" })</small>
                         </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Tác Giả</label></div>
+                        <div class="col-12 col-md-9">
+                            @Html.EditorFor(model => model.TacGia, new { htmlAttributes = new { @class = "form-control" } })
+                        <small class="help-block form-text">@Html.ValidationMessageFor(model => model.TacGia, "", new { @class = "text-danger" })</small>
+                    </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="select" class=" form-control-label">Nhà xuất bản</label></div>
+                        <div class="col-12 col-md-9">
+                            @Html.DropDownList("NhaXuatBanID", null, htmlAttributes: new { @class = "form-control" })
+                            <small class="help-block form-text">@Html.ValidationMessageFor(model => model.NhaXuatBanID, "", new { @class = "text-danger" })</small>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Ngày Xuất Bản</label></div>
+                        <div class="col-12 col-md-9"><input type="date" name="NgayXuatBan" class="form-control"></div>
+                        <small class="help-block form-text">@Html.ValidationMessageFor(model => model.NgayXuatBan, "", new { @class = "text-danger" })</small>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="select" class=" form-control-label">Thể Loại</label></div>
+                        <div class="col-12 col-md-9">
+                            @Html.DropDownList("TheLoaiID", null, htmlAttributes: new { @class = "form-control" })
+                            <small class="help-block form-text">@Html.ValidationMessageFor(model => model.TheLoaiID, "", new { @class = "text-danger" })</small>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Số Trang</label></div>
+                        <div class="col-12 col-md-9"><input type="number" name="SoTrang" class="form-control"></div>
+                        <small class="help-block form-text">@Html.ValidationMessageFor(model => model.SoTrang, "", new { @class = "text-danger" })</small>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="select" class=" form-control-label">Nhà xuất bản</label></div>
+                        <div class="col-12 col-md-9">
+                            @Html.DropDownList("LoaiBiaID", null, htmlAttributes: new { @class = "form-control" })
+                            <small class="help-block form-text">@Html.ValidationMessageFor(model => model.LoaiBiaID, "", new { @class = "text-danger" })</small>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Giá tiền</label></div>
+                        <div class="col-12 col-md-9"><input type="number" name="GiaTien" class="form-control"></div>
+                        <small class="help-block form-text">@Html.ValidationMessageFor(model => model.GiaTien, "", new { @class = "text-danger" })</small>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Giá khuyến mãi</label></div>
+                        <div class="col-12 col-md-9"><input type="number" name="GiaKhuyenMai" class="form-control"></div>
+                        <small class="help-block form-text">@Html.ValidationMessageFor(model => model.GiaKhuyenMai, "", new { @class = "text-danger" })</small>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Số lượng</label></div>
+                        <div class="col-12 col-md-9"><input type="number" name="GiaKhuyenMai" class="form-control"></div>
+                        <small class="help-block form-text">@Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })</small>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Upload Ảnh</label></div>
+                        <div class="col-12 col-md-9">
+                            <input type="file" name="image1" class="form-control" required>
+                            <input type="file" name="image2" class="form-control">
+                            <input type="file" name="image3" class="form-control">
+                        </div>
+                    </div>
+
+
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Mô tả</label></div>
+                        <div class="col-12 col-md-9">@Html.TextAreaFor(model => model.MoTa, new { @class = "form-control", @rows = 9 })</div>
+                        @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <button type="submit" class="btn btn-primary" style="float:right">
+                        <i class="fa fa-dot-circle-o"></i> Tạo mới sản phẩm
+                    </button>
+                    <button type="reset" class="btn btn-danger" style="float:right">
+                        <i class="fa fa-ban"></i> Làm mới
+                    </button>
+                    <a class="btn btn-light" href="@Url.Action("Index")">Quay lại</a>
+                    </div>
                     }
                 </div>
             </div>

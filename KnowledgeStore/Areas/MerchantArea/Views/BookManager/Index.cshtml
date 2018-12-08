@@ -110,7 +110,7 @@
                                                         <button type="button" class="btn btn-primary btn-sm" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Xử lý</button>
                                                         <ul class="dropdown-menu">
                                                             <li><a href="@Url.Action("Edit","BookManager",new { id=item.SachID})" class="btn-danger">Sửa sách</a></li>
-                                                            <li><a href="/Assets/Merchant/UI/#" class="btn-success" data-toggle="modal" data-target="#ThemSach@(item.SachID)">Thêm sách</a></li>
+                                                            <li><a href="/Assets/Merchant/UI/#" class="btn-success" data-toggle="modal" data-target="#ThemSach@(item.SachID)">Thêm số lượng sách</a></li>
                                                             <li><a href="#" data-toggle="modal" data-target="#NangSach@(item.SachID)" class="btn-warning">Nâng tin</a></li>
                                                         </ul>
                                                     </li>
@@ -126,12 +126,11 @@
 
 
                             </tbody>
+
                         </table>
-                        <div class="m-b-xl pull-right" style="padding: 18px">
-                            <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 30px; margin-left: 720px; margin-top: 20px">Xuất sách</button>
-                            <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 30px; margin-left: 30px; margin-top: 20px">Nhập sách</button>
-                        </div>
+
                     </div>
+                    <div><a href="@Url.Action("Create")" class="btn btn-success btn-lg btn-block">Tạo kho sách mới</a></div>
                 </div>
 
                 <!-- The Modal -->
