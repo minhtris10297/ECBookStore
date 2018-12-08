@@ -163,6 +163,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\AdminArea\AdminAreaAreaRegistration.cs" />
     <Compile Include="Areas\AdminArea\Controllers\SachesController.cs" />
+    <Compile Include="Areas\AdminArea\Controllers\ADHomeController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\AccountsMerchantController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\BaseController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\BookManagerController.cs" />
@@ -3434,6 +3435,7 @@
     <Content Include="Areas\AdminArea\Views\Saches\Index.cshtml" />
     <Content Include="Areas\MerchantArea\Views\BookManager\Create.cshtml" />
     <Content Include="Areas\MerchantArea\Views\KPIXuController\Index.cshtml" />
+    <Content Include="Areas\AdminArea\Views\ADHome\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
