@@ -159,6 +159,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\AdminArea\AdminAreaAreaRegistration.cs" />
+    <Compile Include="Areas\AdminArea\Controllers\ADHomeController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\AccountsMerchantController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\BaseController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\BookManagerController.cs" />
@@ -3422,6 +3423,7 @@
     <Content Include="Areas\MerchantArea\Views\BookManager\Edit.cshtml" />
     <Content Include="Areas\MerchantArea\Views\MCHome\Index.cshtml" />
     <Content Include="Areas\AdminArea\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\AdminArea\Views\ADHome\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -3483,7 +3485,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\AdminArea\Controllers\" />
     <Folder Include="Areas\AdminArea\Models\" />
     <Folder Include="Areas\MerchantArea\Models\" />
     <Folder Include="Areas\MerchantArea\Views\Base\" />
