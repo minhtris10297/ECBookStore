@@ -16,6 +16,10 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
         public ActionResult Index()
         {
             var sessionUser = (UserLogin)Session[CommonConstants.USERMERCHANT_SESSION];
+            if (sessionUser == null)
+            {
+                return RedirectToAction("Login", "AccountsMerchant");
+            }
             var id = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
             ViewBag.DropdownStatus = new SelectList(db.TinhTrangDonHangs, "TinhTrangDonHangID", "TinhTrangDonHang1");
 
@@ -27,6 +31,10 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
         public ActionResult Index( System.DateTime? searchTime,int? searchId, string nameCus,int? DropdownStatus)
         {
             var sessionUser = (UserLogin)Session[CommonConstants.USERMERCHANT_SESSION];
+            if (sessionUser == null)
+            {
+                return RedirectToAction("Login", "AccountsMerchant");
+            }
             var id = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
 
             ViewBag.DropdownStatus = new SelectList(db.TinhTrangDonHangs, "TinhTrangDonHangID", "TinhTrangDonHang1");
@@ -65,6 +73,10 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
         public ActionResult ChangeDeliveryStatus(int idCtdh)
         {
             var sessionUser = (UserLogin)Session[CommonConstants.USERMERCHANT_SESSION];
+            if (sessionUser == null)
+            {
+                return RedirectToAction("Login", "AccountsMerchant");
+            }
             var id = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
             ViewBag.IdMerchant = id;
 

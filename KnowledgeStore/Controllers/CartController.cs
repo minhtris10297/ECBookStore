@@ -62,14 +62,23 @@ namespace KnowledgeStore.Controllers
                 var jsonItem = jsonCart.SingleOrDefault(x => x.Sach.SachID == item.Sach.SachID);
                 if (jsonItem != null)
                 {
-                    item.Quantity = jsonItem.Quantity;
+                    if (jsonItem.Quantity == 0)
+                    {
+                        sessionCart.RemoveAll(x=>x.Sach.SachID== item.Sach.SachID);
+                    }
+                    else
+                    {
+                        item.Quantity = jsonItem.Quantity;
+
+                    }
+                    
                 }
             }
             Session[CartSession] = sessionCart;
             return Json(new
             {
                 status = true
-            });
+            }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult AddItem(int id, int quantity)
         {

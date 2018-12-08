@@ -109,9 +109,9 @@
                                                     <li class="dropdown" style="list-style: none;">
                                                         <button type="button" class="btn btn-primary btn-sm" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Xử lý</button>
                                                         <ul class="dropdown-menu">
-                                                            <li><a href="@Url.Action("Edit","BookManager",new { id=item.SachID})">Sữa sách</a></li>
-                                                            <li><a href="/Assets/Merchant/UI/#">Cập nhật tồn kho</a></li>
-                                                            <li><a href="#" data-toggle="modal" data-target="#NangSach@(item.SachID)">Nâng tin</a></li>
+                                                            <li><a href="@Url.Action("Edit","BookManager",new { id=item.SachID})" class="btn-danger">Sửa sách</a></li>
+                                                            <li><a href="/Assets/Merchant/UI/#" class="btn-success" data-toggle="modal" data-target="#ThemSach@(item.SachID)">Thêm sách</a></li>
+                                                            <li><a href="#" data-toggle="modal" data-target="#NangSach@(item.SachID)" class="btn-warning">Nâng tin</a></li>
                                                         </ul>
                                                     </li>
                                                 </div>
@@ -170,10 +170,39 @@
                                     </div>
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
-                                        <button class="btn btn-primary" data-dismiss="modal">Xác nhận nâng tin bằng <b>10 xu</b></button>
+                                        <button class="btn btn-primary btnNangTin" data-num="@item.SachID" data-dismiss="modal">Xác nhận nâng tin bằng <b>10 xu</b></button>
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     </div>
                                 }
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="ThemSach@(item.SachID)">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Thêm số lượng cho sách @item.TenSach</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <div>
+                                            <p>Số lượng bạn muốn thêm</p>
+                                            <input id="inp@(item.SachID)" type="number" class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary btnThemSach" data-num="@item.SachID" data-dismiss="modal">Xác nhận thêm sách</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
 
 
 
@@ -185,7 +214,7 @@
 
 
             </div>
-                @*@for(int i=0;i<Model.Count();i++)
+            @*@for(int i=0;i<Model.Count();i++)
                 {
                     <div id="SuaSach@(Model[i].SachID)" class="modal fade" role="dialog">
                         <div class="modal-dialog">
@@ -284,9 +313,9 @@
                     </div>
                 }*@
 
-            </div>
-        </div><!-- .row -->
-    </div> <!-- .content -->
+        </div>
+    </div><!-- .row -->
+</div> <!-- .content -->
 </div>
 
 @section PluginCSS{
@@ -306,8 +335,8 @@
 }
 
 @section PluginJS{
-
-    <script src="/Assets/Merchant/UI/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/Assets/Customer/cozastore/vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="/Assets/Merchant/UI/vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="/Assets/Merchant/UI/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/Assets/Merchant/UI/assets/js/main.js"></script>
@@ -324,4 +353,48 @@
     <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
     <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
     <script src="/Assets/Merchant/UI/assets/js/init-scripts/data-table/datatables-init.js"></script>
+    <script>
+        var bookmanager = {
+            init: function () {
+                bookmanager.regEvents();
+            },
+            regEvents: function () {
+                $('.btnNangTin').off('click').on('click', function () {
+                    var idBook = $(this).data('num');
+
+                    $.ajax({
+                        url: '/BookManager/NangTin',
+                        data: { id: idBook },
+                        dataType: 'json',
+                        type: 'POST',
+                        success: function (res) {
+                            if (res.status == true) {
+                                alert("Nâng tin thành công!!!");
+                            }
+                        }
+                    })
+                });
+
+                $('.btnThemSach').off('click').on('click', function () {
+                    var idBook = $(this).data('num');
+                    var numAdd = document.getElementById("inp" + idBook).value;
+
+                    $.ajax({
+                        url: '/BookManager/ThemSach',
+                        data: { id: idBook, num:numAdd },
+                        dataType: 'json',
+                        type: 'POST',
+                        success: function (res) {
+                            if (res.status == true) {
+                                alert("Thêm sách thành công!!!");
+                                window.location.href = "/MerchantArea/BookManager/Index";
+                            }
+                            
+                        }
+                    })
+                });
+            }
+        }
+        bookmanager.init();
+    </script>
 }

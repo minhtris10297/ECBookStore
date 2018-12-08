@@ -107,6 +107,54 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             ViewBag.TheLoaiID = new SelectList(db.TheLoais, "TheLoaiID", "TenTheLoai", sach.TheLoaiID);
             return View(sach);
         }
+        // GET: AdminArea/Saches/Create
+        public ActionResult Create()
+        {
+            ViewBag.LoaiBiaID = new SelectList(db.LoaiBias, "LoaiBiaID", "LoaiBia1");
+            ViewBag.NhaXuatBanID = new SelectList(db.NhaXuatBans, "NhaXuatBanID", "TenNXB");
+            ViewBag.TheLoaiID = new SelectList(db.TheLoais, "TheLoaiID", "TenTheLoai");
+            return View();
+        }
+
+        // POST: AdminArea/Saches/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "SachID,TenSach,TacGia,NhaXuatBanID,NgayXuatBan,SoTrang,LoaiBiaID,MerchantID,TrangThai,GiaTien,GiaKhuyenMai,MoTa,SoLuong,TheLoaiID")] Sach sach)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Saches.Add(sach);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.LoaiBiaID = new SelectList(db.LoaiBias, "LoaiBiaID", "LoaiBia1", sach.LoaiBiaID);
+            ViewBag.NhaXuatBanID = new SelectList(db.NhaXuatBans, "NhaXuatBanID", "TenNXB", sach.NhaXuatBanID);
+            ViewBag.TheLoaiID = new SelectList(db.TheLoais, "TheLoaiID", "TenTheLoai", sach.TheLoaiID);
+            return View(sach);
+        }
+
+        public JsonResult NangTin(int id)
+        {
+            var sessionUser = (UserLogin)Session[CommonConstants.USERMERCHANT_SESSION];
+            var idMer = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
+            var merchant = db.Merchants.Where(m => m.MerchantID == idMer).FirstOrDefault();
+            var soLuongKPI = merchant.SoLuongKIPXu - 10;
+            merchant.SoLuongKIPXu = soLuongKPI;
+
+            db.LichSuNangTins.Add(new LichSuNangTin() { SachID = id, NgayNang = System.DateTime.Now });
+            db.SaveChanges();
+            return Json(new { status = true });
+        }
+        public JsonResult ThemSach(int id,int num)
+        {
+            var sach = db.Saches.Find(id);
+            sach.SoLuong = sach.SoLuong + num;
+            db.SaveChanges();
+            return Json(new { status = true });
+        }
     }
 
 }

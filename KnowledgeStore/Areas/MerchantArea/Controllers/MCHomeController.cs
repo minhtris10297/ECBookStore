@@ -20,7 +20,8 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             if (sessionUser == null)
             {
                 return RedirectToAction("Login", "AccountsMerchant");
-            }var merchantID = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
+            }
+            var merchantID = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
 
             var listSach = db.Saches.Where(m=>m.MerchantID== merchantID).ToList();
             if (id != null)

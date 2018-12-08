@@ -13,7 +13,7 @@ namespace KnowledgeStore.Controllers
         KnowledgeStoreEntities db = new KnowledgeStoreEntities();
         public ActionResult Index( string sort, string searchProduct)
         {
-            var listSach = db.Saches.Where(m=>m.TrangThai==true).ToList();
+            var listSach = db.Saches.Where(m=>m.TrangThai==true).OrderByDescending(m=>m.LichSuNangTins.Max(n=>n.NgayNang)).ToList();
             if (!String.IsNullOrEmpty(searchProduct))
             {
                 ViewBag.Search = searchProduct;
@@ -61,7 +61,7 @@ namespace KnowledgeStore.Controllers
         public JsonResult ViewMore(int xPosition, int height,string sort)
         {
             var listSach = new List<BookHomeVM>();
-            var list = db.Saches.Where(m=>m.TrangThai==true).ToList();
+            var list = db.Saches.Where(m=>m.TrangThai==true).OrderByDescending(m => m.LichSuNangTins.Max(n => n.NgayNang)).ToList();
             if (!String.IsNullOrEmpty(sort))
             {
                 if (sort == "HangMoi")
