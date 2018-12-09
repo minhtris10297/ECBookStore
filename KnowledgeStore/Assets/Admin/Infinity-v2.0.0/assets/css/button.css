@@ -1,0 +1,15 @@
+#button 
+{
+	width: 130px;
+}
+#button1
+{
+ width: 50px;
+ float: left; 
+}
+#button2
+{
+	width: 60px;
+	float: left;
+	margin-left: 5px;
+}
