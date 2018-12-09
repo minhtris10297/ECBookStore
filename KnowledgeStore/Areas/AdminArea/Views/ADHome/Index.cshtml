@@ -1,9 +1,9 @@
-﻿
+﻿@model List<Model.EntityFramework.ChiTietDonHang>
+@using Common
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/AdminArea/Views/Shared/_Layout.cshtml";
 }
-
 
 
 <div class="breadcrumbs">
@@ -226,101 +226,36 @@
         </div>
     </div>
 
-    <!-- Modal lịch sử-->
-    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="exampleModalLabel">Lịch sử giao dịch</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        <div class="modal-body">
-          <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-              <div class="card">
-                  <div class="card-body">
-                      <table class="table table-striped">
-                          <thead>
-                              <tr>
-                                  <th scope="col">Ngày thanh toán</th>
-                                  <th scope="col">Số tiền</th>
-                                  <th scope="col">Email</th>
-                                  <th scope="col">Trạng thái</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr>
-                                  <td>11/08/1111</td>
-                                  <td>2.000.000</td>
-                                  <td>A@gmail.com</td>
-                                  <td>Thành công</td>
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
-          </form>
-        </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary btn-sm"" data-dismiss="modal">Hủy đơn hàng</button>
-            <button type="button" data-toggle="modal" data-dismiss="modal" data-target="#exampleModalxacnhangiaohang" class="btn btn-info btn-sm">Xác nhận đơn hàng</button>
-          </div>
-        </div>
-      </div>
-    </div> -->
-</div>
 
-@section PluginCSS{
-    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
-    <link rel="apple-touch-icon" href="/Assets/Merchant/UI/apple-icon.png">
-    <link rel="shortcut icon" href="/Assets/Merchant/UI/favicon.ico">
+    @section PluginCSS{
+        <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/themify-icons/css/themify-icons.css">
+        <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/flag-icon-css/css/flag-icon.min.css">
+        <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/selectFX/css/cs-skin-elastic.css">
+        <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/dist/jqvmap.min.css">
 
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+        <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/assets/css/style.css">
 
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/themify-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/selectFX/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/dist/jqvmap.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    }
 
-
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-}
-
-@section PLuginJS{
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jquery/dist/jquery.min.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/assets/js/main.js"></script>
+    @section PLuginJS{
+        <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jquery/dist/jquery.min.js"></script>
+        <script src="/Assets/Admin/Infinity-v2.0.0/vendors/popper.js/dist/umd/popper.min.js"></script>
+        <script src="/Assets/Admin/Infinity-v2.0.0/vendors/popper.js/dist/umd/popper.js"></script>
+        <script src="/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/Assets/Admin/Infinity-v2.0.0/assets/js/main.js"></script>
 
 
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/chart.js/dist/Chart.bundle.min.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/assets/js/dashboard.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/assets/js/widgets.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script>
-        (function ($) {
-            "use strict";
+        <script src="/Assets/Admin/Infinity-v2.0.0/vendors/chart.js/dist/Chart.bundle.min.js"></script>
+        <script src="/Assets/Admin/Infinity-v2.0.0/assets/js/dashboard.js"></script>
+        <script src="/Assets/Admin/Infinity-v2.0.0/assets/js/widgets.js"></script>
+        <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
+        <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+        <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
 
-            jQuery('#vmap').vectorMap({
-                map: 'world_en',
-                backgroundColor: null,
-                color: '#ffffff',
-                hoverOpacity: 0.7,
-                selectedColor: '#1de9b6',
-                enableZoom: true,
-                showTooltip: true,
-                values: sample_data,
-                scaleColors: ['#1de9b6', '#03a9f5'],
-                normalizeFunction: 'polynomial'
-            });
-        })(jQuery);
-    </script>
+    }
 
-}

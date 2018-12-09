@@ -160,6 +160,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\AdminArea\AdminAreaAreaRegistration.cs" />
     <Compile Include="Areas\AdminArea\Controllers\ADHomeController.cs" />
+    <Compile Include="Areas\AdminArea\Controllers\NguoiDungController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\AccountsMerchantController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\BaseController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\BookManagerController.cs" />
@@ -4943,6 +4944,13 @@
     <Content Include="Areas\MerchantArea\Views\MCHome\Index.cshtml" />
     <Content Include="Areas\AdminArea\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\AdminArea\Views\ADHome\Index.cshtml" />
+    <Content Include="Assets\Admin\Infinity-v2.0.0\assets\css\style.css.map" />
+    <Content Include="Assets\Admin\Infinity-v2.0.0\assets\scss\style.scss" />
+    <Content Include="Assets\Admin\Infinity-v2.0.0\assets\scss\_gauge.scss" />
+    <Content Include="Assets\Admin\Infinity-v2.0.0\assets\scss\_socials.scss" />
+    <Content Include="Assets\Admin\Infinity-v2.0.0\assets\scss\_switches.scss" />
+    <Content Include="Assets\Admin\Infinity-v2.0.0\assets\scss\_variables.scss" />
+    <Content Include="Assets\Admin\Infinity-v2.0.0\assets\scss\_widgets.scss" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\vendors\animate.css\.bower.json" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\vendors\animate.css\animate-config.json" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\vendors\animate.css\bower.json" />
@@ -5599,13 +5607,7 @@
     <Content Include="Assets\Admin\Infinity-v2.0.0\vendors\themify-icons\fonts\themify.ttf" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\vendors\themify-icons\fonts\themify.woff" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\vendors\themify-icons\README.md" />
-    <Content Include="Assets\Admin\Infinity-v2.0.0\assets\css\style.css.map" />
-    <Content Include="Assets\Admin\Infinity-v2.0.0\assets\scss\style.scss" />
-    <Content Include="Assets\Admin\Infinity-v2.0.0\assets\scss\_gauge.scss" />
-    <Content Include="Assets\Admin\Infinity-v2.0.0\assets\scss\_socials.scss" />
-    <Content Include="Assets\Admin\Infinity-v2.0.0\assets\scss\_switches.scss" />
-    <Content Include="Assets\Admin\Infinity-v2.0.0\assets\scss\_variables.scss" />
-    <Content Include="Assets\Admin\Infinity-v2.0.0\assets\scss\_widgets.scss" />
+    <Content Include="Areas\AdminArea\Views\NguoiDung\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
