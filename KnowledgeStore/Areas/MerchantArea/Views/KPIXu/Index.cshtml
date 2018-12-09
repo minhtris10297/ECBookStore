@@ -1,0 +1,345 @@
+﻿@model List<Model.EntityFramework.LichSuGiaoDichXuCuaMerchant>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/MerchantArea/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>Quản lý xu</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h4 class="widget-title">Xu của tôi</h4>
+                <hr size="5" width="1050px" style="height:1px; border:none; color:#333; background-color:#333 ">
+                <div>
+                    <table style="margin-left: 400px">
+                        <tr>
+                            <td class="fa fa-money" aria-hidden="true" style="margin-top: 15px; margin-right: 5px"></td>
+                            <td>
+                                <h2><font color="blue">@ViewBag.SoLuongXu</font></h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                <b>Bạn có</b>
+                            </td>
+                            <td align="center">
+                                <font color="blue">
+                                    <b>@ViewBag.SoLuongXu xu</b>
+                                </font>
+                            </td>
+                            <td>
+                                <b>trong tài khoản</b>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h4 class="widget-title">Nạp xu</h4>
+                <hr size="5" width="1050px" style="height:1px; border:none; color:#333; background-color:#333 ">
+                <div>
+                    <div style="float:left;padding-right:80px">
+                        <b>Gói Thường(20xu) - 1$:</b>
+                        <div id="paypal-button-container-1"></div>
+                    </div>
+                    <div style="float:left;padding-right:80px">
+                        <b>Gói Bạc(45xu) - 2$:</b>
+                        <div id="paypal-button-container-2"></div>
+                    </div>
+                    
+                    <div style="float:left">
+                        <b>Gói Platium(75xu) - 3$:</b>
+                        <div id="paypal-button-container-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content mt-3">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title">Lịch sử xu</strong>
+                    </div>
+
+
+                    <div class="card-body">
+                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Merchant</th>
+                                    <th>Phương thức sử dụng</th>
+                                    <th>Ngày giao dich</th>
+                                    <th>Số xu</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>@item.Merchant.HoTen</td>
+                                    <td>
+                                        @item.PhuongThucSuDung
+                                    </td>
+                                    <td>
+                                        @item.NgayGiaoDich.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td>
+                                        @item.SoXu
+                                    </td>
+                                </tr>
+                                }
+                                    
+
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        @section PluginCSS{
+
+            <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/bootstrap/dist/css/bootstrap.min.css">
+            <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/font-awesome/css/font-awesome.min.css">
+            <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/themify-icons/css/themify-icons.css">
+            <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/flag-icon-css/css/flag-icon.min.css">
+            <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/selectFX/css/cs-skin-elastic.css">
+            <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+            <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
+
+            <link rel="stylesheet" href="/Assets/Merchant/UI/thuong/style.css">
+            <link rel="stylesheet" type="text/css" href="/Assets/Merchant/UI/assets/css/button.css">
+
+            <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+        }
+
+        @section PluginJS{
+            <script src="/Assets/Merchant/UI/vendors/jquery/dist/jquery.min.js"></script>
+            <script src="/Assets/Merchant/UI/vendors/popper.js/dist/umd/popper.min.js"></script>
+            <script src="/Assets/Merchant/UI/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+            <script src="/Assets/Merchant/UI/assets/js/main.js"></script>
+
+
+            <script src="/Assets/Merchant/UI/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+            <script src="/Assets/Merchant/UI/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+            <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+            <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+            <script src="/Assets/Merchant/UI/vendors/jszip/dist/jszip.min.js"></script>
+            <script src="/Assets/Merchant/UI/vendors/pdfmake/build/pdfmake.min.js"></script>
+            <script src="/Assets/Merchant/UI/vendors/pdfmake/build/vfs_fonts.js"></script>
+            <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+            <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+            <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+            <script src="/Assets/Merchant/UI/assets/js/init-scripts/data-table/datatables-init.js"></script>
+
+            <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+            <script>
+                // Render the PayPal button
+                paypal.Button.render({
+                    // Set your environment
+                    env: 'sandbox', // sandbox | production
+
+                    // Specify the style of the button
+                    style: {
+                        layout: 'vertical',  // horizontal | vertical
+                        size: 'medium',    // medium | large | responsive
+                        shape: 'rect',      // pill | rect
+                        color: 'white'       // gold | blue | silver | white | black
+                    },
+
+                    // Specify allowed and disallowed funding sources
+                    //
+                    // Options:
+                    // - paypal.FUNDING.CARD
+                    // - paypal.FUNDING.CREDIT
+                    // - paypal.FUNDING.ELV
+                    funding: {
+                        allowed: [
+                            paypal.FUNDING.CARD,
+                            paypal.FUNDING.CREDIT
+                        ],
+                        disallowed: []
+                    },
+
+                    // Enable Pay Now checkout flow (optional)
+                    commit: true,
+
+                    // PayPal Client IDs - replace with your own
+                    // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+                    client: {
+                        sandbox: 'AW-ZnFZwHFnfhZuguLkpozyLJlnwk_LoiLymIUgtQfXKgouJ5MP2n834H_SdLZmofT2_-kf2j1j0sEd2',
+                        production: '<insert production client id>'
+                    },
+
+                    payment: function (data, actions) {
+                        return actions.payment.create({
+                            payment: {
+                                transactions: [
+                                    {
+                                        amount: {
+                                            total: '1',
+                                            currency: 'USD'
+                                        }
+                                    }
+                                ]
+                            }
+                        });
+                    },
+
+                    onAuthorize: function (data, actions) {
+                        return actions.payment.execute()
+                            .then(function () {
+                                window.alert('Payment Complete!');
+                                window.location.href = "/MerchantArea/KPIXu/AddKPIXu/1";
+                            });
+                    }
+                }, '#paypal-button-container-1');
+
+                // Render the PayPal button
+                paypal.Button.render({
+                    // Set your environment
+                    env: 'sandbox', // sandbox | production
+
+                    // Specify the style of the button
+                    style: {
+                        layout: 'vertical',  // horizontal | vertical
+                        size: 'medium',    // medium | large | responsive
+                        shape: 'rect',      // pill | rect
+                        color: 'silver'       // gold | blue | silver | white | black
+                    },
+
+                    // Specify allowed and disallowed funding sources
+                    //
+                    // Options:
+                    // - paypal.FUNDING.CARD
+                    // - paypal.FUNDING.CREDIT
+                    // - paypal.FUNDING.ELV
+                    funding: {
+                        allowed: [
+                            paypal.FUNDING.CARD,
+                            paypal.FUNDING.CREDIT
+                        ],
+                        disallowed: []
+                    },
+
+                    // Enable Pay Now checkout flow (optional)
+                    commit: true,
+
+                    // PayPal Client IDs - replace with your own
+                    // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+                    client: {
+                        sandbox: 'AW-ZnFZwHFnfhZuguLkpozyLJlnwk_LoiLymIUgtQfXKgouJ5MP2n834H_SdLZmofT2_-kf2j1j0sEd2',
+                        production: '<insert production client id>'
+                    },
+
+                    payment: function (data, actions) {
+                        return actions.payment.create({
+                            payment: {
+                                transactions: [
+                                    {
+                                        amount: {
+                                            total: '2',
+                                            currency: 'USD'
+                                        }
+                                    }
+                                ]
+                            }
+                        });
+                    },
+
+                    onAuthorize: function (data, actions) {
+                        return actions.payment.execute()
+                            .then(function () {
+                                window.alert('Payment Complete!');
+                                window.location.href = "/MerchantArea/KPIXu/AddKPIXu/2";
+                            });
+                    }
+                }, '#paypal-button-container-2');
+
+                // Render the PayPal button
+                paypal.Button.render({
+                    // Set your environment
+                    env: 'sandbox', // sandbox | production
+
+                    // Specify the style of the button
+                    style: {
+                        layout: 'vertical',  // horizontal | vertical
+                        size: 'medium',    // medium | large | responsive
+                        shape: 'rect',      // pill | rect
+                        color: 'black'       // gold | blue | silver | white | black
+                    },
+
+                    // Specify allowed and disallowed funding sources
+                    //
+                    // Options:
+                    // - paypal.FUNDING.CARD
+                    // - paypal.FUNDING.CREDIT
+                    // - paypal.FUNDING.ELV
+                    funding: {
+                        allowed: [
+                            paypal.FUNDING.CARD,
+                            paypal.FUNDING.CREDIT
+                        ],
+                        disallowed: []
+                    },
+
+                    // Enable Pay Now checkout flow (optional)
+                    commit: true,
+
+                    // PayPal Client IDs - replace with your own
+                    // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+                    client: {
+                        sandbox: 'AW-ZnFZwHFnfhZuguLkpozyLJlnwk_LoiLymIUgtQfXKgouJ5MP2n834H_SdLZmofT2_-kf2j1j0sEd2',
+                        production: '<insert production client id>'
+                    },
+
+                    payment: function (data, actions) {
+                        return actions.payment.create({
+                            payment: {
+                                transactions: [
+                                    {
+                                        amount: {
+                                            total: '3',
+                                            currency: 'USD'
+                                        }
+                                    }
+                                ]
+                            }
+                        });
+                    },
+
+                    onAuthorize: function (data, actions) {
+                        return actions.payment.execute()
+                            .then(function () {
+                                window.alert('Payment Complete!');
+                                window.location.href = "/MerchantArea/KPIXu/AddKPIXu/3";
+                            });
+                    }
+                }, '#paypal-button-container-3');
+            </script>
+        }
+

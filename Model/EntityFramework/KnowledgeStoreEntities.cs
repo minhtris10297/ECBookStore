@@ -33,6 +33,7 @@ namespace Model.EntityFramework
         public virtual DbSet<Merchant> Merchants { get; set; }
         public virtual DbSet<NhaXuatBan> NhaXuatBans { get; set; }
         public virtual DbSet<Sach> Saches { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TheLoai> TheLoais { get; set; }
         public virtual DbSet<TinhTrangDonHang> TinhTrangDonHangs { get; set; }
 
@@ -102,10 +103,6 @@ namespace Model.EntityFramework
                 .HasMany(e => e.DonHangs)
                 .WithRequired(e => e.Customer)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<DanhGiaCuaCustomer>()
-                .Property(e => e.NoiDung)
-                .IsUnicode(false);
 
             modelBuilder.Entity<DanhGiaCuaMerchant>()
                 .Property(e => e.NgayDanhGia)

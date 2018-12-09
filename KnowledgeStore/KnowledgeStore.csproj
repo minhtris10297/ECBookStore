@@ -167,7 +167,7 @@
     <Compile Include="Areas\MerchantArea\Controllers\AccountsMerchantController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\BaseController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\BookManagerController.cs" />
-    <Compile Include="Areas\MerchantArea\Controllers\KPIXuControllerController.cs" />
+    <Compile Include="Areas\MerchantArea\Controllers\KPIXuController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\LayoutMerchantController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\MCHomeController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\OrderManagerController.cs" />
@@ -3434,8 +3434,9 @@
     <Content Include="Areas\AdminArea\Views\Saches\Edit.cshtml" />
     <Content Include="Areas\AdminArea\Views\Saches\Index.cshtml" />
     <Content Include="Areas\MerchantArea\Views\BookManager\Create.cshtml" />
-    <Content Include="Areas\MerchantArea\Views\KPIXuController\Index.cshtml" />
+    <Content Include="Areas\MerchantArea\Views\KPIXu\Index.cshtml" />
     <Content Include="Areas\AdminArea\Views\ADHome\Index.cshtml" />
+    <Content Include="Areas\MerchantArea\Views\KPIXu\AddKPIXu.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

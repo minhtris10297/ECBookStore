@@ -35,7 +35,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                     userSession.Email = model.Email;
                     Session[CommonConstants.USERMERCHANT_SESSION] = null;
                     Session.Add(CommonConstants.USERMERCHANT_SESSION, userSession);
-                    return RedirectToAction("Index", "OrderManager");
+                    return RedirectToAction("Index", "MCHome");
                 }
                 else if (result == 0)
                 {
@@ -102,7 +102,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                     Session[CommonConstants.USERMERCHANT_SESSION] = null;
                     Session[CommonConstants.USERMERCHANT_SESSION] = userSession;
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "MCHome");
                 }
                 else
                 {

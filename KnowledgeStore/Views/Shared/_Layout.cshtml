@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
-    <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:600" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+
     @RenderSection("PluginCSS", true)
 
     <!-- google log -->
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="547525902851-c6178npe4g58kv8k8mn152tg18a4hlko.apps.googleusercontent.com">
+    <link rel="icon" href="/Assets/Customer/cozastore/images/icons/logo-01.png">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <!---------------->
 
@@ -42,7 +44,7 @@
                             Hỗ trợ khách hàng
                         </a>
 
-                        <a href="@Url.Action("Login","AccountsMerchant",new { area="MerchantArea"})" class="flex-c-m trans-04 p-lr-25">
+                        <a href="@Url.Action("Login","AccountsMerchant",new { area="MerchantArea"})" class="flex-c-m trans-04 p-lr-25" style="background-color:whitesmoke;color:black;">
                             Kênh người bán
                         </a>
                     </div>

@@ -31,6 +31,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                 return RedirectToAction("Login", "AccountsMerchant");
             }
             var id = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
+
             var listSach = db.Saches.Where(m => m.MerchantID == id).OrderByDescending(m => m.LichSuNangTins.Max(n => n.NgayNang)).ToList();
             return View(listSach);
         }

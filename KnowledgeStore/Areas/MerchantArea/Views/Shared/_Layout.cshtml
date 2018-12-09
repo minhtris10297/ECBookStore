@@ -15,8 +15,9 @@
 
     <link rel="apple-touch-icon" href="/Assets/Merchant/UI/apple-icon.png">
     <link rel="shortcut icon" href="/Assets/Merchant/UI/favicon.ico">
+    <link rel="icon" href="/Assets/Merchant/UI/images/logo2.png">
 
-    @RenderSection("PluginCSS",true)
+    @RenderSection("PluginCSS", true)
 
 </head>
 
@@ -54,7 +55,7 @@
                         <a href="#"> <i class="menu-icon fa fa-tasks"></i>Doanh thu thanh toán</a>
                     </li>
                     <li class="active">
-                        <a href="#"> <i class="menu-icon ti-email"></i>Quản lý xu KIP</a>
+                        <a href="@Url.Action("Index","KPIXu")"> <i class="menu-icon ti-email"></i>Quản lý xu KIP</a>
                     </li>
                     <li class="active">
                         <a href="#"> <i class="menu-icon fa fa-bar-chart"></i>Quản lý sách tồn kho</a>
@@ -151,7 +152,7 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -164,26 +165,6 @@
                             <a class="nav-link" href="#"><i class="fa fa-cog"></i> Cài dặt</a>
 
                             <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Thoát</a>
-                        </div>
-                    </div>
-
-                    <div class="language-select dropdown" id="language-select">
-                        <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="language" aria-haspopup="true" aria-expanded="true">
-                            <i class="flag-icon flag-icon-us"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="language">
-                            <div class="dropdown-item">
-                                <span class="flag-icon flag-icon-fr"></span>
-                            </div>
-                            <div class="dropdown-item">
-                                <i class="flag-icon flag-icon-es"></i>
-                            </div>
-                            <div class="dropdown-item">
-                                <i class="flag-icon flag-icon-us"></i>
-                            </div>
-                            <div class="dropdown-item">
-                                <i class="flag-icon flag-icon-it"></i>
-                            </div>
                         </div>
                     </div>
 

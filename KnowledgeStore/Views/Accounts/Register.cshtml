@@ -27,14 +27,13 @@
     </div>
     <div class="simple-page-wrap">
         <div class="simple-page-logo animated swing">
-            <a href="index.html">
-                <span><i class="fa fa-gg"></i></span>
-                <span>Infinity</span>
+            <a href="@Url.Action("Index","Home")">
+                <span>Knowledge Store</span>
             </a>
         </div><!-- logo -->
 
         <div class="simple-page-form animated flipInY" id="signup-form">
-            <h4 class="form-title m-b-xl text-center">Sign Up For a new Account</h4>
+            <h4 class="form-title m-b-xl text-center">Tạo tài khoản Knowledge Store</h4>
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
@@ -83,7 +82,7 @@
                         <label for="keep_me_logged_in">Keep me signed in</label>
                     </div>
                 </div>
-                <input type="submit" class="btn btn-primary" value="SING UP">
+                <input type="submit" class="btn btn-warning" value="Đăng ký">
             }
         </div><!-- #login-form -->
         <div class="simple-page-footer">
@@ -137,4 +136,9 @@
     </script>
 </body>
 </html>
+<style>
+    body {
+        background: url("/Assets/Image/bookandcoffee.jpg");
+    }
+</style>
  

@@ -39,6 +39,10 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                     listSach = db.Saches.OrderByDescending(m => m.LichSuNangTins.Max(n => n.NgayNang)).Where(m => m.TrangThai == true).ToList();
                 }
             }
+            var merchant = db.Merchants.Where(m => m.MerchantID == merchantID);
+            ViewBag.TenShop = merchant.Select(m => m.TenCuaHang).FirstOrDefault();
+            ViewBag.SoThang = System.DateTime.Now.Month- merchant.Select(m => m.NgayTao).FirstOrDefault().Month;
+            ViewBag.SoSanPham = db.Saches.Where(m => m.MerchantID == merchantID).Count();
             int pageSize = 6;
             int pageNumber = (page ?? 1);
             return View(listSach.ToPagedList(pageNumber, pageSize));
