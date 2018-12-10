@@ -1,0 +1,242 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdminArea/Views/Shared/_Layout.cshtml";
+} <div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>Dữ liệu</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content mt-3">
+    <div class="col-sm-12">
+        <div class="widget widget-pie-chart">
+            <header class="widget-header">
+                <h6 class="widget-title">Sao lưu dữ liệu</h6>
+            </header>
+            <hr class="widget-separator" />
+            <div class="widget-body clearfix">
+                <!-- new row -->
+                <div class="col-xs-6 col-sm-4 col-md-3">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tên sao lưu</label>
+                            <input type="text" class="form-control" placeholder="Tên sao lưu">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-3">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Công việc</label>
+                            <input type="text" class="form-control" placeholder="Công việc">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-3">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Định dạng</label>
+                            <input type="text" class="form-control" placeholder="Định dạng">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-3">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nơi lưu trữ</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nơi lưu trữ">
+                        </div>
+                    </form>
+                    <div class="m-b-xl">
+                        <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Lưu</button>
+                        <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Làm mới</button>
+                    </div>
+                </div>
+            </div><!-- .widget -->
+        </div>
+
+
+        <div class="row" style="margin-top: 20px">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title">Danh sách sao lưu dữ liệu</strong>
+                    </div>
+
+                    <div class="card-body">
+                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Tên file</th>
+                                    <th>Ngày lưu</th>
+                                    <th>Dung lượng</th>
+                                    <th>Nơi lưu trữ</th>
+                                    <th>Định dạng</th>
+                                    <th>Chức nắng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Database_back_up</td>
+                                    <td>
+                                        01/01/2018
+                                    </td>
+                                    <td>
+                                        100MB
+                                    </td>
+                                    <td>Google</td>
+                                    <td>Zip</td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalXemchitiet">Chi tiết</button>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>File_back_up</td>
+                                    <td>
+                                        01/01/2018
+                                    </td>
+                                    <td>
+                                        100MB
+                                    </td>
+                                    <td>Server</td>
+                                    <td>Tor</td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalXemchitiet">Chi tiết</button>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>File_back_up</td>
+                                    <td>
+                                        01/01/2018
+                                    </td>
+                                    <td>
+                                        100MB
+                                    </td>
+                                    <td>DropBox</td>
+                                    <td>Tor GZip</td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalXemchitiet">Chi tiết</button>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- thông tin chi tiet don hàng  -->
+
+                <div class="modal fade" id="exampleModalXemchitiet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
+                    <div class="modal-dialog" role="document" style="width: 450px">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel">Thông tin chi tiết sao lưu dữ liệu</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <div class="row p-b-10">
+                                            <div class="col-sm-5">
+                                                <p>Tên file: </p>
+                                            </div>
+                                            <div class="col-sm-5" style="left: -35px">
+                                                <p>File_back-up</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row p-b-10">
+                                            <div class="col-sm-5">
+                                                <p>Ngày lưu:</p>
+                                            </div>
+                                            <div class="col-sm-5" style="left: -35px">
+                                                <p>01/01/2018</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row p-b-10">
+                                            <div class="col-sm-5">
+                                                <p>Dung lượng:</p>
+                                            </div>
+                                            <div class="col-sm-5" style="left: -35px">
+                                                <p>100MB</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row p-b-10">
+                                            <div class="col-sm-5">
+                                                <p>Nơi lưu trữ:</p>
+                                            </div>
+                                            <div class="col-sm-5" style="left: -35px">
+                                                <p>Server</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row p-b-10">
+                                            <div class="col-sm-5">
+                                                <p>Định dạng</p>
+                                            </div>
+                                            <div class="col-sm-5" style="left: -35px">
+                                                <p>Tor</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" style="margin-left: 60px; margin-top: 10px">Đóng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- .row -->
+    </div> <!-- .content -->
+</div>
+
+
+@section PluginCSS{
+    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/dist/jqvmap.min.css">
+
+
+    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+}
+
+@section PLuginJS{
+    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/popper.js/dist/umd/popper.js"></script>
+    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/Assets/Admin/Infinity-v2.0.0/assets/js/main.js"></script>
+
+
+    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/chart.js/dist/Chart.bundle.min.js"></script>
+    <script src="/Assets/Admin/Infinity-v2.0.0/assets/js/dashboard.js"></script>
+    <script src="/Assets/Admin/Infinity-v2.0.0/assets/js/widgets.js"></script>
+    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
+    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+
+}
+
