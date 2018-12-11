@@ -55,6 +55,10 @@
                             <input type="email" class="form-control" id="exampleInputEmail1" placeholder="nhà xuất bản">
                         </div>
                     </form>
+
+                    <!-- chỗ này lọc sách theo 3 input ở trên-->
+                    
+
                     <div class="m-b-xl">
                         <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Tìm kiếm</button>
                         <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Làm mới</button>
@@ -69,7 +73,7 @@
                 <div class="card">
                     <div class="card-header">
                         <strong class="card-title">Danh sách sách</strong>
-                    </div>
+                    </div>  
                     <div class="m-b-xl pull-right" style="padding: 18px">
                         <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 10px; margin-left: 720px; margin-top: 10px">Xuất excel</button>
                         <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 10px; margin-left: 30px; margin-top: 10px">Nhập excel</button>
@@ -81,36 +85,95 @@
                                     <th>Thông tin sách</th>
                                     <th>Tồn kho</th>
                                     <th>Giá bán</th>
-                                    <th>Hoa hồng KipXu</th>
-                                    <th>Lợi nhuận</th>
-                                    <th>Trạng thái</th>
-                                    <th>Chức năng</th>
+                                    
+                                    <th>Giá Khuyến Mãi</th>
+                                    <th>Tên Tác Giả</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <p><font color="#CD090C"><b>Đắc Nhân Tâm</b></font></p>
-                                        <p>ID: 123456</p>
-                                        <p>Mã sản phẩm: 311641628</p>
-                                        <p>Thể loại: Kỹ năng sống</p>
-                                    </td>
-                                    <td>1</td>
-                                    <td>50.000đ</td>
-                                    <td>2.000đ</td>
-                                    <td>48.000đ</td>
-                                    <td>
-                                        <div class="form-group">
-                                            <input id="switch-0-3" type="checkbox" data-switchery disabled checked />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalXemchitiet">Chi tiết</button>
-                                        </div>
-                                    </td>
-                                </tr>
-
+                                @{ foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <p><font color="#CD090C"><b>@item.TenSach</b></font></p>
+                                                <p>ID Sách: @item.SachID</p>
+                                                @if (@item.TheLoaiID == 1)
+    {<p>Thể loại: Sách Văn Học </p>}
+                                                @if (@item.TheLoaiID == 2)
+    {<p>Thể loại: Sách Kinh Tế </p>}
+                                                @if (@item.TheLoaiID == 3)
+    {<p>Thể loại: Sách Thiếu Nhi </p>}
+                                                @if (@item.TheLoaiID == 4)
+    {<p>Thể loại: Sách kỹ năng - Sống đẹp</p>}
+                                                @if (item.TheLoaiID == 5)
+    {<p>Thể loại: Sách mẹ và bé</p>}
+                                                @if (item.TheLoaiID == 6)
+    {<p>Thể loại: Sách Giáo Khoa</p>}
+                                                @if (item.TheLoaiID == 7)
+    {<p>Thể loại: Sách ngoại ngữ</p>}
+                                                @if (item.TheLoaiID == 8)
+    {<p>Thể loại: Sách tham khảo</p>}
+                                                @if (item.TheLoaiID == 9)
+    {<p>Thể loại: Từ Điển</p>}
+                                                @if (@item.TheLoaiID == 10)
+    {<p>Thể loại: Sách kiến thức tổng hợp</p>}
+                                                @if (item.TheLoaiID == 11)
+    {<p>Thể loại: giáo trình Đại Học - Cao Đẳng</p>}
+                                                @if (item.TheLoaiID == 12)
+    {<p>Thể loại: Truyện tranh Manga, Comic</p>}
+                                                @if (item.TheLoaiID == 13)
+    {<p>Thể loại: Sách Lịch Sử</p>}
+                                                @if (item.TheLoaiID == 14)
+    {<p>Thể loại: Sách Khoa Học - Kỹ Thuật</p>}
+                                                @if (item.TheLoaiID == 15)
+    {<p>Thể loại: Điện Ảnh - Nhạc - Họa</p>}
+                                                @if (@item.TheLoaiID == 16)
+    {<p>Thể loại: Sách Tôn giáo - Tâm Linh</p>}
+                                                @if (item.TheLoaiID == 17)
+    {<p>Thể loại: Sách Chính Trị - Pháp Lý</p>}
+                                                @if (item.TheLoaiID == 18)
+    {<p>Thể loại: Sách Văn Hoá - Du Lịch</p>}
+                                                @if (item.TheLoaiID == 19)
+    {<p>Thể loại: Sách Nông - Lâm - Ngư Nghiệp</p>}
+                                                @if (item.TheLoaiID == 20)
+    {<p>Thể loại: Sách Công Nghệ Thông Tin</p>}
+                                                @if (item.TheLoaiID == 21)
+    {<p>Thể loại: Sách Y Học</p>}
+                                                @if (item.TheLoaiID == 22)
+    {<p>Thể loại: Tạp Chí - Catalogue</p>}
+                                                @if (item.TheLoaiID == 23)
+    {<p>Thể loại: Sách Tâm lý - Giới tính</p>}
+                                                @if (item.TheLoaiID == 24)
+    {<p>Thể loại: Sách Thường Thức - Đời Sống</p>}
+                                                @if (item.TheLoaiID == 25)
+    {<p>Thể loại: Tự Truyện - Hồi Ký</p>}
+                                                @if (@item.TheLoaiID == 26)
+    {<p>Thể loại: Tiểu sử - Hồi ký</p>}
+                                                @if (item.TheLoaiID == 27)
+    {<p>Thể loại: Truyện Ngắn</p>}
+                                                @if (item.TheLoaiID == 30)
+    {<p>Thể loại: Tiểu Thuyết</p>}
+                                                @if (item.TheLoaiID == 31)
+    {<p>Thể loại: Sách Tư Duy - Kĩ Năng Sống</p>}
+                                                @if (item.TheLoaiID == 32)
+    {<p>Thể loại: Sách kỹ nắng - Sống đẹp</p>}
+                                                @if (item.TheLoaiID == 34)
+    {<p>Thể loại: Sách Thường Thức - Đời Sống</p>}
+                                            </td>
+                                            <td>@item.SoLuong</td>
+                                            <td>@item.GiaTien</td>
+                                            
+                                            <td>@item.GiaKhuyenMai </td>
+                                            
+                                               
+                                                    <td>@item.TacGia</td>
+                                                
+                                            
+                                            
+                                        </tr>
+                                    }
+                                    }
 
 
                             </tbody>
@@ -120,7 +183,7 @@
                 </div>
 
                 <!-- Xem thông tin chi tiết -->
-                <div class="modal fade" id="exampleModalXemchitiet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
+                @*<div class="modal fade" id="exampleModalXemchitiet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
                     <div class="modal-dialog" role="document" style="width: 450px">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -129,15 +192,16 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Tên sách: </p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -35px">
-                                                <p>Đắc Nhân Tâm</p>
+                           
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <div class="row p-b-10">
+                                                    <div class="col-sm-5">
+                                                        <p>Tên sách: </p>
+                                                    </div>
+                                                 <div class="col-sm-5" style="left: -35px">
+                                                <p>item.TenSach</p>
                                             </div>
                                         </div>
                                     </div>
@@ -147,7 +211,7 @@
                                                 <p>Mã sách:</p>
                                             </div>
                                             <div class="col-sm-5" style="left: -35px">
-                                                <p>123456</p>
+                                                <p>itemSachID</p>
                                             </div>
                                         </div>
                                     </div>
@@ -167,7 +231,7 @@
                                                 <p>Thể loại:</p>
                                             </div>
                                             <div class="col-sm-5" style="left: -35px">
-                                                <p>Kỹ năng sống</p>
+                                                <p>TheLoaiID</p>
                                             </div>
                                         </div>
                                     </div>
@@ -177,7 +241,7 @@
                                                 <p>Tồn kho :</p>
                                             </div>
                                             <div class="col-sm-5" style="left: -35px">
-                                                <p>1</p>
+                                                <p>SoLuong</p>
                                             </div>
                                         </div>
                                     </div>
@@ -187,7 +251,7 @@
                                                 <p>Giá bán :</p>
                                             </div>
                                             <div class="col-sm-5" style="left: -35px">
-                                                <p>50.000đ</p>
+                                                <p>GiaTien</p>
                                             </div>
                                         </div>
                                     </div>
@@ -207,13 +271,15 @@
                                                 <p>Lợi nhuận :</p>
                                             </div>
                                             <div class="col-sm-5" style="left: -35px">
-                                                <p>50.000đ</p>
+                                                <p>La La La </p>
                                             </div>
                                         </div>
                                     </div>
 
                                 </form>
                             </div>
+                                    
+                               
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" style="margin-left: 60px; margin-top: 10px">Đóng</button>
                             </div>
@@ -225,7 +291,7 @@
             </div>
         </div><!-- .row -->
     </div> <!-- .content -->
-</div>
+</div>*@
 
 
 @section PluginCSS{
