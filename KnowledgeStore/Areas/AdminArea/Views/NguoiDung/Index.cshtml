@@ -1,4 +1,5 @@
-﻿
+﻿@model List<Model.EntityFramework.Merchant>
+@using Common
 @{
     ViewBag.Title = "Nguoidung";
     Layout = "~/Areas/AdminArea/Views/Shared/_Layout.cshtml";
@@ -19,50 +20,45 @@
         <div class="widget widget-pie-chart">
             <div class="widget-body clearfix">
                 <!-- new row -->
-                <header class="widget-header">
-                    <h6 class="widget-title">Tìm kiếm</h6>
-                </header>
-                <hr class="widget-separator" />
-                <div class="col-xs-6 col-sm-4 col-md-3">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Tên người dùng</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Tên người dùng">
-                        </div>
-                    </form>
-                </div>
-                <div class="col-xs-6 col-sm-4 col-md-3">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Số điện thoại</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Số điện thoại">
-                        </div>
-                    </form>
-                </div>
-                <div class="col-xs-6 col-sm-4 col-md-3">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email người dùng</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email người dùng">
-                        </div>
-                    </form>
-                </div>
-                <div class="col-xs-6 col-sm-4 col-md-3">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Loại người dùng</label>
-                            <select class="form-control">
-                                <option></option>
-                                <option>Người bán</option>
-                                <option>Khách hàng</option>
-                            </select>
-                        </div>
-                    </form>
-                    <div class="m-b-xl" style="padding: 18px">
-                        <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Tìm kiếm</button>
-                        <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Làm mới</button>
+                @using (Html.BeginForm("Index", "NguoiDung", FormMethod.Post))
+                {
+
+                    <header class="widget-header">
+                        <h6 class="widget-title">Tìm kiếm</h6>
+                    </header>
+                    <hr class="widget-separator" />
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                       
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Tên người dùng</label>
+                                <input class="form-control" id="exampleInputEmail1" placeholder="Tên người dùng" name="TenNguoiDung">
+                            </div>
+                       
                     </div>
-                </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                       
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Số điện thoại</label>
+                                <input class="form-control" id="exampleInputEmail1" placeholder="Số điện thoại" name="SoDienThoai">
+                            </div>
+                        
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                        
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email người dùng</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email người dùng" name="EmailNguoiDung">
+                            </div>
+                        
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                        <div class="m-b-xl" style="padding: 18px">
+                            <button type="submit" class="btn btn-primary btn-sm" style="padding: 8px">Tìm kiếm</button>
+                            <button type="reset" class="btn btn-primary btn-sm" style="padding: 8px">Làm mới</button>
+                        </div>
+                    </div>
+
+                }
             </div><!-- .widget -->
         </div>
 
@@ -74,8 +70,11 @@
                         <strong class="card-title">Danh sách người dùng</strong>
                     </div>
                     <div class="m-b-xl pull-right" style="padding: 18px">
-                        <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 10px; margin-left: 720px; margin-top: 10px">Xuất excel</button>
-                        <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 10px; margin-left: 30px; margin-top: 10px" data-toggle="modal" data-target="#myModalThemsach">Nhập excel</button>
+                        <input type="button" value="Xuất Excel" class="btn btn-primary btn-sm" style="margin-bottom: 10px; margin-left: 720px; margin-top: 10px"
+                               onclick="location.href='@Url.Action("ExportExcel", "NguoiDung")'" />
+
+                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#ModalNhapExcel">Nhập Excel</button>
+
 
                     </div>
                     <div class="card-body">
@@ -98,20 +97,31 @@
                                         <tr>
                                             <td>@item.HoTen</td>
                                             <td>
-                                                Người mua
+                                                Người bán
                                             </td>
                                             <td>
                                                 @item.SoDienThoai
                                             </td>
                                             <td>@item.Email</td>
-                                            <td>Không có</td>
-                                            <td>
-                                                Chờ xử lý
-                                            </td>
+                                            <td>@item.TenCuaHang</td>
+
+                                            @if (item.TrangThai)
+                                            {
+                                                <td>
+                                                    Đã xử lý
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td>
+                                                    Chờ xử lý
+                                                </td>
+                                            }
+
                                             <td>
                                                 <div id="button">
                                                     <div id="button1">
-                                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">Xử lý</button>
+                                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal@(item.MerchantID)">Xử lý</button>
                                                     </div>
                                                     <div id="button2">
                                                         <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalXemchitiet">Chi tiết</button>
@@ -121,7 +131,7 @@
                                         </tr>
                                     }
                                 }
-                                    
+
                             </tbody>
                         </table>
 
@@ -129,77 +139,79 @@
                 </div>
 
                 <!-- Modal xử lý thông tin người dùng-->
-
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
-                    <div class="modal-dialog" role="document" style="width: 450px">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="exampleModalLabel">Thông tin đăng ký</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Tên người dùng: </p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -55px">
-                                                <p>Nguyễn Văn B</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Loại người dùng: </p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -55px">
-                                                <p>Người bán</p>
+                @foreach (var item in Model)
+                {
+                    <div class="modal fade" id="exampleModal@(item.MerchantID)" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
+                        <div class="modal-dialog" role="document" style="width: 450px">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="exampleModalLabel">Thông tin đăng ký</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <div class="row p-b-10">
+                                                <div class="col-sm-5">
+                                                    <p>Tên người dùng: </p>
+                                                </div>
+                                                <div class="col-sm-5" style="left: -55px">
+                                                    <p>@item.HoTen</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Số điện thoại:</p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -55px">
-                                                <p> 0981986775</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Địa chỉ email :</p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -55px">
-                                                <p> Nam@gmail.com</p>
+                                        <div class="form-group">
+                                            <div class="row p-b-10">
+                                                <div class="col-sm-5">
+                                                    <p>Loại người dùng: </p>
+                                                </div>
+                                                <div class="col-sm-5" style="left: -55px">
+                                                    <p>Người bán</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Địa chỉ liên lạc:</p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -55px">
-                                                <p>123 Nguyễn Trãi, phường 3, quận 5,thành phố Hồ Chí Minh</p>
+                                        <div class="form-group">
+                                            <div class="row p-b-10">
+                                                <div class="col-sm-5">
+                                                    <p>Số điện thoại:</p>
+                                                </div>
+                                                <div class="col-sm-5" style="left: -55px">
+                                                    <p>@item.SoDienThoai</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Hủy đăng ký</button>
-                                <button type="button" data-toggle="modal" data-dismiss="modal" data-target="#exampleModalxacnhangiaohang" class="btn btn-info btn-sm">Xác nhận đăng ký</button>
+                                        <div class="form-group">
+                                            <div class="row p-b-10">
+                                                <div class="col-sm-5">
+                                                    <p>Địa chỉ email :</p>
+                                                </div>
+                                                <div class="col-sm-5" style="left: -55px">
+                                                    <p>@item.Email</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row p-b-10">
+                                                <div class="col-sm-5">
+                                                    <p>Địa chỉ liên lạc:</p>
+                                                </div>
+                                                <div class="col-sm-5" style="left: -55px">
+                                                    <p>@item.DiaChi</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Hủy đăng ký</button>
+                                    <button type="button" data-toggle="modal" data-dismiss="modal" data-target="#exampleModalxacnhangiaohang" class="btn btn-info btn-sm">Xác nhận đăng ký</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
 
                 <!-- Modal xác nhận đăng ký-->
                 <div class="modal fade" id="exampleModalxacnhangiaohang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
@@ -233,73 +245,107 @@
 
 
                 <!-- Xem chi tiết -->
+                @foreach (var item in Model)
+                {
+                    <div class="modal fade" id="exampleModalXemchitiet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
+                        <div class="modal-dialog" role="document" style="width: 450px">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="exampleModalLabel">Thông tin chi tiết người dùng</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <div class="row p-b-10">
+                                                <div class="col-sm-5">
+                                                    <p>Tên người dùng: </p>
+                                                </div>
+                                                <div class="col-sm-5" style="left: -55px">
+                                                    <p>@item.HoTen</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row p-b-10">
+                                                <div class="col-sm-5">
+                                                    <p>Loại người dùng: </p>
+                                                </div>
+                                                <div class="col-sm-5" style="left: -55px">
+                                                    <p>Người bán</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row p-b-10">
+                                                <div class="col-sm-5">
+                                                    <p>Số điện thoại:</p>
+                                                </div>
+                                                <div class="col-sm-5" style="left: -55px">
+                                                    <p>@item.SoDienThoai</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row p-b-10">
+                                                <div class="col-sm-5">
+                                                    <p>Địa chỉ email :</p>
+                                                </div>
+                                                <div class="col-sm-5" style="left: -55px">
+                                                    <p>@item.Email</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row p-b-10">
+                                                <div class="col-sm-5">
+                                                    <p>Địa chỉ liên lạc:</p>
+                                                </div>
+                                                <div class="col-sm-5" style="left: -55px">
+                                                    <p>@item.DiaChi</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" style="margin-left: 60px; margin-top:10px">Đóng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
 
-                <div class="modal fade" id="exampleModalXemchitiet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
+
+                <div class="modal fade" id="ModalNhapExcel" tabindex="-1" role="dialog" aria-labelledby="ModalNhapExcel" aria-hidden="true" style="top: 70px">
                     <div class="modal-dialog" role="document" style="width: 450px">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="exampleModalLabel">Thông tin chi tiết người dùng</h4>
+                                <h4 class="modal-title" id="exampleModalLabel">Nhập File Excel</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form>
+                                @using (Html.BeginForm("ImportExcel", "NguoiDung", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
                                     <div class="form-group">
                                         <div class="row p-b-10">
                                             <div class="col-sm-5">
-                                                <p>Tên người dùng: </p>
+                                                <p>Chọn File:</p>
                                             </div>
                                             <div class="col-sm-5" style="left: -55px">
-                                                <p>Nguyễn Văn B</p>
+                                                <input type="file" id="dataFile" name="upload" />
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Loại người dùng: </p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -55px">
-                                                <p>Người bán</p>
-                                            </div>
-                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-sm" >Import</button>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Số điện thoại:</p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -55px">
-                                                <p> 0981986775</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Địa chỉ email :</p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -55px">
-                                                <p> Nam@gmail.com</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Địa chỉ liên lạc:</p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -55px">
-                                                <p>123 Nguyễn Trãi, phường 3, quận 5,thành phố Hồ Chí Minh</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" style="margin-left: 60px; margin-top:10px">Đóng</button>
-                            </div>
+                                }
+                            </div>                            
                         </div>
                     </div>
                 </div>
