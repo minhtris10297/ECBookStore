@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta name="description" content="Admin, Dashboard, Bootstrap" />
-    <link rel="shortcut icon" sizes="196x196" href="/Assets/Admin/Infinity-v2.0.0/assets/images/logo.png">
+    <link rel="shortcut icon" sizes="196x196" href="/Assets/Customer/cozastore/images/icons/logo-01.png">
 
     <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/libs/bower/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/libs/bower/material-design-iconic-font/dist/css/material-design-iconic-font.min.css">
@@ -28,14 +28,13 @@
     <div class="simple-page-wrap">
         <div class="simple-page-logo animated swing">
             <a href="index.html">
-                <span><i class="fa fa-gg"></i></span>
-                <span>Infinity</span>
+                <span>Knowledge Store</span>
             </a>
         </div><!-- logo -->
 
         <div class="simple-page-form animated flipInY" id="signup-form">
-            <h4 class="form-title m-b-xl text-center">Sign Up For a new Account</h4>
-            @using (Html.BeginForm())
+            <h4 class="form-title m-b-xl text-center">Tạo tài khoản mới</h4>
+            @using (Html.BeginForm("Register","AccountsMerchant", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 <div class="form-group">
@@ -74,6 +73,10 @@
                     @Html.EditorFor(model => model.TenCuaHang, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Tên Cửa Hàng", required = "required" } })
                     @Html.ValidationMessageFor(model => model.TenCuaHang, "", new { @class = "text-danger" })
                 </div>
+                <div>
+                    <label>Ảnh đại diện</label>
+                    <input type="file" class="form-group" name="imageAvatar"/>
+                </div>
                 <div class="form-group">
                     @Html.DropDownList("GioiTinhID", null, htmlAttributes: new { @class = "form-control", @placeholder = "Giới tính", required = "required" })
                     @Html.ValidationMessageFor(model => model.GioiTinhID, "", new { @class = "text-danger" })
@@ -108,7 +111,7 @@
             var memberEmail = document.getElementById('Email').value;
             if (memberEmail) {
                 $.ajax({
-                    url: '/Accounts/GetAuthenticationInEmail',
+                    url: '/AccountsMerchant/GetAuthenticationInEmail',
                     data: { Email: memberEmail },
                     dataType: 'json',
                     type: 'POST',

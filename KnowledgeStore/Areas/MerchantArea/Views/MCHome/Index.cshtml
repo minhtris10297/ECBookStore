@@ -15,11 +15,11 @@
             <div class="card-header user-header alt bg-dark">
                 <div class="media">
                     <a href="/Assets/Merchant/UI/#">
-                        <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="/Assets/Merchant/UI/images/admin.jpg">
+                        <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="~/Assets/Image/Merchant/@(ViewBag.MerchantID).jpg">
                     </a>
                     <div class="media-body">
                         <h2 class="text-light display-6">Shop @ViewBag.TenShop</h2>
-                        <p>Nguyễn văn a</p>
+                        <p class="text-light">Quản lý: @ViewBag.TenChu</p>
                     </div>
                 </div>
             </div>
@@ -134,9 +134,6 @@
 
 @section PluginCSS{
     <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
-    <link rel="apple-touch-icon" href="/Assets/Merchant/UI/apple-icon.png">
-    <link rel="shortcut icon" href="/Assets/Merchant/UI/favicon.ico">
-
 
     <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/font-awesome/css/font-awesome.min.css">

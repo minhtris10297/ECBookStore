@@ -167,8 +167,9 @@
     <Compile Include="Areas\MerchantArea\Controllers\AccountsMerchantController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\BaseController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\BookManagerController.cs" />
+    <Compile Include="Areas\MerchantArea\Controllers\CustomerController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\KPIXuController.cs" />
-    <Compile Include="Areas\MerchantArea\Controllers\LayoutMerchantController.cs" />
+    <Compile Include="Areas\MerchantArea\Controllers\LayoutMCController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\MCHomeController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\OrderManagerController.cs" />
     <Compile Include="Areas\MerchantArea\MerchantAreaRegistration.cs" />
@@ -177,6 +178,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\ListBooksController.cs" />
+    <Compile Include="Controllers\MerchantShopController.cs" />
     <Compile Include="Controllers\OrderDetailController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Global.asax.cs">
@@ -3422,7 +3424,6 @@
     <Content Include="Areas\MerchantArea\Views\OrderManager\Index.cshtml" />
     <Content Include="Areas\MerchantArea\Views\AccountsMerchant\Register.cshtml" />
     <Content Include="Areas\MerchantArea\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\MerchantArea\Views\LayoutMerchant\TopbarMenuDisplay.cshtml" />
     <Content Include="Areas\MerchantArea\Views\BookManager\Index.cshtml" />
     <Content Include="Areas\AdminArea\Views\web.config" />
     <Content Include="Areas\MerchantArea\Views\BookManager\Edit.cshtml" />
@@ -3437,6 +3438,9 @@
     <Content Include="Areas\MerchantArea\Views\KPIXu\Index.cshtml" />
     <Content Include="Areas\AdminArea\Views\ADHome\Index.cshtml" />
     <Content Include="Areas\MerchantArea\Views\KPIXu\AddKPIXu.cshtml" />
+    <Content Include="Areas\MerchantArea\Views\LayoutMC\LogoTop.cshtml" />
+    <Content Include="Areas\MerchantArea\Views\LayoutMC\TopbarAccount.cshtml" />
+    <Content Include="Areas\MerchantArea\Views\Customer\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -3495,12 +3499,12 @@
     <Content Include="Views\Payment\PaymentSuccess.cshtml" />
     <Content Include="Views\Accounts\AdditionalInfoGg.cshtml" />
     <Content Include="Views\OrderDetail\Index.cshtml" />
+    <Content Include="Views\MerchantShop\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\AdminArea\Models\" />
     <Folder Include="Areas\MerchantArea\Models\" />
-    <Folder Include="Areas\MerchantArea\Views\Base\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

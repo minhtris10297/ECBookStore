@@ -22,6 +22,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                 return RedirectToAction("Login", "AccountsMerchant");
             }
             var merchantID = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
+            ViewBag.MerchantID = merchantID;
 
             var listSach = db.Saches.Where(m=>m.MerchantID== merchantID).ToList();
             if (id != null)
@@ -40,6 +41,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                 }
             }
             var merchant = db.Merchants.Where(m => m.MerchantID == merchantID);
+            ViewBag.TenChu = merchant.Select(m => m.HoTen).FirstOrDefault();
             ViewBag.TenShop = merchant.Select(m => m.TenCuaHang).FirstOrDefault();
             ViewBag.SoThang = System.DateTime.Now.Month- merchant.Select(m => m.NgayTao).FirstOrDefault().Month;
             ViewBag.SoSanPham = db.Saches.Where(m => m.MerchantID == merchantID).Count();

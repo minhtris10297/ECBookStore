@@ -5,8 +5,10 @@ using Model.EntityFramework;
 using Model.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace KnowledgeStore.Areas.MerchantArea.Controllers
@@ -60,7 +62,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "MerchantID,Email,MatKhauMaHoa,HoTen,DiaChi,GioiTinhID,TenCuaHang,SoDienThoai")] Merchant merchant, string AuthenticationCode)
+        public ActionResult Register([Bind(Include = "MerchantID,Email,MatKhauMaHoa,HoTen,DiaChi,GioiTinhID,TenCuaHang,SoDienThoai")] Merchant merchant, string AuthenticationCode, HttpPostedFileBase imageAvatar)
         {
             //check Ho ten
             if (merchant.HoTen.Trim().Any(char.IsNumber))
@@ -95,6 +97,18 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                     merchant.SoLuongKIPXu = 0;
                     db.Merchants.Add(merchant);
                     db.SaveChanges();
+
+                    if (imageAvatar != null)
+                    {
+                        //Resize Image
+                        WebImage img = new WebImage(imageAvatar.InputStream);
+                        //img.Resize(500, 1000);
+
+                        var filePathOriginal = Server.MapPath("/Assets/Image/Merchant/");
+                        var fileName = merchant.MerchantID+ ".jpg";
+                        string savedFileName = Path.Combine(filePathOriginal, fileName);
+                        img.Save(savedFileName);
+                    }
 
                     var userSession = new UserLogin();
                     userSession.UserName = merchant.HoTen;
@@ -133,6 +147,12 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             }
             else
                 return Json(new { status = false });
+        }
+
+        public ActionResult Logout()
+        {
+            Session[CommonConstants.AUTHENTICATIONEMAILMERCHANT_SESSION] = null;
+            return RedirectToAction("Login", "AccountsMerchant");
         }
     }
 }

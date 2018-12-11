@@ -1,4 +1,6 @@
 ﻿@model List<Model.EntityFramework.Sach>
+
+
 @using Common
 @{
     ViewBag.Title = "Index";
@@ -141,10 +143,10 @@
                 <div class="block1 wrap-pic-w">
                     <img src="/Assets/Customer/cozastore/images/book-1.jpg" alt="IMG-BANNER">
 
-                    <a href="@Url.Action("Index","ListBooks",new { id="SachBanChay"})" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                    <a href="@Url.Action("Index","ListBooks",new { id="SachHay"})" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                         <div class="block1-txt-child1 flex-col-l">
                             <span class="block1-name ltext-102 trans-04 p-b-8" style="color: yellow">
-                                Bán chạy nhất
+                                Sách hay
                             </span>
 
                             <span class="block1-info stext-102 trans-04">
@@ -201,11 +203,6 @@
             </div>
 
             <div class="flex-w flex-c-m m-tb-10">
-                <div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
-                    <i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
-                    <i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-                    Tìm kiếm theo
-                </div>
 
                 <div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
                     <i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
@@ -225,93 +222,6 @@
                 </div>
             </div>
 
-            <!-- Filter -->
-            <div class="dis-none panel-filter w-full p-t-10">
-                <div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
-                    <div class="filter-col1 p-r-15 p-b-27">
-                        <div class="mtext-102 cl2 p-b-15" style="width: auto;">
-                            Công ty phát hàng
-                        </div>
-
-                        <ul>
-                            <li class="p-b-6">
-                                <a href="/Assets/Customer/cozastore/#" class="filter-link stext-106 trans-04">
-                                    NXB Trẻ
-                                </a>
-                            </li>
-
-                            <li class="p-b-6">
-                                <a href="/Assets/Customer/cozastore/#" class="filter-link stext-106 trans-04">
-                                    Công Ty Cổ Phần
-                                </a>
-                            </li>
-
-                            <li class="p-b-6">
-                                <a href="/Assets/Customer/cozastore/#" class="filter-link stext-106 trans-04">
-                                    Usborne Publishing
-                                </a>
-                            </li>
-
-                            <li class="p-b-6">
-                                <a href="/Assets/Customer/cozastore/#" class="filter-link stext-106 trans-04 filter-link-active">
-                                    Nhà Sách Lao Động
-                                </a>
-                            </li>
-
-                            <li class="p-b-6">
-                                <a href="/Assets/Customer/cozastore/#" class="filter-link stext-106 trans-04">
-                                    First News - Trí Việt
-                                </a>
-                            </li>
-
-                            <li class="p-b-6">
-                                <a href="/Assets/Customer/cozastore/#" class="filter-link stext-106 trans-04">
-                                    Alphabooks
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="filter-col2 p-r-15 p-b-27" style="width: 15%;">
-                        <div class="mtext-102 cl2 p-b-15">
-                            Xuất xứ
-                        </div>
-
-                        <ul>
-                            <li class="p-b-6">
-                                <a href="/Assets/Customer/cozastore/#" class="filter-link stext-106 trans-04 filter-link-active">
-                                    Indonesia
-                                </a>
-                            </li>
-
-                            <li class="p-b-6">
-                                <a href="/Assets/Customer/cozastore/#" class="filter-link stext-106 trans-04">
-                                    Đan Mạch
-                                </a>
-                            </li>
-
-                            <li class="p-b-6">
-                                <a href="/Assets/Customer/cozastore/#" class="filter-link stext-106 trans-04">
-                                    Đức
-                                </a>
-                            </li>
-
-                            <li class="p-b-6">
-                                <a href="/Assets/Customer/cozastore/#" class="filter-link stext-106 trans-04">
-                                    Anh
-                                </a>
-                            </li>
-
-                            <li class="p-b-6">
-                                <a href="/Assets/Customer/cozastore/#" class="filter-link stext-106 trans-04">
-                                    Hà Lan
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
         </div>
 
         <div class="row isotope-grid" id="divRowIsotope" data-num="610">
@@ -335,7 +245,7 @@
                                 </a>
 
                                 <span class="stext-105 cl3">
-                                    @Model[i].GiaTien đồng
+                                    @Model[i].GiaTien.ToString("N0") đồng
                                 </span>
                             </div>
 
@@ -424,17 +334,17 @@
                                 @if (item.GiaKhuyenMai == null)
                                 {
                                 <span class="mtext-106 cl2">
-                                    @item.GiaTien.ToString("N0")
+                                    @item.GiaTien.ToString("N0") đồng
                                 </span>
 
                                 }
                                 else
                                 {
                                 <span class="mtext-106 cl2">
-                                    @item.GiaKhuyenMai.GetValueOrDefault(0).ToString("N0")
+                                    @item.GiaKhuyenMai.GetValueOrDefault(0).ToString("N0") đồng
                                 </span>
                                 <p>
-                                    Tiết kiệm: <a style="color: red">@HtmlHelperExtensions.ConvertDecimaltoIntegerSalePrice(item.GiaKhuyenMai.GetValueOrDefault(0), item.GiaTien) %<a> @(item.GiaTien - item.GiaKhuyenMai) ₫
+                                    Tiết kiệm: <a style="color: red">@HtmlHelperExtensions.ConvertDecimaltoIntegerSalePrice(item.GiaKhuyenMai.GetValueOrDefault(0), item.GiaTien).ToString("N0") %<a> @(item.GiaTien - item.GiaKhuyenMai) ₫
                                 </p>
                                 <p>
                                     Giá thị trường: @item.GiaTien.ToString("N0") ₫
@@ -688,7 +598,7 @@
                             count = 1;
                             topStyle += 315;
                         }
-                        var divProduct = '<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women" style="position: absolute; left: ' + leftStyle + '%; top: ' + topStyle + 'px;"><!-- Block2 --><div class="block2"><div class="block2-pic hov-img0"><img src="/Assets/Image/ImageBook/'  + item.SachID + '_1.jpg" alt="IMG-PRODUCT" style="width: 270px; height: 200px"><a href="" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" data-val="Sach' + item.SachID + '" onclick="ShowModal1()">Xem nhanh</a></div><div class="block2-txt flex-w flex-t p-t-14"><div class="block2-txt-child1 flex-col-l "><a href="/ListBooks/BookDetail/' + item.SachID + '" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">' + item.TenSach + '</a><span class="stext-105 cl3">' + item.GiaTien + ' đồng</span></div><div class="block2-txt-child2 flex-r p-t-3"><a href="/Assets/Customer/cozastore/#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"><img class="icon-heart1 dis-block trans-04" src="/Assets/Customer/cozastore/images/icons/icon-heart-01.png" alt="ICON"><img class="icon-heart2 dis-block trans-04 ab-t-l" src="/Assets/Customer/cozastore/images/icons/icon-heart-02.png" alt="ICON"></a></div></div></div></div>';
+                        var divProduct = '<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women" style="position: absolute; left: ' + leftStyle + '%; top: ' + topStyle + 'px;"><!-- Block2 --><div class="block2"><div class="block2-pic hov-img0"><img src="/Assets/Image/ImageBook/' + item.SachID + '_1.jpg" alt="IMG-PRODUCT" style="width: 270px; height: 200px"><a href="" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" data-val="Sach' + item.SachID + '" onclick="ShowModal1()">Xem nhanh</a></div><div class="block2-txt flex-w flex-t p-t-14"><div class="block2-txt-child1 flex-col-l "><a href="/ListBooks/BookDetail/' + item.SachID + '" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">' + item.TenSach + '</a><span class="stext-105 cl3">' + item.GiaTien+ ' đồng</span></div><div class="block2-txt-child2 flex-r p-t-3"><a href="/Assets/Customer/cozastore/#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"><img class="icon-heart1 dis-block trans-04" src="/Assets/Customer/cozastore/images/icons/icon-heart-01.png" alt="ICON"><img class="icon-heart2 dis-block trans-04 ab-t-l" src="/Assets/Customer/cozastore/images/icons/icon-heart-02.png" alt="ICON"></a></div></div></div></div>';
                         divRowIsotope += divProduct;
                     });
                     divRowIsotope += '</div>';
@@ -719,7 +629,7 @@
                         st += '<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" data-val="Sach' + value.SachID + '">Xem nhanh</a></div>';
                         st += '<div class="block2-txt flex-w flex-t p-t-14"><div class="block2-txt-child1 flex-col-l ">';
                         st += '<a href="/ListBooks/BookDetail?id=' + value.SachID + '" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">' + value.TenSach + '</a>';
-                        st += '<span class="stext-105 cl3">' + value.GiaTien.toString() + ' đồng' + ' </span></div>';
+                        st += '<span class="stext-105 cl3">' + value.GiaTien.toString("N0") + ' đồng' + ' </span></div>';
                         st+='<div class="block2-txt-child2 flex-r p-t-3"><a href="/Assets/Customer/cozastore/#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">';
                         st += '<img class="icon-heart1 dis-block trans-04" src="/Assets/Customer/cozastore/images/icons/icon-heart-01.png" alt="ICON"><img class="icon-heart2 dis-block trans-04 ab-t-l" src="/Assets/Customer/cozastore/images/icons/icon-heart-02.png" alt="ICON"></a>';
                         st += '</div></div></div></div>';

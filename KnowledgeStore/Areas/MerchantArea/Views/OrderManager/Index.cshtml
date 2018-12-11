@@ -5,23 +5,13 @@
     Layout = "~/Areas/MerchantArea/Views/Shared/_Layout.cshtml";
 }
 
-<div class="breadcrumbs">
-    <div class="col-sm-4">
-        <div class="page-header float-left">
-            <div class="page-title">
-                <h1>Đơn hàng</h1>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="content mt-3">
     <div class="col-sm-12">
         <div class="widget widget-pie-chart">
             @using (Html.BeginForm("Index", "OrderManager", new { id = ViewBag.IdMerchant }))
             {
                 <header class="widget-header">
-                    <h4 class="widget-title">Tìm kiếm</h4>
+                    <h4 class="widget-title">Quản lý đơn hàng</h4>
                 </header>
                 <hr class="widget-separator" />
                 <div class="widget-body clearfix">
@@ -70,6 +60,7 @@
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>Mã đơn hàng</th>
                                     <th>Thông tin đặt hàng</th>
                                     <th>Khách hàng</th>
@@ -83,6 +74,7 @@
                             </thead>
                             <tfoot>
                                 <tr>
+                                    <th></th>
                                     <th>Mã đơn hàng</th>
                                     <th>Thông tin đặt hàng</th>
                                     <th>Khách hàng</th>
@@ -99,6 +91,7 @@
                                     foreach (var item in Model)
                                     {
                                         <tr>
+                                            <td></td>
                                             <td>@item.ChiTietDonHangID</td>
                                             <td>
                                                 <p>@item.DonHang.Customer.HoTen (@item.DonHang.Customer.SoDienThoai)</p>
@@ -120,7 +113,7 @@
                                                 }
                                             </td>
                                             <td>@item.SoLuong x @item.Sach.TenSach</td>
-                                            <td>@item.ThanhTien</td>
+                                            <td>@item.ThanhTien.ToString("N0")</td>
                                             <td>
                                                 <button class="btn btn-info btn-sm" disabled>@item.TinhTrangDonHang.TinhTrangDonHang1</button>
                                             </td>
@@ -155,7 +148,7 @@
                         <div class="modal-dialog" role="document" style="width: 450px">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title" id="exampleModalLabel">Xử lý đơn hàng đang vận chuyển</h4>
+                                    <h4 class="modal-title" id="exampleModalLabel">Đã chuẩn bị hàng vs yêu cầu lấy hàng</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -187,7 +180,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay về</button>
-                                    <a type="button" class="btn btn-info btn-sm" href="/Assets/Merchant/UI/@Url.Action("ChangeDeliveryStatus", "OrderManager", new { id = @ViewBag.IdMerchant, idCtdh = item.ChiTietDonHangID })">Xác nhận đơn hàng</a>
+                                    <a type="button" class="btn btn-info btn-sm" href="@Url.Action("ChangeDeliveryStatus", "OrderManager", new { id = @ViewBag.IdMerchant, idCtdh = item.ChiTietDonHangID })">Xác nhận đơn hàng</a>
                                 </div>
                             </div>
                         </div>
@@ -210,9 +203,12 @@
     <link rel="stylesheet" href="/Assets/Merchant/UI/assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <meta http-equiv="refresh" content="30">
 }
 
 @section PluginJS{
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/Assets/Merchant/UI/vendors/jquery/dist/jquery.min.js"></script>
     <script src="/Assets/Merchant/UI/vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="/Assets/Merchant/UI/vendors/bootstrap/dist/js/bootstrap.min.js"></script>

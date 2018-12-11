@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta name="description" content="Admin, Dashboard, Bootstrap" />
-    <link rel="shortcut icon" sizes="196x196" href="/Assets/Admin/Infinity-v2.0.0/assets/images/logo.png">
+    <link rel="shortcut icon" sizes="196x196" href="/Assets/Customer/cozastore/images/icons/logo-01.png">
 
     <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/libs/bower/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/libs/bower/material-design-iconic-font/dist/css/material-design-iconic-font.min.css">
@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-group">
                     @*<input id="sign-up-name" type="password" class="form-control" placeholder="Mật Khẩu">*@
-                    @Html.EditorFor(model => model.MatKhauMaHoa, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Mật khẩu", required = "required", @id="password" } })
+                    @Html.EditorFor(model => model.MatKhauMaHoa, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Mật khẩu", required = "required", @id = "password" } })
                     @Html.ValidationMessageFor(model => model.MatKhauMaHoa, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
@@ -97,6 +97,7 @@
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous"></script>
     <script>
+
         $('#btnGetAuthCode').off('click').on('click', function () {
             alert("Đang kiểm tra...")
             var memberEmail = document.getElementById('Email').value;

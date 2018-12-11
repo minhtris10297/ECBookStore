@@ -1,0 +1,215 @@
+﻿@model List<Model.EntityFramework.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/MerchantArea/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>Khách hàng</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content mt-3">
+    <div class="col-sm-12">
+        <div class="widget widget-pie-chart">
+            <div class="widget-body clearfix">
+                <!-- new row -->
+                <div class="col-xs-6 col-sm-4 col-md-3">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tên khách hàng</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Tên khách hàng">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-3">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-3">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Địa chỉ</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Địa chỉ">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-3">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Trạng thái</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Trạng thái">
+                        </div>
+                    </form>
+                    <div class="m-b-xl" style="padding: 18px">
+                        <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Tìm kiếm</button>
+                        <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Làm mới</button>
+                    </div>
+                </div>
+            </div><!-- .widget -->
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title">Danh sách khách hàng</strong>
+                        <div class="m-b-xl pull-right">
+                            <button type="button" data-toggle="modal" data-target="#guimailModal" class="btn btn-primary" style="padding: 8px">Gửi mail hàng loạt</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Tên khách hàng</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Email</th>
+                                    <th>Giới tính</th>
+                                    <th>Số đơn hàng đã đặt</th>
+                                    <th>Trạng thái</th>
+                                    <th>Chức năng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.HoTen</td>
+                                        <td>
+                                            @item.DiaChi
+                                        </td>
+                                        <td>
+                                            @item.Email
+                                        </td>
+                                        <td>@item.GioiTinh.TenGioiTinh</td>
+                                        <td>@item.DonHangs.Count()</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input id="switch-0-3" type="checkbox" data-switchery disabled checked />
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="p-r-18 p-r-0-sm w-full-ssm" style="width: 50%">
+                                                <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-info btn-sm">Chi tiết</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+                <!-- Modal xử lý đơn hàng-->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
+                    <div class="modal-dialog" role="document" style="width: 450px">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel">Xử lý đơn hàng</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Name</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="text-input" placeholder="" class="form-control"></div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary btn-sm" " data-dismiss="modal">Hủy đơn hàng</button>
+                                <button type="button" data-toggle="modal" data-dismiss="modal" data-target="#exampleModalxacnhangiaohang" class="btn btn-info btn-sm">Xác nhận đơn hàng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal xử lý gửi mail hàng loạt-->
+                <div class="modal fade" id="guimailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
+                    <div class="modal-dialog" role="document" style="width: 450px">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel">Gửi mail hàng loạt</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Từ gmail: </label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="text-input" placeholder="" class="form-control"></div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="email-input" class=" form-control-label">Chủ đề</label></div>
+                                        <div class="col-12 col-md-9"><input type="email" id="email-input" name="email-input" placeholder="" class="form-control"></div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Nội dung</label></div>
+                                        <div class="col-12 col-md-9"><textarea name="textarea-input" id="textarea-input" rows="9" placeholder="" class="form-control"></textarea></div>
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Đóng</button>
+                                <button type="button" class="btn btn-info btn-sm">Gửi</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- .row -->
+    </div> <!-- .content -->
+</div><!-- /#right-panel -->
+
+
+@section PluginCSS{
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
+
+    <link rel="stylesheet" href="/Assets/Merchant/UI/assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+}
+@section PluginJS{
+
+    <script src="/Assets/Merchant/UI/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/Assets/Merchant/UI/assets/js/main.js"></script>
+
+
+    <script src="/Assets/Merchant/UI/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="/Assets/Merchant/UI/assets/js/init-scripts/data-table/datatables-init.js"></script>
+}
+

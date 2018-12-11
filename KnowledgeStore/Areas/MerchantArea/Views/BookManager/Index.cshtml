@@ -6,22 +6,16 @@
     Layout = "~/Areas/MerchantArea/Views/Shared/_Layout.cshtml";
 }
 
-<div class="breadcrumbs">
-    <div class="col-sm-4">
-        <div class="page-header float-left">
-            <div class="page-title">
-                <h1>Quản lý sách</h1>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="content mt-3">
     <div class="col-sm-12">
         <div class="widget widget-pie-chart">
             <div class="widget-body clearfix">
                 @using (Html.BeginForm("Index", "BookManager"))
                 {
+                    <header class="widget-header">
+                        <h4 class="widget-title">Quản lý kho sách</h4>
+                    </header>
+                    <hr class="widget-separator" />
                     <!-- new row -->
                     <div class="col-xs-6 col-sm-4 col-md-3">
                         <div class="form-group">
@@ -108,7 +102,7 @@
                                                 <div id="button1">
                                                     <li class="dropdown" style="list-style: none;">
                                                         <button type="button" class="btn btn-primary btn-sm" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Xử lý</button>
-                                                        <ul class="dropdown-menu">
+                                                        <ul class="dropdown-menu" style="border-top-width: 33px;">
                                                             <li><a href="@Url.Action("Edit","BookManager",new { id=item.SachID})" class="btn-danger">Sửa sách</a></li>
                                                             <li><a href="/Assets/Merchant/UI/#" class="btn-success" data-toggle="modal" data-target="#ThemSach@(item.SachID)">Thêm số lượng sách</a></li>
                                                             <li><a href="#" data-toggle="modal" data-target="#NangSach@(item.SachID)" class="btn-warning">Nâng tin</a></li>
@@ -190,18 +184,18 @@
                                     <h4 class="modal-title">Thêm số lượng cho sách @item.TenSach</h4>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
-                                    <!-- Modal body -->
-                                    <div class="modal-body">
-                                        <div>
-                                            <p>Số lượng bạn muốn thêm</p>
-                                            <input id="inp@(item.SachID)" type="number" class="form-control"/>
-                                        </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <div>
+                                        <p>Số lượng bạn muốn thêm</p>
+                                        <input id="inp@(item.SachID)" type="number" class="form-control" />
                                     </div>
-                                    <!-- Modal footer -->
-                                    <div class="modal-footer">
-                                        <button class="btn btn-primary btnThemSach" data-num="@item.SachID" data-dismiss="modal">Xác nhận thêm sách</button>
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    </div>
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary btnThemSach" data-num="@item.SachID" data-dismiss="modal">Xác nhận thêm sách</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
 
 
 
@@ -380,7 +374,7 @@
 
                     $.ajax({
                         url: '/BookManager/ThemSach',
-                        data: { id: idBook, num:numAdd },
+                        data: { id: idBook, num: numAdd },
                         dataType: 'json',
                         type: 'POST',
                         success: function (res) {
@@ -388,12 +382,14 @@
                                 alert("Thêm sách thành công!!!");
                                 window.location.href = "/MerchantArea/BookManager/Index";
                             }
-                            
+
                         }
                     })
                 });
             }
         }
         bookmanager.init();
+
+
     </script>
 }

@@ -22,7 +22,7 @@ namespace KnowledgeStore.Controllers
                 return RedirectToAction("Login", "Accounts");
             }
             var cusId = db.Customers.Where(m => m.Email == sessionUser.Email).Select(m=>m.CustomerID).FirstOrDefault();
-            var listOrder = db.ChiTietDonHangs.Where(m => m.DonHang.CustomerID == cusId).ToList();
+            var listOrder = db.ChiTietDonHangs.Where(m => m.DonHang.CustomerID == cusId).OrderByDescending(m=>m.DonHang.NgayDat).ToList();
             
             return View(listOrder);
         }

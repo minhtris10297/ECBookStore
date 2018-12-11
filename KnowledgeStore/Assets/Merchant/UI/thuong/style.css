@@ -1406,7 +1406,7 @@ header .form-inline {
       width: 15px;
       line-height: 15px;
       right: 0;
-      top: 30px;
+      top: 0px;
       position: absolute; }
     .header-left .dropdown .dropdown-toggle:active, .header-left .dropdown .dropdown-toggle:focus, .header-left .dropdown .dropdown-toggle:visited {
       background: none !important;

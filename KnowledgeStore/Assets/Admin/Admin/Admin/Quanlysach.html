@@ -1,0 +1,431 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Kip Shop</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/button.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+
+   <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <h1 class="navbar-brand">Nguyễn Văn A</h1>
+            </div>
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="menu-item">
+                        <a href="index.html"> <i class="menu-icon fa fa-dashboard" title="Tổng quan"></i>Tổng quan </a>
+                    </li>
+                    <li class="menu-item dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop" title="Người dùng"></i>Người dùng</a>
+                    </li>
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table" title="Hoa hồng"></i>Hoa hồng</a>
+                    </li>
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table" title="Đơn hàng"></i>Đơn hàng</a>
+                    </li>
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th" title="Quản lý sách"></i>Quản lý sách</a>
+                    </li>
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks" title="Dữ liệu"></i>Dữ liệu</a>
+                    </li>
+                    <li>
+                        <a href="widgets.html"> <i class="menu-icon ti-email" title="KipXu"></i>KipXu </a>
+                    </li>
+                 </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside><!-- /#left-panel -->
+
+    <!-- Left Panel -->
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <div class="header-left">
+                        <button class="search-trigger"><i class="fa fa-search"></i></button>
+                        <div class="form-inline">
+                            <form class="search-form">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Tìm kiếm" aria-label="Search">
+                                <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                            </form>
+                        </div>
+
+                        <div class="dropdown for-notification">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Thông báo">
+                                <i class="fa fa-bell"></i>
+                                <span class="count bg-danger">5</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="notification">
+                                <p class="red">You have 3 Notification</p>
+                                <a class="dropdown-item media bg-flat-color-1" href="#">
+                                <i class="fa fa-check"></i>
+                                <p>Server #1 overloaded.</p>
+                            </a>
+                                <a class="dropdown-item media bg-flat-color-4" href="#">
+                                <i class="fa fa-info"></i>
+                                <p>Server #2 overloaded.</p>
+                            </a>
+                                <a class="dropdown-item media bg-flat-color-5" href="#">
+                                <i class="fa fa-warning"></i>
+                                <p>Server #3 overloaded.</p>
+                            </a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown for-message">
+                            <button class="btn btn-secondary dropdown-toggle" type="button"
+                                id="message"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Tin nhắn">
+                                <i class="ti-email"></i>
+                                <span class="count bg-primary">9</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="message">
+                                <p class="red">You have 4 Mails</p>
+                                <a class="dropdown-item media bg-flat-color-1" href="#">
+                                <span class="photo media-left"><img alt="avatar" src="images/avatar/1.jpg"></span>
+                                <span class="message media-body">
+                                    <span class="name float-left">Jonathan Smith</span>
+                                    <span class="time float-right">Just now</span>
+                                        <p>Hello, this is an example msg</p>
+                                </span>
+                            </a>
+                                <a class="dropdown-item media bg-flat-color-4" href="#">
+                                <span class="photo media-left"><img alt="avatar" src="images/avatar/2.jpg"></span>
+                                <span class="message media-body">
+                                    <span class="name float-left">Jack Sanders</span>
+                                    <span class="time float-right">5 minutes ago</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                </span>
+                            </a>
+                                <a class="dropdown-item media bg-flat-color-5" href="#">
+                                <span class="photo media-left"><img alt="avatar" src="images/avatar/3.jpg"></span>
+                                <span class="message media-body">
+                                    <span class="name float-left">Cheryl Wheeler</span>
+                                    <span class="time float-right">10 minutes ago</span>
+                                        <p>Hello, this is an example msg</p>
+                                </span>
+                            </a>
+                                <a class="dropdown-item media bg-flat-color-3" href="#">
+                                <span class="photo media-left"><img alt="avatar" src="images/avatar/4.jpg"></span>
+                                <span class="message media-body">
+                                    <span class="name float-left">Rachel Santos</span>
+                                    <span class="time float-right">15 minutes ago</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                </span>
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-5">
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Thông tin tài khoản</a>
+
+                            <a class="nav-link" href="#"><i class="fa fa-cog"></i> Cài dặt</a>
+
+                            <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Đăng xuất</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </header><!-- /header -->
+        <!-- Header-->
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Quản lý sách</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content mt-3">
+            <div class="col-sm-12">
+                <div class="widget widget-pie-chart">
+                    <div class="widget-body clearfix">
+                  <!-- new row -->
+                    <header class="widget-header">
+                        <h6 class="widget-title">Tìm kiếm</h6>
+                    </header>
+                    <hr class="widget-separator"/>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                      <form>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Mã sách</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" placeholder="id sách">
+                        </div>
+                      </form>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                      <form>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Tên sách</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="tên sách">
+                        </div>
+                      </form>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                      <form>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Loại sách</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" placeholder="loại sách">
+                        </div>
+                      </form>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                      <form>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Nhà xuất bản</label>
+                          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="nhà xuất bản">
+                        </div>
+                      </form>
+                        <div class="m-b-xl">
+                          <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Tìm kiếm</button>
+                          <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Làm mới</button>
+                        </div>
+                    </div>
+                    </div><!-- .widget -->
+                </div>
+
+
+                <div class="row" style="margin-top: 20px">
+                <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Danh sách sách</strong>
+                            </div>
+                            <div class="m-b-xl pull-right" style="padding: 18px">
+                                   <button type="button"  class="btn btn-primary btn-sm" style="margin-bottom: 10px; margin-left: 720px; margin-top: 10px">Xuất excel</button>
+                                    <button type="button"  class="btn btn-primary btn-sm" style="margin-bottom: 10px; margin-left: 30px; margin-top: 10px">Nhập excel</button>
+                            </div>
+                            <div class="card-body">
+                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Thông tin sách</th>
+                                            <th>Tồn kho</th>
+                                            <th>Giá bán</th>
+                                            <th>Hoa hồng KipXu</th>
+                                            <th>Lợi nhuận</th>
+                                            <th>Trạng thái</th>
+                                            <th>Chức năng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                           <td>
+                                                <p><font color="#CD090C"><b>Đắc Nhân Tâm</b></font></p>
+                                                <p>ID: 123456</p>
+                                                <p>Mã sản phẩm: 311641628</p>
+                                                <p>Thể loại: Kỹ năng sống</p>
+                                            </td>
+                                            <td>1</td>
+                                            <td>50.000đ</td>
+                                            <td>2.000đ</td>
+                                            <td>48.000đ</td>
+                                            <td>
+                                              <div class="form-group">
+                                                <input id="switch-0-3" type="checkbox" data-switchery disabled checked />
+                                              </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                   <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalXemchitiet">Chi tiết</button>
+                                                </div>
+                                            </td>
+                                          </tr>
+                                          
+                                          
+                                          
+                                    </tbody>
+                                </table>
+                                
+                            </div>
+                        </div>
+
+        <!-- Xem thông tin chi tiết -->
+        <div class="modal fade" id="exampleModalXemchitiet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
+            <div class="modal-dialog" role="document" style="width: 450px">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="exampleModalLabel">Thông tin chi tiết sách</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              <div class="modal-body">
+                <form>
+                <div class="form-group">
+                  <div class="row p-b-10">
+                    <div class="col-sm-5">
+                      <p>Tên sách: </p>
+                    </div>
+                    <div class="col-sm-5" style="left: -35px">
+                      <p>Đắc Nhân Tâm</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row p-b-10">
+                    <div class="col-sm-5">
+                      <p>Mã sách:</p>
+                    </div>
+                    <div class="col-sm-5" style="left: -35px">
+                      <p>123456</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row p-b-10">
+                    <div class="col-sm-5" >
+                      <p >Mã sản phẩm:</p>
+                    </div>
+                    <div class="col-sm-5" style="left: -35px">
+                      <p>311641628</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row p-b-10">
+                    <div class="col-sm-5" >
+                      <p >Thể loại:</p>
+                    </div>
+                    <div class="col-sm-5" style="left: -35px">
+                      <p>Kỹ năng sống</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row p-b-10">
+                    <div class="col-sm-5" >
+                      <p >Tồn kho :</p>
+                    </div>
+                    <div class="col-sm-5" style="left: -35px">
+                      <p>1</p>
+                    </div>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <div class="row p-b-10">
+                    <div class="col-sm-5" >
+                      <p>Giá bán :</p>
+                    </div>
+                    <div class="col-sm-5" style="left: -35px">
+                      <p>50.000đ</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row p-b-10">
+                    <div class="col-sm-5" >
+                      <p>Hoa hồng KipXu :</p>
+                    </div>
+                    <div class="col-sm-5" style="left: -35px">
+                      <p>2.000đ</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row p-b-10">
+                    <div class="col-sm-5" >
+                      <p>Lợi nhuận :</p>
+                    </div>
+                    <div class="col-sm-5" style="left: -35px">
+                      <p>50.000đ</p>
+                    </div>
+                  </div>
+                </div>
+                
+                </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" style="margin-left: 60px; margin-top: 10px">Đóng</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+                </div>
+            </div><!-- .row -->
+        </div> <!-- .content -->
+    </div><!-- /#right-panel -->
+
+    <!-- Right Panel -->
+
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+
+    <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="vendors/jszip/dist/jszip.min.js"></script>
+    <script src="vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="assets/js/init-scripts/data-table/datatables-init.js"></script>
+
+</body>
+
+</html>

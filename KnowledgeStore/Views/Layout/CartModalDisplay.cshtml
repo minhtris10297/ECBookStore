@@ -1,4 +1,5 @@
 ﻿@model List<Model.ViewModel.CartItem>
+@using Common
 <div class="wrap-header-cart js-panel-cart">
     <div class="s-full js-hide-cart"></div>
 
@@ -21,7 +22,7 @@
                     {
                         <li class="header-cart-item flex-w flex-t m-b-12">
                             <div class="header-cart-item-img">
-                                <img src="/Assets/Image/ImageBook/@item.Sach.SachID/@(item.Sach.SachID)_1.jpg" alt="IMG">
+                                <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.Sach.SachID,1)" alt="IMG">
                             </div>
 
                             <div class="header-cart-item-txt p-t-8">

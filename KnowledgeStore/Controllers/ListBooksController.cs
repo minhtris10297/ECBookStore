@@ -15,10 +15,10 @@ namespace KnowledgeStore.Controllers
         KnowledgeStoreEntities db = new KnowledgeStoreEntities();
         private const string CartSession = "CartSession";
         // GET: ListBooks
-        public ActionResult Index(string id, int? page, string theLoai)
+        public ActionResult Index(string id, int? page, string theLoai,string SearchString)
         {
             ViewBag.TypeID = id;
-            var listSach = db.Saches.ToList();
+            var listSach = db.Saches.OrderByDescending(m => m.LichSuNangTins.Max(n => n.NgayNang)).ToList();
             if (id != null)
             {
                 if (id == "SachGiamGia")
@@ -29,16 +29,20 @@ namespace KnowledgeStore.Controllers
                 {
                     listSach = db.Saches.OrderByDescending(m => m.NgayXuatBan).Where(m => m.TrangThai == true).ToList();
                 }
-                else if (id == "SachBanChay")
+                else if (id == "SachHay")
                 {
-                    listSach = db.Saches.OrderByDescending(m => m.LichSuNangTins.Max(n => n.NgayNang)).Where(m => m.TrangThai == true).ToList();
+                    listSach = db.Saches.OrderByDescending(m => m.DanhGiaCuaCustomers.Average(n=>n.SoSao)).Where(m => m.TrangThai == true).ToList();
                 }
             }
             if (theLoai != null)
             {
                 listSach = db.Saches.Where(m => m.TheLoai.TenTheLoai == theLoai & m.TrangThai == true).ToList();
             }
-
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                listSach = listSach.Where(m => m.TenSach.Contains(SearchString)).ToList();
+            }
+            ViewBag.SearchString = SearchString;
             int pageSize = 12;
             int pageNumber = (page ?? 1);
             return View(listSach.ToPagedList(pageNumber, pageSize));
@@ -47,6 +51,7 @@ namespace KnowledgeStore.Controllers
         public ActionResult BookDetail(int id)
         {
             var book = db.Saches.Find(id);
+            ViewBag.BookId = id;
 
             var cart = Session[CartSession];
             var list = new List<CartItem>();

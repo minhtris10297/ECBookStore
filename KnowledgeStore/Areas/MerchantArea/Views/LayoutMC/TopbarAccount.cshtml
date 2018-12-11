@@ -1,0 +1,18 @@
+﻿@using Common
+<div class="col-sm-5">
+    <div class="user-area dropdown float-right">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <p style="float:left;line-height:37px;padding-right:15px"><b>Xin chào,</b></p>
+            <img class="user-avatar rounded-circle" src="~/Assets/Image/Merchant/@(ViewBag.MerchantID).jpg" alt="User Avatar">
+        </a>
+
+        <div class="user-menu dropdown-menu">
+            <a class="nav-link" href="#"><i class="fa fa-user"></i> Thông tin tài khoản</a>
+
+            <a class="nav-link" href="#"><i class="fa fa-cog"></i> Cài dặt</a>
+
+            <a class="nav-link" href="@Url.Action("Logout","AccountsMerchant")"><i class="fa fa-power-off"></i> Thoát</a>
+        </div>
+    </div>
+
+</div>

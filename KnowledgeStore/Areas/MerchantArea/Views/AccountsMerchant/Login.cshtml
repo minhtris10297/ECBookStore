@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta name="description" content="Admin, Dashboard, Bootstrap" />
-    <link rel="shortcut icon" sizes="196x196" href="/Assets/Admin/Infinity-v2.0.0/assets/images/logo.png">
+    <link rel="shortcut icon" sizes="196x196" href="/Assets/Customer/cozastore/images/icons/logo-01.png">
 
     <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/libs/bower/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/libs/bower/material-design-iconic-font/dist/css/material-design-iconic-font.min.css">
@@ -30,8 +30,7 @@
     <div class="simple-page-wrap">
         <div class="simple-page-logo animated swing">
             <a href="index.html">
-                <span><i class="fa fa-gg"></i></span>
-                <span>Kênh người bán</span>
+                <span>Kênh người bán Knowledge Store</span>
             </a>
         </div><!-- logo -->
         <div class="simple-page-form animated flipInY" id="login-form">
@@ -56,15 +55,15 @@
                     </div>
                 </div>
                 @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-                <input type="submit" class="btn btn-primary" value="SING IN">
+                <input type="submit" class="btn btn-primary" value="Đăng nhập">
             }
 
         </div><!-- #login-form -->
         <div class="simple-page-footer">
-            <p><a href="password-forget.html">FORGOT YOUR PASSWORD ?</a></p>
+            <p><a href="password-forget.html">Quên mật khẩu ?</a></p>
             <p>
                 <small>Don't have an account ?</small>
-                <a href="signup.html">CREATE AN ACCOUNT</a>
+                <a href="@Url.Action("Register","AccountsMerchant")">Tạo tài khoản mới</a>
             </p>
         </div><!-- .simple-page-footer -->
 

@@ -13,9 +13,9 @@
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="/Assets/Merchant/UI/apple-icon.png">
-    <link rel="shortcut icon" href="/Assets/Merchant/UI/favicon.ico">
-    <link rel="icon" href="/Assets/Merchant/UI/images/logo2.png">
+    <link rel="apple-touch-icon" href="/Assets/Customer/cozastore/images/icons/logo-01.png">
+    <link rel="shortcut icon" href="/Assets/Customer/cozastore/images/icons/logo-01.png">
+    <link rel="icon" href="/Assets/Customer/cozastore/images/icons/logo-01.png">
 
     @RenderSection("PluginCSS", true)
 
@@ -28,14 +28,8 @@
 
     <aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">
-
-            <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
-                <!--<a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>-->
-                <a class="navbar-brand hidden" href="./"><img src="/Assets/Merchant/UI/images/logo2.png" alt="Logo"></a>
-            </div>
+            @{Html.RenderAction("LogoTop", "LayoutMC");}
+            
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -46,7 +40,7 @@
                         <a href="@Url.Action("Index","OrderManager")"> <i class="menu-icon fa fa-table"></i>Quản lý đơn hàng</a>
                     </li>
                     <li class="active">
-                        <a href="/customer.html"> <i class="menu-icon fa fa-laptop"></i>Khách hàng</a>
+                        <a href="@Url.Action("Index","Customer")"> <i class="menu-icon fa fa-laptop"></i>Khách hàng</a>
                     </li>
                     <li class="active">
                         <a href="@Url.Action("Index","BookManager")"> <i class="menu-icon fa fa-th"></i>Quản lý sách</a>
@@ -56,9 +50,6 @@
                     </li>
                     <li class="active">
                         <a href="@Url.Action("Index","KPIXu")"> <i class="menu-icon ti-email"></i>Quản lý xu KIP</a>
-                    </li>
-                    <li class="active">
-                        <a href="#"> <i class="menu-icon fa fa-bar-chart"></i>Quản lý sách tồn kho</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -152,23 +143,9 @@
                         </div>
                     </div>
                 </div>
+
                 
-                <div class="col-sm-5">
-                    <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="/Assets/Merchant/UI/images/admin.jpg" alt="User Avatar">
-                        </a>
-
-                        <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Thông tin tài khoản</a>
-
-                            <a class="nav-link" href="#"><i class="fa fa-cog"></i> Cài dặt</a>
-
-                            <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Thoát</a>
-                        </div>
-                    </div>
-
-                </div>
+                @{Html.RenderAction("TopbarAccount", "LayoutMC");}
             </div>
 
         </header><!-- /header -->

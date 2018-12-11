@@ -55,6 +55,7 @@ namespace KnowledgeStore.Controllers
             //{
             //    return View("Index", listSach.Take(8));
             //}
+            
             return View("Index", listSach);
         }
 
@@ -95,7 +96,7 @@ namespace KnowledgeStore.Controllers
 
         public JsonResult SearchProduct( string theLoai, string searchProduct)
         {
-            var listSach = db.Saches.ToList();
+            var listSach = db.Saches.OrderByDescending(m => m.LichSuNangTins.Max(n => n.NgayNang)).ToList();
             if (!String.IsNullOrEmpty(searchProduct))
             {
                 listSach = listSach.Where(m => m.TenSach.ToLower().Contains(searchProduct.ToLower())

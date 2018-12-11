@@ -19,7 +19,7 @@
                     rating = 0;
                 }
                 else { rating = (int)Math.Round((double)(sumStar / countStar)); }
-            }
+}
 
 <!-- breadcrumb -->
 <div class="container">
@@ -91,6 +91,7 @@
                     <h4 class="mtext-105 cl2 js-name-detail p-b-14">
                         @Model.TenSach
                     </h4>
+                    <p>Được bán bởi <a href="@Url.Action("Index","MerchantShop",new { id=Model.MerchantID})">Shop @Model.Merchant.TenCuaHang</a></p><br/>
 
 
                     <span class="fs-18 cl11">
@@ -137,7 +138,7 @@
                     @if (Model.GiaKhuyenMai != null)
     {
                         <p>
-                            Tiết kiệm: <a style="color: red">@HtmlHelperExtensions.ConvertDecimaltoIntegerSalePrice(Model.GiaKhuyenMai.GetValueOrDefault(0), Model.GiaTien) %<a> @(Model.GiaTien - Model.GiaKhuyenMai) ₫
+                            Tiết kiệm: <a style="color: red">@HtmlHelperExtensions.ConvertDecimaltoIntegerSalePrice(Model.GiaKhuyenMai.GetValueOrDefault(0), Model.GiaTien).ToString("N0") %<a> @(Model.GiaTien - Model.GiaKhuyenMai) ₫
                         </p>
                         <p>
                             Giá thị trường: @Model.GiaTien.ToString("N0") ₫
