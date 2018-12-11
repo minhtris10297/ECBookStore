@@ -66,8 +66,9 @@
                         <strong class="card-title">Danh sách đơn hàng</strong>
                     </div>
                     <div class="m-b-xl pull-right" style="padding: 18px">
-                        <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 10px; margin-left: 720px; margin-top: 10px">Xuất excel</button>
-                        <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 10px; margin-left: 30px; margin-top: 10px" data-toggle="modal" data-target="#myModalThemsach">Nhập excel</button>
+                        <input type="button" value="Xuất Excel" class="btn btn-primary btn-sm" style="margin-bottom: 10px; margin-left: 720px; margin-top: 10px"
+                               onclick="location.href='@Url.Action("ExportExcel", "Donhang")'" />
+                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#ModalNhapExcel">Nhập Excel</button>
 
                     </div>
                     <div class="card-body">
@@ -190,6 +191,38 @@
 
 
                 }
+
+                ----Modal nhap excel-----
+                <div class="modal fade" id="ModalNhapExcel" tabindex="-1" role="dialog" aria-labelledby="ModalNhapExcel" aria-hidden="true" style="top: 70px">
+                    <div class="modal-dialog" role="document" style="width: 450px">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel">Nhập File Excel</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                @using (Html.BeginForm("ImportExcel", "Donhang", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    <div class="form-group">
+                                        <div class="row p-b-10">
+                                            <div class="col-sm-5">
+                                                <p>Chọn File:</p>
+                                            </div>
+                                            <div class="col-sm-5" style="left: -55px">
+                                                <input type="file" id="dataFile" name="upload" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-sm">Import</button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div><!-- .row -->
