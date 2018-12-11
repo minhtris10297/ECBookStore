@@ -88,3 +88,6 @@ _[Ss]cripts
 
 .vs/KnowledgeStore/v15/Server/sqlite3/storage.ide
 *.ide
+*.lock
+.vs/KnowledgeStore/v15/Server/sqlite3/db.lock
+.vs/KnowledgeStore/v15/Server/sqlite3/storage.ide
