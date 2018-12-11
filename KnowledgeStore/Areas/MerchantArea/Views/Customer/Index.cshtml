@@ -112,35 +112,11 @@
                     </div>
                 </div>
 
-                <!-- Modal xử lý đơn hàng-->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
-                    <div class="modal-dialog" role="document" style="width: 450px">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="exampleModalLabel">Xử lý đơn hàng</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Name</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="text-input" placeholder="" class="form-control"></div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary btn-sm" " data-dismiss="modal">Hủy đơn hàng</button>
-                                <button type="button" data-toggle="modal" data-dismiss="modal" data-target="#exampleModalxacnhangiaohang" class="btn btn-info btn-sm">Xác nhận đơn hàng</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Modal xử lý gửi mail hàng loạt-->
                 <div class="modal fade" id="guimailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
                     <div class="modal-dialog" role="document" style="width: 450px">
+                        @using (Html.BeginForm("Index","Customer")) {
+                        }
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4 class="modal-title" id="exampleModalLabel">Gửi mail hàng loạt</h4>
@@ -149,27 +125,23 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Từ gmail: </label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="text-input" placeholder="" class="form-control"></div>
-                                    </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="email-input" class=" form-control-label">Chủ đề</label></div>
-                                        <div class="col-12 col-md-9"><input type="email" id="email-input" name="email-input" placeholder="" class="form-control"></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="chuDe" name="chuDe" placeholder="Chu De" class="form-control"></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Nội dung</label></div>
-                                        <div class="col-12 col-md-9"><textarea name="textarea-input" id="textarea-input" rows="9" placeholder="" class="form-control"></textarea></div>
+                                        <div class="col-12 col-md-9"><textarea name="noiDung" id="noiDung" rows="9" placeholder="" class="form-control"></textarea></div>
                                     </div>
 
-                                </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Đóng</button>
-                                <button type="button" class="btn btn-info btn-sm">Gửi</button>
+                                <button type="submit">Gửi</button>
                             </div>
                         </div>
+                        {   
+                        
                     </div>
                 </div>
             </div>
