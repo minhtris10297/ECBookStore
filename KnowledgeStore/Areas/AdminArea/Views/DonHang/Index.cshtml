@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Nguoidung";
+    ViewBag.Title = "Index";
     Layout = "~/Areas/AdminArea/Views/Shared/_Layout.cshtml";
 }
 
@@ -8,7 +8,7 @@
     <div class="col-sm-4">
         <div class="page-header float-left">
             <div class="page-title">
-                <h1>Người dùng</h1>
+                <h1>Đơn hàng</h1>
             </div>
         </div>
     </div>
@@ -17,48 +17,44 @@
 <div class="content mt-3">
     <div class="col-sm-12">
         <div class="widget widget-pie-chart">
+            <header class="widget-header">
+                <h6 class="widget-title">Tìm kiếm</h6>
+            </header>
+            <hr class="widget-separator" />
             <div class="widget-body clearfix">
                 <!-- new row -->
-                <header class="widget-header">
-                    <h6 class="widget-title">Tìm kiếm</h6>
-                </header>
-                <hr class="widget-separator" />
                 <div class="col-xs-6 col-sm-4 col-md-3">
                     <form>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Tên người dùng</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Tên người dùng">
+                            <label for="exampleInputEmail1">Mã đơn hàng</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Mã đơn hàng">
                         </div>
                     </form>
                 </div>
                 <div class="col-xs-6 col-sm-4 col-md-3">
                     <form>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Số điện thoại</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Số điện thoại">
+                            <label for="exampleInputEmail1">Ngày đặt</label>
+                            <input type="text" id="datetimepicker5" class="form-control" data-plugin="datetimepicker" data-options="{ defaultDate: '3/27/2018' }">
                         </div>
                     </form>
                 </div>
                 <div class="col-xs-6 col-sm-4 col-md-3">
                     <form>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email người dùng</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email người dùng">
+                            <label for="exampleInputEmail1">Thông tin khách hàng</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Tên khách hàng">
                         </div>
                     </form>
                 </div>
                 <div class="col-xs-6 col-sm-4 col-md-3">
                     <form>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Loại người dùng</label>
-                            <select class="form-control">
-                                <option></option>
-                                <option>Người bán</option>
-                                <option>Khách hàng</option>
-                            </select>
+                            <label for="exampleInputEmail1">Trạng thái</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Trạng thái">
                         </div>
                     </form>
-                    <div class="m-b-xl" style="padding: 18px">
+                    <div class="m-b-xl">
                         <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Tìm kiếm</button>
                         <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Làm mới</button>
                     </div>
@@ -71,7 +67,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <strong class="card-title">Danh sách người dùng</strong>
+                        <strong class="card-title">Danh sách đơn hàng</strong>
                     </div>
                     <div class="m-b-xl pull-right" style="padding: 18px">
                         <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 10px; margin-left: 720px; margin-top: 10px">Xuất excel</button>
@@ -82,59 +78,106 @@
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Tên người dùng</th>
-                                    <th>Loại người dùng</th>
-                                    <th>Số điện thoại</th>
-                                    <th>Email</th>
-                                    <th>Cửa hàng</th>
+                                    <th>Mã đơn hàng</th>
+                                    <th>Thông tin đặt hàng</th>
+                                    <th>Ngày xử lý</th>
+                                    <th>Số lượng</th>
+                                    <th>Thành tiền</th>
+                                    <th>Lợi nhuận</th>
                                     <th>Trạng thái</th>
                                     <th>Chức năng</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @{
-                                    foreach (var item in Model)
-                                    {
-                                        <tr>
-                                            <td>@item.HoTen</td>
-                                            <td>
-                                                Người mua
-                                            </td>
-                                            <td>
-                                                @item.SoDienThoai
-                                            </td>
-                                            <td>@item.Email</td>
-                                            <td>Không có</td>
-                                            <td>
-                                                Chờ xử lý
-                                            </td>
-                                            <td>
-                                                <div id="button">
-                                                    <div id="button1">
-                                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">Xử lý</button>
-                                                    </div>
-                                                    <div id="button2">
-                                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalXemchitiet">Chi tiết</button>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    }
-                                }
-                                    
+                                <tr>
+                                    <td>5555555</td>
+                                    <td>
+                                        <p>Nguyễn Văn B(09888888)</p>
+                                        <p> số 4, nguyễn trãi, TPHCM</p>
+                                    </td>
+                                    <td>
+                                        <p>Ngày mua: 31/10/2018</p>
+                                        <p>Ngày giao: 05/11/2018</p>
+                                    </td>
+                                    <td>1</td>
+                                    <td>500000</td>
+                                    <td>230000</td>
+                                    <td>
+                                        <button class="btn btn-info btn-sm" disabled>Chờ xử lý</button>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalXemchitiet">Chi tiết</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="p-r-18 p-r-0-sm w-full-ssm" style="width: 50%">
+                                            <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-info btn-sm">Xử lý</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5555555</td>
+                                    <td>
+                                        <p>Nguyễn Văn B(09888888)</p>
+                                        <p> số 4, nguyễn trãi, TPHCM</p>
+                                    </td>
+                                    <td>
+                                        <p>Ngày mua: 31/10/2018</p>
+                                        <p>Ngày giao: 05/11/2018</p>
+                                    </td>
+                                    <td>1</td>
+                                    <td>500000</td>
+                                    <td>230000</td>
+                                    <td>
+                                        <button class="btn btn-warning btn-sm">Giao hàng thành công</button>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalXemchitiet">Chi tiết</button>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>5555555</td>
+                                    <td>
+                                        <p>Nguyễn Văn B(09888888)</p>
+                                        <p> số 4, nguyễn trãi, TPHCM</p>
+                                    </td>
+                                    <td>
+                                        <p>Ngày mua: 31/10/2018</p>
+                                        <p>Ngày giao: 05/11/2018</p>
+                                    </td>
+                                    <td>1</td>
+                                    <td>500000</td>
+                                    <td>230000</td>
+                                    <td>
+                                        <button class="btn mw-md btn-success">Đang vận chuyển</button>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalXemchitiet">Chi tiết</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="p-r-18 p-r-0-sm w-full-ssm" style="width: 50%">
+                                            <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-info btn-sm">Xử lý</button>
+                                        </div>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
-
                     </div>
                 </div>
 
-                <!-- Modal xử lý thông tin người dùng-->
-
+                <!-- Modal xử lý đơn hàng-->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
                     <div class="modal-dialog" role="document" style="width: 450px">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="exampleModalLabel">Thông tin đăng ký</h4>
+                                <h4 class="modal-title" id="exampleModalLabel">Xử lý đơn hàng đang vận chuyển</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -144,69 +187,50 @@
                                     <div class="form-group">
                                         <div class="row p-b-10">
                                             <div class="col-sm-5">
-                                                <p>Tên người dùng: </p>
+                                                <p>Sách: </p>
                                             </div>
                                             <div class="col-sm-5" style="left: -55px">
-                                                <p>Nguyễn Văn B</p>
+                                                <p>Đăc nhân tâm </p>
+                                                <p>Số lượng 1 </p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="row p-b-10">
                                             <div class="col-sm-5">
-                                                <p>Loại người dùng: </p>
+                                                <p>Lợi nhuận: </p>
                                             </div>
                                             <div class="col-sm-5" style="left: -55px">
-                                                <p>Người bán</p>
+                                                <p>48.000</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="row p-b-10">
                                             <div class="col-sm-5">
-                                                <p>Số điện thoại:</p>
+                                                <p>Mã giao hàng:</p>
                                             </div>
                                             <div class="col-sm-5" style="left: -55px">
-                                                <p> 0981986775</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Địa chỉ email :</p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -55px">
-                                                <p> Nam@gmail.com</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Địa chỉ liên lạc:</p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -55px">
-                                                <p>123 Nguyễn Trãi, phường 3, quận 5,thành phố Hồ Chí Minh</p>
+                                                <p>Phiếu gửi 86254</p>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Hủy đăng ký</button>
-                                <button type="button" data-toggle="modal" data-dismiss="modal" data-target="#exampleModalxacnhangiaohang" class="btn btn-info btn-sm">Xác nhận đăng ký</button>
+                                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Hủy giao hàng</button>
+                                <button type="button" data-toggle="modal" data-dismiss="modal" data-target="#exampleModalxacnhangiaohang" class="btn btn-info btn-sm">Xác nhận giao hàng</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Modal xác nhận đăng ký-->
+                <!-- Modal xác nhận giao hàng-->
                 <div class="modal fade" id="exampleModalxacnhangiaohang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
                     <div class="modal-dialog" role="document" style="width: 450px">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="exampleModalLabel">Xác nhận thông tin đăng ký</h4>
+                                <h4 class="modal-title" id="exampleModalLabel">Xác nhận giao hàng</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -215,30 +239,29 @@
                                 <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                     <div class="row form-group">
                                         <div class="col col-md-8"><label for="text-input" class=" form-control-label">Chứng minh nhân dân: </label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="text-input" placeholder="" class="form-control"></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="text-input" placeholder="chứng minh nhân dân" class="form-control"></div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-8"><label for="email-input" class=" form-control-label">Upload biên bản đăng ký:</label></div>
+                                        <div class="col col-md-8"><label for="email-input" class=" form-control-label">Upload biên bản bàn giao:</label></div>
                                         <div class="col-12 col-md-9"><input type="file" id="file-input" name="file-input" class="form-control-file"></div>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">hủy</button>
-                                <button type="button" data-toggle="modal" class="btn btn-info btn-sm">Xác nhân</button>
+                                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Thoát</button>
+                                <button type="button" data-toggle="modal" class="btn btn-info btn-sm">Xác nhận</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-
-                <!-- Xem chi tiết -->
+                <!-- thông tin chi tiet don hàng  -->
 
                 <div class="modal fade" id="exampleModalXemchitiet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
                     <div class="modal-dialog" role="document" style="width: 450px">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="exampleModalLabel">Thông tin chi tiết người dùng</h4>
+                                <h4 class="modal-title" id="exampleModalLabel">Thông tin chi tiết đơn hàng</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -248,29 +271,30 @@
                                     <div class="form-group">
                                         <div class="row p-b-10">
                                             <div class="col-sm-5">
-                                                <p>Tên người dùng: </p>
+                                                <p>Mã đơn hàng: </p>
                                             </div>
-                                            <div class="col-sm-5" style="left: -55px">
+                                            <div class="col-sm-5" style="left: -35px">
+                                                <p>555555</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row p-b-10">
+                                            <div class="col-sm-5">
+                                                <p>Thông tin đặt hàng:</p>
+                                            </div>
+                                            <div class="col-sm-5" style="left: -35px">
                                                 <p>Nguyễn Văn B</p>
+                                                <p>số 4, nguyễn trãi, TPHCM</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="row p-b-10">
                                             <div class="col-sm-5">
-                                                <p>Loại người dùng: </p>
+                                                <p>Ngày xử lý:</p>
                                             </div>
-                                            <div class="col-sm-5" style="left: -55px">
-                                                <p>Người bán</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Số điện thoại:</p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -55px">
+                                            <div class="col-sm-5" style="left: -35px">
                                                 <p> 0981986775</p>
                                             </div>
                                         </div>
@@ -278,38 +302,55 @@
                                     <div class="form-group">
                                         <div class="row p-b-10">
                                             <div class="col-sm-5">
-                                                <p>Địa chỉ email :</p>
+                                                <p>Số lượng :</p>
                                             </div>
-                                            <div class="col-sm-5" style="left: -55px">
-                                                <p> Nam@gmail.com</p>
+                                            <div class="col-sm-5" style="left: -35px">
+                                                <p>1</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="row p-b-10">
                                             <div class="col-sm-5">
-                                                <p>Địa chỉ liên lạc:</p>
+                                                <p>Thành tiền</p>
                                             </div>
-                                            <div class="col-sm-5" style="left: -55px">
-                                                <p>123 Nguyễn Trãi, phường 3, quận 5,thành phố Hồ Chí Minh</p>
+                                            <div class="col-sm-5" style="left: -35px">
+                                                <p>50.000đ</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row p-b-10">
+                                            <div class="col-sm-5">
+                                                <p>Lợi nhuận</p>
+                                            </div>
+                                            <div class="col-sm-5" style="left: -35px">
+                                                <p>48.000đ</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row p-b-10">
+                                            <div class="col-sm-5">
+                                                <p>Trang thái</p>
+                                            </div>
+                                            <div class="col-sm-5" style="left: -35px">
+                                                <p>Đang chờ xử lý</p>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" style="margin-left: 60px; margin-top:10px">Đóng</button>
+                                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" style="margin-left: 60px; margin-top: 10px">Đóng</button>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div><!-- .row -->
     </div> <!-- .content -->
-</div><!-- /#right-panel -->
-<!-- Right Panel -->
+</div>
 
 
 @section PluginCSS{
@@ -343,3 +384,4 @@
     <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
 
 }
+

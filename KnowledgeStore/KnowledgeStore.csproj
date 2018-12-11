@@ -160,7 +160,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\AdminArea\AdminAreaAreaRegistration.cs" />
     <Compile Include="Areas\AdminArea\Controllers\ADHomeController.cs" />
+    <Compile Include="Areas\AdminArea\Controllers\DonHangController.cs" />
+    <Compile Include="Areas\AdminArea\Controllers\DuLieuController.cs" />
+    <Compile Include="Areas\AdminArea\Controllers\HoaHongController.cs" />
+    <Compile Include="Areas\AdminArea\Controllers\KipXuController.cs" />
     <Compile Include="Areas\AdminArea\Controllers\NguoiDungController.cs" />
+    <Compile Include="Areas\AdminArea\Controllers\QuanLySachController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\AccountsMerchantController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\BaseController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\BookManagerController.cs" />
@@ -5608,6 +5613,11 @@
     <Content Include="Assets\Admin\Infinity-v2.0.0\vendors\themify-icons\fonts\themify.woff" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\vendors\themify-icons\README.md" />
     <Content Include="Areas\AdminArea\Views\NguoiDung\Index.cshtml" />
+    <Content Include="Areas\AdminArea\Views\HoaHong\Index.cshtml" />
+    <Content Include="Areas\AdminArea\Views\DonHang\Index.cshtml" />
+    <Content Include="Areas\AdminArea\Views\QuanLySach\Index.cshtml" />
+    <Content Include="Areas\AdminArea\Views\DuLieu\Index.cshtml" />
+    <Content Include="Areas\AdminArea\Views\KipXu\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
