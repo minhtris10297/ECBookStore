@@ -125,31 +125,24 @@ namespace KnowledgeStore.Areas.AdminArea.Controllers
                 {
                     if (count > 0)
                     {
-                        Merchant merchant = new Merchant()
-                        {                                                     
-                            Email = reader.GetString(1),
-                            MatKhauMaHoa = reader.GetString(2),
-                            HoTen = reader.GetString(3),
-                            DiaChi = reader.GetString(4),
-                            GioiTinhID = int.Parse(reader.GetString(5)),
-                            TenCuaHang = reader.GetString(6),
-                            SoDienThoai = reader.GetString(7),
-                            SoLuongKIPXu = int.Parse(reader.GetString(8)),
-                            TrangThai = bool.Parse(reader.GetString(9)),
-                            NgayTao = DateTime.Parse(reader.GetString(10))
-                        };
-                        
-                        db.Merchants.Add(merchant);
+                        int chiTietDonHangID = Int32.Parse(reader.GetString(0)),
+                            statusOrder = (int)reader.GetDouble(7);
+
+                        db.ChiTietDonHangs.Where(ctdh => ctdh.ChiTietDonHangID == chiTietDonHangID)
+                            .First().TinhTrangDonHangID = statusOrder;
+
                         db.SaveChanges();
                     }
                     count++;
                 }
-                var result = db.Merchants.ToList();
+                var result = db.ChiTietDonHangs.ToList();
 
 
 
-
-                return View("Index", result);
+                ViewBag.HoaHong = db.HoaHongs.Where(p => p.TrangThai == true).First().PhanTranHoaHong;
+                ViewBag.DropdownStatus = new SelectList(db.TinhTrangDonHangs, "TinhTrangDonHangID", "TinhTrangDonHang1");
+                var listCTDH = db.ChiTietDonHangs.OrderByDescending(m => m.DonHang.NgayDat).ToList();
+                return View("Index", listCTDH);
             }
         }
     }
