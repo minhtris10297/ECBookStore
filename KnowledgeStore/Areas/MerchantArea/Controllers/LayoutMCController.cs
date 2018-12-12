@@ -32,6 +32,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             }
             var merchantID = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
             ViewBag.MerchantID = merchantID;
+            ViewBag.MerchantName = db.Merchants.Where(m => m.MerchantID == merchantID).Select(m => m.HoTen).FirstOrDefault();
             
             return PartialView();
         }

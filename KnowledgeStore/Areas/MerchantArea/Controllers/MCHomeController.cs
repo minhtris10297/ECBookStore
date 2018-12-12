@@ -7,6 +7,7 @@ using PagedList;
 using Model.ViewModel;
 using KnowledgeStore.Common;
 using Model.EntityFramework;
+using Newtonsoft.Json;
 
 namespace KnowledgeStore.Areas.MerchantArea.Controllers
 {
@@ -48,6 +49,40 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             int pageSize = 6;
             int pageNumber = (page ?? 1);
             return View(listSach.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult OverallPage()
+        {
+            var sessionUser = (UserLogin)Session[CommonConstants.USERMERCHANT_SESSION];
+            if (sessionUser == null)
+            {
+                return RedirectToAction("Login", "AccountsMerchant");
+            }
+            var date = System.DateTime.Now;
+            var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
+            var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+            var dayFirst = firstDayOfMonth.Day;
+            var dayLast = lastDayOfMonth.Day;
+
+            var listDT = db.ChiTietDonHangs.Where(m => m.TinhTrangDonHangID == 4);
+            List<DataPoint> dataPoints = new List<DataPoint>();
+            var count = 0;
+            for(int i=dayFirst;i<=dayLast;i++)
+            {
+                if (count <= dayLast)
+                {
+                    var dateTemp = firstDayOfMonth;
+                    var countOrderSuccess = listDT.Where(m => m.DonHang.NgayDat == dateTemp).Count();
+                    count++;
+                    dataPoints.Add(new DataPoint(countOrderSuccess, count));
+                    firstDayOfMonth.AddDays(count + 1);
+                }
+            }
+
+            
+
+            ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
+            return View();
         }
     }
 }

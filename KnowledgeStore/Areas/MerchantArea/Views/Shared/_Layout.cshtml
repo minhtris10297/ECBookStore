@@ -34,7 +34,10 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="actie">
-                        <a href="@Url.Action("Index","MCHome")"> <i class="menu-icon fa fa-dashboard"></i>Tổng quan </a>
+                        <a href="@Url.Action("OverallPage","MCHome")"> <i class="menu-icon fa fa-dashboard"></i>Tổng quan </a>
+                    </li>
+                    <li class="active">
+                        <a href="@Url.Action("Index","MCHome")"> <i class="menu-icon fa fa-dashboard"></i>Quản lý cửa hàng </a>
                     </li>
                     <li class="active">
                         <a href="@Url.Action("Index","OrderManager")"> <i class="menu-icon fa fa-table"></i>Quản lý đơn hàng</a>
@@ -44,9 +47,6 @@
                     </li>
                     <li class="active">
                         <a href="@Url.Action("Index","BookManager")"> <i class="menu-icon fa fa-th"></i>Quản lý sách</a>
-                    </li>
-                    <li class="active">
-                        <a href="#"> <i class="menu-icon fa fa-tasks"></i>Doanh thu thanh toán</a>
                     </li>
                     <li class="active">
                         <a href="@Url.Action("Index","KPIXu")"> <i class="menu-icon ti-email"></i>Quản lý xu KIP</a>

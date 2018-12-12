@@ -37,7 +37,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                     userSession.Email = model.Email;
                     Session[CommonConstants.USERMERCHANT_SESSION] = null;
                     Session.Add(CommonConstants.USERMERCHANT_SESSION, userSession);
-                    return RedirectToAction("Index", "MCHome");
+                    return RedirectToAction("OverallPage", "MCHome");
                 }
                 else if (result == 0)
                 {
