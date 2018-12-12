@@ -1,4 +1,5 @@
-﻿using KnowledgeStore.Common;
+﻿using Common;
+using KnowledgeStore.Common;
 using Model.EntityFramework;
 using Model.ViewModel;
 using System;
@@ -83,6 +84,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             var ctdh = db.ChiTietDonHangs.Find(idCtdh);
             ctdh.TinhTrangDonHangID = 2;
             db.SaveChanges();
+            MailHelper.SendMailOrderReceived(ctdh.DonHang.Customer.Email, "KnowledgeStore thông báo tình trạng đơn hàng", ctdh.ChiTietDonHangID.ToString(),ctdh.DonHang.Customer.HoTen);
 
             var listCTDH = db.ChiTietDonHangs.Where(m => m.MerchantID == id).OrderByDescending(m => m.DonHang.NgayDat).ToList();
             return RedirectToAction("Index","OrderManager",new { id=id});

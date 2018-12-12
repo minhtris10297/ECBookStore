@@ -1,0 +1,316 @@
+﻿@model Model.EntityFramework.Customer
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- breadcrumb -->
+<div class="container">
+    <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+        <a href="/Assets/Customer/cozastore/index.html" class="stext-109 cl8 hov-cl1 trans-04">
+            Trang chủ
+            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+        </a>
+
+        <a href="/Assets/Customer/cozastore/blog.html" class="stext-109 cl8 hov-cl1 trans-04">
+            Thông tin tài khoản
+        </a>
+    </div>
+</div>
+
+
+<!-- Content page -->
+<section class="bg0 p-t-52 p-b-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-lg-3 p-b-80">
+                <div class="side-menu">
+                    <div class="flex-w flex-t p-b-68">
+                        <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
+                            <img src="/Assets/Customer/cozastore/images/avatar-01.jpg" alt="AVATAR">
+                        </div>
+
+                        <div class="size-207">
+                            <div class="flex-w flex-sb-m p-b-17">
+                                <span class="mtext-107 cl2 p-r-20">
+                                    @Model.HoTen
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-t-55">
+                            <ul>
+                                <a href="/Assets/Customer/cozastore/#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                    Thông tin cá nhân
+                                </a>
+
+                                <li class="bor18">
+                                    <a href="/Assets/Customer/cozastore/#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                        Quản lý đơn hàng
+                                    </a>
+                                </li>
+
+                                <li class="bor18">
+                                    <a href="/Assets/Customer/cozastore/#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                        Quản lý Knowledge xu
+                                    </a>
+                                </li>
+
+                                <li class="bor18">
+                                    <a href="/Assets/Customer/cozastore/#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                        Nhận xét sản phẩm đã mua
+                                    </a>
+                                </li>
+
+                                <li class="bor18">
+                                    <a href="/Assets/Customer/cozastore/#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                        Nhận xét của tôi
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-8 col-lg-9 p-b-80">
+                <div class="p-r-45 p-r-0-lg">
+                    <!--  -->
+                    <div class="p-t-32">
+                        <h4>
+                            Thông tin tài khoản
+                        </h4>
+
+                    </div>
+
+                    <div class="flex-w flex-t p-t-16">
+                        <p class="stext-117 cl6 p-b-26">
+                            Tài khoản đăng nhập bằng Gmail
+                        </p>
+                    </div>
+
+
+                    @using (Html.BeginForm())
+                    {
+                    <div class="row p-b-25">
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.CustomerID)
+                        @Html.HiddenFor(model => model.TrangThai)
+                        @Html.HiddenFor(model => model.MatKhauMaHoa)
+                        @Html.HiddenFor(model => model.IDGoogle)
+                        @Html.HiddenFor(model => model.IDFacebook)
+                        @Html.HiddenFor(model => model.NgayTao)
+
+                        <div class="col-sm-2 p-b-5" style="padding: 15px">
+                            <p>Họ và tên:</p>
+                        </div>
+                        <div class="col-sm-10 p-b-5">
+                            <div class="bor19 size-210 m-b-10">
+                                <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" id="HoTen" name="HoTen" value="@Model.HoTen">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2 p-b-5" style="padding: 15px">
+                            <p>Số điện thoại:</p>
+                        </div>
+                        <div class="col-sm-10 p-b-5">
+                            <div class="bor19 size-210 m-b-10">
+                                <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="number" id="SoDienThoai" name="SoDienThoai" value="@Model.SoDienThoai">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2 p-b-5" style="padding: 15px">
+                            <p>Email:</p>
+                        </div>
+                        <div class="col-sm-10 p-b-5">
+                            <div class="bor19 size-210 m-b-10">
+                                <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" id="Email" name="Email" value="@Model.Email">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2 p-b-5" style="padding: 15px">
+                            <p>Địa chỉ:</p>
+                        </div>
+                        <div class="col-sm-10 p-b-5">
+                            <div class="bor19 size-210 m-b-10">
+                                <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" id="DiaChi" name="DiaChi" value="@Model.DiaChi">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2 p-b-5" style="padding: 15px">
+                            <p>Giới tính:</p>
+                        </div>
+
+                        <div class="col-sm-6 p-b-5">
+                            <div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9" style="width: 100px">
+                                @Html.DropDownList("GioiTinhID", null, htmlAttributes: new { @class = "form-control" })
+                                <div class="dropDownSelect2"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 p-b-5" style="padding: 15px">
+
+                        </div>
+                        <div class="col-sm-10 p-b-5">
+                            <button type="submit" class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04">
+                                Cập nhật
+                            </button>
+                        </div>
+                    </div>
+                            }
+
+
+                        
+                    </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+@section PluginCSS{
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/fonts/linearicons-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/Assets/Customer/cozastore/css/main.css">
+    <!--===============================================================================================-->
+}
+
+@section PluginJS{
+    <!--===============================================================================================-->
+    <script src="/Assets/Customer/cozastore/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Assets/Customer/cozastore/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Assets/Customer/cozastore/vendor/bootstrap/js/popper.js"></script>
+    <script src="/Assets/Customer/cozastore/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Assets/Customer/cozastore/vendor/select2/select2.min.js"></script>
+    <script>
+        $(".js-select2").each(function () {
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="/Assets/Customer/cozastore/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Assets/Customer/cozastore/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+        $('.js-pscroll').each(function () {
+            $(this).css('position', 'relative');
+            $(this).css('overflow', 'hidden');
+            var ps = new PerfectScrollbar(this, {
+                wheelSpeed: 1,
+                scrollingThreshold: 1000,
+                wheelPropagation: false,
+            });
+
+            $(window).on('resize', function () {
+                ps.update();
+            })
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="/Assets/Customer/cozastore/js/main.js"></script>
+
+    <script>
+        $(function () {
+            $("#changepass").click(function () {
+                if ($(this).is(":checked")) {
+                    $("#dvPassport").show();
+                } else {
+                    $("#dvPassport").hide();
+                }
+            });
+        });
+    </script>
+
+    <style>
+        .containerxukip {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 1px;
+            cursor: pointer;
+            font-size: 16px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+            /* Hide the browser's default radio button */
+            .containerxukip input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                height: 0;
+                width: 0;
+            }
+
+        /* Create a custom radio button */
+        .checkmarkxukip {
+            position: absolute;
+            top: -5;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+            border-radius: 50%;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .containerxukip:hover input ~ .checkmarkxukip {
+            background-color: #ccc;
+        }
+
+        /* When the radio button is checked, add a blue background */
+        .containerxukip input:checked ~ .checkmarkxukip {
+            background-color: #2196F3;
+        }
+
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        .checkmarkxukip:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the indicator (dot/circle) when checked */
+        .containerxukip input:checked ~ .checkmarkxukip:after {
+            display: block;
+        }
+
+        /* Style the indicator (dot/circle) */
+        .containerxukip .checkmarkxukip:after {
+            top: 9px;
+            left: 9px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+    </style>
+}
+

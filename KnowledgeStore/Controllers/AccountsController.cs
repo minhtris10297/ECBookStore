@@ -7,7 +7,9 @@ using Model.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -264,6 +266,47 @@ namespace KnowledgeStore.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
+            return View(customer);
+        }
+
+        public ActionResult Edit()
+        {
+            var sessionUser = (UserLogin)Session[CommonConstants.USER_SESSION];
+
+            if (sessionUser == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
+            var id = db.Customers.Where(m => m.Email == sessionUser.Email).Select(m => m.CustomerID).FirstOrDefault();
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.GioiTinhID = new SelectList(db.GioiTinhs, "GioiTinhID", "TenGioiTinh", customer.GioiTinhID);
+            return View(customer);
+        }
+
+        // POST: AdminArea/Customers/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "CustomerID,Email,IDGoogle,IDFacebook,HoTen,DiaChi,SoDienThoai,MatKhauMaHoa,GioiTinhID,NgayTao,TrangThai")] Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+
+                db.Entry(customer).State = EntityState.Modified;
+                db.SaveChanges();
+                var userSession = new UserLogin();
+                userSession.UserName = customer.HoTen;
+                userSession.Email = customer.Email;
+                Session[CommonConstants.USER_SESSION] = null;
+                Session[CommonConstants.USER_SESSION] = userSession;
+                return RedirectToAction("Index");
+            }
+            ViewBag.GioiTinhID = new SelectList(db.GioiTinhs, "GioiTinhID", "TenGioiTinh", customer.GioiTinhID);
             return View(customer);
         }
         protected override void Dispose(bool disposing)

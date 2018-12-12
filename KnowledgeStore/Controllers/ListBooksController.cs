@@ -112,22 +112,26 @@ namespace KnowledgeStore.Controllers
                               on a.DonHangID equals b.DonHangID
                               where a.SachID == id
                               select b.CustomerID;
-                if (muahang.Count() != 0 && db.Customers.Find(muahang.Min()).Email.ToString() == session.Email.ToString())
+                if(muahang.Count() != 0)
                 {
-                    ViewBag.muahang = 1;
-
-                    //kiem tra danh gia hay chua
-                    var cm = from a in db.Customers
-                             join b in db.DonHangs
-                             on a.CustomerID equals b.CustomerID
-                             where a.Email == session.Email
-                             select b.DonHangID;
-                    var ctdonhang = db.ChiTietDonHangs.Where(p => p.SachID == id).First().ChiTietDonHangID;
-                    if (db.ChiTietDonHangs.Find(ctdonhang).TrangThaiDanhGia == true)
+                    if (db.Customers.Find(muahang.Min()).Email.ToString() == session.Email.ToString())
                     {
-                        ViewBag.DaNhanXet = 1;
+                        ViewBag.muahang = 1;
+
+                        //kiem tra danh gia hay chua
+                        var cm = from a in db.Customers
+                                 join b in db.DonHangs
+                                 on a.CustomerID equals b.CustomerID
+                                 where a.Email == session.Email
+                                 select b.DonHangID;
+                        var ctdonhang = db.ChiTietDonHangs.Where(p => p.SachID == id).First().ChiTietDonHangID;
+                        if (db.ChiTietDonHangs.Find(ctdonhang).TrangThaiDanhGia == true)
+                        {
+                            ViewBag.DaNhanXet = 1;
+                        }
                     }
                 }
+                
 
             }
 

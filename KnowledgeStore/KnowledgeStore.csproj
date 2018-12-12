@@ -162,6 +162,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\AdminArea\AdminAreaAreaRegistration.cs" />
+    <Compile Include="Areas\AdminArea\Controllers\CustomersController.cs" />
     <Compile Include="Areas\AdminArea\Controllers\SachesController.cs" />
     <Compile Include="Areas\AdminArea\Controllers\ADHomeController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\AccountsMerchantController.cs" />
@@ -3441,6 +3442,11 @@
     <Content Include="Areas\MerchantArea\Views\LayoutMC\LogoTop.cshtml" />
     <Content Include="Areas\MerchantArea\Views\LayoutMC\TopbarAccount.cshtml" />
     <Content Include="Areas\MerchantArea\Views\Customer\Index.cshtml" />
+    <Content Include="Areas\AdminArea\Views\Customers\Create.cshtml" />
+    <Content Include="Areas\AdminArea\Views\Customers\Delete.cshtml" />
+    <Content Include="Areas\AdminArea\Views\Customers\Details.cshtml" />
+    <Content Include="Areas\AdminArea\Views\Customers\Edit.cshtml" />
+    <Content Include="Areas\AdminArea\Views\Customers\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -3500,6 +3506,7 @@
     <Content Include="Views\Accounts\AdditionalInfoGg.cshtml" />
     <Content Include="Views\OrderDetail\Index.cshtml" />
     <Content Include="Views\MerchantShop\Index.cshtml" />
+    <Content Include="Views\Accounts\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
