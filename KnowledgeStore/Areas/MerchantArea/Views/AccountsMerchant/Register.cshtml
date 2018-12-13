@@ -34,7 +34,7 @@
 
         <div class="simple-page-form animated flipInY" id="signup-form">
             <h4 class="form-title m-b-xl text-center">Tạo tài khoản mới</h4>
-            @using (Html.BeginForm("Register","AccountsMerchant", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("Register", "AccountsMerchant", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 <div class="form-group">
@@ -75,7 +75,7 @@
                 </div>
                 <div>
                     <label>Ảnh đại diện</label>
-                    <input type="file" class="form-group" name="imageAvatar"/>
+                    <input type="file" class="form-group" name="imageAvatar" />
                 </div>
                 <div class="form-group">
                     @Html.DropDownList("GioiTinhID", null, htmlAttributes: new { @class = "form-control", @placeholder = "Giới tính", required = "required" })
@@ -142,6 +142,13 @@
                 $('#lblRePass').text("");
             }
         });
+    </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9TyMQ4y3OFtS9ho3C1wB7Lwh-10PtdVY&libraries=places"></script>
+    <script>
+
+        var input = document.getElementById('DiaChi');
+
+        autocomplete = new google.maps.places.Autocomplete(input);
     </script>
 </body>
 </html>

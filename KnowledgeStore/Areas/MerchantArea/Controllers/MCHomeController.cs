@@ -74,7 +74,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                     var dateTemp = firstDayOfMonth;
                     var countOrderSuccess = listDT.Where(m => m.DonHang.NgayDat == dateTemp).Count();
                     count++;
-                    dataPoints.Add(new DataPoint(countOrderSuccess, count));
+                    dataPoints.Add(new DataPoint( count, countOrderSuccess));
                     firstDayOfMonth.AddDays(count + 1);
                 }
             }
