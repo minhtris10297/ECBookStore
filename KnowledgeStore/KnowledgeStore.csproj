@@ -3538,6 +3538,7 @@
     <Content Include="Views\OrderDetail\Index.cshtml" />
     <Content Include="Views\MerchantShop\Index.cshtml" />
     <Content Include="Views\Accounts\Edit.cshtml" />
+    <Content Include="Views\Home\MerchantRegSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

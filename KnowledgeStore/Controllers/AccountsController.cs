@@ -309,6 +309,7 @@ namespace KnowledgeStore.Controllers
             ViewBag.GioiTinhID = new SelectList(db.GioiTinhs, "GioiTinhID", "TenGioiTinh", customer.GioiTinhID);
             return View(customer);
         }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

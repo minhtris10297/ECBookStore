@@ -143,5 +143,10 @@ namespace KnowledgeStore.Controllers
 
             return View();
         }
+
+        public ActionResult MerchantRegSuccess()
+        {
+            return View();
+        }
     }
 }
