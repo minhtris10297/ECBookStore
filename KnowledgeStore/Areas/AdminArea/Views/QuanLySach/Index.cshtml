@@ -1,0 +1,217 @@
+﻿@using Common
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdminArea/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>Quản lý sách</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content mt-3">
+    <div class="col-sm-12">
+        <div class="widget widget-pie-chart">
+            <div class="widget-body clearfix">
+                <!-- new row -->
+                @using (Html.BeginForm("Index", "QuanLySach", FormMethod.Post))
+                {
+                    <header class="widget-header">
+                        <h6 class="widget-title">Tìm kiếm</h6>
+                    </header>
+                    <hr class="widget-separator" />
+
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tên sách</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Tên sách" name="TenSach">
+                        </div>
+
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Loại sách</label>
+                            @Html.DropDownList("DropdownStatus", null, "Chọn Thể Loại Sách ", new { @class = "form-control" })
+                        </div>
+
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nhà xuất bản</label>
+                            @Html.DropDownList("DropdownStatusNXB", null, "Chọn Nhà Xuất Bản", new { @class = "form-control" })
+                        </div>
+
+                    </div>
+                    
+                    <!-- chỗ này lọc sách theo 3 input ở trên-->
+                    <div class="col-xs-6 col-sm-4 col-md-3" style="margin-top:30px">
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-sm" style="padding: 8px">Tìm kiếm</button>
+                            <button type="reset" class="btn btn-primary btn-sm" style="padding: 8px">Làm mới</button>
+                        </div>
+
+                    </div>
+
+
+                }
+            </div><!-- .widget -->
+        </div>
+
+
+        <div class="row" style="margin-top: 20px">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title">Danh sách sách</strong>
+                    </div>
+                    @*<div class="m-b-xl pull-right" style="padding: 18px">
+                        <input type="button" value="Xuất Excel" class="btn btn-primary btn-sm" style="margin-bottom: 10px; margin-left: 800px; margin-top: 10px"
+                               onclick="location.href='@Url.Action("ExportExcel", "QuanLySach")'" />
+                        
+                    </div>*@
+                    <div class="card-body">
+                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Thông tin sách</th>
+                                    <th>Tồn kho</th>
+                                    <th>Giá bán</th>
+                                    <th>Giá Khuyến Mãi</th>
+                                    <th>Thêm mới</th>
+                                    <th>Tên Tác Giả</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <p><font color="#CD090C"><b>@item.TenSach</b></font></p>
+                                                <p>ID Sách: @item.SachID</p>
+                                                <p>Thể loại: @item.TheLoai.TenTheLoai</p>
+                                                <p>@item.NhaXuatBan.TenNXB</p>
+                                            </td>
+                                            <td>@item.SoLuong</td>
+                                            <td>@item.GiaTien</td>
+
+                                            <td>@item.GiaKhuyenMai </td>
+                                            @if (item.TrangThai == true)
+                                            {
+                                                <td>Đang bán</td>
+                                            }
+                                            else
+                                            {
+                                                using (Html.BeginForm("DuyetSach", "QuanLySach", new { id = @item.SachID }, FormMethod.Post))
+                                                {
+                                                    <td>
+                                                        <button type="submit" class="btn btn-primary btn-sm">Duyệt</button>
+                                                    </td>
+
+                                                }
+                                            }
+
+                                            <td>@item.TacGia</td>
+
+
+
+                                        </tr>
+                                    }
+                                }
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*----Modal nhap excel-----*@
+        <div class="modal fade" id="ModalNhapExcel" tabindex="-1" role="dialog" aria-labelledby="ModalNhapExcel" aria-hidden="true" style="top: 70px">
+            <div class="modal-dialog" role="document" style="width: 450px">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">Nhập File Excel</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @using (Html.BeginForm("ImportExcel", "QuanLySach", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <div class="form-group">
+                                <div class="row p-b-10">
+                                    <div class="col-sm-5">
+                                        <p>Chọn File:</p>
+                                    </div>
+                                    <div class="col-sm-5" style="left: -55px">
+                                        <input type="file" id="dataFile" name="upload" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-sm">Import</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        @section PluginCSS{
+            <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/css/bootstrap.min.css">
+            <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/font-awesome/css/font-awesome.min.css">
+            <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/themify-icons/css/themify-icons.css">
+            <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/flag-icon-css/css/flag-icon.min.css">
+            <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/selectFX/css/cs-skin-elastic.css">
+            <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+            <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
+
+            <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/assets/css/style.css">
+
+            <link rel="stylesheet" type="text/css" href="~/Assets/Admin/Infinity-v2.0.0/assets/css/button.css">
+
+            <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+
+
+        }
+
+        @section PLuginJS{
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/jquery/dist/jquery.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/popper.js/dist/umd/popper.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/assets/js/main.js"></script>
+
+
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/jszip/dist/jszip.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/pdfmake/build/pdfmake.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/pdfmake/build/vfs_fonts.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/assets/js/init-scripts/data-table/datatables-init.js"></script>
+
+        }
+
+

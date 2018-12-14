@@ -1,0 +1,318 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdminArea/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>Dữ liệu</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .accordion {
+        background-color: #f1f2f7;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
+    }
+
+        .accordion:hover
+        {
+            background-color:white;
+        }
+        /*.active {
+            background-color: #272C33;
+        }*/
+        
+    .panel {
+        padding: 0 18px;
+        display: none;
+        background-color: white;
+        overflow: hidden;
+    }
+</style>
+
+<div class="content mt-3">
+    <div class="col-sm-12">
+        <div class="widget widget-pie-chart">
+
+
+            <button class="accordion">Sao lưu dữ liệu</button>
+            <div class="panel">
+                <div class="widget-body clearfix" style="margin-top: 20px; margin-bottom: 20px">
+                    <!-- new row -->
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Tên sao lưu</label>
+                                <input type="text" class="form-control" placeholder="Tên sao lưu">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Công việc</label>
+                                <input type="text" class="form-control" placeholder="Công việc">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Định dạng</label>
+                                <input type="text" class="form-control" placeholder="Định dạng">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Nơi lưu trữ</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nơi lưu trữ">
+                            </div>
+                        </form>
+                        <div class="m-b-xl">
+                            <button type="button" class="btn btn-warning btn-sm" style="padding: 8px">Lưu</button>
+                            <button type="button" class="btn btn-warning btn-sm" style="padding: 8px; margin-left: 20px">Làm mới</button>
+                        </div>
+                    </div>
+                </div><!-- .widget -->
+            </div>
+
+            <button class="accordion">Lịch trình</button>
+            <div class="panel">
+                <form>
+                    <table width="100%" style="margin-top: 20px;margin-bottom: 20px">
+                        <tr>
+                            <th>Lịch trình</th>
+                            <th></th>
+                            <th>Giờ</th>
+                            <th></th>
+                            <th>Phút</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px 5px; margin: 5px 0 5px 5px">
+                                <input type="checkbox" name="" /> Tuần
+                            </td>
+                            <td style="padding: 5px 5px; margin: 5px 0 5px 5px">
+                                Trong ngày
+                                <select name="ngay">
+                                    <option>Thứ hai</option>
+                                    <option>Thứ ba</option>
+                                    <option>Thứ tư</option>
+                                    <option>Thứ năm</option>
+                                    <option>Thứ sáu</option>
+                                    <option>Thứ bảy</option>
+                                    <option>Thứ chủ nhật</option>
+
+                                </select>
+                            </td>
+                            <td style="padding: 5px 5px; margin: 5px 0 5px 5px">
+                                Giờ
+                                <select name="gio">
+                                    <option selected> </option>
+                                    <script>
+                                        for (i = 1; i <= 24; i++)
+                                            document.write('<option value="' + i + '">' + i + '</option>')
+                                    </script>
+                                </select>
+                            </td>
+                            <td></td>
+                            <td style="padding: 5px 5px; margin: 5px 0 5px 5px">
+                                Phút
+                                <select name="phut">
+                                    <option selected> </option>
+                                    <script>
+                                        for (i = 1; i <= 60; i++)
+                                            document.write('<option value="' + i + '">' + i + '</option>')
+                                    </script>
+                                </select>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px 5px; margin: 5px 0 5px 5px">
+                                <input type="checkbox" name="" /> Ngày
+                            </td>
+                            <td></td>
+                            <td style="padding: 5px 5px; margin: 5px 0 5px 5px">
+                                Giờ
+                                <select name="gio">
+                                    <option selected> </option>
+                                    <script>
+                                        for (i = 1; i <= 24; i++)
+                                            document.write('<option value="' + i + '">' + i + '</option>')
+                                    </script>
+                                </select>
+                            </td>
+                            <td></td>
+                            <td style="padding: 5px 5px; margin: 5px 0 5px 5px">
+                                Phút
+                                <select name="phut">
+                                    <option selected> </option>
+                                    <script>
+                                        for (i = 1; i <= 60; i++)
+                                            document.write('<option value="' + i + '">' + i + '</option>')
+                                    </script>
+                                </select>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="button" class="btn btn-warning btn-sm">Lưu</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-warning btn-sm">Làm mới</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
+
+            <script>
+                var acc = document.getElementsByClassName("accordion");
+                var i;
+
+                for (i = 0; i < acc.length; i++) {
+                    acc[i].addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        var panel = this.nextElementSibling;
+                        if (panel.style.display === "block") {
+                            panel.style.display = "none";
+                        } else {
+                            panel.style.display = "block";
+                        }
+                    });
+                }
+            </script>
+
+        </div>
+    </div>
+</div>
+<div class="content mt-3">
+    <div class="col-sm-12">
+
+
+
+        <div class="row" style="margin-top: 20px">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title">Danh sách sao lưu dữ liệu</strong>
+                    </div>
+
+                    <div class="card-body">
+                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Tên file</th>
+                                    <th>Ngày lưu</th>
+                                    <th>Dung lượng</th>
+                                    <th>Nơi lưu trữ</th>
+                                    <th>Định dạng</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Database_back_up</td>
+                                    <td>
+                                        01/01/2018
+                                    </td>
+                                    <td>
+                                        100MB
+                                    </td>
+                                    <td>Google</td>
+                                    <td>Zip</td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>File_back_up</td>
+                                    <td>
+                                        01/01/2018
+                                    </td>
+                                    <td>
+                                        100MB
+                                    </td>
+                                    <td>Server</td>
+                                    <td>Tor</td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>File_back_up</td>
+                                    <td>
+                                        01/01/2018
+                                    </td>
+                                    <td>
+                                        100MB
+                                    </td>
+                                    <td>DropBox</td>
+                                    <td>Tor GZip</td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- .row -->
+    </div> <!-- .content -->
+</div>
+
+
+@section PluginCSS{
+    <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
+
+    <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/assets/css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Assets/Admin/Infinity-v2.0.0/assets/css/button.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+}
+
+@section PLuginJS{
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/assets/js/main.js"></script>
+
+
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/assets/js/init-scripts/data-table/datatables-init.js"></script>
+
+}
+
