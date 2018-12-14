@@ -142,7 +142,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                 }
                 var id = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
                 sach.MerchantID = id;
-                sach.TrangThai = true;
+                sach.TrangThai = false;
                 db.LichSuNangTins.Add(new LichSuNangTin() { SachID = sach.SachID, NgayNang = System.DateTime.Now });
                 db.Saches.Add(sach);
                 db.SaveChanges();
