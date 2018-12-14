@@ -61,18 +61,26 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             var date = System.DateTime.Now;
             var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
             var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+            var lastDayOfLastMonth = firstDayOfMonth.AddDays(-1);
+            var firstDayOfLastMonth = new DateTime(lastDayOfLastMonth.Year,lastDayOfLastMonth.Month,1);
             var dayFirst = firstDayOfMonth.Day;
             var dayLast = lastDayOfMonth.Day;
 
             var listDT = db.ChiTietDonHangs.Where(m => m.TinhTrangDonHangID == 4);
             List<DataPoint> dataPoints = new List<DataPoint>();
             var count = 0;
+            decimal tongDoanhThuThang = 0;
             for(int i=dayFirst;i<=dayLast;i++)
             {
                 if (count <= dayLast)
                 {
                     var dateTemp = firstDayOfMonth;
                     var countOrderSuccess = listDT.Where(m => m.DonHang.NgayDat == dateTemp).Count();
+                    if(listDT.Where(m => m.DonHang.NgayDat == dateTemp) != null)
+                    {
+                        tongDoanhThuThang += listDT.Where(m => m.DonHang.NgayDat == dateTemp).Sum(m => m.Sach.GiaKhuyenMai ?? m.Sach.GiaTien);
+                    }
+                    
                     count++;
                     dataPoints.Add(new DataPoint( count, countOrderSuccess));
                     firstDayOfMonth.AddDays(count + 1);
@@ -82,6 +90,29 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             
 
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
+            ViewBag.TongDoanhThuThang = tongDoanhThuThang;
+
+            decimal tongDoanhThuThangTruoc = 0;
+            var dayFirstLastMonth = firstDayOfLastMonth.Day;
+            var lastDayLastMonth = lastDayOfLastMonth.Day;
+            count = 0;
+            for (int i = dayFirstLastMonth; i <= lastDayLastMonth; i++)
+            {
+                if (count <= dayLast)
+                {
+                    var dateTemp = firstDayOfLastMonth;
+                    var countOrderSuccess = listDT.Where(m => m.DonHang.NgayDat == dateTemp).Count();
+                    if(listDT.Where(m => m.DonHang.NgayDat == dateTemp) != null)
+                    {
+                        tongDoanhThuThangTruoc += listDT.Where(m => m.DonHang.NgayDat == dateTemp).Sum(m => m.Sach.GiaKhuyenMai ?? m.Sach.GiaTien);
+                    }
+                    
+                    firstDayOfLastMonth.AddDays(count + 1);
+                }
+            }
+
+            ViewBag.MucTang = ((tongDoanhThuThang / tongDoanhThuThangTruoc) - 1) * 100;
+
             return View();
         }
     }
