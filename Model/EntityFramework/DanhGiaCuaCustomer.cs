@@ -16,7 +16,7 @@ namespace Model.EntityFramework
 
         public int ChiTIetDonHangID { get; set; }
 
-        [Column(TypeName = "text")]
+        [Column(TypeName = "ntext")]
         public string NoiDung { get; set; }
 
         public int SachID { get; set; }

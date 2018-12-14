@@ -14,7 +14,8 @@ namespace Model.EntityFramework
         [Key]
         public int LichSuGiaoDichXuID { get; set; }
 
-        public bool PhuongThucSuDung { get; set; }
+        [Required]
+        public string PhuongThucSuDung { get; set; }
 
         public DateTime NgayGiaoDich { get; set; }
 

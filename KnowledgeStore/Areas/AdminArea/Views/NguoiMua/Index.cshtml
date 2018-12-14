@@ -1,15 +1,17 @@
-﻿@model List<Model.EntityFramework.Merchant>
+﻿@model List<Model.EntityFramework.Customer>
 @using Common
+
 @{
-    ViewBag.Title = "Nguoidung";
+    ViewBag.Title = "Index";
     Layout = "~/Areas/AdminArea/Views/Shared/_Layout.cshtml";
 }
+
 
 <div class="breadcrumbs">
     <div class="col-sm-4">
         <div class="page-header float-left">
             <div class="page-title">
-                <h1>Người dùng</h1>
+                <h1>Người Mua</h1>
             </div>
         </div>
     </div>
@@ -20,7 +22,7 @@
         <div class="widget widget-pie-chart">
             <div class="widget-body clearfix">
                 <!-- new row -->
-                @using (Html.BeginForm("Index", "NguoiDung", FormMethod.Post))
+                @using (Html.BeginForm("Index", "NguoiMua", FormMethod.Post))
                 {
 
                     <header class="widget-header">
@@ -30,8 +32,8 @@
                     <div class="col-xs-6 col-sm-4 col-md-3">
 
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Tên người dùng</label>
-                            <input class="form-control" id="exampleInputEmail1" placeholder="Tên người dùng" name="TenNguoiDung">
+                            <label for="exampleInputEmail1">Tên người mua</label>
+                            <input class="form-control" id="exampleInputEmail1" placeholder="Tên người mua" name="TenNguoiMua">
                         </div>
 
                     </div>
@@ -46,8 +48,8 @@
                     <div class="col-xs-6 col-sm-4 col-md-3">
 
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email người dùng</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email người dùng" name="EmailNguoiDung">
+                            <label for="exampleInputEmail1">Email người mua</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email người dùng" name="EmailNguoiMua">
                         </div>
 
                     </div>
@@ -67,11 +69,11 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <strong class="card-title">Danh sách người dùng</strong>
+                        <strong class="card-title">Danh sách người mua</strong>
                     </div>
                     @*<div class="m-b-xl pull-right" style="padding: 18px">
                         <input type="button" value="Xuất Excel" class="btn btn-primary btn-sm" style="margin-bottom: 10px; margin-left: 720px; margin-top: 10px"
-                               onclick="location.href='@Url.Action("ExportExcel", "NguoiDung")'" />
+                               onclick="location.href='@Url.Action("ExportExcel", "NguoiMua")'" />
 
                         <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#ModalNhapExcel">Nhập Excel</button>
 
@@ -85,7 +87,6 @@
                                     <th>Loại người dùng</th>
                                     <th>Số điện thoại</th>
                                     <th>Email</th>
-                                    <th>Cửa hàng</th>
                                     <th>Trạng thái</th>
                                     <th>Chức năng</th>
                                 </tr>
@@ -97,37 +98,35 @@
                                         <tr>
                                             <td>@item.HoTen</td>
                                             <td>
-                                                Người bán
+                                                Người Mua
                                             </td>
                                             <td>
                                                 @item.SoDienThoai
                                             </td>
                                             <td>@item.Email</td>
-                                            <td>@item.TenCuaHang</td>
+
 
                                             @if (item.TrangThai)
                                             {
                                                 <td>
-                                                    Đã kích hoạt
+                                                    Đang hoạt động
                                                 </td>
                                             }
                                             else
                                             {
                                                 <td>
-                                                    Chưa kích hoạt
+                                                    Đã khóa
                                                 </td>
                                             }
 
                                             <td>
                                                 <div id="button">
-
                                                     <div id="button1">
-                                                        <button type="submit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal@(item.MerchantID)">Xử lý</button>
+                                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal@(item.CustomerID)">Xử lý</button>
                                                     </div>
                                                     @*<div id="button2">
                                                             <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalXemchitiet">Chi tiết</button>
                                                         </div>*@
-
                                                 </div>
                                             </td>
                                         </tr>
@@ -143,7 +142,7 @@
                 <!-- Modal xử lý thông tin người dùng-->
                 @foreach (var item in Model)
                 {
-                    <div class="modal fade" id="exampleModal@(item.MerchantID)" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
+                    <div class="modal fade" id="exampleModal@(item.CustomerID)" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
                         <div class="modal-dialog" role="document" style="width: 450px">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -206,25 +205,22 @@
                                         </div>
                                     </form>
                                 </div>
-
                                 <div class="modal-footer">
-                                    @*<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Hủy đăng ký</button>*@
                                     @if (item.TrangThai == true)
                                     {
-                                        using (Html.BeginForm("KhoaTaiKhoan", "NguoiDung", new { id = item.MerchantID }, FormMethod.Post))
+                                        using (Html.BeginForm("KhoaTaiKhoan", "NguoiMua", new { id = item.CustomerID }, FormMethod.Post))
                                         {
                                             <button type="submit" data-toggle="modal" class="btn btn-info btn-sm">Khóa tài khoản</button>
                                         }
                                     }
                                     else
                                     {
-                                        using (Html.BeginForm("KichHoat", "NguoiDung", new { id = item.MerchantID }, FormMethod.Post))
+                                        using (Html.BeginForm("KichHoat", "NguoiMua", new { id = item.CustomerID }, FormMethod.Post))
                                         {
                                             <button type="submit" data-toggle="modal" class="btn btn-info btn-sm">Kích hoạt</button>
                                         }
                                     }
                                 </div>
-                                }
                             </div>
                         </div>
                     </div>
@@ -291,7 +287,7 @@
                                                     <p>Loại người dùng: </p>
                                                 </div>
                                                 <div class="col-sm-5" style="left: -55px">
-                                                    <p>Người bán</p>
+                                                    <p>Người mua</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -328,7 +324,20 @@
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" style="margin-left: 60px; margin-top:10px">Đóng</button>
+                                    @if (item.TrangThai == true)
+                                    {
+                                        using (Html.BeginForm("KhoaTaiKhoan", "NguoiMua", new { id = item.CustomerID }, FormMethod.Post))
+                                        {
+                                            <button type="submit" data-toggle="modal" class="btn btn-info btn-sm">Khóa tài khoản</button>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        using (Html.BeginForm("KichHoat", "NguoiMua", new { id = item.CustomerID }, FormMethod.Post))
+                                        {
+                                            <button type="submit" data-toggle="modal" class="btn btn-info btn-sm">Kích hoạt</button>
+                                        }
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -411,3 +420,4 @@
     <script src="~/Assets/Admin/Infinity-v2.0.0/assets/js/init-scripts/data-table/datatables-init.js"></script>
 
 }
+

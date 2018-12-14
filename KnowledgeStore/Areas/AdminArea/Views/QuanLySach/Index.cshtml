@@ -1,4 +1,4 @@
-﻿
+﻿@using Common
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/AdminArea/Views/Shared/_Layout.cshtml";
@@ -20,50 +20,50 @@
         <div class="widget widget-pie-chart">
             <div class="widget-body clearfix">
                 <!-- new row -->
-                <header class="widget-header">
-                    <h6 class="widget-title">Tìm kiếm</h6>
-                </header>
-                <hr class="widget-separator" />
-                <div class="col-xs-6 col-sm-4 col-md-3">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Mã sách</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="id sách">
-                        </div>
-                    </form>
-                </div>
-                <div class="col-xs-6 col-sm-4 col-md-3">
-                    <form>
+                @using (Html.BeginForm("Index", "QuanLySach", FormMethod.Post))
+                {
+                    <header class="widget-header">
+                        <h6 class="widget-title">Tìm kiếm</h6>
+                    </header>
+                    <hr class="widget-separator" />
+
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tên sách</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="tên sách">
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Tên sách" name="TenSach">
                         </div>
-                    </form>
-                </div>
-                <div class="col-xs-6 col-sm-4 col-md-3">
-                    <form>
+
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+
                         <div class="form-group">
                             <label for="exampleInputEmail1">Loại sách</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="loại sách">
+                            @Html.DropDownList("DropdownStatus", null, "Chọn Thể Loại Sách ", new { @class = "form-control" })
                         </div>
-                    </form>
-                </div>
-                <div class="col-xs-6 col-sm-4 col-md-3">
-                    <form>
+
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nhà xuất bản</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="nhà xuất bản">
+                            @Html.DropDownList("DropdownStatusNXB", null, "Chọn Nhà Xuất Bản", new { @class = "form-control" })
                         </div>
-                    </form>
 
-                    <!-- chỗ này lọc sách theo 3 input ở trên-->
-                    
-
-                    <div class="m-b-xl">
-                        <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Tìm kiếm</button>
-                        <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Làm mới</button>
                     </div>
-                </div>
+                    
+                    <!-- chỗ này lọc sách theo 3 input ở trên-->
+                    <div class="col-xs-6 col-sm-4 col-md-3" style="margin-top:30px">
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-sm" style="padding: 8px">Tìm kiếm</button>
+                            <button type="reset" class="btn btn-primary btn-sm" style="padding: 8px">Làm mới</button>
+                        </div>
+
+                    </div>
+
+
+                }
             </div><!-- .widget -->
         </div>
 
@@ -73,11 +73,12 @@
                 <div class="card">
                     <div class="card-header">
                         <strong class="card-title">Danh sách sách</strong>
-                    </div>  
-                    <div class="m-b-xl pull-right" style="padding: 18px">
-                        <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 10px; margin-left: 720px; margin-top: 10px">Xuất excel</button>
-                        <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 10px; margin-left: 30px; margin-top: 10px">Nhập excel</button>
                     </div>
+                    @*<div class="m-b-xl pull-right" style="padding: 18px">
+                        <input type="button" value="Xuất Excel" class="btn btn-primary btn-sm" style="margin-bottom: 10px; margin-left: 800px; margin-top: 10px"
+                               onclick="location.href='@Url.Action("ExportExcel", "QuanLySach")'" />
+                        
+                    </div>*@
                     <div class="card-body">
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                             <thead>
@@ -85,10 +86,10 @@
                                     <th>Thông tin sách</th>
                                     <th>Tồn kho</th>
                                     <th>Giá bán</th>
-                                    
                                     <th>Giá Khuyến Mãi</th>
+                                    <th>Thêm mới</th>
                                     <th>Tên Tác Giả</th>
-                                    
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -98,82 +99,35 @@
                                             <td>
                                                 <p><font color="#CD090C"><b>@item.TenSach</b></font></p>
                                                 <p>ID Sách: @item.SachID</p>
-                                                @if (@item.TheLoaiID == 1)
-    {<p>Thể loại: Sách Văn Học </p>}
-                                                @if (@item.TheLoaiID == 2)
-    {<p>Thể loại: Sách Kinh Tế </p>}
-                                                @if (@item.TheLoaiID == 3)
-    {<p>Thể loại: Sách Thiếu Nhi </p>}
-                                                @if (@item.TheLoaiID == 4)
-    {<p>Thể loại: Sách kỹ năng - Sống đẹp</p>}
-                                                @if (item.TheLoaiID == 5)
-    {<p>Thể loại: Sách mẹ và bé</p>}
-                                                @if (item.TheLoaiID == 6)
-    {<p>Thể loại: Sách Giáo Khoa</p>}
-                                                @if (item.TheLoaiID == 7)
-    {<p>Thể loại: Sách ngoại ngữ</p>}
-                                                @if (item.TheLoaiID == 8)
-    {<p>Thể loại: Sách tham khảo</p>}
-                                                @if (item.TheLoaiID == 9)
-    {<p>Thể loại: Từ Điển</p>}
-                                                @if (@item.TheLoaiID == 10)
-    {<p>Thể loại: Sách kiến thức tổng hợp</p>}
-                                                @if (item.TheLoaiID == 11)
-    {<p>Thể loại: giáo trình Đại Học - Cao Đẳng</p>}
-                                                @if (item.TheLoaiID == 12)
-    {<p>Thể loại: Truyện tranh Manga, Comic</p>}
-                                                @if (item.TheLoaiID == 13)
-    {<p>Thể loại: Sách Lịch Sử</p>}
-                                                @if (item.TheLoaiID == 14)
-    {<p>Thể loại: Sách Khoa Học - Kỹ Thuật</p>}
-                                                @if (item.TheLoaiID == 15)
-    {<p>Thể loại: Điện Ảnh - Nhạc - Họa</p>}
-                                                @if (@item.TheLoaiID == 16)
-    {<p>Thể loại: Sách Tôn giáo - Tâm Linh</p>}
-                                                @if (item.TheLoaiID == 17)
-    {<p>Thể loại: Sách Chính Trị - Pháp Lý</p>}
-                                                @if (item.TheLoaiID == 18)
-    {<p>Thể loại: Sách Văn Hoá - Du Lịch</p>}
-                                                @if (item.TheLoaiID == 19)
-    {<p>Thể loại: Sách Nông - Lâm - Ngư Nghiệp</p>}
-                                                @if (item.TheLoaiID == 20)
-    {<p>Thể loại: Sách Công Nghệ Thông Tin</p>}
-                                                @if (item.TheLoaiID == 21)
-    {<p>Thể loại: Sách Y Học</p>}
-                                                @if (item.TheLoaiID == 22)
-    {<p>Thể loại: Tạp Chí - Catalogue</p>}
-                                                @if (item.TheLoaiID == 23)
-    {<p>Thể loại: Sách Tâm lý - Giới tính</p>}
-                                                @if (item.TheLoaiID == 24)
-    {<p>Thể loại: Sách Thường Thức - Đời Sống</p>}
-                                                @if (item.TheLoaiID == 25)
-    {<p>Thể loại: Tự Truyện - Hồi Ký</p>}
-                                                @if (@item.TheLoaiID == 26)
-    {<p>Thể loại: Tiểu sử - Hồi ký</p>}
-                                                @if (item.TheLoaiID == 27)
-    {<p>Thể loại: Truyện Ngắn</p>}
-                                                @if (item.TheLoaiID == 30)
-    {<p>Thể loại: Tiểu Thuyết</p>}
-                                                @if (item.TheLoaiID == 31)
-    {<p>Thể loại: Sách Tư Duy - Kĩ Năng Sống</p>}
-                                                @if (item.TheLoaiID == 32)
-    {<p>Thể loại: Sách kỹ nắng - Sống đẹp</p>}
-                                                @if (item.TheLoaiID == 34)
-    {<p>Thể loại: Sách Thường Thức - Đời Sống</p>}
+                                                <p>Thể loại: @item.TheLoai.TenTheLoai</p>
+                                                <p>@item.NhaXuatBan.TenNXB</p>
                                             </td>
                                             <td>@item.SoLuong</td>
                                             <td>@item.GiaTien</td>
-                                            
+
                                             <td>@item.GiaKhuyenMai </td>
-                                            
-                                               
-                                                    <td>@item.TacGia</td>
-                                                
-                                            
-                                            
+                                            @if (item.TrangThai == true)
+                                            {
+                                                <td>Đang bán</td>
+                                            }
+                                            else
+                                            {
+                                                using (Html.BeginForm("DuyetSach", "QuanLySach", new { id = @item.SachID }, FormMethod.Post))
+                                                {
+                                                    <td>
+                                                        <button type="submit" class="btn btn-primary btn-sm">Duyệt</button>
+                                                    </td>
+
+                                                }
+                                            }
+
+                                            <td>@item.TacGia</td>
+
+
+
                                         </tr>
                                     }
-                                    }
+                                }
 
 
                             </tbody>
@@ -181,149 +135,83 @@
 
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <!-- Xem thông tin chi tiết -->
-                @*<div class="modal fade" id="exampleModalXemchitiet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
-                    <div class="modal-dialog" role="document" style="width: 450px">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="exampleModalLabel">Thông tin chi tiết sách</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+        @*----Modal nhap excel-----*@
+        <div class="modal fade" id="ModalNhapExcel" tabindex="-1" role="dialog" aria-labelledby="ModalNhapExcel" aria-hidden="true" style="top: 70px">
+            <div class="modal-dialog" role="document" style="width: 450px">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">Nhập File Excel</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @using (Html.BeginForm("ImportExcel", "QuanLySach", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <div class="form-group">
+                                <div class="row p-b-10">
+                                    <div class="col-sm-5">
+                                        <p>Chọn File:</p>
+                                    </div>
+                                    <div class="col-sm-5" style="left: -55px">
+                                        <input type="file" id="dataFile" name="upload" />
+                                    </div>
+                                </div>
                             </div>
-                           
-                                    <div class="modal-body">
-                                        <form>
-                                            <div class="form-group">
-                                                <div class="row p-b-10">
-                                                    <div class="col-sm-5">
-                                                        <p>Tên sách: </p>
-                                                    </div>
-                                                 <div class="col-sm-5" style="left: -35px">
-                                                <p>item.TenSach</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Mã sách:</p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -35px">
-                                                <p>itemSachID</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Mã sản phẩm:</p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -35px">
-                                                <p>311641628</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Thể loại:</p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -35px">
-                                                <p>TheLoaiID</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Tồn kho :</p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -35px">
-                                                <p>SoLuong</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Giá bán :</p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -35px">
-                                                <p>GiaTien</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Hoa hồng KipXu :</p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -35px">
-                                                <p>2.000đ</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Lợi nhuận :</p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -35px">
-                                                <p>La La La </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </form>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-sm">Import</button>
                             </div>
-                                    
-                               
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" style="margin-left: 60px; margin-top: 10px">Đóng</button>
-                            </div>
-                        </div>
+                        }
                     </div>
                 </div>
-
-
             </div>
-        </div><!-- .row -->
-    </div> <!-- .content -->
-</div>*@
+        </div>
 
 
-@section PluginCSS{
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/themify-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/selectFX/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/dist/jqvmap.min.css">
 
 
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/assets/css/style.css">
 
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-}
+        @section PluginCSS{
+            <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/css/bootstrap.min.css">
+            <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/font-awesome/css/font-awesome.min.css">
+            <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/themify-icons/css/themify-icons.css">
+            <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/flag-icon-css/css/flag-icon.min.css">
+            <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/selectFX/css/cs-skin-elastic.css">
+            <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+            <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
 
-@section PLuginJS{
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jquery/dist/jquery.min.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/popper.js/dist/umd/popper.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/assets/js/main.js"></script>
+            <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/assets/css/style.css">
+
+            <link rel="stylesheet" type="text/css" href="~/Assets/Admin/Infinity-v2.0.0/assets/css/button.css">
+
+            <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
 
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/chart.js/dist/Chart.bundle.min.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/assets/js/dashboard.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/assets/js/widgets.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
 
-}
+        }
+
+        @section PLuginJS{
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/jquery/dist/jquery.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/popper.js/dist/umd/popper.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/assets/js/main.js"></script>
+
+
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/jszip/dist/jszip.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/pdfmake/build/pdfmake.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/pdfmake/build/vfs_fonts.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+            <script src="~/Assets/Admin/Infinity-v2.0.0/assets/js/init-scripts/data-table/datatables-init.js"></script>
+
+        }
 
 

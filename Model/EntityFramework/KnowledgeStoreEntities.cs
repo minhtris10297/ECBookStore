@@ -103,10 +103,6 @@ namespace Model.EntityFramework
                 .WithRequired(e => e.Customer)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<DanhGiaCuaCustomer>()
-                .Property(e => e.NoiDung)
-                .IsUnicode(false);
-
             modelBuilder.Entity<DanhGiaCuaMerchant>()
                 .Property(e => e.NgayDanhGia)
                 .IsFixedLength();

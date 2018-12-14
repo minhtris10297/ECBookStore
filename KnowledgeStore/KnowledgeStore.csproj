@@ -191,6 +191,7 @@
     <Compile Include="Areas\AdminArea\Controllers\HoaHongController.cs" />
     <Compile Include="Areas\AdminArea\Controllers\KipXuController.cs" />
     <Compile Include="Areas\AdminArea\Controllers\NguoiDungController.cs" />
+    <Compile Include="Areas\AdminArea\Controllers\NguoiMuaController.cs" />
     <Compile Include="Areas\AdminArea\Controllers\QuanLySachController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\AccountsMerchantController.cs" />
     <Compile Include="Areas\MerchantArea\Controllers\BaseController.cs" />
@@ -279,6 +280,18 @@
     <Content Include="Assets\Admin\Infinity-v2.0.0\default\unlock.html" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\default\widgets.html" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\Gruntfile.js" />
+    <Content Include="Assets\Admin\Infinity-v2.0.0\images\admin.jpg" />
+    <Content Include="Assets\Admin\Infinity-v2.0.0\images\avatar\1.jpg" />
+    <Content Include="Assets\Admin\Infinity-v2.0.0\images\avatar\2.jpg" />
+    <Content Include="Assets\Admin\Infinity-v2.0.0\images\avatar\3.jpg" />
+    <Content Include="Assets\Admin\Infinity-v2.0.0\images\avatar\4.jpg" />
+    <Content Include="Assets\Admin\Infinity-v2.0.0\images\avatar\5.jpg" />
+    <Content Include="Assets\Admin\Infinity-v2.0.0\images\avatar\6.jpg" />
+    <Content Include="Assets\Admin\Infinity-v2.0.0\images\logo.png" />
+    <Content Include="Assets\Admin\Infinity-v2.0.0\images\logo2.png" />
+    <Content Include="Assets\Admin\Infinity-v2.0.0\images\placeholder.png" />
+    <Content Include="Assets\Admin\Infinity-v2.0.0\images\twitter_corner_black.png" />
+    <Content Include="Assets\Admin\Infinity-v2.0.0\images\twitter_corner_blue.png" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\index.html" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\landing-page.html" />
     <Content Include="Assets\Admin\Infinity-v2.0.0\libs\bower\animate.css\animate.min.css" />
@@ -5644,6 +5657,8 @@
     <Content Include="Areas\AdminArea\Views\QuanLySach\Index.cshtml" />
     <Content Include="Areas\AdminArea\Views\DuLieu\Index.cshtml" />
     <Content Include="Areas\AdminArea\Views\KipXu\Index.cshtml" />
+    <Content Include="Assets\Admin\Infinity-v2.0.0\images\.gitignore" />
+    <Content Include="Areas\AdminArea\Views\NguoiMua\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

@@ -2,7 +2,9 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/AdminArea/Views/Shared/_Layout.cshtml";
-} <div class="breadcrumbs">
+}
+
+<div class="breadcrumbs">
     <div class="col-sm-4">
         <div class="page-header float-left">
             <div class="page-title">
@@ -12,53 +14,199 @@
     </div>
 </div>
 
+<style>
+    .accordion {
+        background-color: #f1f2f7;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
+    }
+
+        .accordion:hover
+        {
+            background-color:white;
+        }
+        /*.active {
+            background-color: #272C33;
+        }*/
+        
+    .panel {
+        padding: 0 18px;
+        display: none;
+        background-color: white;
+        overflow: hidden;
+    }
+</style>
+
 <div class="content mt-3">
     <div class="col-sm-12">
         <div class="widget widget-pie-chart">
-            <header class="widget-header">
-                <h6 class="widget-title">Sao lưu dữ liệu</h6>
-            </header>
-            <hr class="widget-separator" />
-            <div class="widget-body clearfix">
-                <!-- new row -->
-                <div class="col-xs-6 col-sm-4 col-md-3">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Tên sao lưu</label>
-                            <input type="text" class="form-control" placeholder="Tên sao lưu">
-                        </div>
-                    </form>
-                </div>
-                <div class="col-xs-6 col-sm-4 col-md-3">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Công việc</label>
-                            <input type="text" class="form-control" placeholder="Công việc">
-                        </div>
-                    </form>
-                </div>
-                <div class="col-xs-6 col-sm-4 col-md-3">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Định dạng</label>
-                            <input type="text" class="form-control" placeholder="Định dạng">
-                        </div>
-                    </form>
-                </div>
-                <div class="col-xs-6 col-sm-4 col-md-3">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Nơi lưu trữ</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nơi lưu trữ">
-                        </div>
-                    </form>
-                    <div class="m-b-xl">
-                        <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Lưu</button>
-                        <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Làm mới</button>
+
+
+            <button class="accordion">Sao lưu dữ liệu</button>
+            <div class="panel">
+                <div class="widget-body clearfix" style="margin-top: 20px; margin-bottom: 20px">
+                    <!-- new row -->
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Tên sao lưu</label>
+                                <input type="text" class="form-control" placeholder="Tên sao lưu">
+                            </div>
+                        </form>
                     </div>
-                </div>
-            </div><!-- .widget -->
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Công việc</label>
+                                <input type="text" class="form-control" placeholder="Công việc">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Định dạng</label>
+                                <input type="text" class="form-control" placeholder="Định dạng">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Nơi lưu trữ</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nơi lưu trữ">
+                            </div>
+                        </form>
+                        <div class="m-b-xl">
+                            <button type="button" class="btn btn-warning btn-sm" style="padding: 8px">Lưu</button>
+                            <button type="button" class="btn btn-warning btn-sm" style="padding: 8px; margin-left: 20px">Làm mới</button>
+                        </div>
+                    </div>
+                </div><!-- .widget -->
+            </div>
+
+            <button class="accordion">Lịch trình</button>
+            <div class="panel">
+                <form>
+                    <table width="100%" style="margin-top: 20px;margin-bottom: 20px">
+                        <tr>
+                            <th>Lịch trình</th>
+                            <th></th>
+                            <th>Giờ</th>
+                            <th></th>
+                            <th>Phút</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px 5px; margin: 5px 0 5px 5px">
+                                <input type="checkbox" name="" /> Tuần
+                            </td>
+                            <td style="padding: 5px 5px; margin: 5px 0 5px 5px">
+                                Trong ngày
+                                <select name="ngay">
+                                    <option>Thứ hai</option>
+                                    <option>Thứ ba</option>
+                                    <option>Thứ tư</option>
+                                    <option>Thứ năm</option>
+                                    <option>Thứ sáu</option>
+                                    <option>Thứ bảy</option>
+                                    <option>Thứ chủ nhật</option>
+
+                                </select>
+                            </td>
+                            <td style="padding: 5px 5px; margin: 5px 0 5px 5px">
+                                Giờ
+                                <select name="gio">
+                                    <option selected> </option>
+                                    <script>
+                                        for (i = 1; i <= 24; i++)
+                                            document.write('<option value="' + i + '">' + i + '</option>')
+                                    </script>
+                                </select>
+                            </td>
+                            <td></td>
+                            <td style="padding: 5px 5px; margin: 5px 0 5px 5px">
+                                Phút
+                                <select name="phut">
+                                    <option selected> </option>
+                                    <script>
+                                        for (i = 1; i <= 60; i++)
+                                            document.write('<option value="' + i + '">' + i + '</option>')
+                                    </script>
+                                </select>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px 5px; margin: 5px 0 5px 5px">
+                                <input type="checkbox" name="" /> Ngày
+                            </td>
+                            <td></td>
+                            <td style="padding: 5px 5px; margin: 5px 0 5px 5px">
+                                Giờ
+                                <select name="gio">
+                                    <option selected> </option>
+                                    <script>
+                                        for (i = 1; i <= 24; i++)
+                                            document.write('<option value="' + i + '">' + i + '</option>')
+                                    </script>
+                                </select>
+                            </td>
+                            <td></td>
+                            <td style="padding: 5px 5px; margin: 5px 0 5px 5px">
+                                Phút
+                                <select name="phut">
+                                    <option selected> </option>
+                                    <script>
+                                        for (i = 1; i <= 60; i++)
+                                            document.write('<option value="' + i + '">' + i + '</option>')
+                                    </script>
+                                </select>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="button" class="btn btn-warning btn-sm">Lưu</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-warning btn-sm">Làm mới</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
+
+            <script>
+                var acc = document.getElementsByClassName("accordion");
+                var i;
+
+                for (i = 0; i < acc.length; i++) {
+                    acc[i].addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        var panel = this.nextElementSibling;
+                        if (panel.style.display === "block") {
+                            panel.style.display = "none";
+                        } else {
+                            panel.style.display = "block";
+                        }
+                    });
+                }
+            </script>
+
         </div>
+    </div>
+</div>
+<div class="content mt-3">
+    <div class="col-sm-12">
+
 
 
         <div class="row" style="margin-top: 20px">
@@ -77,7 +225,7 @@
                                     <th>Dung lượng</th>
                                     <th>Nơi lưu trữ</th>
                                     <th>Định dạng</th>
-                                    <th>Chức nắng</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -91,9 +239,7 @@
                                     </td>
                                     <td>Google</td>
                                     <td>Zip</td>
-                                    <td>
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalXemchitiet">Chi tiết</button>
-                                    </td>
+
 
                                 </tr>
                                 <tr>
@@ -106,9 +252,7 @@
                                     </td>
                                     <td>Server</td>
                                     <td>Tor</td>
-                                    <td>
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalXemchitiet">Chi tiết</button>
-                                    </td>
+
 
                                 </tr>
                                 <tr>
@@ -121,87 +265,14 @@
                                     </td>
                                     <td>DropBox</td>
                                     <td>Tor GZip</td>
-                                    <td>
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalXemchitiet">Chi tiết</button>
-                                    </td>
+
 
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <!-- thông tin chi tiet don hàng  -->
 
-                <div class="modal fade" id="exampleModalXemchitiet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 70px">
-                    <div class="modal-dialog" role="document" style="width: 450px">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="exampleModalLabel">Thông tin chi tiết sao lưu dữ liệu</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Tên file: </p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -35px">
-                                                <p>File_back-up</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Ngày lưu:</p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -35px">
-                                                <p>01/01/2018</p>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Dung lượng:</p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -35px">
-                                                <p>100MB</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Nơi lưu trữ:</p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -35px">
-                                                <p>Server</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row p-b-10">
-                                            <div class="col-sm-5">
-                                                <p>Định dạng</p>
-                                            </div>
-                                            <div class="col-sm-5" style="left: -35px">
-                                                <p>Tor</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" style="margin-left: 60px; margin-top: 10px">Đóng</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div><!-- .row -->
     </div> <!-- .content -->
@@ -209,34 +280,39 @@
 
 
 @section PluginCSS{
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/themify-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/selectFX/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/dist/jqvmap.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
 
+    <link rel="stylesheet" href="~/Assets/Admin/Infinity-v2.0.0/assets/css/style.css">
 
-    <link rel="stylesheet" href="/Assets/Admin/Infinity-v2.0.0/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/Assets/Admin/Infinity-v2.0.0/assets/css/button.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 }
 
 @section PLuginJS{
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jquery/dist/jquery.min.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/popper.js/dist/umd/popper.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/assets/js/main.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/assets/js/main.js"></script>
 
 
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/chart.js/dist/Chart.bundle.min.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/assets/js/dashboard.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/assets/js/widgets.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-    <script src="/Assets/Admin/Infinity-v2.0.0/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="~/Assets/Admin/Infinity-v2.0.0/assets/js/init-scripts/data-table/datatables-init.js"></script>
 
 }
 

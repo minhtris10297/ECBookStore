@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="~/Assets/Admin/Infinity-v2.0.0/favicon.ico">
     @RenderSection("PluginCSS", true)
 
 </head>
@@ -38,9 +38,13 @@
                 <ul class="nav navbar-nav">
                     <li class="menu-item active">
                         <a href="@Url.Action("Index","ADHome")"> <i class="menu-icon fa fa-dashboard" title="Tổng quan"></i>Tổng quan </a>
-                    </li>                   
+                    </li>
                     <li class="active">
-                        <a href="@Url.Action("Index","NguoiDung")" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop" title="Người dùng"></i>Người dùng</a>
+                        <a href="@Url.Action("Index","NguoiDung")" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop" title="Người dùng"></i>Người bán</a>
+                    </li>
+
+                    <li class="active">
+                        <a href="@Url.Action("Index","NguoiMua")" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop" title="Người dùng"></i>Người mua</a>
                     </li>
 
                     <li class="active">
@@ -115,7 +119,7 @@
                             <div class="dropdown-menu" aria-labelledby="message">
                                 <p class="red">You have 4 Mails</p>
                                 <a class="dropdown-item media bg-flat-color-1" href="#">
-                                    <span class="photo media-left"><img alt="avatar" src="images/avatar/1.jpg"></span>
+                                    <span class="photo media-left"><img alt="avatar" src="~/Assets/Admin/Infinity-v2.0.0/images/avatar/1.jpg"></span>
                                     <span class="message media-body">
                                         <span class="name float-left">Jonathan Smith</span>
                                         <span class="time float-right">Just now</span>
@@ -123,7 +127,7 @@
                                     </span>
                                 </a>
                                 <a class="dropdown-item media bg-flat-color-4" href="#">
-                                    <span class="photo media-left"><img alt="avatar" src="images/avatar/2.jpg"></span>
+                                    <span class="photo media-left"><img alt="avatar" src="~/Assets/Admin/Infinity-v2.0.0/images/avatar/2.jpg"></span>
                                     <span class="message media-body">
                                         <span class="name float-left">Jack Sanders</span>
                                         <span class="time float-right">5 minutes ago</span>
@@ -131,7 +135,7 @@
                                     </span>
                                 </a>
                                 <a class="dropdown-item media bg-flat-color-5" href="#">
-                                    <span class="photo media-left"><img alt="avatar" src="images/avatar/3.jpg"></span>
+                                    <span class="photo media-left"><img alt="avatar" src="~/Assets/Admin/Infinity-v2.0.0/images/avatar/3.jpg"></span>
                                     <span class="message media-body">
                                         <span class="name float-left">Cheryl Wheeler</span>
                                         <span class="time float-right">10 minutes ago</span>
@@ -139,7 +143,7 @@
                                     </span>
                                 </a>
                                 <a class="dropdown-item media bg-flat-color-3" href="#">
-                                    <span class="photo media-left"><img alt="avatar" src="images/avatar/4.jpg"></span>
+                                    <span class="photo media-left"><img alt="avatar" src="~/Assets/Admin/Infinity-v2.0.0/images/avatar/4.jpg"></span>
                                     <span class="message media-body">
                                         <span class="name float-left">Rachel Santos</span>
                                         <span class="time float-right">15 minutes ago</span>
@@ -154,7 +158,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="~/Assets/Admin/Infinity-v2.0.0/images/admin.jpg" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">

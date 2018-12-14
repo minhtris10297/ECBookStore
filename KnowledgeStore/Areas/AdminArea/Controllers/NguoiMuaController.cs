@@ -13,21 +13,22 @@ using System.Web.UI.WebControls;
 
 namespace KnowledgeStore.Areas.AdminArea.Controllers
 {
-    public class NguoiDungController : Controller
+    public class NguoiMuaController : Controller
     {
         KnowledgeStoreEntities db = new KnowledgeStoreEntities();
-        // GET: AdminArea/NguoiDung
+        // GET: AdminArea/NguoiMua
         public ActionResult Index()
         {
-            var listCUS = db.Merchants.ToList();
+            var listCUS = db.Customers.ToList();
             return View(listCUS);
         }
+
         [HttpPost]
-        public ActionResult Index(string SoDienThoai, string TenNguoiDung, string EmailNguoiDung)
+        public ActionResult Index(string SoDienThoai, string TenNguoiMua, string EmailNguoiMua)
         {
             var listNhaBuon = db.Merchants.ToList();
 
-            var result = db.Merchants.Where(p => p.HoTen.Contains(TenNguoiDung ?? "") || p.SoDienThoai.Equals(SoDienThoai ?? "") || p.Email.Equals(EmailNguoiDung ?? ""))
+            var result = db.Merchants.Where(p => p.HoTen.Contains(TenNguoiMua ?? "") || p.SoDienThoai.Equals(SoDienThoai ?? "") || p.Email.Equals(EmailNguoiMua ?? ""))
                 .ToList();
             return View(result);
         }
@@ -52,23 +53,24 @@ namespace KnowledgeStore.Areas.AdminArea.Controllers
             //return View("Index");
 
             DataTable dt = new DataTable("Grid");
-            dt.Columns.AddRange(new DataColumn[11] { new DataColumn("MerchantID"),
+            dt.Columns.AddRange(new DataColumn[11] { new DataColumn("CustomerID"),
                                             new DataColumn("Email"),
-                                            new DataColumn("MatKhauMaHoa"),
+                                            new DataColumn("IDGoogle"),
+                                            new DataColumn("IDFacebook"),                                            
                                             new DataColumn("HoTen"),
                                             new DataColumn("DiaChi"),
-                                            new DataColumn("GioiTinhID"),
-                                            new DataColumn("TenCuaHang"),
                                             new DataColumn("SoDienThoai"),
-                                            new DataColumn("SoLuongKIPXu"),
+                                            new DataColumn("MatKhauMaHoa"),
+                                            new DataColumn("GioiTinhID"),
+                                            new DataColumn("NgayTao"),
                                             new DataColumn("TrangThai"),
-                                            new DataColumn("NgayTao"),});
+                                            });
 
-            foreach (var merchant in db.Merchants.ToList())
+            foreach (var customer in db.Customers.ToList())
             {
-                dt.Rows.Add(merchant.MerchantID, merchant.Email, merchant.MatKhauMaHoa, merchant.HoTen, merchant.DiaChi,
-                    merchant.GioiTinhID, merchant.TenCuaHang, merchant.SoDienThoai,
-                    merchant.SoLuongKIPXu, merchant.TrangThai, merchant.NgayTao
+                dt.Rows.Add(customer.CustomerID, customer.Email, customer.IDGoogle, customer.IDFacebook, customer.HoTen,
+                    customer.DiaChi, customer.SoDienThoai, customer.MatKhauMaHoa, customer.GioiTinhID,
+                    customer.NgayTao, customer.TrangThai
                     );
             }
 
@@ -78,7 +80,7 @@ namespace KnowledgeStore.Areas.AdminArea.Controllers
                 using (MemoryStream stream = new MemoryStream())
                 {
                     wb.SaveAs(stream);
-                    return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Merchants.xlsx");
+                    return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Customers.xlsx");
                 }
             }
         }
@@ -108,27 +110,27 @@ namespace KnowledgeStore.Areas.AdminArea.Controllers
                 {
                     if (count > 0)
                     {
-                        Merchant merchant = new Merchant()
+                        Customer customer = new Customer()
                         {
 
                             //MerchantID = (int)double.Parse(reader.GetString(0)),
                             Email = reader.GetString(1),
-                            MatKhauMaHoa = reader.GetString(2),
-                            HoTen = reader.GetString(3),
-                            DiaChi = reader.GetString(4),
-                            GioiTinhID = int.Parse(reader.GetString(5)),
-                            TenCuaHang = reader.GetString(6),
-                            SoDienThoai = reader.GetString(7),
-                            SoLuongKIPXu = int.Parse(reader.GetString(8)),
-                            TrangThai = bool.Parse(reader.GetString(9)),
-                            NgayTao = DateTime.Parse(reader.GetString(10))
+                            IDGoogle = reader.GetString(2),
+                            IDFacebook = reader.GetString(3),
+                            HoTen = reader.GetString(4),
+                            DiaChi = reader.GetString(5),
+                            SoDienThoai = reader.GetString(6),
+                            MatKhauMaHoa = reader.GetString(7),
+                            GioiTinhID = int.Parse(reader.GetString(8)),
+                            NgayTao = DateTime.Parse(reader.GetString(9)),
+                            TrangThai = bool.Parse(reader.GetString(10))
                         };
-                        db.Merchants.Add(merchant);
+                        db.Customers.Add(customer);
                         db.SaveChanges();
                     }
                     count++;
                 }
-                var result = db.Merchants.ToList();
+                var result = db.Customers.ToList();
 
 
 
@@ -140,15 +142,16 @@ namespace KnowledgeStore.Areas.AdminArea.Controllers
         [HttpPost]
         public ActionResult KhoaTaiKhoan(int id)
         {
-            var listCUS = db.Merchants.ToList();
-            db.Merchants.Where(p => p.MerchantID == id).First().TrangThai = false;
+            var listCUS = db.Customers.ToList();
+            db.Customers.Where(p => p.CustomerID == id).First().TrangThai = false;
             db.SaveChanges();
             return View("Index", listCUS);
         }
+        [HttpPost]
         public ActionResult KichHoat(int id)
         {
-            var listCUS = db.Merchants.ToList();
-            db.Merchants.Where(p => p.MerchantID == id).First().TrangThai = true;
+            var listCUS = db.Customers.ToList();
+            db.Customers.Where(p => p.CustomerID == id).First().TrangThai = true;
             db.SaveChanges();
             return View("Index", listCUS);
         }
