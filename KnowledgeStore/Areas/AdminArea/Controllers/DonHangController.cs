@@ -82,12 +82,14 @@ namespace KnowledgeStore.Areas.AdminArea.Controllers
                                             new DataColumn("ThanhTien"),
                                             new DataColumn("TrangThai")});
 
-            foreach (var donhang in db.ChiTietDonHangs.Where(p => p.TinhTrangDonHangID == 3).ToList())
+            foreach (var donhang in db.ChiTietDonHangs.Where(p => p.TinhTrangDonHangID == 2).ToList())
             {
                 dt.Rows.Add(donhang.ChiTietDonHangID, donhang.DonHang.Customer.HoTen, donhang.DonHang.DiaChi,
                     donhang.Sach.Merchant.DiaChi, donhang.Sach.TenSach, donhang.SoLuong, donhang.ThanhTien, donhang.TinhTrangDonHangID
                     );
+                donhang.TinhTrangDonHangID = 3;
             }
+            db.SaveChanges();
 
             using (XLWorkbook wb = new XLWorkbook())
             {

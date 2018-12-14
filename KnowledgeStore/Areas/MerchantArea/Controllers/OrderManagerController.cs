@@ -78,7 +78,8 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             {
                 return RedirectToAction("Login", "AccountsMerchant");
             }
-            var id = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
+            var merchant = db.Merchants.Where(m => m.Email == sessionUser.Email);
+            var id = merchant.Select(m => m.MerchantID).FirstOrDefault();
             ViewBag.IdMerchant = id;
 
             var ctdh = db.ChiTietDonHangs.Find(idCtdh);
@@ -86,8 +87,34 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             db.SaveChanges();
             MailHelper.SendMailOrderReceived(ctdh.DonHang.Customer.Email, "KnowledgeStore thông báo tình trạng đơn hàng", ctdh.ChiTietDonHangID.ToString(),ctdh.DonHang.Customer.HoTen);
 
+            var phantramHoaHong = (float)(db.HoaHongs.OrderByDescending(m => m.HoaHongID).Select(m => m.PhanTranHoaHong).FirstOrDefault()) / 100;
+            float phiHoaHong = 0;
+            if (ctdh.Sach.GiaKhuyenMai == null)
+            {
+                phiHoaHong = (float)ctdh.Sach.GiaTien * phantramHoaHong * ctdh.SoLuong;
+            }
+            else
+            {
+                phiHoaHong = (float)ctdh.Sach.GiaKhuyenMai * phantramHoaHong * ctdh.SoLuong;
+            }
+            if(phiHoaHong%1000 != 0)
+            {
+                if(phiHoaHong % 1000 < 500)
+                {
+                    phiHoaHong = phiHoaHong - phiHoaHong % 1000;
+                }
+                else
+                {
+                    phiHoaHong = phiHoaHong - phiHoaHong % 1000 + 1000;
+                }
+            }
+            int xuCanTru = -(int)phiHoaHong / 1000;
+            LichSuHoaHong lshh = new LichSuHoaHong() { ChiTietDonHangID = idCtdh, GiaTriXu = xuCanTru, ThoiDiem = System.DateTime.Now };
+            db.LichSuHoaHongs.Add(lshh);
+            merchant.FirstOrDefault().SoLuongKIPXu = merchant.FirstOrDefault().SoLuongKIPXu + xuCanTru;
+            db.SaveChanges();
             var listCTDH = db.ChiTietDonHangs.Where(m => m.MerchantID == id).OrderByDescending(m => m.DonHang.NgayDat).ToList();
             return RedirectToAction("Index","OrderManager",new { id=id});
         }
-    }
+    } 
 }

@@ -114,6 +114,8 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             {
                 return RedirectToAction("Login", "AccountsMerchant");
             }
+            var merchant = db.Merchants.Where(m => m.Email == sessionUser.Email);
+            var merchantID = merchant.Select(m => m.MerchantID).FirstOrDefault();
             var date = System.DateTime.Now;
             var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
             var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
@@ -132,10 +134,10 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                 if (count <= dayLast)
                 {
                     var dateTemp = firstDayOfMonth;
-                    var countOrderSuccess = listDT.Where(m => m.DonHang.NgayDat == dateTemp).Count();
+                    var countOrderSuccess = listDT.Where(m => m.DonHang.NgayDat == dateTemp&m.MerchantID==merchantID).Count();
                     if(listDT.Where(m => m.DonHang.NgayDat == dateTemp) != null)
                     {
-                        var listtemp= listDT.Where(m => m.DonHang.NgayDat == dateTemp).Select(m => m.Sach.GiaKhuyenMai ?? m.Sach.GiaTien);
+                        var listtemp= listDT.Where(m => m.DonHang.NgayDat == dateTemp&m.MerchantID==merchantID).Select(m => m.Sach.GiaKhuyenMai ?? m.Sach.GiaTien);
                         foreach(var item in listtemp)
                         {
                             tongDoanhThuThang += (float)item* tienHoaHong;
@@ -165,7 +167,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                     var countOrderSuccess = listDT.Where(m => m.DonHang.NgayDat == dateTemp).Count();
                     if(listDT.Where(m => m.DonHang.NgayDat == dateTemp) != null)
                     {
-                        var listtemp = listDT.Where(m => m.DonHang.NgayDat == dateTemp).Select(m => m.Sach.GiaKhuyenMai ?? m.Sach.GiaTien);
+                        var listtemp = listDT.Where(m => m.DonHang.NgayDat == dateTemp&m.MerchantID==merchantID).Select(m => m.Sach.GiaKhuyenMai ?? m.Sach.GiaTien);
                         foreach (var item in listtemp)
                         {
                             tongDoanhThuThangTruoc += (float)item;
@@ -189,7 +191,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             {
                 ViewBag.MucTang = ((tongDoanhThuThang / tongDoanhThuThangTruoc) - 1) * 100;
             }
-
+            ViewBag.SoXuMerchant = merchant.FirstOrDefault().SoLuongKIPXu;
             return View();
         }
     }

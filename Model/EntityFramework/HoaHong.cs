@@ -13,7 +13,6 @@ namespace Model.EntityFramework
 
         public int PhanTranHoaHong { get; set; }
 
-        [Column(TypeName = "date")]
         public DateTime NgayBatDau { get; set; }
 
         [Column(TypeName = "date")]

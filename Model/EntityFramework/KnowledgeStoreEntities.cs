@@ -27,6 +27,7 @@ namespace Model.EntityFramework
         public virtual DbSet<HoaHong> HoaHongs { get; set; }
         public virtual DbSet<LichSuCustomer> LichSuCustomers { get; set; }
         public virtual DbSet<LichSuGiaoDichXuCuaMerchant> LichSuGiaoDichXuCuaMerchants { get; set; }
+        public virtual DbSet<LichSuHoaHong> LichSuHoaHongs { get; set; }
         public virtual DbSet<LichSuMerchant> LichSuMerchants { get; set; }
         public virtual DbSet<LichSuNangTin> LichSuNangTins { get; set; }
         public virtual DbSet<LoaiBia> LoaiBias { get; set; }
@@ -53,6 +54,11 @@ namespace Model.EntityFramework
 
             modelBuilder.Entity<ChiTietDonHang>()
                 .HasMany(e => e.DanhGiaCuaCustomers)
+                .WithRequired(e => e.ChiTietDonHang)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ChiTietDonHang>()
+                .HasMany(e => e.LichSuHoaHongs)
                 .WithRequired(e => e.ChiTietDonHang)
                 .WillCascadeOnDelete(false);
 

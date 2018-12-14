@@ -125,8 +125,8 @@
                         @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
                     </div>
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <button type="submit" class="btn btn-primary" style="float:right">
-                        <i class="fa fa-dot-circle-o"></i> Tạo mới sản phẩm
+                    <button type="submit" class="btn btn-primary" style="float:right" id="taoSach">
+                        <i class="fa fa-dot-circle-o"></i> Tạo
                     </button>
                     <button type="reset" class="btn btn-danger" style="float:right">
                         <i class="fa fa-ban"></i> Làm mới
@@ -165,5 +165,9 @@
     <script src="/Assets/Merchant/UI/assets/js/popper.min.js"></script>
     <script src="/Assets/Merchant/UI/assets/js/plugins.js"></script>
     <script src="/Assets/Merchant/UI/assets/js/main.js"></script>
+    <script>$('#taoSach').on('click', function () {
+            alert("Tạo thành công, sách sẽ lên bảng tin sau khi đc admin duyệt")
+        });
+    </script>
 }
 
