@@ -29,7 +29,7 @@
                     </div>
                     <div class="stat-content dib">
                         <div class="stat-heading">Tổng: $50,58,714</div>
-                        <div class="stat-text" style="color: green">Mức tăng trưởng:  @(ViewBag.MucTang)% so với tháng trước</div>
+                        <div class="stat-text" style="color: green">Mức tăng trưởng:  @(ViewBag.MucTang) (%) so với tháng trước</div>
                     </div>
                 </div>
             </div>
@@ -41,7 +41,6 @@
             <div class="card-header">
                 <strong class="card-title">
                     Số dư của bạn
-                    <button type="button" data-toggle="modal" data-target="#exampleModal" class="badge badge-success float-right mt-2">Lịch sử</button>
                 </strong>
             </div>
             <div class="card-body">
@@ -50,7 +49,7 @@
                         <i class="ti-money text-success border-success"></i>
                     </div>
                     <div class="stat-content dib">
-                        <div class="stat-heading">Tổng: $50,58,714</div>
+                        <div class="stat-heading">Tổng: @ViewBag.TongDoanhThuThang</div>
                         <div class="stat-text"></div>
                     </div>
                 </div>
@@ -103,47 +102,6 @@
         </div>
     </div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="largeModalLabel">Lịch sử giao dịch</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                        <div class="card">
-                            <div class="card-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Ngày thanh toán</th>
-                                            <th scope="col">Số tiền</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Trạng thái</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>11/08/1111</td>
-                                            <td>2.000.000</td>
-                                            <td>A@gmail.com</td>
-                                            <td>Thành công</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 @section PluginCSS{
@@ -190,7 +148,7 @@
 		        type: "area",
 		        color: "#0BB5FF",
 		        markerSize: 0,
-		        toolTipContent: "Ngày: thứ {x} <br>Ins. Đơn mua: {y} đơn",
+		        toolTipContent: "Ngày: thứ {x} <br>Ins. Doanh thu: {y} đồng",
 		        dataPoints: @Html.Raw(ViewBag.DataPoints)
 	        }]
         });

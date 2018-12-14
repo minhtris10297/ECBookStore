@@ -12,6 +12,7 @@ namespace ConsoleTest
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(15/4);
             Console.ReadKey();
         }
     }

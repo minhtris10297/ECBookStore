@@ -33,6 +33,8 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             var id = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
 
             var listSach = db.Saches.Where(m => m.MerchantID == id).OrderByDescending(m => m.LichSuNangTins.Max(n => n.NgayNang)).ToList();
+            var tienHoaHong = db.HoaHongs.OrderByDescending(m => m.HoaHongID).Select(m => m.PhanTranHoaHong).FirstOrDefault();
+            ViewBag.TienHoaHong = (float)tienHoaHong/100;
             return View(listSach);
         }
         [HttpPost]
@@ -70,6 +72,8 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                     listSach = listSach.Where(m => m.SachID == searchId).ToList();
                 }
             }
+            var tienHoaHong = db.HoaHongs.OrderByDescending(m => m.HoaHongID).Select(m => m.PhanTranHoaHong).FirstOrDefault();
+            ViewBag.TienHoaHong = (decimal)(tienHoaHong / 100);
             return View(listSach);
 
         }
@@ -163,7 +167,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                     WebImage img = new WebImage(image2.InputStream);
                     //img.Resize(500, 1000);
 
-                    var filePathOriginal = Server.MapPath("/Assets/Image/ImageBook/" + sach.SachID + "/");
+                    var filePathOriginal = Server.MapPath("/Assets/Image/ImageBook/");
                     var fileName = sach.SachID + "_2" + ".jpg";
                     string savedFileName = Path.Combine(filePathOriginal, fileName);
                     img.Save(savedFileName);
@@ -174,7 +178,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                     WebImage img = new WebImage(image3.InputStream);
                     //img.Resize(500, 1000);
 
-                    var filePathOriginal = Server.MapPath("/Assets/Image/ImageBook/" + sach.SachID + "/");
+                    var filePathOriginal = Server.MapPath("/Assets/Image/ImageBook/");
                     var fileName = sach.SachID + "_3" + ".jpg";
                     string savedFileName = Path.Combine(filePathOriginal, fileName);
                     img.Save(savedFileName);

@@ -101,7 +101,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                 img.Save(savedFileName);
             }
 
-            merchant.FirstOrDefault().HoTen = name;
+            merchant.FirstOrDefault().TenCuaHang = name;
             db.SaveChanges();
 
             return View(listSach.ToPagedList(pageNumber, pageSize));
@@ -125,7 +125,8 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             var listDT = db.ChiTietDonHangs.Where(m => m.TinhTrangDonHangID == 4);
             List<DataPoint> dataPoints = new List<DataPoint>();
             var count = 0;
-            decimal tongDoanhThuThang = 0;
+            double tongDoanhThuThang = 0;
+            var tienHoaHong = (float)(db.HoaHongs.OrderByDescending(m => m.HoaHongID).Select(m => m.PhanTranHoaHong).FirstOrDefault())/100;
             for(int i=dayFirst;i<=dayLast;i++)
             {
                 if (count <= dayLast)
@@ -137,12 +138,12 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                         var listtemp= listDT.Where(m => m.DonHang.NgayDat == dateTemp).Select(m => m.Sach.GiaKhuyenMai ?? m.Sach.GiaTien);
                         foreach(var item in listtemp)
                         {
-                            tongDoanhThuThang += item;
+                            tongDoanhThuThang += (float)item* tienHoaHong;
                         }
                     }
                     
                     count++;
-                    dataPoints.Add(new DataPoint( count, countOrderSuccess));
+                    dataPoints.Add(new DataPoint( count, tongDoanhThuThang));
                     firstDayOfMonth.AddDays(count + 1);
                 }
             }
@@ -152,13 +153,13 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
             ViewBag.TongDoanhThuThang = tongDoanhThuThang;
 
-            decimal tongDoanhThuThangTruoc = 0;
+            float tongDoanhThuThangTruoc = 0;
             var dayFirstLastMonth = firstDayOfLastMonth.Day;
             var lastDayLastMonth = lastDayOfLastMonth.Day;
             count = 0;
             for (int i = dayFirstLastMonth; i <= lastDayLastMonth; i++)
             {
-                if (count <= dayLast)
+                if (count <= lastDayLastMonth)
                 {
                     var dateTemp = firstDayOfLastMonth;
                     var countOrderSuccess = listDT.Where(m => m.DonHang.NgayDat == dateTemp).Count();
@@ -167,7 +168,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                         var listtemp = listDT.Where(m => m.DonHang.NgayDat == dateTemp).Select(m => m.Sach.GiaKhuyenMai ?? m.Sach.GiaTien);
                         foreach (var item in listtemp)
                         {
-                            tongDoanhThuThang += item;
+                            tongDoanhThuThangTruoc += (float)item;
                         }
                     }
                     

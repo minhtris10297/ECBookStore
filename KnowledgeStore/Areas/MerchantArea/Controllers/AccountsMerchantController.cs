@@ -109,14 +109,10 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                         string savedFileName = Path.Combine(filePathOriginal, fileName);
                         img.Save(savedFileName);
                     }
-
-                    var userSession = new UserLogin();
-                    userSession.UserName = merchant.HoTen;
-                    userSession.Email = merchant.Email;
+                    
                     Session[CommonConstants.USERMERCHANT_SESSION] = null;
-                    Session[CommonConstants.USERMERCHANT_SESSION] = userSession;
 
-                    return RedirectToAction("Index", "MCHome");
+                    return RedirectToAction("MerchantRegSuccess", "Home",new { area=""});
                 }
                 else
                 {
