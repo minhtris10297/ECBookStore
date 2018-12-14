@@ -112,3 +112,16 @@ D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\roslyn\vbc.exe.config
 D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\roslyn\vbc.rsp
 D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\roslyn\VBCSCompiler.exe
 D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\roslyn\VBCSCompiler.exe.config
+D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\ClosedXML.dll
+D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\DocumentFormat.OpenXml.dll
+D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\ExcelDataReader.DataSet.dll
+D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\ExcelDataReader.dll
+D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\ExcelNumberFormat.dll
+D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\FastMember.Signed.dll
+D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\System.IO.FileSystem.Primitives.dll
+D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\System.IO.Packaging.dll
+D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\ClosedXML.xml
+D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\DocumentFormat.OpenXml.xml
+D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\ExcelDataReader.xml
+D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\ExcelDataReader.DataSet.xml
+D:\Projects\ProjectBookSt_N7\KnowledgeStore\bin\ExcelNumberFormat.xml
