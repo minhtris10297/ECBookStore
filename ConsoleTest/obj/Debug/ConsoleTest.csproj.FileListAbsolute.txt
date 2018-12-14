@@ -1,0 +1,10 @@
+D:\Projects\ProjectBookSt_N7\ConsoleTest\bin\Debug\ConsoleTest.exe.config
+D:\Projects\ProjectBookSt_N7\ConsoleTest\bin\Debug\ConsoleTest.exe
+D:\Projects\ProjectBookSt_N7\ConsoleTest\bin\Debug\ConsoleTest.pdb
+D:\Projects\ProjectBookSt_N7\ConsoleTest\bin\Debug\Common.dll
+D:\Projects\ProjectBookSt_N7\ConsoleTest\bin\Debug\Common.pdb
+D:\Projects\ProjectBookSt_N7\ConsoleTest\obj\Debug\ConsoleTest.csprojAssemblyReference.cache
+D:\Projects\ProjectBookSt_N7\ConsoleTest\obj\Debug\ConsoleTest.csproj.CoreCompileInputs.cache
+D:\Projects\ProjectBookSt_N7\ConsoleTest\obj\Debug\ConsoleTest.csproj.CopyComplete
+D:\Projects\ProjectBookSt_N7\ConsoleTest\obj\Debug\ConsoleTest.exe
+D:\Projects\ProjectBookSt_N7\ConsoleTest\obj\Debug\ConsoleTest.pdb

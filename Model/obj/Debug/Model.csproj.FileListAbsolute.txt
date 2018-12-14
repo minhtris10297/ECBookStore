@@ -1,0 +1,14 @@
+D:\Projects\ProjectBookSt_N7\Model\bin\Debug\Model.dll.config
+D:\Projects\ProjectBookSt_N7\Model\bin\Debug\Model.dll
+D:\Projects\ProjectBookSt_N7\Model\bin\Debug\Model.pdb
+D:\Projects\ProjectBookSt_N7\Model\bin\Debug\Common.dll
+D:\Projects\ProjectBookSt_N7\Model\bin\Debug\EntityFramework.dll
+D:\Projects\ProjectBookSt_N7\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\ProjectBookSt_N7\Model\bin\Debug\Common.pdb
+D:\Projects\ProjectBookSt_N7\Model\bin\Debug\EntityFramework.xml
+D:\Projects\ProjectBookSt_N7\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projects\ProjectBookSt_N7\Model\obj\Debug\Model.csprojAssemblyReference.cache
+D:\Projects\ProjectBookSt_N7\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+D:\Projects\ProjectBookSt_N7\Model\obj\Debug\Model.csproj.CopyComplete
+D:\Projects\ProjectBookSt_N7\Model\obj\Debug\Model.dll
+D:\Projects\ProjectBookSt_N7\Model\obj\Debug\Model.pdb
