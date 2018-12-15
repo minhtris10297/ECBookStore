@@ -16,7 +16,12 @@ namespace KnowledgeStore.Areas.AdminArea.Controllers
         // GET: AdminArea/ADHome
         public ActionResult Index()
         {
-            decimal tongXu = db.LichSuGiaoDichXuCuaMerchants.Sum(m => m.SoXu);
+            decimal tongXu = 0;
+            if (db.LichSuGiaoDichXuCuaMerchants.Count()!=0)
+            {
+                tongXu = db.LichSuGiaoDichXuCuaMerchants.Sum(m => m.SoXu);
+            }
+            
             ViewBag.TongXu = tongXu;
 
             var date = System.DateTime.Now;

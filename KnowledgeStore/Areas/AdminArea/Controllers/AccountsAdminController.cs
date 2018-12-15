@@ -97,5 +97,10 @@ namespace KnowledgeStore.Areas.AdminArea.Controllers
             ViewBag.GioiTinhID = new SelectList(db.GioiTinhs, "GioiTinhID", "TenGioiTinh", 1);
             return View(admin);
         }
+        public ActionResult Logout()
+        {
+            Session[CommonConstants.USERMADMIN_SESSION] = null;
+            return RedirectToAction("Login", "ADHome");
+        }
     }
 }

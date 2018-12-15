@@ -94,7 +94,7 @@
                         <tr>
                             @foreach(var item in Model)
                             {
-                                <td>@item.NgayXuat.ToString("dd/MM/yyyy")</td>
+                                <td>@item.NgayXuat.GetValueOrDefault(System.DateTime.Now).ToString("dd/MM/yyyy")</td>
                                 <td>@item.SoLuong</td>
                                 <td>@(item.ThanhTien-(item.ThanhTien*ViewBag.TienHoaHong))</td>
                             }
