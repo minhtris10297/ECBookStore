@@ -188,7 +188,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\AdminArea\AdminAreaAreaRegistration.cs" />
+    <Compile Include="Areas\AdminArea\Controllers\AccountsAdminController.cs" />
     <Compile Include="Areas\AdminArea\Controllers\ADHomeController.cs" />
+    <Compile Include="Areas\AdminArea\Controllers\BaseController.cs" />
     <Compile Include="Areas\AdminArea\Controllers\DonHangController.cs" />
     <Compile Include="Areas\AdminArea\Controllers\DuLieuController.cs" />
     <Compile Include="Areas\AdminArea\Controllers\HoaHongController.cs" />
@@ -3478,6 +3480,8 @@
     <Content Include="Areas\AdminArea\Views\KipXu\Index.cshtml" />
     <Content Include="Areas\AdminArea\Views\NguoiDung\Index.cshtml" />
     <Content Include="Areas\AdminArea\Views\NguoiMua\Index.cshtml" />
+    <Content Include="Areas\AdminArea\Views\AccountsAdmin\Login.cshtml" />
+    <Content Include="Areas\AdminArea\Views\AccountsAdmin\Register.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -3543,6 +3547,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\AdminArea\Models\" />
+    <Folder Include="Areas\AdminArea\Views\Base\" />
     <Folder Include="Areas\MerchantArea\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>

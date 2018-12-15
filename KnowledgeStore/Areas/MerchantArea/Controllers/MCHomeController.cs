@@ -117,6 +117,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             var merchant = db.Merchants.Where(m => m.Email == sessionUser.Email);
             var merchantID = merchant.Select(m => m.MerchantID).FirstOrDefault();
             var date = System.DateTime.Now;
+            ViewBag.MonthNow = date.Month;
             var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
             var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
             var lastDayOfLastMonth = firstDayOfMonth.AddDays(-1);
@@ -126,28 +127,25 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
 
             var listDT = db.ChiTietDonHangs.Where(m => m.TinhTrangDonHangID == 4);
             List<DataPoint> dataPoints = new List<DataPoint>();
-            var count = 0;
             double tongDoanhThuThang = 0;
             var tienHoaHong = (float)(db.HoaHongs.OrderByDescending(m => m.HoaHongID).Select(m => m.PhanTranHoaHong).FirstOrDefault())/100;
             for(int i=dayFirst;i<=dayLast;i++)
             {
-                if (count <= dayLast)
-                {
+                    float count2 = 0;
                     var dateTemp = firstDayOfMonth;
-                    var countOrderSuccess = listDT.Where(m => m.DonHang.NgayDat == dateTemp&m.MerchantID==merchantID).Count();
-                    if(listDT.Where(m => m.DonHang.NgayDat == dateTemp) != null)
+                    var countOrderSuccess = listDT.Where(m => m.DonHang.NgayDat.Year == dateTemp.Year & m.DonHang.NgayDat .Month==dateTemp.Month & m.DonHang.NgayDat.Day==dateTemp.Day& m.MerchantID==merchantID).Count();
+                    if(listDT.Where(m =>  m.DonHang.NgayDat.Year == dateTemp.Year & m.DonHang.NgayDat .Month==dateTemp.Month & m.DonHang.NgayDat.Day == dateTemp.Day) != null)
                     {
-                        var listtemp= listDT.Where(m => m.DonHang.NgayDat == dateTemp&m.MerchantID==merchantID).Select(m => m.Sach.GiaKhuyenMai ?? m.Sach.GiaTien);
+                        var listtemp= listDT.Where(m =>  m.DonHang.NgayDat.Year == dateTemp.Year & m.DonHang.NgayDat .Month==dateTemp.Month & m.DonHang.NgayDat.Day == dateTemp.Day & m.MerchantID==merchantID).Select(m => m.Sach.GiaKhuyenMai ?? m.Sach.GiaTien);
                         foreach(var item in listtemp)
                         {
                             tongDoanhThuThang += (float)item* tienHoaHong;
+                            count2+= (float)item * tienHoaHong;
                         }
                     }
                     
-                    count++;
-                    dataPoints.Add(new DataPoint( count, tongDoanhThuThang));
-                    firstDayOfMonth.AddDays(count + 1);
-                }
+                    dataPoints.Add(new DataPoint( i, tongDoanhThuThang));
+                    firstDayOfMonth=firstDayOfMonth.AddDays( 1);
             }
 
             
@@ -158,41 +156,48 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             float tongDoanhThuThangTruoc = 0;
             var dayFirstLastMonth = firstDayOfLastMonth.Day;
             var lastDayLastMonth = lastDayOfLastMonth.Day;
-            count = 0;
             for (int i = dayFirstLastMonth; i <= lastDayLastMonth; i++)
             {
-                if (count <= lastDayLastMonth)
-                {
                     var dateTemp = firstDayOfLastMonth;
-                    var countOrderSuccess = listDT.Where(m => m.DonHang.NgayDat == dateTemp).Count();
-                    if(listDT.Where(m => m.DonHang.NgayDat == dateTemp) != null)
+                    var countOrderSuccess = listDT.Where(m =>  m.DonHang.NgayDat.Year == dateTemp.Year & m.DonHang.NgayDat .Month==dateTemp.Month & m.DonHang.NgayDat.Day == dateTemp.Day).Count();
+                    if(listDT.Where(m =>  m.DonHang.NgayDat.Year == dateTemp.Year & m.DonHang.NgayDat .Month==dateTemp.Month & m.DonHang.NgayDat.Day == dateTemp.Day) != null)
                     {
-                        var listtemp = listDT.Where(m => m.DonHang.NgayDat == dateTemp&m.MerchantID==merchantID).Select(m => m.Sach.GiaKhuyenMai ?? m.Sach.GiaTien);
+                        var listtemp = listDT.Where(m =>  m.DonHang.NgayDat.Year == dateTemp.Year & m.DonHang.NgayDat .Month==dateTemp.Month & m.DonHang.NgayDat.Day == dateTemp.Day & m.MerchantID==merchantID).Select(m => m.Sach.GiaKhuyenMai ?? m.Sach.GiaTien);
                         foreach (var item in listtemp)
                         {
                             tongDoanhThuThangTruoc += (float)item;
                         }
                     }
                     
-                    firstDayOfLastMonth.AddDays(count + 1);
-                }
+                    firstDayOfLastMonth.AddDays( 1);
             }
+            
 
-           
-            if (tongDoanhThuThang == 0)
+            if (tongDoanhThuThangTruoc == 0)
             {
-                ViewBag.MucTang = "Tháng này chưa có doanh thu";
+                ViewBag.DoanhThuTang = "Tháng trước chưa có doanh thu";
             }
-            else if (tongDoanhThuThangTruoc == 0)
+            else if (tongDoanhThuThang == 0)
             {
-                ViewBag.MucTang = 100;
+                ViewBag.DoanhThuTang = "Tháng này chưa có doanh thu";
             }
-            else
+            else if (tongDoanhThuThangTruoc > tongDoanhThuThang)
             {
-                ViewBag.MucTang = ((tongDoanhThuThang / tongDoanhThuThangTruoc) - 1) * 100;
+                var phantram = 100 - (tongDoanhThuThang * 100 / tongDoanhThuThangTruoc);
+                ViewBag.DoanhThuTang = "Doanh thu tháng này giảm " + phantram + " % so với tháng trước";
             }
+            else if (tongDoanhThuThangTruoc < tongDoanhThuThang)
+            {
+                var phantram = 100 - (tongDoanhThuThangTruoc * 100 / tongDoanhThuThang);
+                ViewBag.DoanhThuTang = "Doanh thu tháng này tăng " + phantram + " % so với tháng trước";
+            }
+            var listCTDBanDuoc = db.ChiTietDonHangs.Where(m => m.DonHang.NgayDat.Year == date.Year & m.DonHang.NgayDat.Month == date.Month & m.DonHang.NgayDat.Day == date.Day & m.TinhTrangDonHangID == 4);
+
             ViewBag.SoXuMerchant = merchant.FirstOrDefault().SoLuongKIPXu;
-            return View();
+            
+            ViewBag.TienHoaHong = tienHoaHong;
+
+            return View(listCTDBanDuoc.ToList());
         }
     }
 }

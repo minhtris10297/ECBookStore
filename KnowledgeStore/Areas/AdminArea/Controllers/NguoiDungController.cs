@@ -11,13 +11,13 @@ using System.Web.Mvc;
 
 namespace KnowledgeStore.Areas.AdminArea.Controllers
 {
-    public class NguoiDungController : Controller
+    public class NguoiDungController : BaseController
     {
         KnowledgeStoreEntities db = new KnowledgeStoreEntities();
         // GET: AdminArea/NguoiDung
         public ActionResult Index()
         {
-            var listCUS = db.Merchants.ToList();
+            var listCUS = db.Merchants.OrderByDescending(m=>m.NgayTao).ToList();
             return View(listCUS);
         }
         [HttpPost]
@@ -25,7 +25,7 @@ namespace KnowledgeStore.Areas.AdminArea.Controllers
         {
             var listNhaBuon = db.Merchants.ToList();
 
-            var result = db.Merchants.Where(p => p.HoTen.Contains(TenNguoiDung ?? "") || p.SoDienThoai.Equals(SoDienThoai ?? "") || p.Email.Equals(EmailNguoiDung ?? ""))
+            var result = db.Merchants.OrderByDescending(m => m.NgayTao).Where(p => p.HoTen.Contains(TenNguoiDung ?? "") || p.SoDienThoai.Equals(SoDienThoai ?? "") || p.Email.Equals(EmailNguoiDung ?? ""))
                 .ToList();
             return View(result);
         }

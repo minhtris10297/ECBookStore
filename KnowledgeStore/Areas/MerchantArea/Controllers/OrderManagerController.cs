@@ -122,7 +122,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             var ctdh = db.ChiTietDonHangs.Find(idCtdh);
             ctdh.TinhTrangDonHangID = 2;
             db.SaveChanges();
-            MailHelper.SendMailOrderReceived(ctdh.DonHang.Customer.Email, "KnowledgeStore thông báo tình trạng đơn hàng", ctdh.ChiTietDonHangID.ToString(),ctdh.DonHang.Customer.HoTen);
+            MailHelper.SendMailOrderReceived(ctdh.DonHang.Customer.Email, "KnowledgeStore thông báo tình trạng đơn hàng", ctdh.ChiTietDonHangID.ToString(),ctdh.DonHang.Customer.HoTen, "đã được tiếp nhận vào ngày",System.DateTime.Now.ToString("dd/MM/yyyy"));
 
             var phantramHoaHong = (float)(db.HoaHongs.OrderByDescending(m => m.HoaHongID).Select(m => m.PhanTranHoaHong).FirstOrDefault()) / 100;
             float phiHoaHong = 0;

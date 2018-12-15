@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Model.EntityFramework.ChiTietDonHang>
 @{
     ViewBag.Title = "OverallPage";
     Layout = "~/Areas/MerchantArea/Views/Shared/_Layout.cshtml";
@@ -29,7 +29,7 @@
                     </div>
                     <div class="stat-content dib">
                         <div class="stat-heading">Tổng: @ViewBag.TongDoanhThuThang vnd</div>
-                        <div class="stat-text" style="color: green">Mức tăng trưởng:  @(ViewBag.MucTang) (%) so với tháng trước</div>
+                        <div class="stat-text" style="color: green">Mức tăng trưởng:  @ViewBag.DoanhThuTang</div>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                         <i class="ti-money text-success border-success"></i>
                     </div>
                     <div class="stat-content dib">
-                        <div class="stat-heading">Tổng: @ViewBag.SoXuMerchant </div>
+                        <div class="stat-heading">Tổng: @ViewBag.SoXuMerchant KPI xu </div>
                         <div class="stat-text"></div>
                     </div>
                 </div>
@@ -86,15 +86,18 @@
                     <thead>
                         <tr>
                             <th scope="col">Ngày</th>
-                            <th scope="col">Số lượng</th>
+                            <th scope="col">Số lượng sản phẩm</th>
                             <th scope="col">Tiền lãi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>11/08/1111</td>
-                            <td>100</td>
-                            <td>2000000</td>
+                            @foreach(var item in Model)
+                            {
+                                <td>@item.NgayXuat.ToString("dd/MM/yyyy")</td>
+                                <td>@item.SoLuong</td>
+                                <td>@(item.ThanhTien-(item.ThanhTien*ViewBag.TienHoaHong))</td>
+                            }
                         </tr>
                     </tbody>
                 </table>
@@ -136,7 +139,7 @@
 	        theme: "light2",
 	        animationEnabled: true,
 	        title: {
-		        text: "Bảng tăng trưởng doanh thu trong tháng"
+                text: "Bảng tăng trưởng doanh thu trong tháng " +@ViewBag.MonthNow 
 	        },
 	        axisX: {
 		        title: "Mức thời gian trong tháng"

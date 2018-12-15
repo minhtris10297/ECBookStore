@@ -56,7 +56,7 @@ namespace Common
             client.Send(message);
         }
 
-        public static void SendMailOrderReceived( string toEmail, string subject, string maDon,string tenKhachHang)
+        public static void SendMailOrderReceived( string toEmail, string subject, string maDon,string tenKhachHang,string trangthai,string Ngay)
         {
             var fromEmailAddress = ConfigurationManager.AppSettings["FromEmailAddress"].ToString();
             var fromEmailDisplayName = ConfigurationManager.AppSettings["FromEmailDisplayName"].ToString();
@@ -68,7 +68,7 @@ namespace Common
             MailMessage message = new MailMessage(new MailAddress(fromEmailAddress, fromEmailDisplayName), new MailAddress(toEmail));
             message.Subject = subject;
             message.IsBodyHtml = true;
-            message.Body = "<h1><b>Đơn hàng mã #"+maDon+ " đã được tiếp nhận<b/></h1></br><h3> Cảm ơn " + tenKhachHang+" đã ủng hộ KnowledgeStore</h5>";
+            message.Body = "<h1><b>Đơn hàng mã #"+maDon+ " "+trangthai+" "+Ngay+"<b/></h1></br><h3> Cảm ơn khách hàng " + tenKhachHang+" đã ủng hộ KnowledgeStore</h5>";
 
             var client = new SmtpClient();
             client.Credentials = new NetworkCredential(fromEmailAddress, fromEmailPassword);
@@ -77,5 +77,6 @@ namespace Common
             client.Port = !string.IsNullOrEmpty(smtpPort) ? Convert.ToInt32(smtpPort) : 0;
             client.Send(message);
         }
+
     }
 }
