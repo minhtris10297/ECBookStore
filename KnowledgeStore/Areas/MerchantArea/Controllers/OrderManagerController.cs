@@ -25,6 +25,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             ViewBag.DropdownStatus = new SelectList(db.TinhTrangDonHangs, "TinhTrangDonHangID", "TinhTrangDonHang1");
 
             var listCTDH = db.ChiTietDonHangs.Where(m => m.MerchantID == id).OrderByDescending(m=>m.DonHang.NgayDat).ToList();
+
             return View(listCTDH);
         }
 
@@ -71,6 +72,42 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
 
         }
 
+        public JsonResult CheckXu(int id)
+        {
+            var sessionUser = (UserLogin)Session[CommonConstants.USERMERCHANT_SESSION];
+            var merchant = db.Merchants.Where(m => m.Email == sessionUser.Email).FirstOrDefault();
+
+            var ctdh = db.ChiTietDonHangs.Find(id);
+            var phantramHoaHong = (float)(db.HoaHongs.OrderByDescending(m => m.HoaHongID).Select(m => m.PhanTranHoaHong).FirstOrDefault()) / 100;
+            float phiHoaHong = 0;
+            if (ctdh.Sach.GiaKhuyenMai == null)
+            {
+                phiHoaHong = (float)ctdh.Sach.GiaTien * phantramHoaHong * ctdh.SoLuong;
+            }
+            else
+            {
+                phiHoaHong = (float)ctdh.Sach.GiaKhuyenMai * phantramHoaHong * ctdh.SoLuong;
+            }
+            if (phiHoaHong % 1000 != 0)
+            {
+                if (phiHoaHong % 1000 < 500)
+                {
+                    phiHoaHong = phiHoaHong - phiHoaHong % 1000;
+                }
+                else
+                {
+                    phiHoaHong = phiHoaHong - phiHoaHong % 1000 + 1000;
+                }
+            }
+            int xuCanTru = (int)phiHoaHong / 1000;
+            var sta = true;
+            if (merchant.SoLuongKIPXu < xuCanTru)
+            {
+                sta = false;
+            }
+            return Json(new { xu=xuCanTru,status=sta,idCTDH=id});
+        }
+
         public ActionResult ChangeDeliveryStatus(int idCtdh)
         {
             var sessionUser = (UserLogin)Session[CommonConstants.USERMERCHANT_SESSION];
@@ -114,7 +151,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             merchant.FirstOrDefault().SoLuongKIPXu = merchant.FirstOrDefault().SoLuongKIPXu + xuCanTru;
             db.SaveChanges();
             var listCTDH = db.ChiTietDonHangs.Where(m => m.MerchantID == id).OrderByDescending(m => m.DonHang.NgayDat).ToList();
-            return RedirectToAction("Index","OrderManager",new { id=id});
+            return RedirectToAction("Index","OrderManager",new { area="MerchantArea"});
         }
     } 
 }

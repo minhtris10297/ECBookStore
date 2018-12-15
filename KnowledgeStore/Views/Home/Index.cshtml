@@ -173,21 +173,60 @@
 
         <div class="flex-w flex-sb-m p-b-52">
             <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-                    Tất cả
-                </button>
+                @if (ViewBag.Sort == null)
+                {
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
+                        Tất cả
+                    </button>
+                }
+                else
+                {
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter="*">
+                        Tất cả
+                    </button>
+                }
 
-                <a href="@Url.Action("Index","Home",new { sort="HangMoi",searchProduct=ViewBag.Search})" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-                    Hàng mới
-                </a>
+                @if (ViewBag.Sort == "HangMoi")
+                {
+                    <a href="@Url.Action("Index","Home",new { sort="HangMoi",searchProduct=ViewBag.Search})" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter=".women">
+                        Hàng mới
+                    </a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Index","Home",new { sort="HangMoi",searchProduct=ViewBag.Search})" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
+                        Hàng mới
+                    </a>
+                }
 
-                <a href="@Url.Action("Index","Home",new { sort="GiaTangDan",searchProduct=ViewBag.Search})" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-                    Giá Tăng Dần
-                </a>
 
-                <a href="@Url.Action("Index","Home",new { sort="GiaGiamDan",searchProduct=ViewBag.Search})" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-                    Giá Giảm Dần
-                </a>
+                @if (ViewBag.Sort == "GiaTangDan")
+                {
+                    <a href="@Url.Action("Index","Home",new { sort="GiaTangDan",searchProduct=ViewBag.Search})" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter=".men">
+                        Giá Tăng Dần
+                    </a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Index","Home",new { sort="GiaTangDan",searchProduct=ViewBag.Search})" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
+                        Giá Tăng Dần
+                    </a>
+                }
+
+
+                @if (ViewBag.Sort == "GiaGiamDan")
+                {
+                    <a href="@Url.Action("Index","Home",new { sort="GiaGiamDan",searchProduct=ViewBag.Search})" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter=".men">
+                        Giá Giảm Dần
+                    </a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Index","Home",new { sort="GiaGiamDan",searchProduct=ViewBag.Search})" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
+                        Giá Giảm Dần
+                    </a>
+                }
+
 
                 @*<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
             Giảm giá nhiều
