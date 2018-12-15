@@ -92,11 +92,32 @@
                     </thead>
                     <tbody>
                         <tr>
-                            @foreach(var item in Model)
+                            @foreach (var item in Model)
                             {
-                                <td>@item.NgayXuat.ToString("dd/MM/yyyy")</td>
+                                <td>@item.NgayXuat.GetValueOrDefault(System.DateTime.Now).ToString("dd/MM/yyyy")</td>
                                 <td>@item.SoLuong</td>
-                                <td>@(item.ThanhTien-(item.ThanhTien*ViewBag.TienHoaHong))</td>
+                               if (item.Sach.GiaKhuyenMai == null)
+                                {
+                                    if ((float)(float)item.Sach.GiaTien * item.SoLuong * ViewBag.TienHoaHong % 1000 < 500)
+                                    {
+                                        <td>@((float)item.Sach.GiaTien * item.SoLuong - ((float)(float)item.Sach.GiaTien * item.SoLuong * ViewBag.TienHoaHong - (float)(float)item.Sach.GiaTien * item.SoLuong * ViewBag.TienHoaHong % 1000))</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@((float)item.Sach.GiaTien * item.SoLuong - ((float)(float)item.Sach.GiaTien * item.SoLuong * ViewBag.TienHoaHong - (float)(float)item.Sach.GiaTien * item.SoLuong * ViewBag.TienHoaHong % 1000+1000))</td>
+                                    }
+                                }
+                                else
+                                {
+                                    if ((float)item.Sach.GiaKhuyenMai * item.SoLuong * ViewBag.TienHoaHong % 1000 < 500)
+                                    {
+                                        <td>@((float)item.Sach.GiaKhuyenMai * item.SoLuong - ((float)(float)item.Sach.GiaKhuyenMai * item.SoLuong * ViewBag.TienHoaHong - (float)(float)item.Sach.GiaKhuyenMai * item.SoLuong * ViewBag.TienHoaHong % 1000))</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@((float)item.Sach.GiaKhuyenMai * item.SoLuong - ((float)(float)item.Sach.GiaKhuyenMai * item.SoLuong * ViewBag.TienHoaHong - (float)(float)item.Sach.GiaKhuyenMai * item.SoLuong * ViewBag.TienHoaHong % 1000+1000))</td>
+                                    }
+                                }
                             }
                         </tr>
                     </tbody>

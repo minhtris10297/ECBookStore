@@ -83,7 +83,6 @@
                                     <th>Thành tiền(VNĐ)</th>
                                     <th>Lợi nhuận(VNĐ)</th>
                                     <th>Trạng thái</th>
-                                    <th>Chức năng</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -117,31 +116,6 @@
                                         <td>
                                             <div>
                                                 <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalXemchitiet">Chi tiết</button>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="p-r-18 p-r-0-sm w-full-ssm" style="width: 50%">
-                                                @if (item.TinhTrangDonHangID == 2)
-                                                {
-                                                    <button type="button" data-toggle="modal" data-target="#exampleModal@(item.ChiTietDonHangID)" class="btn btn-info btn-sm">Xử lý</button>
-
-                                                }
-                                                else if (item.TinhTrangDonHangID == 3)
-                                                {
-                                                    <button type="button" class="btn btn-info btn-sm">Đang giao hàng</button>
-                                                }
-                                                else if (item.TinhTrangDonHangID == 4)
-                                                {
-                                                    <button type="button" class="btn btn-info btn-sm">Hoàn tất</button>
-                                                }
-                                                else if (item.TinhTrangDonHangID == 5)
-                                                {
-                                                    <button type="button" class="btn btn-info btn-sm">Thất bại</button>
-                                                }
-                                                else
-                                                {
-                                                    <button type="button" class="btn btn-info btn-sm">Chờ xác nhận</button>
-                                                }
                                             </div>
                                         </td>
                                     </tr>
@@ -233,7 +207,7 @@
 
 
 @section PluginCSS{
-    <meta http-equiv="refresh" content="5">
+    <meta http-equiv="refresh" content="30">
     <link rel="stylesheet" href="~/Assets/Admin/Admin/Admin/vendors/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/Assets/Admin/Admin/Admin/vendors/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/Assets/Admin/Admin/Admin/vendors/themify-icons/css/themify-icons.css">

@@ -128,23 +128,33 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             var listDT = db.ChiTietDonHangs.Where(m => m.TinhTrangDonHangID == 4);
             List<DataPoint> dataPoints = new List<DataPoint>();
             double tongDoanhThuThang = 0;
+            
             var tienHoaHong = (float)(db.HoaHongs.OrderByDescending(m => m.HoaHongID).Select(m => m.PhanTranHoaHong).FirstOrDefault())/100;
-            for(int i=dayFirst;i<=dayLast;i++)
+            
+            for (int i=dayFirst;i<=dayLast;i++)
             {
-                    float count2 = 0;
+                    double count2 = 0;
                     var dateTemp = firstDayOfMonth;
                     var countOrderSuccess = listDT.Where(m => m.DonHang.NgayDat.Year == dateTemp.Year & m.DonHang.NgayDat .Month==dateTemp.Month & m.DonHang.NgayDat.Day==dateTemp.Day& m.MerchantID==merchantID).Count();
-                    if(listDT.Where(m =>  m.DonHang.NgayDat.Year == dateTemp.Year & m.DonHang.NgayDat .Month==dateTemp.Month & m.DonHang.NgayDat.Day == dateTemp.Day) != null)
+                    if(countOrderSuccess>0)
                     {
                         var listtemp= listDT.Where(m =>  m.DonHang.NgayDat.Year == dateTemp.Year & m.DonHang.NgayDat .Month==dateTemp.Month & m.DonHang.NgayDat.Day == dateTemp.Day & m.MerchantID==merchantID).Select(m => m.Sach.GiaKhuyenMai ?? m.Sach.GiaTien);
                         foreach(var item in listtemp)
                         {
-                            tongDoanhThuThang += (float)item* tienHoaHong;
-                            count2+= (float)item * tienHoaHong;
+                            if (((float)item * tienHoaHong % 1000) < 500)
+                            {
+                                tongDoanhThuThang += (float)item - (float)item * tienHoaHong - ((float)item * tienHoaHong % 1000);
+                                count2+= (float)item - (float)item * tienHoaHong - ((float)item * tienHoaHong % 1000);
+                        }
+                            else
+                            {
+                                tongDoanhThuThang += (float)item - ((float)item * tienHoaHong - ((float)item * tienHoaHong % 1000) + 1000);
+                                count2+= (float)item - (float)item * tienHoaHong - ((float)item * tienHoaHong % 1000) + 1000;
+                        }
                         }
                     }
                     
-                    dataPoints.Add(new DataPoint( i, tongDoanhThuThang));
+                    dataPoints.Add(new DataPoint( i, count2));
                     firstDayOfMonth=firstDayOfMonth.AddDays( 1);
             }
 
@@ -193,7 +203,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             }
             var listCTDBanDuoc = db.ChiTietDonHangs.Where(m => m.DonHang.NgayDat.Year == date.Year & m.DonHang.NgayDat.Month == date.Month & m.DonHang.NgayDat.Day == date.Day & m.TinhTrangDonHangID == 4);
 
-            ViewBag.SoXuMerchant = merchant.FirstOrDefault().SoLuongKIPXu;
+            ViewBag.SoXuMerchant =  merchant.FirstOrDefault().SoLuongKIPXu;
             
             ViewBag.TienHoaHong = tienHoaHong;
 
