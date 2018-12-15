@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace KnowledgeStore.Areas.AdminArea.Controllers
 {
-    public class QuanLySachController : Controller
+    public class QuanLySachController : BaseController
     {
         KnowledgeStoreEntities db = new KnowledgeStoreEntities();
         // GET: AdminArea/QuanLySach
@@ -20,7 +20,7 @@ namespace KnowledgeStore.Areas.AdminArea.Controllers
             ViewBag.DropdownStatus = new SelectList(db.TheLoais, "TenTheLoai", "TenTheLoai");
             ViewBag.DropdownStatusNXB = new SelectList(db.NhaXuatBans, "TenNXB", "TenNXB");
 
-            var listSach = db.Saches.ToList();
+            var listSach = db.Saches.OrderByDescending(m=>m.LichSuNangTins.Min(n=>n.NgayNang)).ToList();
             return View(listSach);
         }
 
@@ -42,7 +42,7 @@ namespace KnowledgeStore.Areas.AdminArea.Controllers
             //{
             //    results = results.Where(p => p.NhaXuatBan.NhaXuatBanID == DropdownStatusNXB).ToList();
             //}
-            var results = db.Saches.Where(p => p.NhaXuatBan.NhaXuatBanID == DropdownStatusNXB || p.TenSach.Contains(TenSach ?? "") || p.TheLoai.TheLoaiID == DropdownStatus).ToList();
+            var results = db.Saches.OrderByDescending(m => m.LichSuNangTins.Min(n => n.NgayNang)).Where(p => p.NhaXuatBan.NhaXuatBanID == DropdownStatusNXB || p.TenSach.Contains(TenSach ?? "") || p.TheLoai.TheLoaiID == DropdownStatus).ToList();
             return View(results);
         }
         [HttpPost]

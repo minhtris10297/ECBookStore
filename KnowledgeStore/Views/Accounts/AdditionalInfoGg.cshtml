@@ -35,14 +35,14 @@
 
         <div class="simple-page-form animated flipInY" id="signup-form">
             <h4 class="form-title m-b-xl text-center">Bổ sung thông tin tài khoản google để hoàn thành đăng ký</h4>
-            @using (Html.BeginForm("AdditionalInfoGg","Accounts",new { id=ViewBag.CusId}))
+            @using (Html.BeginForm("AdditionalInfoGg", "Accounts", new { id = ViewBag.CusId }))
             {
                 @Html.AntiForgeryToken()
                 <div class="form-group">
                     @*<input id="sign-up-name" type="text" class="form-control" placeholder="Họ Tên">*@
                     @if (Model.HoTen != null)
                     {
-                        @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Họ Tên", value=Model.HoTen } })
+                        @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Họ Tên", value = Model.HoTen } })
                     }
                     else
                     {
@@ -54,7 +54,7 @@
                     @*<input id="sign-up-email" type="email" class="form-control" placeholder="Email">*@
                     @if (Model.Email != null)
                     {
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "email", @placeholder = "Email", value=Model.Email, disabled = "disabled" } })
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "email", @placeholder = "Email", value = Model.Email, disabled = "disabled" } })
                     }
                     else
                     {
@@ -69,7 +69,7 @@
                     @*<input id="sign-up-name" type="number" class="form-control" placeholder="Số Điện Thoại">*@
                     @if (Model.SoDienThoai != null)
                     {
-                        @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control", @type = "number", @placeholder = "Số điện thoại",Model.SoDienThoai, required = "required" } })
+                        @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control", @type = "number", @placeholder = "Số điện thoại", Model.SoDienThoai, required = "required" } })
                     }
                     else
                     {
@@ -82,7 +82,7 @@
                     @*<input id="sign-up-name" type="text" class="form-control" placeholder="Địa chỉ">*@
                     @if (Model.DiaChi != null)
                     {
-                        @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Địa chỉ",value=Model.DiaChi, required = "required" } })
+                        @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Địa chỉ", value = Model.DiaChi, required = "required" } })
                     }
                     else
                     {
@@ -147,6 +147,13 @@
             }
 
         });
+    </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9TyMQ4y3OFtS9ho3C1wB7Lwh-10PtdVY&libraries=places"></script>
+    <script>
+
+        var input = document.getElementById('DiaChi');
+
+        autocomplete = new google.maps.places.Autocomplete(input);
     </script>
 </body>
 </html>

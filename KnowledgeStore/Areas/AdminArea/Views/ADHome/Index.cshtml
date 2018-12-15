@@ -1,14 +1,167 @@
-﻿
+﻿@model List<Model.EntityFramework.LichSuGiaoDichXuCuaMerchant>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/AdminArea/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>Tổng quan</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content mt-3">
+
+    <div class="col-lg-8 col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">
+                    Doanh thu trong tuần
+                </strong>
+            </div>
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib">
+                        <i class="ti-stats-up text-success border-success"></i>
+                    </div>
+                    <div class="stat-content dib">
+                        <div class="stat-heading">Tổng xu người dùng nạp trong tháng @ViewBag.TongXuThang KPI xu</div>
+                        <div class="stat-text" style="color: green">Mức tăng trưởng:  @ViewBag.DoanhThuTang</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">
+                    Số dư của bạn
+                </strong>
+            </div>
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib">
+                        <i class="ti-money text-success border-success"></i>
+                    </div>
+                    <div class="stat-content dib">
+                        <div class="stat-heading">Tổng: @ViewBag.TongXu KPI Xu </div>
+                        <div class="stat-text"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h4 class="card-title mb-0">Traffic</h4>
+                        <div class="small text-muted">October 2017</div>
+                    </div>
+                    <!--/.col-->
+                    <div class="col-sm-8 hidden-sm-down">
+                    </div>
+                    <!--/.col-->
+
+
+                </div>
+                <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Sách xu nạp gần đây</strong>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Ngày</th>
+                            <th scope="col">Số xu</th>
+                            <th>Phương thức</th>
+                            <th scope="col">Merchant</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.NgayGiaoDich.ToString("dd/MM/yyyy")</td>
+                                <td>@item.SoXu KPI xu</td>
+                                <td>@item.PhuongThucSuDung</td>
+                                <td>@item.Merchant.TenCuaHang</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
 
 @section PluginCSS{
+    <link rel="stylesheet" href="/Assets/Admin/Admin/Admin/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Assets/Admin/Admin/Admin/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Assets/Admin/Admin/Admin/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="/Assets/Admin/Admin/Admin/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/Assets/Admin/Admin/Admin/vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="/Assets/Admin/Admin/Admin/vendors/jqvmap/dist/jqvmap.min.css">
 
-    }
+
+    <link rel="stylesheet" href="/Assets/Admin/Admin/Admin/assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+}
 
 @section PluginJS{
-    }
+    <script src="/Assets/Admin/Admin/Admin/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="/Assets/Admin/Admin/Admin/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/Assets/Admin/Admin/Admin/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/Assets/Admin/Admin/Admin/assets/js/main.js"></script>
+
+
+    <script src="/Assets/Admin/Admin/Admin/vendors/chart.js/dist/Chart.bundle.min.js"></script>
+    <script src="/Assets/Admin/Admin/Admin/assets/js/dashboard.js"></script>
+    <script src="/Assets/Admin/Admin/Admin/assets/js/widgets.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script>
+        window.onload = function () {
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+	        theme: "light2",
+	        animationEnabled: true,
+	        title: {
+		        text: "Bảng tăng trưởng doanh thu trong tháng "+@ViewBag.MonthNow
+	        },
+	        axisX: {
+		        title: "Mức thời gian trong tháng"
+	        },
+	        axisY: {
+		        title: "Mức tăng trưởng doanh thu"
+	        },
+	        data: [{
+		        type: "area",
+		        color: "#0BB5FF",
+		        markerSize: 0,
+		        toolTipContent: "Ngày: thứ {x} <br>Ins. Doanh thu: {y} đồng",
+		        dataPoints: @Html.Raw(ViewBag.DataPoints)
+	        }]
+        });
+        chart.render();
+
+        }
+    </script>
+
+}

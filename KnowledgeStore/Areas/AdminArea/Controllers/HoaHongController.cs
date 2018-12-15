@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace KnowledgeStore.Areas.AdminArea.Controllers
 {
-    public class HoaHongController : Controller
+    public class HoaHongController : BaseController
     {
         KnowledgeStoreEntities db = new KnowledgeStoreEntities();
         // GET: AdminArea/HoaHong

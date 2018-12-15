@@ -9,15 +9,14 @@ namespace Model.EntityFramework
     [Table("Admin")]
     public partial class Admin
     {
-        [Key]
-        public int MaTaiKhoan { get; set; }
+        public int AdminID { get; set; }
 
         [Required]
         [StringLength(50)]
         public string TenDangNhap { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(256)]
         public string MatKhauMaHoa { get; set; }
 
         [Required]

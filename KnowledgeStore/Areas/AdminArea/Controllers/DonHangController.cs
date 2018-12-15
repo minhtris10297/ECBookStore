@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using Common;
 using ExcelDataReader;
 using Model.EntityFramework;
 using System;
@@ -11,7 +12,7 @@ using System.Web.Mvc;
 
 namespace KnowledgeStore.Areas.AdminArea.Controllers
 {
-    public class DonHangController : Controller
+    public class DonHangController : BaseController
     {
         KnowledgeStoreEntities db = new KnowledgeStoreEntities();
 
@@ -82,12 +83,15 @@ namespace KnowledgeStore.Areas.AdminArea.Controllers
                                             new DataColumn("ThanhTien"),
                                             new DataColumn("TrangThai")});
 
-            foreach (var donhang in db.ChiTietDonHangs.Where(p => p.TinhTrangDonHangID == 3).ToList())
+            foreach (var donhang in db.ChiTietDonHangs.Where(p => p.TinhTrangDonHangID == 2).ToList())
             {
                 dt.Rows.Add(donhang.ChiTietDonHangID, donhang.DonHang.Customer.HoTen, donhang.DonHang.DiaChi,
                     donhang.Sach.Merchant.DiaChi, donhang.Sach.TenSach, donhang.SoLuong, donhang.ThanhTien, donhang.TinhTrangDonHangID
                     );
+                donhang.TinhTrangDonHangID = 3;
+                MailHelper.SendMailOrderReceived(donhang.DonHang.Customer.Email, "KnowledgeStore thông báo tình trạng đơn hàng", donhang.ChiTietDonHangID.ToString(), donhang.DonHang.Customer.HoTen, "đang được giao", System.DateTime.Now.ToString("dd/MM/yyyy"));
             }
+            db.SaveChanges();
 
             using (XLWorkbook wb = new XLWorkbook())
             {
@@ -127,10 +131,22 @@ namespace KnowledgeStore.Areas.AdminArea.Controllers
                     {
                         int chiTietDonHangID = Int32.Parse(reader.GetString(0)),
                             statusOrder = (int)reader.GetDouble(7);
+                        var ctdonhang = db.ChiTietDonHangs.Find(chiTietDonHangID);
 
-                        db.ChiTietDonHangs.Where(ctdh => ctdh.ChiTietDonHangID == chiTietDonHangID)
-                            .First().TinhTrangDonHangID = statusOrder;
-
+                        ctdonhang.TinhTrangDonHangID = statusOrder;
+                        if (statusOrder == 4)
+                        {
+                            MailHelper.SendMailOrderReceived(ctdonhang.DonHang.Customer.Email, "KnowledgeStore thông báo tình trạng đơn hàng", ctdonhang.ChiTietDonHangID.ToString(), ctdonhang.DonHang.Customer.HoTen, "giao thành công!!!", System.DateTime.Now.ToString("dd/MM/yyyy"));
+                            ctdonhang.NgayXuat = System.DateTime.Now;
+                        }
+                        else if (statusOrder == 5){
+                            MailHelper.SendMailOrderReceived(ctdonhang.DonHang.Customer.Email, "KnowledgeStore thông báo tình trạng đơn hàng", ctdonhang.ChiTietDonHangID.ToString(), ctdonhang.DonHang.Customer.HoTen, "đã giao thất bại, xu hoa hồng đc hoàn trả cho quí khách", System.DateTime.Now.ToString("dd/MM/yyyy"));
+                            var xuHoaHong = db.LichSuHoaHongs.Where(m => m.ChiTietDonHangID == ctdonhang.ChiTietDonHangID).Select(m=>m.GiaTriXu).FirstOrDefault();
+                            db.LichSuHoaHongs.Add(new LichSuHoaHong() { ChiTietDonHangID = ctdonhang.ChiTietDonHangID, GiaTriXu = -xuHoaHong, ThoiDiem = System.DateTime.Now });
+                            Merchant mer = db.Merchants.Find(ctdonhang.MerchantID);
+                            mer.SoLuongKIPXu = mer.SoLuongKIPXu - (xuHoaHong);
+                            ctdonhang.NgayXuat = System.DateTime.Now;
+                        }
                         db.SaveChanges();
                     }
                     count++;

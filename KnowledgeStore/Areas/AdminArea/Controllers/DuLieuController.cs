@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace KnowledgeStore.Areas.AdminArea.Controllers
 {
-    public class DuLieuController : Controller
+    public class DuLieuController : BaseController
     {
         // GET: AdminArea/DuLieu
         KnowledgeStoreEntities db = new KnowledgeStoreEntities();

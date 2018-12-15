@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace KnowledgeStore.Areas.AdminArea.Controllers
 {
-    public class NguoiMuaController : Controller
+    public class NguoiMuaController : BaseController
     {
         KnowledgeStoreEntities db = new KnowledgeStoreEntities();
         // GET: AdminArea/NguoiMua

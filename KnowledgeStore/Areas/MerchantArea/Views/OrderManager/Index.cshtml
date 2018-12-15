@@ -81,7 +81,6 @@
                                     <th>Ngày xử lý</th>
                                     <th>Số lượng</th>
                                     <th>Thành tiền</th>
-                                    <th>Lợi nhuận</th>
                                     <th>Trạng thái</th>
                                     <th>Chức năng</th>
                                 </tr>
@@ -118,9 +117,6 @@
                                                 <button class="btn btn-info btn-sm" disabled>@item.TinhTrangDonHang.TinhTrangDonHang1</button>
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-info btn-sm">Chi tiết </button>
-                                            </td>
-                                            <td>
                                                 <div class="p-r-18 p-r-0-sm w-full-ssm" style="width: 50%">
                                                     @if (item.TinhTrangDonHangID != 1)
                                                     {
@@ -148,7 +144,8 @@
                         <div class="modal-dialog" role="document" style="width: 450px">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title" id="exampleModalLabel">Đã chuẩn bị hàng vs yêu cầu lấy hàng</h4>
+                                    <h4 class="modal-title" id="exampleModalLabel">Đã chuẩn bị hàng -> Yêu cầu lấy hàng</h4>
+                                    <span class="alert-info">Phí giao dịch là 5% giá trị đơn hàng, trừ qua xu KPI</span>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -180,7 +177,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay về</button>
-                                    <a type="button" class="btn btn-info btn-sm" href="@Url.Action("ChangeDeliveryStatus", "OrderManager", new { id = @ViewBag.IdMerchant, idCtdh = item.ChiTietDonHangID })">Xác nhận đơn hàng</a>
+                                    <button class="btn btn-info btn-sm" id="XacNhanDonHang" data-num="@item.ChiTietDonHangID">Xác nhận đơn hàng</button>
                                 </div>
                             </div>
                         </div>
@@ -226,4 +223,33 @@
     <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
     <script src="/Assets/Merchant/UI/vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
     <script src="/Assets/Merchant/UI/assets/js/init-scripts/data-table/datatables-init.js"></script>
+    <script>
+        var processOrder = {
+            init: function () {
+                processOrder.regEvents();
+            },
+            regEvents: function () {
+                $('#XacNhanDonHang').off('click').on('click', function () {
+                    var idF = $(this).data("num");
+
+                    $.ajax({
+                        url: '/OrderManager/CheckXu',
+                        data: { id: idF },
+                        dataType: 'json',
+                        type: 'POST',
+                        success: function (res) {
+                            if (res.status == true) {
+                                window.location.href = "/OrderManager/ChangeDeliveryStatus?idCtdh=" + res.idCTDH;
+                                alert("Xác nhận đơn hàng thành công");
+                            }
+                            else {
+                                alert("Xác nhận đơn hàng thất bại vì không đủ " + res.xu + " xu tiền hoa hồng");
+                            }
+                        }
+                    })
+                });
+            }
+        }
+        processOrder.init();
+    </script>
 }

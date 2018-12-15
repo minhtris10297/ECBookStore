@@ -54,6 +54,13 @@ namespace KnowledgeStore.Controllers
                 list = (List<CartItem>)cart;
             }
             ViewBag.ListCart = list;
+            decimal tamTinh = 0;
+            foreach (var item in list)
+            {
+                tamTinh += item.Quantity * item.Sach.GiaTien;
+            }
+            ViewBag.TamTinh = tamTinh.ToString("N0");
+            ViewBag.ThanhTien = tamTinh.ToString("N0");
             return View(new LoginModel());
         }
 
@@ -94,6 +101,14 @@ namespace KnowledgeStore.Controllers
                     ModelState.AddModelError("", "Mật khẩu không đúng.");
                 }
             }
+            decimal tamTinh = 0;
+            foreach (var item in list)
+            {
+                tamTinh += item.Quantity * item.Sach.GiaTien;
+            }
+            ViewBag.TamTinh = tamTinh.ToString("N0");
+            ViewBag.ThanhTien = tamTinh.ToString("N0");
+
             return View(model);
         }
         public ActionResult PaymentSuccess()
