@@ -94,7 +94,7 @@ namespace KnowledgeStore.Controllers
             return Json(new { data = listSach, position = xPosition + 8, heightStyle = height + 610, top = 0 }, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult SearchProduct( string theLoai, string searchProduct)
+        public JsonResult SearchProduct(  string searchProduct)
         {
             var listSach = db.Saches.OrderByDescending(m => m.LichSuNangTins.Max(n => n.NgayNang)).ToList();
             if (!String.IsNullOrEmpty(searchProduct))
@@ -106,10 +106,6 @@ namespace KnowledgeStore.Controllers
                                              TenSach = x.TenSach,
                                              GiaTien = x.GiaTien
                                          }).ToList();
-            }
-            if (theLoai != null)
-            {
-                listSach = listSach.Where(m => m.TheLoai.TenTheLoai == theLoai).ToList();
             }
             int height = 610;
             if (listSach.Count() > 8)
