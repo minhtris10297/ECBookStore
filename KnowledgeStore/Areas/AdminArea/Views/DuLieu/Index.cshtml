@@ -4,7 +4,7 @@
     Layout = "~/Areas/AdminArea/Views/Shared/_Layout.cshtml";
 }
 
-<div class="breadcrumbs">
+@*<div class="breadcrumbs">
     <div class="col-sm-4">
         <div class="page-header float-left">
             <div class="page-title">
@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 
 <style>
     .accordion {
@@ -48,50 +48,31 @@
         <div class="widget widget-pie-chart">
 
 
-            <button class="accordion">Sao lưu dữ liệu</button>
-            <div class="panel">
+            <h2 style="color: blue">Sao Lưu Dữ Liệu</h2>
+            @using (Html.BeginForm("BackUpData", "DuLieu"))
+            {
+            <div class="">
                 <div class="widget-body clearfix" style="margin-top: 20px; margin-bottom: 20px">
                     <!-- new row -->
                     <div class="col-xs-6 col-sm-4 col-md-3">
                         <form>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tên sao lưu</label>
-                                <input type="text" class="form-control" placeholder="Tên sao lưu">
+                                <input type="text" class="form-control" placeholder="Tên sao lưu" name="TenSaoLuu">
                             </div>
                         </form>
                     </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3">
-                        <form>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Công việc</label>
-                                <input type="text" class="form-control" placeholder="Công việc">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3">
-                        <form>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Định dạng</label>
-                                <input type="text" class="form-control" placeholder="Định dạng">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3">
-                        <form>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Nơi lưu trữ</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nơi lưu trữ">
-                            </div>
-                        </form>
+                    <div class="col-xs-6 col-sm-4 col-md-3" style="margin-top:30px">
                         <div class="m-b-xl">
-                            <button type="button" class="btn btn-warning btn-sm" style="padding: 8px">Lưu</button>
-                            <button type="button" class="btn btn-warning btn-sm" style="padding: 8px; margin-left: 20px">Làm mới</button>
+                            <button type="submit" class="btn btn-warning btn-sm" style="padding: 8px; margin-left: 20px">Sao Lưu</button>
                         </div>
                     </div>
+                    
                 </div><!-- .widget -->
-            </div>
 
-            <button class="accordion">Lịch trình</button>
+            </div>
+            }
+            @*<button class="accordion">Lịch trình</button>
             <div class="panel">
                 <form>
                     <table width="100%" style="margin-top: 20px;margin-bottom: 20px">
@@ -181,7 +162,7 @@
                     </table>
 
                 </form>
-            </div>
+            </div>*@
 
             <script>
                 var acc = document.getElementsByClassName("accordion");
@@ -203,7 +184,8 @@
         </div>
     </div>
 </div>
-<div class="content mt-3">
+
+@*<div class="content mt-3">
     <div class="col-sm-12">
 
 
@@ -275,7 +257,7 @@
             </div>
         </div><!-- .row -->
     </div> <!-- .content -->
-</div>
+</div>*@
 
 
 @section PluginCSS{
