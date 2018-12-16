@@ -42,6 +42,10 @@ namespace KnowledgeStore.Controllers
             }
             ViewBag.TamTinh = tamTinh.ToString("N0");
             ViewBag.ThanhTien = tamTinh.ToString("N0");
+            if (list.Count > 0)
+            {
+                ViewBag.DiaChiMer = list.FirstOrDefault().Sach.Merchant.DiaChi;
+            }
             return View(list);
         }
 

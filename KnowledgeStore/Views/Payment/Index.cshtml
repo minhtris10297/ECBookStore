@@ -89,7 +89,7 @@
                     <div class="flex-w flex-t p-t-27 p-b-33">
                         <div>
                             <p>Tên: @ViewBag.NameCus</p>
-                            <label>Địa chỉ</label><p id="diaChi"> @ViewBag.AddressCus </p>
+                            <p>Địa chỉ</p><p id="diaChi"> @ViewBag.AddressCus </p>
                             <button type="button" class="btn-danger" data-toggle="modal" data-target="#modalSuaDC">Sửa địa chỉ</button>
                             <p>SDT: @ViewBag.PhoneCus</p>
                         </div>
@@ -131,7 +131,17 @@
                                 @ViewBag.TamTinh đ.
                             </p>
                         </div>
+                        <div class="w-full-ssm" style="width: 50%">
+                            <span class="stext-110 cl2">
+                                Giao từ:
+                            </span>
+                        </div>
 
+                        <div class=" p-r-18 p-r-0-sm w-full-ssm" style="width: 50%">
+                            <p class="stext-111 cl6 p-t-2" style="float: right;" id="diaChiMer">
+                                @ViewBag.DiaChiMer
+                            </p>
+                        </div>
                         <div class="w-full-ssm" style="width: 50%">
                             <span class="stext-110 cl2">
                                 Phí vận chuyển:
@@ -139,8 +149,7 @@
                         </div>
 
                         <div class=" p-r-18 p-r-0-sm w-full-ssm" style="width: 50%">
-                            <p class="stext-111 cl6 p-t-2" style="float: right;">
-                                0 đ.
+                            <p class="stext-111 cl6 p-t-2" style="float: right;" id="giaCuocVC">
                             </p>
                         </div>
                         <hr style="width: 100%;border-top: 1px solid #000; margin: 5px;">
@@ -386,7 +395,7 @@
         }
         payment.init();
     </script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9TyMQ4y3OFtS9ho3C1wB7Lwh-10PtdVY&libraries=places"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9TyMQ4y3OFtS9ho3C1wB7Lwh-10PtdVY&libraries=places&language=vi&region=VN"></script>
     <script>
 
         var input = document.getElementById('inpDiaChi');
