@@ -32,7 +32,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             }
             var id = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
 
-            var listSach = db.Saches.Where(m => m.MerchantID == id).OrderByDescending(m => m.LichSuNangTins.Max(n => n.NgayNang)).ToList();
+            var listSach = db.Saches.Where(m => m.MerchantID == id&m.Khoa==true).OrderByDescending(m => m.LichSuNangTins.Min(n => n.NgayNang)).ToList();
             var tienHoaHong = db.HoaHongs.OrderByDescending(m => m.HoaHongID).Select(m => m.PhanTranHoaHong).FirstOrDefault();
             ViewBag.TienHoaHong = (float)tienHoaHong/100;
             return View(listSach);
@@ -47,7 +47,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             var sessionUser = (UserLogin)Session[CommonConstants.USERMERCHANT_SESSION];
             var id = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
 
-            var listSach = db.Saches.Where(m => m.MerchantID == id).OrderByDescending(m => m.LichSuNangTins.Max(n => n.NgayNang)).ToList();
+            var listSach = db.Saches.Where(m => m.MerchantID == id & m.Khoa == true).OrderByDescending(m => m.LichSuNangTins.Min(n => n.NgayNang)).ToList();
             if (ModelState.IsValid)
             {
 
@@ -210,6 +210,13 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             sach.SoLuong = sach.SoLuong + num;
             db.SaveChanges();
             return Json(new { status = true });
+        }
+        public ActionResult AnTin(int id)
+        {
+            db.Saches.Find(id).TrangThai = false;
+            db.Saches.Find(id).Khoa = false;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 

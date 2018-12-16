@@ -12,10 +12,8 @@ namespace Model.EntityFramework
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Merchant()
         {
-            ChiTietSachMerchants = new HashSet<ChiTietSachMerchant>();
             DanhGiaCuaMerchants = new HashSet<DanhGiaCuaMerchant>();
             LichSuGiaoDichXuCuaMerchants = new HashSet<LichSuGiaoDichXuCuaMerchant>();
-            LichSuMerchants = new HashSet<LichSuMerchant>();
             Saches = new HashSet<Sach>();
         }
 
@@ -54,9 +52,6 @@ namespace Model.EntityFramework
         public DateTime NgayTao { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietSachMerchant> ChiTietSachMerchants { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DanhGiaCuaMerchant> DanhGiaCuaMerchants { get; set; }
 
         public virtual GioiTinh GioiTinh { get; set; }
@@ -65,9 +60,6 @@ namespace Model.EntityFramework
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LichSuGiaoDichXuCuaMerchant> LichSuGiaoDichXuCuaMerchants { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LichSuMerchant> LichSuMerchants { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sach> Saches { get; set; }

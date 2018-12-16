@@ -144,5 +144,9 @@ namespace KnowledgeStore.Controllers
         {
             return View();
         }
+        public ActionResult ChinhSachNguoiDung()
+        {
+            return View();
+        }
     }
 }

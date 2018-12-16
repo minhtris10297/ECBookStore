@@ -144,13 +144,13 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                             if ((((float)item * tienHoaHong) % 1000) < 500)
                             {
                                 tongDoanhThuThang += (float)item - (float)item * tienHoaHong - ((float)item * tienHoaHong % 1000);
-                                count2+= (float)item - (float)item * tienHoaHong - ((float)item * tienHoaHong % 1000);
-                        }
+                                count2+=             (float)item - (float)item * tienHoaHong - ((float)item * tienHoaHong % 1000);
+                            }
                             else
                             {
                                 tongDoanhThuThang += (float)item - ((float)item * tienHoaHong - ((float)item * tienHoaHong % 1000) + 1000);
-                                count2+= (float)item - (float)item * tienHoaHong - ((float)item * tienHoaHong % 1000) + 1000;
-                        }
+                                count2+= (float)item - ((float)item * tienHoaHong - ((float)item * tienHoaHong % 1000) + 1000);
+                             }
                         }
                     }
                     

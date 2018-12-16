@@ -129,6 +129,10 @@
                                                             <li><a href="@Url.Action("Edit","BookManager",new { id=item.SachID})" class="btn-danger">Sửa sách</a></li>
                                                             <li><a href="/Assets/Merchant/UI/#" class="btn-success" data-toggle="modal" data-target="#ThemSach@(item.SachID)">Thêm số lượng sách</a></li>
                                                             <li><a href="#" data-toggle="modal" data-target="#NangSach@(item.SachID)" class="btn-warning">Nâng tin</a></li>
+                                                            @if (item.TrangThai == true)
+                                                            {
+                                                                <li><a href="#" data-toggle="modal" data-target="#AnSach@(item.SachID)" class="btn-warning">Xóa tin</a></li>
+                                                            }
                                                         </ul>
                                                     </li>
                                                 </div>
@@ -150,7 +154,7 @@
                     <div><a href="@Url.Action("Create")" class="btn btn-success btn-lg btn-block">Tạo kho sách mới</a></div>
                 </div>
 
-                <!-- The Modal Them Sach-->
+                <!-- The Modal Nang Tin -- Then Sach-->
                 @foreach (var item in Model)
                 {
                     <div class="modal fade" id="NangSach@(item.SachID)">
@@ -197,6 +201,8 @@
                             </div>
                         </div>
                     </div>
+                    
+
 
                     <div class="modal fade" id="ThemSach@(item.SachID)">
                         <div class="modal-dialog modal-dialog-centered">
@@ -220,9 +226,34 @@
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 </div>
 
+                            </div>
+                        </div>
+                    </div>
+                }
 
+                <!-- The Modal An Tin-->
+                @foreach (var item in Model)
+                {
+                    <div class="modal fade" id="AnSach@(item.SachID)">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
 
-
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Xóa sách</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <div>
+                                            <p>Bạn có chắc chắn muốn xóa tin</p>
+                                        </div>
+                                    </div>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <a href="@Url.Action("AnTin","BookManager",new { id=item.SachID})" class="btn btn-primary btnNangTin" >Xác nhận xóa tin</a>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -249,14 +280,14 @@
                                             <div class="col-lg-4">
                                                 <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,1)" alt="IMG-PRODUCT" style="width: 140px; height: 80px">
                                             </div>
-                                            <div class="col-lg-4" >
+                                            <div class="col-lg-4">
                                                 <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,2)" alt="IMG-PRODUCT" style="width: 140px; height: 80px">
                                             </div>
-                                            <div class="col-lg-4" >
+                                            <div class="col-lg-4">
                                                 <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,3)" alt="IMG-PRODUCT" style="width: 140px; height: 80px">
                                             </div>
-                                            
-                                            
+
+
                                         </div>
                                         <div class="card-body">
                                             <!-- Credit Card -->
@@ -330,6 +361,7 @@
                         </div>
                     </div>
                 }
+
 
 
             </div>
@@ -435,7 +467,6 @@
         </div>
     </div><!-- .row -->
 </div> <!-- .content -->
-</div>
 
 @section PluginCSS{
     <link rel="stylesheet" href="/Assets/Merchant/UI/vendors/bootstrap/dist/css/bootstrap.min.css">

@@ -92,7 +92,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                 {
 
                     merchant.MatKhauMaHoa = Encryptor.SHA256Encrypt(merchant.MatKhauMaHoa);
-                    merchant.TrangThai = true;
+                    merchant.TrangThai = false;
                     merchant.NgayTao = System.DateTime.Now;
                     merchant.SoLuongKIPXu = 0;
                     db.Merchants.Add(merchant);

@@ -57,6 +57,28 @@ namespace KnowledgeStore.Areas.AdminArea.Controllers
             return View("Index", listSach);
         }
 
+        [HttpPost]
+        public ActionResult KhoaSach(int id)
+        {
+            ViewBag.DropdownStatus = new SelectList(db.TheLoais, "TenTheLoai", "TenTheLoai");
+            ViewBag.DropdownStatusNXB = new SelectList(db.NhaXuatBans, "TenNXB", "TenNXB");
+
+            var listSach = db.Saches.ToList();
+            var sach = db.Saches.Find(id);
+            if (sach.Khoa == true)
+            {
+                sach.Khoa = false;
+                sach.TrangThai = false;
+            }
+            else
+            {
+                sach.Khoa = true;
+                sach.TrangThai = true;
+            }
+            db.SaveChanges();
+            return View("Index", listSach);
+        }
+
         public ActionResult ExportExcel()
         {
             DataTable dt = new DataTable("Grid");

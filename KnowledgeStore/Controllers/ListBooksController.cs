@@ -40,7 +40,9 @@ namespace KnowledgeStore.Controllers
             }
             if (!String.IsNullOrEmpty(SearchString))
             {
-                listSach = listSach.Where(m => m.TenSach.Contains(SearchString)).ToList();
+                ViewBag.Search = SearchString;
+                listSach = listSach.Where(m => m.TenSach.ToLower().Contains(SearchString.ToLower())
+                                         || m.NhaXuatBan.TenNXB.ToLower().Contains(SearchString.ToLower())).ToList();
             }
             ViewBag.SearchString = SearchString;
             int pageSize = 12;

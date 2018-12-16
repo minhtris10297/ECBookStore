@@ -92,45 +92,65 @@
                                     <th>Giá Khuyến Mãi</th>
                                     <th>Thêm mới</th>
                                     <th>Tên Tác Giả</th>
-
+                                    <th>Trạng thái</th>
 
                                 </tr>
                             </thead>
                             <tbody>
                                 @{ foreach (var item in Model)
                                     {
-                                        <tr>
-                                            <td></td>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <p><font color="#CD090C"><b>@item.TenSach</b></font></p>
+                                        <p>ID Sách: @item.SachID</p>
+                                        <p>Thể loại: @item.TheLoai.TenTheLoai</p>
+                                        <p>@item.NhaXuatBan.TenNXB</p>
+                                    </td>
+                                    <td>@item.SoLuong</td>
+                                    <td>@item.GiaTien</td>
+
+                                    <td>@item.GiaKhuyenMai </td>
+                                    @if (item.TrangThai == true)
+                                    {
+                                        <td>Đang bán</td>
+                                    }
+                                    else
+                                    {
+                                        using (Html.BeginForm("DuyetSach", "QuanLySach", new { id = @item.SachID }, FormMethod.Post))
+                                        {
                                             <td>
-                                                <p><font color="#CD090C"><b>@item.TenSach</b></font></p>
-                                                <p>ID Sách: @item.SachID</p>
-                                                <p>Thể loại: @item.TheLoai.TenTheLoai</p>
-                                                <p>@item.NhaXuatBan.TenNXB</p>
+                                                <button type="submit" class="btn btn-primary btn-sm">Duyệt</button>
                                             </td>
-                                            <td>@item.SoLuong</td>
-                                            <td>@item.GiaTien</td>
 
-                                            <td>@item.GiaKhuyenMai </td>
-                                            @if (item.TrangThai == true)
-                                            {
-                                                <td>Đang bán</td>
-                                            }
-                                            else
-                                            {
-                                                using (Html.BeginForm("DuyetSach", "QuanLySach", new { id = @item.SachID }, FormMethod.Post))
-                                                {
-                                                    <td>
-                                                        <button type="submit" class="btn btn-primary btn-sm">Duyệt</button>
-                                                    </td>
+                                        }
+                                    }
 
-                                                }
-                                            }
+                                    <td>@item.TacGia</td>
+                                    @if (item.Khoa == true)
+                                    {
+                                        using (Html.BeginForm("KhoaSach", "QuanLySach", new { id = @item.SachID }, FormMethod.Post))
+                                        {
+                                            <td>
+                                                <button type="submit" class="btn btn-danger btn-sm">Khóa</button>
+                                            </td>
 
-                                            <td>@item.TacGia</td>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        using (Html.BeginForm("KhoaSach", "QuanLySach", new { id = @item.SachID }, FormMethod.Post))
+                                        {
+                                            <td>
+                                                <button type="submit" class="btn btn-primary btn-sm">Mở khóa</button>
+                                            </td>
+
+                                        }
+                                    }
 
 
 
-                                        </tr>
+                                </tr>
                                     }
                                 }
 

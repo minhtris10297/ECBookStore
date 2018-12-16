@@ -16,8 +16,10 @@ namespace Model.EntityFramework
 
         public int CustomerID { get; set; }
 
-        [StringLength(10)]
-        public string NgayDanhGia { get; set; }
+        public DateTime? NgayDanhGia { get; set; }
+
+        [StringLength(1000)]
+        public string NoiDung { get; set; }
 
         public double SoSao { get; set; }
 

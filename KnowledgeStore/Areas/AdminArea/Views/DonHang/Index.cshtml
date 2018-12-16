@@ -83,7 +83,6 @@
                                     <th>Thành tiền(VNĐ)</th>
                                     <th>Lợi nhuận(VNĐ)</th>
                                     <th>Trạng thái</th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -112,11 +111,6 @@
                                         <td>@((float)item.ThanhTien * ViewBag.HoaHong / 100)</td>
                                         <td>
                                             <button class="btn btn-info btn-sm" disabled>@item.TinhTrangDonHang.TinhTrangDonHang1</button>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalXemchitiet">Chi tiết</button>
-                                            </div>
                                         </td>
                                     </tr>
                                 }

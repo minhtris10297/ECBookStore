@@ -86,17 +86,17 @@
                     <thead>
                         <tr>
                             <th scope="col">Ngày</th>
-                            <th scope="col">Số lượng sản phẩm</th>
+                            <th scope="col">SL SPham</th>
                             <th scope="col">Tiền lãi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
                             @foreach (var item in Model)
                             {
+                                <tr>
                                 <td>@item.NgayXuat.GetValueOrDefault(System.DateTime.Now).ToString("dd/MM/yyyy")</td>
                                 <td>@item.SoLuong</td>
-                               if (item.Sach.GiaKhuyenMai == null)
+                               @if (item.Sach.GiaKhuyenMai == null)
                                 {
                                     if ((float)(float)item.Sach.GiaTien * item.SoLuong * ViewBag.TienHoaHong % 1000 < 500)
                                     {
@@ -118,8 +118,8 @@
                                         <td>@((float)item.Sach.GiaKhuyenMai * item.SoLuong - ((float)(float)item.Sach.GiaKhuyenMai * item.SoLuong * ViewBag.TienHoaHong - (float)(float)item.Sach.GiaKhuyenMai * item.SoLuong * ViewBag.TienHoaHong % 1000+1000))</td>
                                     }
                                 }
+                                    </tr>
                             }
-                        </tr>
                     </tbody>
                 </table>
             </div>

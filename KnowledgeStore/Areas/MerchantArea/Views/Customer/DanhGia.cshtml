@@ -5,35 +5,37 @@
 }
 <div class="modal-body">
     <div class="card">
-        <div class="card-header">
-            <div class="col-lg-4">
-                <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,1)" alt="IMG-PRODUCT" style="width: 140px; height: 80px">
-            </div>
-            <div class="col-lg-4">
-                <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,2)" alt="IMG-PRODUCT" style="width: 140px; height: 80px">
-            </div>
-            <div class="col-lg-4">
-                <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,3)" alt="IMG-PRODUCT" style="width: 140px; height: 80px">
-            </div>
-
-
-        </div>
         <div class="card-body">
             <!-- Credit Card -->
             <div id="pay-invoice">
                 <div class="card-body">
                     <div class="card-title">
-                        <h3 class="text-center">Đánh giá Khách hang ----------</h3>
+                        <h3 class="text-center">Đánh giá Khách hang @ViewBag.TenKhach</h3>
                     </div>
                     <hr>
-                    <form action="" method="post" novalidate="novalidate">
+                    @using (Html.BeginForm("DanhGia","Customer",new { id=ViewBag.IDKhach }))
+                    {
                         <div class="form-group">
+                            <label class="control-label mb-1">Số sao</label>
+                            <select name = "soSao" id= "soSao" class="form-control" required>
+                                <option value = "0" > Chọn sao</option>
+                                <option value = "1" > 1 sao</option>
+                                <option value = "2" > 2 sao</option>
+                                <option value = "3" > 3 sao</option>
+                                <option value = "4" > 4 sao</option>
+                                <option value = "5" > 5 sao</option>
+                            </select>
                         </div>
+
                         <div class="form-group">
-                            <label class="control-label mb-1">Nhà xuất bản</label>
-                            <p class="form-control">@item.NhaXuatBan.TenNXB</p>
+                            <label class="control-label mb-1" >Nội dung đánh giá</label>
+                            <textarea class="form-control" id="noiDung" name="noiDung" required></textarea>
                         </div>
-                    </form>
+                        <div class="form-group"><button type="submit" class="btn btn-success">Gửi đánh giá</button></div>
+                    }
+
+                        
+                    ----------
                 </div>
             </div>
 

@@ -176,7 +176,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay về</button>
-                                    <button class="btn btn-info btn-sm" id="XacNhanDonHang" data-num="@item.ChiTietDonHangID">Xác nhận đơn hàng</button>
+                                    <button class="btn btn-info btn-sm XacNhanDonHang" data-num="@item.ChiTietDonHangID">Xác nhận đơn hàng</button>
                                 </div>
                             </div>
                         </div>
@@ -228,7 +228,7 @@
                 processOrder.regEvents();
             },
             regEvents: function () {
-                $('#XacNhanDonHang').off('click').on('click', function () {
+                $('.XacNhanDonHang').off('click').on('click', function () {
                     var idF = $(this).data("num");
 
                     $.ajax({

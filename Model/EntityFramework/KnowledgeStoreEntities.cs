@@ -14,7 +14,6 @@ namespace Model.EntityFramework
 
         public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
-        public virtual DbSet<ChiTietSachMerchant> ChiTietSachMerchants { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<DanhGiaCuaCustomer> DanhGiaCuaCustomers { get; set; }
         public virtual DbSet<DanhGiaCuaMerchant> DanhGiaCuaMerchants { get; set; }
@@ -25,10 +24,8 @@ namespace Model.EntityFramework
         public virtual DbSet<GioiTinh> GioiTinhs { get; set; }
         public virtual DbSet<HinhAnh> HinhAnhs { get; set; }
         public virtual DbSet<HoaHong> HoaHongs { get; set; }
-        public virtual DbSet<LichSuCustomer> LichSuCustomers { get; set; }
         public virtual DbSet<LichSuGiaoDichXuCuaMerchant> LichSuGiaoDichXuCuaMerchants { get; set; }
         public virtual DbSet<LichSuHoaHong> LichSuHoaHongs { get; set; }
-        public virtual DbSet<LichSuMerchant> LichSuMerchants { get; set; }
         public virtual DbSet<LichSuNangTin> LichSuNangTins { get; set; }
         public virtual DbSet<LoaiBia> LoaiBias { get; set; }
         public virtual DbSet<Merchant> Merchants { get; set; }
@@ -62,14 +59,6 @@ namespace Model.EntityFramework
                 .WithRequired(e => e.ChiTietDonHang)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ChiTietSachMerchant>()
-                .Property(e => e.DonGia)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<ChiTietSachMerchant>()
-                .Property(e => e.GiaKhuyenMai)
-                .HasPrecision(19, 4);
-
             modelBuilder.Entity<Customer>()
                 .Property(e => e.Email)
                 .IsUnicode(false);
@@ -101,17 +90,12 @@ namespace Model.EntityFramework
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Customer>()
-                .HasMany(e => e.LichSuCustomers)
-                .WithRequired(e => e.Customer)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Customer>()
                 .HasMany(e => e.DonHangs)
                 .WithRequired(e => e.Customer)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<DanhGiaCuaMerchant>()
-                .Property(e => e.NgayDanhGia)
+                .Property(e => e.NoiDung)
                 .IsFixedLength();
 
             modelBuilder.Entity<DoanhThu>()
@@ -129,16 +113,6 @@ namespace Model.EntityFramework
 
             modelBuilder.Entity<DonHang>()
                 .HasMany(e => e.DoanhThus)
-                .WithRequired(e => e.DonHang)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<DonHang>()
-                .HasMany(e => e.LichSuCustomers)
-                .WithRequired(e => e.DonHang)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<DonHang>()
-                .HasMany(e => e.LichSuMerchants)
                 .WithRequired(e => e.DonHang)
                 .WillCascadeOnDelete(false);
 
@@ -166,14 +140,6 @@ namespace Model.EntityFramework
                 .Property(e => e.DuongDan)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LichSuCustomer>()
-                .Property(e => e.TongTien)
-                .HasPrecision(18, 0);
-
-            modelBuilder.Entity<LichSuMerchant>()
-                .Property(e => e.TongTien)
-                .HasPrecision(18, 0);
-
             modelBuilder.Entity<Merchant>()
                 .Property(e => e.Email)
                 .IsUnicode(false);
@@ -193,11 +159,6 @@ namespace Model.EntityFramework
 
             modelBuilder.Entity<Merchant>()
                 .HasMany(e => e.LichSuGiaoDichXuCuaMerchants)
-                .WithRequired(e => e.Merchant)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Merchant>()
-                .HasMany(e => e.LichSuMerchants)
                 .WithRequired(e => e.Merchant)
                 .WillCascadeOnDelete(false);
 

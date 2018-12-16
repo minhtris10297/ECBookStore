@@ -14,7 +14,6 @@ namespace Model.EntityFramework
         {
             DanhGiaCuaCustomers = new HashSet<DanhGiaCuaCustomer>();
             DanhGiaCuaMerchants = new HashSet<DanhGiaCuaMerchant>();
-            LichSuCustomers = new HashSet<LichSuCustomer>();
             DonHangs = new HashSet<DonHang>();
         }
 
@@ -55,9 +54,6 @@ namespace Model.EntityFramework
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DanhGiaCuaMerchant> DanhGiaCuaMerchants { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LichSuCustomer> LichSuCustomers { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonHang> DonHangs { get; set; }
