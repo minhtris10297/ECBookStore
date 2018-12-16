@@ -19,7 +19,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44381</IISExpressSSLPort>
+    <IISExpressSSLPort>44365</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -3482,6 +3482,7 @@
     <Content Include="Areas\AdminArea\Views\NguoiMua\Index.cshtml" />
     <Content Include="Areas\AdminArea\Views\AccountsAdmin\Login.cshtml" />
     <Content Include="Areas\AdminArea\Views\AccountsAdmin\Register.cshtml" />
+    <Content Include="Areas\MerchantArea\Views\Customer\DanhGia.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

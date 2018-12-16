@@ -138,6 +138,12 @@ namespace KnowledgeStore.Areas.AdminArea.Controllers
                         {
                             MailHelper.SendMailOrderReceived(ctdonhang.DonHang.Customer.Email, "KnowledgeStore thông báo tình trạng đơn hàng", ctdonhang.ChiTietDonHangID.ToString(), ctdonhang.DonHang.Customer.HoTen, "giao thành công!!!", System.DateTime.Now.ToString("dd/MM/yyyy"));
                             ctdonhang.NgayXuat = System.DateTime.Now;
+                            if (db.ChiTietDonHangs.Where(m => m.MerchantID == ctdonhang.MerchantID & m.TinhTrangDonHangID == 4).Count() % 10 == 9)
+                            {
+                                Merchant mer = db.Merchants.Find(ctdonhang.MerchantID);
+                                mer.SoLuongKIPXu += 10;
+                                db.LichSuGiaoDichXuCuaMerchants.Add(new LichSuGiaoDichXuCuaMerchant() { MerchantID = mer.MerchantID, NgayGiaoDich = System.DateTime.Now, PhuongThucSuDung = "Chương trinh khuyến mãi 10 đơn hàng" ,SoXu=10});
+                            }
                         }
                         else if (statusOrder == 5){
                             MailHelper.SendMailOrderReceived(ctdonhang.DonHang.Customer.Email, "KnowledgeStore thông báo tình trạng đơn hàng", ctdonhang.ChiTietDonHangID.ToString(), ctdonhang.DonHang.Customer.HoTen, "đã giao thất bại, xu hoa hồng đc hoàn trả cho quí khách", System.DateTime.Now.ToString("dd/MM/yyyy"));

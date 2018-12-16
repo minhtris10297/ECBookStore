@@ -39,12 +39,6 @@
                     </form>
                 </div>
                 <div class="col-xs-6 col-sm-4 col-md-3">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Trạng thái</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Trạng thái">
-                        </div>
-                    </form>
                     <div class="m-b-xl" style="padding: 18px">
                         <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Tìm kiếm</button>
                         <button type="button" class="btn btn-primary btn-sm" style="padding: 8px">Làm mới</button>
@@ -72,7 +66,6 @@
                                     <th>Email</th>
                                     <th>Giới tính</th>
                                     <th>Số đơn hàng đã đặt</th>
-                                    <th>Trạng thái</th>
                                     <th>Chức năng</th>
                                 </tr>
                             </thead>
@@ -90,13 +83,8 @@
                                         <td>@item.GioiTinh.TenGioiTinh</td>
                                         <td>@item.DonHangs.Count()</td>
                                         <td>
-                                            <div class="form-group">
-                                                <input id="switch-0-3" type="checkbox" data-switchery disabled checked />
-                                            </div>
-                                        </td>
-                                        <td>
                                             <div class="p-r-18 p-r-0-sm w-full-ssm" style="width: 50%">
-                                                <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-info btn-sm">Chi tiết</button>
+                                                <a href="@Url.Action("DanhGia","Customer",new { id=item.CustomerID})" class="btn btn-info btn-sm">Đánh giá</a>
                                             </div>
                                         </td>
                                     </tr>

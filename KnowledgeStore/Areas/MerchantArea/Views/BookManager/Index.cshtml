@@ -76,68 +76,68 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <p><font color="#CD090C"><b>@item.TenSach</b></font></p>
-                                        <p>Mã sản phẩm: @item.SachID</p>
-                                        <p>Thể loại: @item.TheLoai.TenTheLoai</p>
-                                    </td>
-                                    <td>@item.SoLuong</td>
-                                    @if (item.GiaKhuyenMai == null)
-                                    {
-                                        <td>@item.GiaTien.ToString("N0")đ</td>
-                                    }
-                                    else
-                                    {
-                                        <td>@item.GiaKhuyenMai.GetValueOrDefault(0).ToString("N0") đ</td>
-                                    }
-                                    @if (item.GiaKhuyenMai == null)
-                                    {
-                                        <td>@((float)item.GiaTien*@ViewBag.TienHoaHong) đ</td>
-                                    }
-                                    else
-                                    {
-                                        <td>@((float)item.GiaKhuyenMai.GetValueOrDefault(0)*@ViewBag.TienHoaHong) đ</td>
-                                    }
-                                    @if (item.GiaKhuyenMai == null)
-                                    {
-                                        <td>@((float)item.GiaTien * (1 - @ViewBag.TienHoaHong)) đ</td>
-                                            }
-                                            else
-                                            {
-                                        <td>@((float)item.GiaKhuyenMai.GetValueOrDefault(0) * (1 - @ViewBag.TienHoaHong)) đ</td>
-                                    }
-                                    <td>
-                                        <div class="form-group">
-                                            @if (item.TrangThai == true)
-                                            {
-                                                <span class="alert-primary">Trên tin</span>
-                                            }
-                                            else
-                                            {
-                                                <span class="alert-dark">Đã ẩn</span>
-                                            }
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div id="button">
-                                            <div id="button1">
-                                                <li class="dropdown" style="list-style: none;">
-                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Xử lý</button>
-                                                    <ul class="dropdown-menu" style="border-top-width: 33px;">
-                                                        <li><a href="@Url.Action("Edit","BookManager",new { id=item.SachID})" class="btn-danger">Sửa sách</a></li>
-                                                        <li><a href="/Assets/Merchant/UI/#" class="btn-success" data-toggle="modal" data-target="#ThemSach@(item.SachID)">Thêm số lượng sách</a></li>
-                                                        <li><a href="#" data-toggle="modal" data-target="#NangSach@(item.SachID)" class="btn-warning">Nâng tin</a></li>
-                                                    </ul>
-                                                </li>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <p><font color="#CD090C"><b>@item.TenSach</b></font></p>
+                                            <p>Mã sản phẩm: @item.SachID</p>
+                                            <p>Thể loại: @item.TheLoai.TenTheLoai</p>
+                                        </td>
+                                        <td>@item.SoLuong</td>
+                                        @if (item.GiaKhuyenMai == null)
+                                        {
+                                            <td>@item.GiaTien.ToString("N0")đ</td>
+                                        }
+                                        else
+                                        {
+                                            <td>@item.GiaKhuyenMai.GetValueOrDefault(0).ToString("N0") đ</td>
+                                        }
+                                        @if (item.GiaKhuyenMai == null)
+                                        {
+                                            <td>@((float)item.GiaTien * @ViewBag.TienHoaHong) đ</td>
+                                        }
+                                        else
+                                        {
+                                            <td>@((float)item.GiaKhuyenMai.GetValueOrDefault(0) * @ViewBag.TienHoaHong) đ</td>
+                                        }
+                                        @if (item.GiaKhuyenMai == null)
+                                        {
+                                            <td>@((float)item.GiaTien * (1 - @ViewBag.TienHoaHong)) đ</td>
+                                        }
+                                        else
+                                        {
+                                            <td>@((float)item.GiaKhuyenMai.GetValueOrDefault(0) * (1 - @ViewBag.TienHoaHong)) đ</td>
+                                        }
+                                        <td>
+                                            <div class="form-group">
+                                                @if (item.TrangThai == true)
+                                                {
+                                                    <span class="alert-primary">Trên tin</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="alert-dark">Đã ẩn</span>
+                                                }
                                             </div>
-                                            <div id="button2">
-                                                <button type="button" class="btn btn-warning btn-sm">Chi tiết</button>
+                                        </td>
+                                        <td>
+                                            <div id="button">
+                                                <div id="button1">
+                                                    <li class="dropdown" style="list-style: none;">
+                                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Xử lý</button>
+                                                        <ul class="dropdown-menu" style="border-top-width: 33px;">
+                                                            <li><a href="@Url.Action("Edit","BookManager",new { id=item.SachID})" class="btn-danger">Sửa sách</a></li>
+                                                            <li><a href="/Assets/Merchant/UI/#" class="btn-success" data-toggle="modal" data-target="#ThemSach@(item.SachID)">Thêm số lượng sách</a></li>
+                                                            <li><a href="#" data-toggle="modal" data-target="#NangSach@(item.SachID)" class="btn-warning">Nâng tin</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </div>
+                                                <div id="button2">
+                                                    <button data-toggle="modal" data-target="#chiTiet@(item.SachID)" class="btn btn-warning btn-sm">Chi tiết</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
                                 }
 
 
@@ -150,7 +150,7 @@
                     <div><a href="@Url.Action("Create")" class="btn btn-success btn-lg btn-block">Tạo kho sách mới</a></div>
                 </div>
 
-                <!-- The Modal -->
+                <!-- The Modal Them Sach-->
                 @foreach (var item in Model)
                 {
                     <div class="modal fade" id="NangSach@(item.SachID)">
@@ -222,6 +222,109 @@
 
 
 
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                @*Modal chi tiet sach*@
+                @foreach (var item in Model)
+                {
+                    <!-- The Modal -->
+                    <div class="modal fade" id="chiTiet@(item.SachID)">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Thông tin sách</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <div class="col-lg-4">
+                                                <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,1)" alt="IMG-PRODUCT" style="width: 140px; height: 80px">
+                                            </div>
+                                            <div class="col-lg-4" >
+                                                <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,2)" alt="IMG-PRODUCT" style="width: 140px; height: 80px">
+                                            </div>
+                                            <div class="col-lg-4" >
+                                                <img src="@HtmlHelperExtensions.ImageBookOrDefault(item.SachID,3)" alt="IMG-PRODUCT" style="width: 140px; height: 80px">
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                        <div class="card-body">
+                                            <!-- Credit Card -->
+                                            <div id="pay-invoice">
+                                                <div class="card-body">
+                                                    <div class="card-title">
+                                                        <h3 class="text-center">@item.TenSach</h3>
+                                                    </div>
+                                                    <hr>
+                                                    <form action="" method="post" novalidate="novalidate">
+                                                        <div class="form-group">
+                                                            <label class="control-label mb-1">Tác giả</label>
+                                                            <p class="form-control">@item.TacGia</p>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label mb-1">Nhà xuất bản</label>
+                                                            <p class="form-control">@item.NhaXuatBan.TenNXB</p>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label mb-1">Ngày xuất bản</label>
+                                                            <p class="form-control">@item.NgayXuatBan.ToString("MM/yyyy")</p>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label mb-1">Số trang</label>
+                                                            <p class="form-control">@item.SoTrang</p>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label mb-1">Loại bìa</label>
+                                                            <p class="form-control">@item.LoaiBia.LoaiBia1</p>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label mb-1">Giá tiền</label>
+                                                            <p class="form-control">@item.GiaTien.ToString("N0")</p>
+                                                        </div>
+                                                        <div class="row form-group">
+                                                            <div class="col-6">
+                                                                <div class="form-group"><label class=" form-control-label">Giá tiền</label><p class="form-control">@item.GiaTien.ToString("N0")</p></div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="form-group">
+                                                                    <label class=" form-control-label">Giá khuyến mãi</label>
+                                                                    @if (item.GiaKhuyenMai != null)
+                                                                    {
+                                                                        <p class="form-control">@item.GiaKhuyenMai.GetValueOrDefault(0).ToString("N0")</p>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <p class="form-control">Không có giá khuyến mãi</p>
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label mb-1">Mô tả</label>
+                                                            <textarea class="form-control" rows="9" disabled> @item.MoTa</textarea>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div> <!-- .card -->
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
 
                             </div>
                         </div>

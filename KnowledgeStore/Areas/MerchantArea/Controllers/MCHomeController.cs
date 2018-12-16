@@ -141,7 +141,7 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
                         var listtemp= listDT.Where(m =>  m.DonHang.NgayDat.Year == dateTemp.Year & m.DonHang.NgayDat .Month==dateTemp.Month & m.DonHang.NgayDat.Day == dateTemp.Day & m.MerchantID==merchantID).Select(m => m.Sach.GiaKhuyenMai ?? m.Sach.GiaTien);
                         foreach(var item in listtemp)
                         {
-                            if (((float)item * tienHoaHong % 1000) < 500)
+                            if ((((float)item * tienHoaHong) % 1000) < 500)
                             {
                                 tongDoanhThuThang += (float)item - (float)item * tienHoaHong - ((float)item * tienHoaHong % 1000);
                                 count2+= (float)item - (float)item * tienHoaHong - ((float)item * tienHoaHong % 1000);
