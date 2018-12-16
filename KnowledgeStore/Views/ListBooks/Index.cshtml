@@ -15,44 +15,54 @@
 
         <div class="flex-w flex-sb-m p-b-52">
             <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-                <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women" href="@Url.Action("Index","ListBooks")">
-                    Tất cả
-                </a>
+                @if (ViewBag.TypeID == null)
+                {
+                    <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" href="http://localhost:8080/ListBooks/Index">
+                        Tất cả
+                    </a>
+                }
+                else
+                {
+                    <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" href="http://localhost:8080/ListBooks/Index">
+                        Tất cả
+                    </a>
+                }
+
                 @if (@ViewBag.TypeID == "SachGiamGia")
                 {
-                    <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter=".women" href="@Url.Action("Index","ListBooks",new { id="SachGiamGia"})">
+                    <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" href="@Url.Action("Index","ListBooks",new { id="SachGiamGia"})">
                         Sách Giảm giá
                     </a>
                 }
                 else
                 {
-                    <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women" href="@Url.Action("Index","ListBooks",new { id="SachGiamGia"})">
+                    <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" href="@Url.Action("Index","ListBooks",new { id="SachGiamGia"})">
                         Sách Giảm giá
                     </a>
                 }
 
                 @if (@ViewBag.TypeID == "SachMoiPhatHanh")
                 {
-                    <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter=".women" href="@Url.Action("Index","ListBooks",new { id="SachMoiPhatHanh"})">
+                    <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" href="@Url.Action("Index","ListBooks",new { id="SachMoiPhatHanh"})">
                         Sách mới phát hành
                     </a>
                 }
                 else
                 {
-                    <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women" href="@Url.Action("Index","ListBooks",new { id="SachMoiPhatHanh"})">
+                    <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" href="@Url.Action("Index","ListBooks",new { id="SachMoiPhatHanh"})">
                         Sách mới phát hành
                     </a>
                 }
 
                 @if (@ViewBag.TypeID == "SachHay")
                 {
-                    <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter=".men" href="@Url.Action("Index","ListBooks",new { id="SachHay"})">
+                    <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" href="@Url.Action("Index","ListBooks",new { id="SachHay"})">
                         Sách Hay
                     </a>
                 }
                 else
                 {
-                    <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men" href="@Url.Action("Index","ListBooks",new { id="SachHay"})">
+                    <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"  href="@Url.Action("Index","ListBooks",new { id="SachHay"})">
                         Sách Hay
                     </a>
                 }
