@@ -100,7 +100,7 @@ namespace KnowledgeStore.Areas.AdminArea.Controllers
         public ActionResult Logout()
         {
             Session[CommonConstants.USERMADMIN_SESSION] = null;
-            return RedirectToAction("Login", "ADHome");
+            return RedirectToAction("Login", "AccountsAdmin");
         }
     }
 }
