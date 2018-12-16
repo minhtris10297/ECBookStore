@@ -66,6 +66,11 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             DanhGiaCuaMerchant danhGiaCuaMerchant = new DanhGiaCuaMerchant() { CustomerID = id, MerchantID = idMer, NgayDanhGia = System.DateTime.Now, SoSao = soSao, NoiDung = noiDung };
             db.DanhGiaCuaMerchants.Add(danhGiaCuaMerchant);
             db.SaveChanges();
+            if ((db.DanhGiaCuaMerchants.Where(m=>m.MerchantID==idMer).Average(m=>m.SoSao)<3)&&(db.DanhGiaCuaMerchants.Where(m => m.MerchantID == idMer).Count() % 3 == 0))
+            {
+                MailHelper.SendMailCanhBao2(db.Customers.Find(id).Email, "Thư cảnh báo hệ thống", db.Merchants.Find(idMer).TenCuaHang, System.DateTime.Now.ToString("mm/DD/yyyy"));
+            }
+            
             return RedirectToAction("Index");
         }
     }

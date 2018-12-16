@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using PagedList;
 using Model.ViewModel;
 using KnowledgeStore.Common;
+using Common;
 
 namespace KnowledgeStore.Controllers
 {
@@ -166,6 +167,11 @@ namespace KnowledgeStore.Controllers
             db.ChiTietDonHangs.Find(ctdonhang).TrangThaiDanhGia = true;
 
             db.SaveChanges();
+
+            if ((db.DanhGiaCuaCustomers.Where(m => m.SachID == comment.SachID).Average(m => m.SoSao) < 3) && (db.DanhGiaCuaCustomers.Where(m => m.SachID == comment.SachID).Count() % 3 == 0))
+            {
+                MailHelper.SendMailCanhBao(db.Customers.Find(id).Email, "Thư cảnh báo hệ thống", comment.Customer.HoTen, System.DateTime.Now.ToString("mm/DD/yyyy"));
+            }
 
             return RedirectToAction("/BookDetail/" + id);
         }

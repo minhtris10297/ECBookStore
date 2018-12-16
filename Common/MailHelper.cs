@@ -34,6 +34,49 @@ namespace Common
             client.Send(message);
         }
 
+        public static void SendMailCanhBao(string toEmail, string subject, string khach,string ngay)
+        {
+            var fromEmailAddress = ConfigurationManager.AppSettings["FromEmailAddress"].ToString();
+            var fromEmailDisplayName = ConfigurationManager.AppSettings["FromEmailDisplayName"].ToString();
+            var fromEmailPassword = ConfigurationManager.AppSettings["FromEmailPassword"].ToString();
+            var smtpHost = ConfigurationManager.AppSettings["SMTPHost"].ToString();
+            var smtpPort = ConfigurationManager.AppSettings["SMTPPort"].ToString();
+
+            bool enabledSsl = bool.Parse(ConfigurationManager.AppSettings["EnabledSSL"].ToString());
+            MailMessage message = new MailMessage(new MailAddress(fromEmailAddress, fromEmailDisplayName), new MailAddress(toEmail));
+            message.Subject = subject;
+            message.IsBodyHtml = true;
+            message.Body = "<h3>Ngày "+ngay+" bạn đã bị đánh giá sao thấp lần thứ 3 từ khách: "+khach+" mà chưa cải thiện sao, cẩn thận vì bạn có thể bị khóa tài khoản</h3>";
+
+            var client = new SmtpClient();
+            client.Credentials = new NetworkCredential(fromEmailAddress, fromEmailPassword);
+            client.Host = smtpHost;
+            client.EnableSsl = enabledSsl;
+            client.Port = !string.IsNullOrEmpty(smtpPort) ? Convert.ToInt32(smtpPort) : 0;
+            client.Send(message);
+        }
+        public static void SendMailCanhBao2(string toEmail, string subject, string mer, string ngay)
+        {
+            var fromEmailAddress = ConfigurationManager.AppSettings["FromEmailAddress"].ToString();
+            var fromEmailDisplayName = ConfigurationManager.AppSettings["FromEmailDisplayName"].ToString();
+            var fromEmailPassword = ConfigurationManager.AppSettings["FromEmailPassword"].ToString();
+            var smtpHost = ConfigurationManager.AppSettings["SMTPHost"].ToString();
+            var smtpPort = ConfigurationManager.AppSettings["SMTPPort"].ToString();
+
+            bool enabledSsl = bool.Parse(ConfigurationManager.AppSettings["EnabledSSL"].ToString());
+            MailMessage message = new MailMessage(new MailAddress(fromEmailAddress, fromEmailDisplayName), new MailAddress(toEmail));
+            message.Subject = subject;
+            message.IsBodyHtml = true;
+            message.Body = "<h3>Ngày " + ngay + " bạn đã bị đánh giá sao thấp lần thứ 3 từ merchant vì hành vi xấu: " + mer + " mà chưa cải thiện sao, cẩn thận vì bạn có thể bị khóa tài khoản</h3>";
+
+            var client = new SmtpClient();
+            client.Credentials = new NetworkCredential(fromEmailAddress, fromEmailPassword);
+            client.Host = smtpHost;
+            client.EnableSsl = enabledSsl;
+            client.Port = !string.IsNullOrEmpty(smtpPort) ? Convert.ToInt32(smtpPort) : 0;
+            client.Send(message);
+        }
+
         public static void SendMailOfMer(string displayName,string toEmail, string subject, string content)
         {
             var fromEmailAddress = ConfigurationManager.AppSettings["FromEmailAddress"].ToString();
