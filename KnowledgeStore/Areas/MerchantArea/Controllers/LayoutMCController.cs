@@ -30,10 +30,16 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             {
                 return RedirectToAction("Login", "AccountsMerchant");
             }
-            var merchantID = db.Merchants.Where(m => m.Email == sessionUser.Email).Select(m => m.MerchantID).FirstOrDefault();
+            var merchant= db.Merchants.Where(m => m.Email == sessionUser.Email).FirstOrDefault();
+            var merchantID = merchant.MerchantID;
             ViewBag.MerchantID = merchantID;
-            ViewBag.MerchantName = db.Merchants.Where(m => m.MerchantID == merchantID).Select(m => m.HoTen).FirstOrDefault();
-            
+            ViewBag.MerchantName = merchant.HoTen;
+            ViewBag.MerchantEmail = merchant.Email;
+            ViewBag.MerchantTenCuaHang = merchant.TenCuaHang;
+            ViewBag.MerchantSoDienThoai = merchant.SoDienThoai;
+            ViewBag.MerchantDiaChi = merchant.DiaChi;
+            ViewBag.MerchantNgayTao = merchant.NgayTao.ToString("dd/MM/yyyy");
+
             return PartialView();
         }
     }

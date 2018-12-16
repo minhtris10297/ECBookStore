@@ -12,7 +12,7 @@ namespace ConsoleTest
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(9.75%1);
+            Console.WriteLine(29%10);
             Console.ReadKey();
         }
     }
