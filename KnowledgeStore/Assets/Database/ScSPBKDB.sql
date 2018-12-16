@@ -1,6 +1,6 @@
 USE KnowledgeStore
 GO
-ALTER PROCEDURE BackUpDatabaseBUD 
+CREATE PROCEDURE BackUpDatabaseBUD 
 @ten varchar(50)
 AS
 BEGIN
