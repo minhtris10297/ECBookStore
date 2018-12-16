@@ -42,5 +42,10 @@ namespace KnowledgeStore.Areas.MerchantArea.Controllers
             }
             return View(list.ToList());
         }
+
+        public ActionResult DanhGia(int id)
+        {
+            return View();
+        }
     }
 }
